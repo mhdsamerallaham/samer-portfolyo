@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import ServiceCard from '../components/ServiceCard';
 import AIDemo from '../components/AIDemo';
@@ -11,7 +10,6 @@ export default function Home() {
   const { t, i18n } = useTranslation();
 
   const servicesKeys = ['site-kurulumu', 'optimizasyon', 'urun-gorsel', 'stok-depo', 'aylik-yonetim'];
-  
   const caseStudies = t('case_studies.items', { returnObjects: true }) || [];
 
   return (
@@ -24,25 +22,27 @@ export default function Home() {
       />
 
       {/* 1. HERO SECTION */}
-      <section className="relative px-6 md:px-12 pt-32 pb-20 max-w-[1280px] mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-start">
+      <section className="relative px-6 md:px-12 pt-32 pb-24 max-w-[1200px] mx-auto overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center text-start">
           
           {/* Hero Left Column (Copy and CTAs) */}
           <div className="lg:col-span-7 flex flex-col gap-6 z-10">
             
             {/* Localized Hello greeting */}
-            <div className="flex flex-col gap-1">
-              <span className="text-[#ff6b6b] text-xl font-black tracking-wider uppercase">
+            <div className="flex items-center gap-3">
+              <span className="text-[#ff6b6b] text-base font-extrabold tracking-wider uppercase">
                 {i18n.language === 'tr' ? 'Merhaba.' : i18n.language === 'ar' ? 'مرحباً.' : 'Hello.'}
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-300">
-                {i18n.language === 'tr' ? "Ben Samer" : i18n.language === 'ar' ? "أنا سامر" : "I'm Samer"}
-              </h2>
+              <div className="w-12 h-[2px] bg-[#ff6b6b]" />
             </div>
 
+            <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-300 -mt-2">
+              {i18n.language === 'tr' ? "Ben Samer" : i18n.language === 'ar' ? "أنا سامر" : "I'm Samer"}
+            </h2>
+
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
-              {i18n.language === 'tr' ? 'E-Ticaret Sistemleri ve Büyüme Uzmanı' : i18n.language === 'ar' ? 'أخصائي أنظمة التجارة والنمو' : 'E-Commerce Systems & Growth Specialist'}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
+              {i18n.language === 'tr' ? 'E-Ticaret Sistemleri & Büyüme Uzmanı' : i18n.language === 'ar' ? 'أخصائي أنظمة التجارة والنمو' : 'E-Commerce Systems & Growth Specialist'}
             </h1>
 
             {/* Subheadline description */}
@@ -54,13 +54,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 mt-2">
               <Link
                 to="/iletisim"
-                className="px-8 py-3.5 bg-[#ff6b6b] text-white font-black rounded-xl hover:bg-[#ff5252] transition-colors duration-300 text-xs tracking-wider uppercase"
+                className="px-8 py-4 bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-black rounded-xl transition-colors duration-300 text-xs tracking-wider uppercase"
               >
                 {t('contact_page.submit')}
               </Link>
               <Link
                 to="/hakkimda"
-                className="px-8 py-3.5 bg-transparent border border-white/20 text-white font-black rounded-xl hover:bg-white/5 transition-all duration-300 text-xs tracking-wider uppercase"
+                className="px-8 py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-black rounded-xl transition-all duration-300 text-xs tracking-wider uppercase"
               >
                 {t('nav.about')}
               </Link>
@@ -70,28 +70,19 @@ export default function Home() {
           {/* Hero Right Column (Avatar and Glowing frame) */}
           <div className="lg:col-span-5 flex justify-center items-center z-10 relative">
             <div className="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
-              {/* Coral Glowing Ring Background (Matches image) */}
-              <div className="absolute inset-0 rounded-full border-4 border-dashed border-[#ff6b6b]/20 animate-[spin_40s_linear_infinite]" />
-              <div className="absolute inset-4 rounded-full border-2 border-[#ff6b6b]/40" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#ff6b6b]/10 to-transparent rounded-full blur-2xl -z-10" />
+              {/* Soft glow behind avatar */}
+              <div className="absolute inset-0 bg-[#ff6b6b]/10 rounded-full blur-[80px] -z-10" />
+              {/* Concentric clean circles matching image */}
+              <div className="absolute inset-0 rounded-full border-2 border-[#ff6b6b]/20" />
+              <div className="absolute inset-4 rounded-full border border-white/5" />
 
               {/* Avatar picture */}
-              <div className="w-60 h-60 md:w-68 md:h-68 rounded-full overflow-hidden border-4 border-white/5 bg-[#131b2e] shadow-2xl relative">
+              <div className="w-60 h-60 md:w-68 md:h-68 rounded-full overflow-hidden border-4 border-[#131b2e] bg-[#131b2e] shadow-2xl relative">
                 <img
                   src="/avatar.png"
                   alt="Samer Allaham"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-105"
                 />
-              </div>
-
-              {/* Status active badge */}
-              <div className="absolute bottom-2 end-6 px-4 py-1.5 bg-[#0b0f19] border border-[#ff6b6b]/30 rounded-full shadow-2xl backdrop-blur-md">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-[#ff6b6b] rounded-full animate-ping" />
-                  <span className="mono text-[8px] font-black tracking-widest uppercase text-[#ff6b6b]">
-                    ONLINE_
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -100,10 +91,9 @@ export default function Home() {
       </section>
 
       {/* 2. HORIZONTAL TECH STACK ROW */}
-      <section className="w-full border-y border-white/5 bg-[#0e1423]/50 py-5">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-wrap justify-between items-center gap-6">
-          <span className="mono text-[8px] font-black text-neutral-500 tracking-[0.2em]">// POWERED_BY</span>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-neutral-400 font-extrabold text-[10px] md:text-xs tracking-wider uppercase mono">
+      <section className="w-full border-y border-white/5 bg-[#111622]/30 py-6">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex justify-center lg:justify-between items-center flex-wrap gap-6">
+          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-neutral-400 font-extrabold text-[10px] md:text-xs tracking-widest uppercase mono">
             <span>Shopify</span>
             <span className="text-[#ff6b6b]">•</span>
             <span>İKAS</span>
@@ -116,21 +106,18 @@ export default function Home() {
             <span className="text-[#ff6b6b]">•</span>
             <span>Next.js</span>
             <span className="text-[#ff6b6b]">•</span>
-            <span>REST API</span>
+            <span>API Integration</span>
           </div>
         </div>
       </section>
 
       {/* 3. ABOUT ME / PILLARS SECTION */}
-      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto">
+      <section className="px-6 md:px-12 py-28 max-w-[1200px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
           {/* Bio column: Renders first on mobile (order-1), second on desktop (lg:order-2) */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-start order-1 lg:order-2">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block">
-              // PROFILE_OVERVIEW
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
               {i18n.language === 'tr' ? 'Hakkımda' : i18n.language === 'ar' ? 'من أنا' : 'About me'}
             </h2>
             <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-semibold">
@@ -161,49 +148,32 @@ export default function Home() {
           </div>
 
           {/* Pillars column: Renders second on mobile (order-2), first on desktop (lg:order-1) */}
-          <div className="lg:col-span-5 flex flex-col gap-6 text-start relative ps-8 border-s-2 border-white/5 order-2 lg:order-1 mt-8 lg:mt-0">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-2">
-              // SERVICE_PILLARS
-            </span>
+          <div className="lg:col-span-5 flex flex-col gap-10 text-start relative ps-8 order-2 lg:order-1 mt-8 lg:mt-0">
+            {/* Clean timeline vertical line */}
+            <div className="absolute start-0 top-2 bottom-2 w-[1px] bg-white/10" />
 
             {/* Pillar 1 */}
             <div className="relative group">
-              {/* Connecting point dot aligned logically on the border line */}
-              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
-              <div className="flex flex-col gap-1">
-                <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                  {t('services.items.site-kurulumu.title')}
-                </h4>
-                <p className="text-neutral-500 text-xs leading-relaxed font-semibold">
-                  Shopify & İKAS Setup, custom checkouts, payment systems mapping.
-                </p>
-              </div>
+              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
+              <h4 className="text-base font-bold text-white uppercase tracking-wide">
+                {t('services.items.site-kurulumu.title')}
+              </h4>
             </div>
 
             {/* Pillar 2 */}
-            <div className="relative group mt-4">
-              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
-              <div className="flex flex-col gap-1">
-                <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                  {t('services.items.stok-depo.title')}
-                </h4>
-                <p className="text-neutral-500 text-xs leading-relaxed font-semibold">
-                  Multi-channel stock synchronization, POS/ERP links, microservice structures.
-                </p>
-              </div>
+            <div className="relative group">
+              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
+              <h4 className="text-base font-bold text-white uppercase tracking-wide">
+                {t('services.items.stok-depo.title')}
+              </h4>
             </div>
 
             {/* Pillar 3 */}
-            <div className="relative group mt-4">
-              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
-              <div className="flex flex-col gap-1">
-                <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                  {t('services.items.optimizasyon.title')}
-                </h4>
-                <p className="text-neutral-500 text-xs leading-relaxed font-semibold">
-                  Page load speeds, conversion rate analysis (CRO), Core Web Vitals optimization.
-                </p>
-              </div>
+            <div className="relative group">
+              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
+              <h4 className="text-base font-bold text-white uppercase tracking-wide">
+                {t('services.items.optimizasyon.title')}
+              </h4>
             </div>
 
           </div>
@@ -212,9 +182,8 @@ export default function Home() {
       </section>
 
       {/* 4. SERVICES PACKAGES */}
-      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto border-t border-white/5">
+      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto border-t border-white/5">
         <div className="text-center mb-16 flex flex-col items-center gap-3">
-          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// SERVICES_PRICING</span>
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('services.title')}</h2>
           <p className="text-neutral-400 text-sm md:text-base max-w-xl font-semibold leading-relaxed">{t('services.subtitle')}</p>
         </div>
@@ -232,9 +201,8 @@ export default function Home() {
 
       {/* 5. INTERACTIVE AI DEMO */}
       <section className="px-6 md:px-12 py-24 bg-[#0e1423]/30 border-y border-white/5">
-        <div className="max-w-[1280px] mx-auto text-center">
+        <div className="max-w-[1200px] mx-auto text-center">
           <div className="mb-12 flex flex-col items-center gap-3">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// AUTOMATION_LAB</span>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{i18n.language === 'tr' ? 'Yapay Zeka Servisleri' : 'AI Services Showcase'}</h2>
           </div>
           <AIDemo />
@@ -242,12 +210,9 @@ export default function Home() {
       </section>
 
       {/* 6. SUCCESS METRICS CASE STUDIES */}
-      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto text-start">
-        <div className="flex justify-between items-end mb-16">
-          <div className="flex flex-col gap-3">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// RESULTS_DELIVERED</span>
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('case_studies.title')}</h2>
-          </div>
+      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto text-start">
+        <div className="flex flex-col gap-3 mb-16">
+          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('case_studies.title')}</h2>
         </div>
 
         {/* Results Metrics grid */}
@@ -272,9 +237,8 @@ export default function Home() {
 
       {/* 7. FAQ ACCORDIONS */}
       <section className="px-6 md:px-12 py-24 bg-[#0e1423]/30 border-y border-white/5">
-        <div className="max-w-[1280px] mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16 flex flex-col items-center gap-3">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// FAQ</span>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('faq.title')}</h2>
             <p className="text-neutral-400 text-sm md:text-base font-semibold">{t('faq.subtitle')}</p>
           </div>
@@ -283,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* 8. CONTACT FORM */}
-      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto">
+      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto">
         <ContactForm />
       </section>
     </div>

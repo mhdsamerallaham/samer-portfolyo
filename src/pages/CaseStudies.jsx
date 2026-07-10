@@ -20,9 +20,6 @@ export default function CaseStudies() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-4">
-            // CASE_STUDIES_ARCHIVE
-          </span>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6">
             {t('case_studies.title')}
           </h1>
@@ -45,7 +42,6 @@ export default function CaseStudies() {
                 <div className="w-12 h-12 rounded-xl bg-[#ff6b6b]/10 flex items-center justify-center text-[#ff6b6b] mb-2">
                   {icons[idx] || <TrendingUp size={24} />}
                 </div>
-                <span className="mono text-[10px] font-black text-neutral-500 uppercase tracking-widest">// METRİC_BREAKTHROUGH</span>
                 <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight leading-none">
                   {item.metric}
                 </span>
@@ -63,7 +59,7 @@ export default function CaseStudies() {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
                   <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">
-                    SYSTEM_STABILIZER // CASE_00{idx + 1}
+                    CASE_00{idx + 1}
                   </span>
                   <Link
                     to="/iletisim"

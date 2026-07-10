@@ -17,13 +17,10 @@ export default function ServicesOverview() {
         keywords="shopify site kurma, ikas e ticaret sitesi, e ticaret danışmanlığı, ürün fotoğraf düzenleme"
       />
 
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 text-left">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 text-start">
         
         {/* Header Section */}
         <div className="max-w-3xl mb-16">
-          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-4">
-            // SERVICES_ARCHITECTURE
-          </span>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[1.1] mb-6">
             {t('services.title')}
           </h1>
@@ -48,9 +45,6 @@ export default function ServicesOverview() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff6b6b]/5 rounded-full blur-[80px] pointer-events-none" />
           
           <div className="lg:col-span-7 flex flex-col gap-5">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block">
-              // COMPARATIVE_ANALYSIS
-            </span>
             <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">
               {i18n.language === 'tr' ? 'Shopify mı İKAS mı? Hangisini Seçmelisiniz?' : 'Shopify or İKAS? Which to Choose?'}
             </h3>
@@ -66,13 +60,12 @@ export default function ServicesOverview() {
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-neutral-300">
                 <CheckCircle2 size={16} className="text-[#ff6b6b]" />
-                <span>İKAS: Domestic Speed</span>
+                <span>İKAS: Speed & Local Power</span>
               </div>
             </div>
           </div>
           
           <div className="lg:col-span-5 flex flex-col gap-4 bg-[#0b0f19] p-6 rounded-2xl border border-white/5 w-full">
-            <h4 className="mono text-[10px] font-black text-[#ff6b6b] uppercase tracking-wider">// DECISION_FLOWCHART</h4>
             <ul className="flex flex-col gap-3 text-xs leading-relaxed text-neutral-400 font-semibold">
               <li className="flex gap-2">
                 <span className="text-[#ff6b6b] font-bold">&gt;</span>

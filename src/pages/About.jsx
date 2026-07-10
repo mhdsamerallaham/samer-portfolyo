@@ -25,9 +25,6 @@ export default function About() {
         {/* Biography Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
           <div className="lg:col-span-8 flex flex-col gap-6">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">
-              // PROFILE_STATEMENT
-            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-tight">
               {t('about_page.title')}
             </h1>
@@ -63,9 +60,6 @@ export default function About() {
 
         {/* Technical Focus Grid */}
         <div className="mb-24">
-          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-10 text-center">
-            // TECHNICAL_CREDENTIALS
-          </span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {skillGroups.map((group, i) => (
               <div key={i} className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col gap-6">
@@ -89,7 +83,6 @@ export default function About() {
         {/* Work Principles Section */}
         <div className="border-t border-white/5 pt-20">
           <div className="text-center mb-16 flex flex-col items-center gap-3">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// CORE_VALUES</span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">{t('about_page.values_title')}</h2>
           </div>
 

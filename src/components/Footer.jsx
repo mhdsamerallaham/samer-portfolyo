@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Quick Sitemap Links */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">// SİTEMAP</span>
+            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">SİTEMAP</span>
             <ul className="flex flex-col gap-2.5">
               <li><Link to="/" onClick={handleLogoClick} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.home')}</Link></li>
               <li><Link to="/hizmetler" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.services')}</Link></li>
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* E-Commerce Solutions Links */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">// SOLUTİONS</span>
+            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">ÇÖZÜMLER</span>
             <ul className="flex flex-col gap-2.5">
               <li><Link to="/eticaret-site-kurulumu" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.site-kurulumu.title')}</Link></li>
               <li><Link to="/eticaret-optimizasyon" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.optimizasyon.title')}</Link></li>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Tech Stack Showcase */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">// TECH STACK</span>
+            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">TEKNOLOJİLER</span>
             <div className="flex flex-wrap gap-2">
               {['Shopify', 'İKAS', 'React', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'APIs', 'Webhooks'].map((tech) => (
                 <span key={tech} className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] font-bold text-neutral-400 uppercase tracking-wider">
