@@ -24,7 +24,7 @@ export default function FAQ() {
         return (
           <div
             key={idx}
-            className="border border-white/5 bg-[#0a0a0a] rounded-2xl transition-all duration-300 overflow-hidden text-left"
+            className="border border-white/5 bg-[#131b2e] rounded-2xl transition-all duration-300 overflow-hidden text-left"
           >
             <button
               onClick={() => toggleAccordion(idx)}
@@ -34,7 +34,7 @@ export default function FAQ() {
                 {item.q}
               </span>
               <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-neutral-400 flex-shrink-0 transition-transform">
-                {isOpen ? <Minus size={14} className="text-[#00ffaa]" /> : <Plus size={14} />}
+                {isOpen ? <Minus size={14} className="text-[#ff6b6b]" /> : <Plus size={14} />}
               </span>
             </button>
             

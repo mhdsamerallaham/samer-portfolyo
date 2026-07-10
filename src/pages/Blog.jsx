@@ -22,7 +22,7 @@ export default function Blog() {
           {/* Back button */}
           <button
             onClick={() => setActiveArticle(null)}
-            className="inline-flex items-center gap-2 text-xs font-black mono text-neutral-400 hover:text-[#00ffaa] mb-12 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs font-black mono text-neutral-400 hover:text-[#ff6b6b] mb-12 transition-colors cursor-pointer"
           >
             <ArrowLeft size={14} />
             {t('blog_page.back_to_blog').toUpperCase()}
@@ -67,7 +67,7 @@ export default function Blog() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <span className="mono text-[#00ffaa] text-[9px] font-black uppercase tracking-widest block mb-4">
+          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-4">
             // BLOG_INTELLIGENCE
           </span>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6">
@@ -83,7 +83,7 @@ export default function Blog() {
           {Array.isArray(articles) && articles.map((article) => (
             <div
               key={article.id}
-              className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-white/10 transition-all duration-300 group"
+              className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-white/10 transition-all duration-300 group"
             >
               <div className="flex flex-col gap-4 text-left">
                 {/* Date */}
@@ -93,7 +93,7 @@ export default function Blog() {
                 </span>
 
                 {/* Title */}
-                <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-[#00ffaa] transition-colors leading-tight">
+                <h3 className="text-xl md:text-2xl font-black text-white group-hover:text-[#ff6b6b] transition-colors leading-tight">
                   {article.title}
                 </h3>
 
@@ -107,12 +107,12 @@ export default function Blog() {
               <div className="border-t border-white/5 pt-6 mt-8 flex justify-between items-center">
                 <button
                   onClick={() => setActiveArticle(article)}
-                  className="mono text-[9px] font-black text-neutral-400 hover:text-[#00ffaa] transition-colors flex items-center gap-2 uppercase cursor-pointer"
+                  className="mono text-[9px] font-black text-neutral-400 hover:text-[#ff6b6b] transition-colors flex items-center gap-2 uppercase cursor-pointer"
                 >
                   <BookOpen size={14} />
                   {t('blog_page.read_more')}
                 </button>
-                <ArrowRight size={14} className="text-neutral-500 group-hover:text-[#00ffaa] group-hover:translate-x-1 transition-all" />
+                <ArrowRight size={14} className="text-neutral-500 group-hover:text-[#ff6b6b] group-hover:translate-x-1 transition-all" />
               </div>
             </div>
           ))}

@@ -78,8 +78,8 @@ export default function ContactForm() {
 
   if (success) {
     return (
-      <div className="w-full bg-[#0a0a0a] border border-[#00ffaa]/20 rounded-3xl p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
-        <div className="w-16 h-16 rounded-full bg-[#00ffaa]/10 border border-[#00ffaa]/20 flex items-center justify-center text-[#00ffaa] mb-6 animate-bounce">
+      <div className="w-full bg-[#131b2e] border border-[#ff6b6b]/20 rounded-3xl p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
+        <div className="w-16 h-16 rounded-full bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 flex items-center justify-center text-[#ff6b6b] mb-6 animate-bounce">
           <CheckCircle size={32} />
         </div>
         <h3 className="text-2xl font-black text-white mb-4">{t('contact_page.success')}</h3>
@@ -94,13 +94,13 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0a0a0a] border border-white/5 rounded-3xl p-6 md:p-10 relative overflow-hidden text-left">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-[#00ffaa]/5 rounded-full blur-[60px] pointer-events-none" />
+    <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#131b2e] border border-white/5 rounded-3xl p-6 md:p-10 relative overflow-hidden text-left">
+      <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b6b]/5 rounded-full blur-[60px] pointer-events-none" />
 
       {/* Left side details */}
       <div className="lg:col-span-4 flex flex-col justify-between gap-8">
         <div>
-          <span className="mono text-[#00ffaa] text-[9px] font-black uppercase tracking-widest block mb-4">
+          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-4">
             // CONTACT_İNTİATİVE
           </span>
           <h3 className="text-2xl md:text-3xl font-black text-white leading-tight mb-4">
@@ -116,7 +116,7 @@ export default function ContactForm() {
             <span className="mono text-[8px] font-black text-neutral-500 tracking-wider uppercase block mb-1">
               DIRECT_MAİL
             </span>
-            <a href="mailto:samerallaham3@gmail.com" className="text-sm md:text-base font-bold text-white hover:text-[#00ffaa] transition-colors">
+            <a href="mailto:samerallaham3@gmail.com" className="text-sm md:text-base font-bold text-white hover:text-[#ff6b6b] transition-colors">
               SAMERALLAHAM3@GMAIL.COM
             </a>
           </div>
@@ -129,7 +129,7 @@ export default function ContactForm() {
               href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-[#00ffaa]/10 border border-[#00ffaa]/20 hover:bg-[#00ffaa] hover:text-black text-[#00ffaa] rounded-xl text-xs font-bold transition-all w-full sm:w-auto justify-center"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 hover:bg-[#ff6b6b] hover:text-white text-[#ff6b6b] rounded-xl text-xs font-bold transition-all w-full sm:w-auto justify-center"
             >
               <MessageSquare size={16} />
               {t('contact_page.whatsapp_cta')}
@@ -150,7 +150,7 @@ export default function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           />
         </div>
 
@@ -163,7 +163,7 @@ export default function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           />
         </div>
 
@@ -176,7 +176,7 @@ export default function ContactForm() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           />
         </div>
 
@@ -188,7 +188,7 @@ export default function ContactForm() {
             type="url"
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           />
         </div>
 
@@ -199,7 +199,7 @@ export default function ContactForm() {
           <select
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           >
             <option value="shopify">{t('contact_page.platform_select.shopify')}</option>
             <option value="ikas">{t('contact_page.platform_select.ikas')}</option>
@@ -214,7 +214,7 @@ export default function ContactForm() {
           <select
             value={budget}
             onChange={(e) => setBudget(e.target.value)}
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
           >
             <option value="tier1">{t('contact_page.budget_select.tier1')}</option>
             <option value="tier2">{t('contact_page.budget_select.tier2')}</option>
@@ -232,14 +232,14 @@ export default function ContactForm() {
             onChange={(e) => setMessage(e.target.value)}
             required
             rows={4}
-            className="w-full px-4 py-3 bg-[#111] border border-white/5 focus:border-[#00ffaa]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors resize-none"
+            className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors resize-none"
           />
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="sm:col-span-2 py-4 bg-[#00ffaa] hover:scale-101 disabled:bg-neutral-800 disabled:scale-100 disabled:text-neutral-500 text-black rounded-xl mono text-[10px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
+          className="sm:col-span-2 py-4 bg-[#ff6b6b] hover:bg-[#ff5252] disabled:bg-neutral-800 disabled:text-neutral-500 text-white rounded-xl mono text-[10px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
         >
           {loading ? (
             <>

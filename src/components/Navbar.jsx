@@ -39,17 +39,17 @@ export default function Navbar() {
   const isRtl = i18n.language === 'ar';
 
   return (
-    <nav className={`fixed top-0 w-full z-[2000] flex items-center transition-all duration-300 ${scrolled ? 'h-20 bg-[#050505]/80 backdrop-blur-md border-b border-white/5' : 'h-24 bg-transparent'}`}>
+    <nav className={`fixed top-0 w-full z-[2000] flex items-center transition-all duration-300 ${scrolled ? 'h-20 bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5' : 'h-24 bg-transparent'}`}>
       <div className="max-w-[1440px] mx-auto w-full px-6 md:px-12 flex justify-between items-center">
         
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-[#00ffaa]/10 border border-[#00ffaa]/20 rounded-xl flex items-center justify-center group-hover:bg-[#00ffaa] transition-all duration-300">
-            <ArrowDownRight className="text-[#00ffaa] group-hover:text-black transition-colors" size={20} />
+          <div className="w-10 h-10 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 rounded-xl flex items-center justify-center group-hover:bg-[#ff6b6b] transition-all duration-300">
+            <ArrowDownRight className="text-[#ff6b6b] group-hover:text-white transition-colors" size={20} />
           </div>
           <div className="flex flex-col text-left">
             <span className="mono font-black text-base tracking-tighter leading-none text-white">SAMER ALLAHAM</span>
-            <span className="mono text-[8px] text-[#00ffaa] tracking-[0.2em] font-bold uppercase mt-1">
+            <span className="mono text-[8px] text-[#ff6b6b] tracking-[0.2em] font-bold uppercase mt-1">
               {i18n.language === 'tr' ? 'E-Ticaret Sistemleri' : i18n.language === 'ar' ? 'أنظمة التجارة الإلكترونية' : 'E-Commerce Systems'}
             </span>
           </div>
@@ -62,8 +62,8 @@ export default function Navbar() {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `mono text-[10px] font-black uppercase tracking-[0.15em] transition-colors hover:text-[#00ffaa] ${
-                  isActive ? 'text-[#00ffaa] relative after:content-[""] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:height-[1.5px] after:bg-[#00ffaa]' : 'text-neutral-400'
+                `mono text-[10px] font-black uppercase tracking-[0.15em] transition-colors hover:text-[#ff6b6b] ${
+                  isActive ? 'text-[#ff6b6b] relative after:content-[""] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:height-[1.5px] after:bg-[#ff6b6b]' : 'text-neutral-400'
                 }`
               }
             >
@@ -81,7 +81,7 @@ export default function Navbar() {
                 key={lang}
                 onClick={() => handleLangChange(lang)}
                 className={`w-8 h-8 rounded-full mono text-[9px] font-black flex items-center justify-center transition-all cursor-pointer ${
-                  i18n.language === lang ? 'bg-[#00ffaa] text-black' : 'text-neutral-400 hover:text-white'
+                  i18n.language === lang ? 'bg-[#ff6b6b] text-white' : 'text-neutral-400 hover:text-white'
                 }`}
               >
                 {lang.toUpperCase()}
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           <Link
             to="/iletisim"
-            className="px-6 py-2.5 bg-[#00ffaa] text-black rounded-full mono text-[10px] font-black hover:scale-105 transition-all duration-300"
+            className="px-6 py-2.5 bg-[#ff6b6b] text-white hover:bg-[#ff5252] rounded-full mono text-[10px] font-black hover:scale-105 transition-all duration-300"
           >
             {t('nav.cta').toUpperCase()}
           </Link>
@@ -103,16 +103,16 @@ export default function Navbar() {
           <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5">
             <button
               onClick={() => handleLangChange(i18n.language === 'tr' ? 'en' : i18n.language === 'en' ? 'ar' : 'tr')}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-[#00ffaa] transition-colors"
+              className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] transition-colors"
             >
               <Globe size={16} />
             </button>
-            <span className="mono text-[10px] font-bold text-[#00ffaa] pr-3 pl-1 uppercase">{i18n.language}</span>
+            <span className="mono text-[10px] font-bold text-[#ff6b6b] pr-3 pl-1 uppercase">{i18n.language}</span>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white hover:text-[#00ffaa] transition-colors"
+            className="text-white hover:text-[#ff6b6b] transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -121,14 +121,14 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Drawer Overlay */}
-      <div className={`fixed inset-0 top-20 w-full h-[calc(100vh-80px)] bg-[#050505] z-[1999] border-t border-white/5 flex flex-col justify-between p-8 lg:hidden transition-all duration-300 ${isOpen ? 'translate-x-0 opacity-100' : isRtl ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0'}`}>
+      <div className={`fixed inset-0 top-20 w-full h-[calc(100vh-80px)] bg-[#0b0f19] z-[1999] border-t border-white/5 flex flex-col justify-between p-8 lg:hidden transition-all duration-300 ${isOpen ? 'translate-x-0 opacity-100' : isRtl ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0'}`}>
         <div className="flex flex-col gap-6 text-left">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className="mono text-2xl font-black uppercase tracking-wider text-neutral-300 hover:text-[#00ffaa] transition-colors"
+              className="mono text-2xl font-black uppercase tracking-wider text-neutral-300 hover:text-[#ff6b6b] transition-colors"
             >
               {item.name}
             </Link>
@@ -143,7 +143,7 @@ export default function Navbar() {
                 key={lang}
                 onClick={() => handleLangChange(lang)}
                 className={`px-4 py-2 rounded-xl mono text-[10px] font-black cursor-pointer ${
-                  i18n.language === lang ? 'bg-[#00ffaa] text-black' : 'text-neutral-400'
+                  i18n.language === lang ? 'bg-[#ff6b6b] text-white' : 'text-neutral-400'
                 }`}
               >
                 {lang === 'tr' ? 'TÜRKÇE' : lang === 'en' ? 'ENGLISH' : 'العربية'}
@@ -154,7 +154,7 @@ export default function Navbar() {
           <Link
             to="/iletisim"
             onClick={() => setIsOpen(false)}
-            className="w-full py-4 bg-[#00ffaa] text-black text-center rounded-2xl mono text-xs font-black hover:scale-102 transition-all"
+            className="w-full py-4 bg-[#ff6b6b] text-white text-center rounded-2xl mono text-xs font-black hover:scale-102 transition-all"
           >
             {t('nav.cta').toUpperCase()}
           </Link>

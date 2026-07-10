@@ -124,11 +124,11 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-[#0a0a0a] border border-white/5 rounded-3xl p-6 md:p-10 relative overflow-hidden text-left">
-      <div className="absolute top-0 left-0 w-32 h-32 bg-[#00ffaa]/5 rounded-full blur-[50px] pointer-events-none" />
+    <div className="w-full max-w-4xl mx-auto bg-[#131b2e] border border-white/5 rounded-3xl p-6 md:p-10 relative overflow-hidden text-left">
+      <div className="absolute top-0 left-0 w-32 h-32 bg-[#ff6b6b]/5 rounded-full blur-[50px] pointer-events-none" />
       
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-8 rounded-lg bg-[#00ffaa]/10 border border-[#00ffaa]/20 flex items-center justify-center text-[#00ffaa]">
+        <div className="w-8 h-8 rounded-lg bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 flex items-center justify-center text-[#ff6b6b]">
           <Sparkles size={16} />
         </div>
         <h3 className="text-xl md:text-2xl font-black text-white">{t('ai_generator.title')}</h3>
@@ -148,7 +148,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
               onChange={(e) => setName(e.target.value)}
               placeholder={t('ai_generator.placeholder_name')}
               required
-              className="w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#00ffaa]/40 transition-colors"
+              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors"
             />
           </div>
 
@@ -157,7 +157,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#00ffaa]/40 transition-colors"
+              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors"
             >
               <option value="fashion">{t('ai_generator.categories.fashion')}</option>
               <option value="electronics">{t('ai_generator.categories.electronics')}</option>
@@ -174,14 +174,14 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
               onChange={(e) => setFeatures(e.target.value)}
               placeholder={t('ai_generator.placeholder_features')}
               rows={3}
-              className="w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#00ffaa]/40 transition-colors resize-none"
+              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors resize-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-[#00ffaa] hover:scale-102 disabled:bg-neutral-800 disabled:scale-100 disabled:text-neutral-500 text-black rounded-xl mono text-[10px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full py-4 bg-[#ff6b6b] hover:bg-[#ff5252] disabled:bg-neutral-800 disabled:text-neutral-500 text-white rounded-xl mono text-[10px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             {loading ? (
               <>
@@ -198,11 +198,11 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
         </form>
 
         {/* Console/Terminal Output */}
-        <div className="lg:col-span-7 bg-[#050505] border border-white/5 rounded-2xl p-5 flex flex-col justify-between min-h-[300px] relative">
+        <div className="lg:col-span-7 bg-[#0b0f19] border border-white/5 rounded-2xl p-5 flex flex-col justify-between min-h-[300px] relative">
           
           {loading && (
-            <div className="absolute inset-0 bg-[#050505]/80 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center gap-4 z-10">
-              <RefreshCw size={24} className="text-[#00ffaa] animate-spin" />
+            <div className="absolute inset-0 bg-[#0b0f19]/80 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center gap-4 z-10">
+              <RefreshCw size={24} className="text-[#ff6b6b] animate-spin" />
               <span className="mono text-[10px] text-neutral-400 font-bold uppercase tracking-wider animate-pulse">{stepText}</span>
             </div>
           )}
@@ -213,7 +213,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
               <div className="flex items-center gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-[#00ffaa]/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#ff6b6b]/20" />
               </div>
               <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">AI_LOG_V2.0</span>
             </div>
@@ -236,9 +236,9 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
               <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">{t('ai_generator.output_title')}</span>
               <button
                 onClick={copyToClipboard}
-                className="px-3.5 py-1.5 bg-white/5 border border-white/10 hover:bg-[#00ffaa]/10 hover:border-[#00ffaa]/20 hover:text-[#00ffaa] text-white rounded-lg mono text-[8px] font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b]/10 hover:border-[#ff6b6b]/20 hover:text-[#ff6b6b] text-white rounded-lg mono text-[8px] font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
               >
-                {copied ? <Check size={10} className="text-[#00ffaa]" /> : <Copy size={10} />}
+                {copied ? <Check size={10} className="text-[#ff6b6b]" /> : <Copy size={10} />}
                 {copied ? 'KOPYALANDI' : 'KOPYALA'}
               </button>
             </div>
@@ -254,7 +254,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
         </p>
         <Link
           to="/iletisim?service=urun-gorsel"
-          className="px-5 py-2.5 bg-[#00ffaa]/10 border border-[#00ffaa]/20 hover:bg-[#00ffaa] hover:text-black text-[#00ffaa] rounded-xl mono text-[9px] font-black tracking-widest uppercase transition-all whitespace-nowrap self-stretch md:self-auto text-center"
+          className="px-5 py-2.5 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 hover:bg-[#ff6b6b] hover:text-white text-[#ff6b6b] rounded-xl mono text-[9px] font-black tracking-widest uppercase transition-all whitespace-nowrap self-stretch md:self-auto text-center"
         >
           {t('nav.cta').toUpperCase()}
         </Link>

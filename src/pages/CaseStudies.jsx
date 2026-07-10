@@ -20,7 +20,7 @@ export default function CaseStudies() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-16">
-          <span className="mono text-[#00ffaa] text-[9px] font-black uppercase tracking-widest block mb-4">
+          <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-4">
             // CASE_STUDIES_ARCHIVE
           </span>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6">
@@ -36,17 +36,17 @@ export default function CaseStudies() {
           {Array.isArray(caseStudies) && caseStudies.map((item, idx) => (
             <div
               key={idx}
-              className="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hover:border-white/10 transition-all duration-300 relative overflow-hidden"
+              className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center hover:border-white/10 transition-all duration-300 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#00ffaa]/5 rounded-full blur-[60px] pointer-events-none" />
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#ff6b6b]/5 rounded-full blur-[60px] pointer-events-none" />
               
               {/* Metric Callout */}
               <div className="lg:col-span-4 flex flex-col justify-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#00ffaa]/10 flex items-center justify-center text-[#00ffaa] mb-2">
+                <div className="w-12 h-12 rounded-xl bg-[#ff6b6b]/10 flex items-center justify-center text-[#ff6b6b] mb-2">
                   {icons[idx] || <TrendingUp size={24} />}
                 </div>
                 <span className="mono text-[10px] font-black text-neutral-500 uppercase tracking-widest">// METRİC_BREAKTHROUGH</span>
-                <span className="text-3xl md:text-4xl font-black text-[#00ffaa] tracking-tight leading-none">
+                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight leading-none">
                   {item.metric}
                 </span>
               </div>
@@ -67,7 +67,7 @@ export default function CaseStudies() {
                   </span>
                   <Link
                     to="/iletisim"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-[#00ffaa] hover:text-black text-white text-xs font-bold rounded-xl transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b] hover:text-white text-white text-xs font-bold rounded-xl transition-all"
                   >
                     {i18n.language === 'tr' ? 'Benzer Proje Başlat' : i18n.language === 'ar' ? 'ابدأ مشروعاً مشابهاً' : 'Start Similar Project'}
                     <ArrowUpRight size={14} />
