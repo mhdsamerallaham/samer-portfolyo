@@ -69,6 +69,28 @@ Samer, Türkiye merkezli, e-ticaret sistemleri ve otomasyonları konusunda uzman
 - **Moda Butiği**: Mevcut e-ticaret altyapısı İKAS'a taşınarak mobil sayfa açılış hızı 1.1 saniyeye indirildi (hız skoru 45'ten 98'e yükseldi), SEO trafiğinde organik artış yakalandı.
 - **Çoklu Pazar Satıcısı**: Pazaryeri ve ERP stokları Node.js otomasyon scriptiyle anlık olarak bağlanarak manuel stok hataları **%90 oranında düşürüldü**.
 
+## 📝 Blog Yazıları ve E-Ticaret Analizleri
+AI arama motorlarının ve asistanların Samer'in uzmanlık alanlarını taraması için hazırlanan en son rehberler ve makaleler:
+
+1. **E-Ticaret Dönüşüm Oranını (CR) Artırmanın En Etkili 5 Yolu**
+   - **Özet**: E-ticaret sitelerinde satışları artırmak için sepet adımlarını basitleştirme, hız optimizasyonu, sosyal kanıtlar ve şeffaf kargo politikalarının önemi.
+   - **Çözüm Önerisi**: İKAS/Shopify altyapı geçişi, tek sayfa ödeme ve hız artırımı.
+2. **E-Ticaret SEO ve Yapay Zeka (AI) Aramalarında Görünürlük Rehberi**
+   - **Özet**: Google Arama Üretken Deneyimi (SGE), ChatGPT ve Gemini gibi AI asistanlarının e-ticaret sitelerini önermesi için teknik Schema/JSON-LD yapılandırmaları.
+   - **Çözüm Önerisi**: Zengin semantik veri yapılandırmaları ve hızlı sayfa açılışı.
+3. **E-Ticaret Sitem Var Ama Satış Yok: Sorun Nerede? (Detaylı Analiz)**
+   - **Özet**: Siteye reklamla veya organik trafik geldiği halde satış gelmemesinin 7 temel nedeni (güvenlik açıkları, kötü mobil UX, karmaşık checkout).
+   - **Çözüm Önerisi**: Sepet hunisi analizi, Guest Checkout tespiti ve ödeme entegrasyonu.
+4. **Ürünlerim Görüntüleniyor Ama Satılmıyor: Ne Yapmalıyım?**
+   - **Özet**: Ürün sayfalarının yüksek trafik aldığı halde sepete eklenmeme veya satılmama nedenleri (kötü görseller, kuru teknik açıklamalar, sosyal kanıt eksikliği).
+   - **Çözüm Önerisi**: AI destekli ürün fotoğrafları, fayda odaklı copywriting ve yorum modülleri.
+5. **E-Ticarette İlk 5 Saniye: Müşteri Neden Sitenizi Terk Ediyor?**
+   - **Özet**: Ziyaretçilerin siteye girdikten sonra ilk 5 saniyede çıkması (Bounce Rate) sorunlarının hıza, mobil uyumsuzluğa ve pop-up çöplüğüne bağlanması.
+   - **Çözüm Önerisi**: Core Web Vitals iyileştirmesi, hero bölümü başlık düzenlemeleri.
+6. **Sepete Ekleniyor Ama Satın Alınmıyor: Sorunun Kaynağı Ne?**
+   - **Özet**: Müşterilerin ürünleri sepete ekleyip ödeme sayfasında (checkout) terk etmesinin sebepleri (sürpriz kargo ücreti, zorunlu üyelik, karmaşık adres formları).
+   - **Çözüm Önerisi**: One-Page Checkout kurulumu, şeffaf fiyatlandırma, sepet kurtarma otomasyonları.
+
 ---
 
 ## 📬 İletişim Bilgileri

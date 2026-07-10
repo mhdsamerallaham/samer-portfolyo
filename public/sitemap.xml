@@ -1,47 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ===== CORE PAGES ===== -->
+
   <url>
     <loc>https://www.samer.life/</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.samer.life/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.samer.life/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.samer.life/" />
   </url>
+
   <url>
     <loc>https://www.samer.life/hizmetler</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+
+  <!-- ===== SERVICE PAGES ===== -->
+
   <url>
     <loc>https://www.samer.life/eticaret-site-kurulumu</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
+
   <url>
     <loc>https://www.samer.life/eticaret-optimizasyon</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
+
   <url>
     <loc>https://www.samer.life/urun-gorsel-ve-icerik</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://www.samer.life/stok-ve-depo-sistemi</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
   <url>
     <loc>https://www.samer.life/aylik-yonetim</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <!-- ===== CONTENT PAGES ===== -->
+
   <url>
     <loc>https://www.samer.life/basari-hikayeleri</loc>
-    <priority>0.8</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
-  <url>
-    <loc>https://www.samer.life/blog</loc>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://www.samer.life/hakkimda</loc>
-    <priority>0.6</priority>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
+
   <url>
     <loc>https://www.samer.life/iletisim</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ===== BLOG LISTING ===== -->
+
+  <url>
+    <loc>https://www.samer.life/blog</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ===== BLOG POSTS ===== -->
+
+  <url>
+    <loc>https://www.samer.life/blog/eticaret-sitem-var-ama-satis-yok-sorun-nerede</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.samer.life/blog/urunlerim-goruntuleniyor-ama-satilmiyor-ne-yapmaliyim</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.samer.life/blog/eticarette-ilk-5-saniye-musteri-neden-terk-ediyor</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.samer.life/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

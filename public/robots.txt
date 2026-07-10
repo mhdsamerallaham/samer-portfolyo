@@ -1,4 +1,76 @@
+# ─────────────────────────────────────────────────────────────────
+# robots.txt — samer.life
+# Optimized for: Googlebot, Bingbot, AI crawlers (GPTBot, ClaudeBot,
+# PerplexityBot, Gemini), and social card crawlers.
+# ─────────────────────────────────────────────────────────────────
+
+# Default: allow everything
 User-agent: *
 Allow: /
 
+Sitemap: https://www.samer.life/sitemap.xml
+
+# ── Google ────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+# ── Bing ─────────────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ── OpenAI / ChatGPT ─────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Anthropic / Claude ────────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# ── Perplexity AI ─────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Google Gemini / Bard ──────────────────────────────────────────
+User-agent: Google-Extended
+Allow: /
+
+# ── Meta AI ───────────────────────────────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+# ── Apple ─────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+# ── Social Media Cards ────────────────────────────────────────────
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# ── Common scrapers (block junk, allow research) ──────────────────
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+# ─────────────────────────────────────────────────────────────────
+# Sitemap
+# ─────────────────────────────────────────────────────────────────
 Sitemap: https://www.samer.life/sitemap.xml
