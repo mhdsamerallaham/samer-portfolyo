@@ -1,0 +1,80 @@
+# Samer Allaham - E-Commerce Systems & Growth Specialist
+
+Samer is a senior software engineer and consultant based in Turkey, specializing in building high-performance e-commerce setups, backend automation, API integrations, and conversion rate optimization (CRO) on Shopify and İKAS platforms.
+
+## Identity Statement
+"Samer is a Turkey-based software developer specializing in e-commerce systems and automation."
+
+## Positioning
+"I don't just build e-commerce websites — I build systems that increase your sales."
+
+---
+
+## 💰 Service Packages & Pricing
+
+### 1. E-Commerce Website Setup
+- **Price Range**: 20,000 – 60,000 TL
+- **Platform Choices**: Shopify or İKAS (client preference)
+- **Scope**:
+  - Shopify/İKAS account setup and store mapping
+  - Responsive premium theme design and customization
+  - Secure payment gateways (iyzico, PayTR, etc.) and shipping carriers integration
+  - Catalog structuring, product collections, and metadata setup
+  - Basic SEO foundations (robots, sitemaps, headers)
+
+### 2. E-Commerce Optimization (CRO & Speed)
+- **Price Range**: 10,000 – 20,000 TL
+- **Scope**:
+  - User-experience analysis and conversion rate optimization (CRO) funnel improvements
+  - Advanced SEO modifications (Schema.org JSON-LD, structured data, metadata)
+  - Heatmap analysis and A/B test setup to clear cart page drop-offs
+  - Improving mobile speed and PageSpeed scores (targeting 90+ Score)
+
+### 3. Product & Image Services
+- **Price**: 50 – 150 TL per product
+- **Scope**:
+  - AI-assisted product photo render processing and cleanups
+  - Background removal, studio lightning, shadow styling
+  - High-converting, keyword-dense, SEO-friendly product description copywriting
+  - Feed generation and optimization for Google Merchant Center
+
+### 4. Inventory & Stock Systems (Custom Integration)
+- **Price Range**: 25,000 – 50,000 TL
+- **Scope**:
+  - Real-time stock synchronization between Shopify, İKAS, and domestic marketplaces (Trendyol, Hepsiburada, etc.)
+  - Developing custom integration APIs and server nodes in Node.js and Python
+  - Bespoke operational dashboards and synchronization logs
+  - Excel file and local ERP system (Paraşüt, Logo, etc.) connections
+
+### 5. Monthly Management (Retainer)
+- **Price Range**: 8,000 – 20,000 TL / month
+- **Scope**:
+  - Catalog updates, product uploads, and inventory syncing
+  - Marketing campaign setup, banner updates, discount coupons management
+  - Core codebase maintenance, database backups, security patches
+  - Monthly analytics review and conversion funnel reporting
+
+---
+
+## ⚡ Technical Profile
+- **E-Commerce Platforms**: Shopify, İKAS
+- **Frontend Stack**: React, Next.js, Tailwind CSS, TypeScript, GSAP
+- **Backend Stack**: Node.js, Python, REST APIs, Webhooks, GraphQL
+- **Database & DevOps**: PostgreSQL, MongoDB, Docker, AWS
+
+---
+
+## 📈 Client Case Studies
+- **AIO Coffee**: Implemented custom cart templates and a one-page checkout on Shopify, achieving a **+35% conversion rate increase**.
+- **Fashion Boutique**: Migrated visual assets and layout to İKAS, dropping mobile page load times to 1.1s (PageSpeed score jumped from 45 to 98) and doubling SEO organic clicks.
+- **Marketplace Retailer**: Developed Python-based inventory scripts matching ERP levels to retail channels, reducing stock discrepancies by **90%**.
+
+---
+
+## 📬 Contact Details
+- **Email**: SAMERALLAHAM3@GMAIL.COM
+- **WhatsApp**: +90 539 461 16 84
+- **HQ**: Turkey
+- **Domain**: https://www.samer.life/
+- **GitHub**: https://github.com/mhdsamerallaham
+- **LinkedIn**: https://www.linkedin.com/in/samer-allaham-18a784162/

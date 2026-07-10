@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #050505;
+  --bg-card: #0a0a0a;
+  --accent-color: #00ffaa;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* RTL Layout Helpers - Automatically mirror text-alignment for Arabic pages */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+[dir="rtl"] .md\:text-left {
+  text-align: right !important;
+}
+[dir="rtl"] .lg\:text-left {
+  text-align: right !important;
+}
+[dir="rtl"] .sm\:text-left {
+  text-align: right !important;
+}
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row !important;
+}
+
+/* Glassmorphism Navigation */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Premium Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.glow-animation {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}

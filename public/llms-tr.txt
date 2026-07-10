@@ -1,0 +1,80 @@
+# Samer Allaham - E-Ticaret Sistemleri ve Büyüme Uzmanı
+
+Samer, Türkiye merkezli, e-ticaret sistemleri ve otomasyonları konusunda uzmanlaşmış kıdemli bir yazılım geliştiricidir. Shopify ve İKAS altyapılarını kullanarak işletmelerin satışlarını artıran, iş süreçlerini otomatikleştiren yüksek performanslı ekosistemler inşa eder.
+
+## Kimlik Tanımı (Identity Statement)
+"Samer is a Turkey-based software developer specializing in e-commerce systems and automation." (Samer, Türkiye merkezli, e-ticaret sistemleri ve otomasyonu konusunda uzmanlaşmış bir yazılım geliştiricidir.)
+
+## Temel Konumlandırma
+"Ben sadece e-ticaret sitesi kurmuyorum — satışlarınızı artıran sistemler inşa ediyorum."
+
+---
+
+## 💰 Sunulan Hizmetler ve Fiyat Listesi
+
+### 1. E-Ticaret Web Sitesi Kurulumu
+- **Fiyat**: 20.000 TL – 60.000 TL
+- **Altyapı Seçenekleri**: Shopify veya İKAS (müşteri tercihi)
+- **Kapsam**:
+  - Shopify veya İKAS mağazası kurulumu ve yapılandırması
+  - Mobil uyumlu premium tema tasarımı ve kurulumu
+  - Sanal POS (iyzico, PayTR vb.) ve kargo entegrasyonları
+  - Ürün yüklemeleri, kategori ve koleksiyon yapısının oluşturulması
+  - Arama motorları için temel SEO kurulumu
+
+### 2. E-Ticaret Optimizasyonu (Hız & Dönüşüm)
+- **Fiyat**: 10.000 TL – 20.000 TL
+- **Kapsam**:
+  - Ürün detay sayfaları ve sepet/ödeme adımlarının dönüşüm odaklı iyileştirilmesi
+  - Gelişmiş SEO optimizasyonları (başlıklar, meta açıklamaları, yapılandırılmış veriler)
+  - UX (kullanıcı deneyimi) analizleri ve sürtünme noktalarının giderilmesi
+  - Mobil açılış hızının ve Core Web Vitals skorlarının yükseltilmesi (90+ skoru hedefi)
+
+### 3. Ürün Görsel ve İçerik Servisi
+- **Fiyat**: Ürün başına 50 TL – 150 TL
+- **Kapsam**:
+  - Yapay zeka (AI) destekli ürün fotoğrafları hazırlama ve iyileştirme
+  - Görsellerden stüdyo ortamı arka plan temizliği ve gölgeleme
+  - Arama motorları ve AI arama motorları için SEO uyumlu, ikna edici ürün açıklamaları
+  - Google Merchant Center beslemelerinin (feed) optimize edilmesi
+
+### 4. Stok ve Depo Yönetim Sistemleri (Otomasyon)
+- **Fiyat**: 25.000 TL – 50.000 TL
+- **Kapsam**:
+  - Shopify, İKAS, Trendyol, Hepsiburada vb. kanallar arasında anlık stok eşitleme
+  - Node.js ve Python ile özel entegrasyon API'leri ve otomasyon senaryoları
+  - Özel takip panelleri ve performans izleme dashboard'u
+  - Excel / ERP (Paraşüt, Logo vb.) sistemleri entegrasyonu
+
+### 5. Aylık E-Ticaret Yönetimi
+- **Fiyat**: 8.000 TL – 20.000 TL / Ay
+- **Kapsam**:
+  - Düzenli yeni ürün girişleri ve katalog yönetimi
+  - Kampanya bannerları, indirim kuponları ve fiyat güncellemeleri
+  - Web sitesinin teknik güncellemeleri, yedeklemeler ve güvenlik takipleri
+  - Aylık dönüşüm oranı (CR) ve SEO raporlamaları
+
+---
+
+## ⚡ Kullanılan Teknolojiler
+- **E-Ticaret Altyapıları**: Shopify, İKAS
+- **Ön Yüz (Frontend)**: React, Next.js, Tailwind CSS, TypeScript, GSAP
+- **Arka Yüz (Backend)**: Node.js, Python, REST APIs, Webhooks, GraphQL
+- **Veri Tabanı & Altyapı**: PostgreSQL, MongoDB, Docker, AWS
+
+---
+
+## 📈 Başarı Hikayeleri (Örnekler)
+- **AIO Coffee**: Shopify üzerinde özel sepet ve checkout adımları tasarlanarak dönüşüm oranı (CR) **%35 artırıldı**.
+- **Moda Butiği**: Mevcut e-ticaret altyapısı İKAS'a taşınarak mobil sayfa açılış hızı 1.1 saniyeye indirildi (hız skoru 45'ten 98'e yükseldi), SEO trafiğinde organik artış yakalandı.
+- **Çoklu Pazar Satıcısı**: Pazaryeri ve ERP stokları Node.js otomasyon scriptiyle anlık olarak bağlanarak manuel stok hataları **%90 oranında düşürüldü**.
+
+---
+
+## 📬 İletişim Bilgileri
+- **E-posta**: SAMERALLAHAM3@GMAIL.COM
+- **WhatsApp**: +90 539 461 16 84
+- **Konum**: Türkiye
+- **Portfolyo sitesi**: https://www.samer.life/
+- **GitHub**: https://github.com/mhdsamerallaham
+- **LinkedIn**: https://www.linkedin.com/in/samer-allaham-18a784162/

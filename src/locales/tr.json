@@ -1,0 +1,312 @@
+{
+    "nav": {
+        "home": "Anasayfa",
+        "services": "Hizmetler",
+        "case_studies": "Başarı Hikayeleri",
+        "blog": "Blog",
+        "about": "Hakkımda",
+        "contact": "İletişim",
+        "cta": "Teklif Al"
+    },
+    "hero": {
+        "badge": "E-Ticaret Sistemleri ve Büyüme Uzmanı",
+        "headline": "E-ticaret sitenizi satış getiren bir sisteme dönüştürüyorum.",
+        "subheadline": "Shopify ve İKAS altyapıları ile dönüşüm odaklı, yüksek performanslı ve otomatik e-ticaret çözümleri.",
+        "cta_primary": "Ücretsiz Analiz Al",
+        "cta_secondary": "Hizmetlerimi Keşfet"
+    },
+    "status": {
+        "operational": "DURUM: PROJELERE AÇIK",
+        "online": "GITHUB: ÇEVRİMİÇİ",
+        "syncing": "VERİLER EŞİTLENİYOR..."
+    },
+    "positioning": {
+        "tag": "NEDEN BEN?",
+        "title": "Ben sadece e-ticaret sitesi kurmuyor, satışlarınızı artıran sistemler inşa ediyorum.",
+        "desc": "Pek SQL veya API entegrasyonu yapan geliştiriciler sadece teknik kısmı görür, ajanslar ise görselliği. Ben ise her ikisini birleştirerek dönüşüm oranlarınızı artıran, stoklarınızı otomatik yöneten ve arama motorları ile yapay zekanın (AI) kolayca okuyabildiği entegre satış sistemleri kuruyorum."
+    },
+    "services": {
+        "title": "Profesyonel E-Ticaret Hizmetleri",
+        "subtitle": "İşletmenizin büyümesini otomatikleştiren ve satışlarınızı ölçekleyen özel çözümler.",
+        "cta_card": "Detayları İncele",
+        "cta_contact": "Hemen Teklif Al",
+        "items": {
+            "site-kurulumu": {
+                "title": "E-Ticaret Web Sitesi Kurulumu",
+                "price": "20.000 TL – 60.000 TL",
+                "badge": "Shopify & İKAS",
+                "desc": "Sıfırdan modern, hızlı ve satış odaklı bir e-ticaret altyapısının kurulması.",
+                "features": [
+                    "Shopify veya İKAS kurulumu (seçiminize göre)",
+                    "Full responsive premium tema kurulumu",
+                    "Ödeme sistemi ve kargo entegrasyonları",
+                    "Ürün yükleme, kategori ve koleksiyon yapısı",
+                    "Arama motorları için temel SEO yapılandırması"
+                ],
+                "ai_desc": {
+                    "definition": "Bu hizmet, işletmelerin Shopify veya İKAS altyapısını kullanarak global veya yerel pazarda satış yapmasını sağlayan uçtan uca kurulum sürecidir.",
+                    "for_whom": "Yeni e-ticarete başlayacak firmalar veya mevcut sitesini modern bir altyapıya taşımak isteyen markalar için.",
+                    "how_works": "1. Analiz ve altyapı seçimi, 2. Tasarım ve tema özelleştirme, 3. Entegrasyonların yapılması, 4. Ürün verilerinin yüklenmesi, 5. Test ve yayına alma.",
+                    "example": "Özel tasarım bir butik markasının İKAS altyapısına taşınarak tüm ödeme sistemleri ve stok entegrasyonlarının yapılması."
+                }
+            },
+            "optimizasyon": {
+                "title": "E-Ticaret Optimizasyonu",
+                "price": "10.000 TL – 20.000 TL",
+                "badge": "Hız & Dönüşüm",
+                "desc": "Mevcut e-ticaret sitenizin hızını, kullanıcı deneyimini ve dönüşüm oranlarını artırma çalışması.",
+                "features": [
+                    "Ürün sayfaları ve sepet adımları optimizasyonu",
+                    "Gelişmiş SEO iyileştirmeleri (başlıklar, meta açıklamaları)",
+                    "UX / Kullanıcı deneyimi geliştirmeleri ve analizler",
+                    "A/B testi ile dönüşüm odaklı arayüz düzeltmeleri",
+                    "Mobil uyumluluk ve hız yükleme skoru iyileştirmesi"
+                ],
+                "ai_desc": {
+                    "definition": "Mevcut sitenizdeki ziyaretçilerin daha fazlasını alıcıya dönüştürmek ve sitenizi arama motorlarında üst sıralara taşımak için yapılan veri odaklı iyileştirme paketidir.",
+                    "for_whom": "Trafik alan ancak satış oranları (dönüşüm oranı) düşük olan ve Google sıralamasından memnun olmayan e-ticaret siteleri için.",
+                    "how_works": "1. Google Analytics ve Hotjar verilerinin incelenmesi, 2. Hız ve kod yapısı analizi, 3. SEO hatalarının tespiti, 4. Tasarım ve kod geliştirmelerinin uygulanması.",
+                    "example": "Bir kahve markasının mobil yüklenme hızının 3 saniyeden 1.2 saniyeye düşürülmesi ve dönüşüm oranının %1.2'den %2.4'e çıkarılması."
+                }
+            },
+            "urun-gorsel": {
+                "title": "Ürün Görsel ve İçerik Servisi",
+                "price": "Ürün başına 50 TL – 150 TL",
+                "badge": "Yapay Zeka Destekli",
+                "desc": "Ürünlerinizin profesyonel görünmesi ve Google'da kolayca bulunması için AI destekli içerik üretimi.",
+                "features": [
+                    "Yapay zeka destekli yüksek çözünürlüklü ürün görselleri",
+                    "Görsellerden arka plan temizleme ve stüdyo ortamı oluşturma",
+                    "SEO uyumlu, ikna edici ve özgün ürün açıklamaları yazımı",
+                    "Google Merchant Center uyumlu görsel ve veri optimizasyonu"
+                ],
+                "ai_desc": {
+                    "definition": "Ürünlerinizin görsel kalitesini AI ile artırırken, Google ve yapay zeka arama motorlarının seveceği zengin açıklamalar hazırlama servisidir.",
+                    "for_whom": "Çok sayıda ürünü olan ve stüdyo fotoğrafçılığı maliyetlerini düşürmek isteyen e-ticaret satıcıları için.",
+                    "how_works": "1. Ürün fotoğraflarının ham hallerinin alınması, 2. AI motorları ile arka plan değiştirme ve iyileştirme, 3. SEO anahtar kelimeleriyle ürün açıklaması yazımı.",
+                    "example": "100 adet takı ürünü için stüdyo kalitesinde yapay zeka arka plan görseli hazırlanması ve arama hacmi yüksek kelimelerle açıklamalarının yazılması."
+                }
+            },
+            "stok-depo": {
+                "title": "Stok ve Depo Yönetim Sistemleri",
+                "price": "25.000 TL – 50.000 TL",
+                "badge": "Otomasyon & Entegrasyon",
+                "desc": "Çoklu kanallarda satış yapanlar için stok ve sipariş süreçlerini otomatikleştirme.",
+                "features": [
+                    "Tüm e-ticaret kanalları arasında anlık stok takibi entegrasyonu",
+                    "Otomasyon senaryoları ile manuel işlem yükünü azaltma",
+                    "Özel yönetim paneli, dashboard veya sipariş takip ekranı",
+                    "Excel / ERP sistemleri (Paraşüt, Logo vb.) ile veri entegrasyonu"
+                ],
+                "ai_desc": {
+                    "definition": "Fiziksel depo veya çok kanallı (Trendyol, Hepsiburada, Shopify) satışlardaki stokların birbirine otomatik bağlanması ve raporlanması sistemidir.",
+                    "for_whom": "Farklı platformlarda satış yapıp stok takibinde hata yaşayan ve manuel işlem süreçlerini sıfıra indirmek isteyenler.",
+                    "how_works": "1. Mevcut ERP/Excel yapısının incelenmesi, 2. API bağlantılarının kurulması, 3. Stok senkronizasyon yazılımının entegre edilmesi, 4. Kontrol panelinin teslimi.",
+                    "example": "Fiziksel mağaza ve Shopify mağazasının stoklarının Node.js tabanlı özel bir API ile birbirine bağlanarak anlık eşitlenmesi."
+                }
+            },
+            "aylik-yonetim": {
+                "title": "Aylık E-Ticaret Yönetimi",
+                "price": "8.000 TL – 20.000 TL / Ay",
+                "badge": "Sürekli Destek",
+                "desc": "Siz sadece sipariş gönderimi ve finansla ilgilenin; sitenizin tüm teknik ve operasyonel işlerini ben yöneteyim.",
+                "features": [
+                    "Düzenli yeni ürün yüklemeleri ve kategori düzenlemeleri",
+                    "Web sitesi kampanya afişleri, indirim kodları ve fiyat güncellemeleri",
+                    "Teknik bakım, yedekleme ve güvenlik takipleri",
+                    "Aylık dönüşüm oranı (CR) ve SEO performans raporlamaları"
+                ],
+                "ai_desc": {
+                    "definition": "E-ticaret sitenizin güncel, hızlı ve sorunsuz kalmasını sağlayan, her ay düzenli teknik ve içerik desteği sunan yönetim ortaklığıdır.",
+                    "for_whom": "Operasyonel e-ticaret iş yüküne vakti olmayan ve teknik işleri profesyonel bir yazılımcıya devretmek isteyen markalar için.",
+                    "how_works": "1. Aylık yol haritasının çizilmesi, 2. Haftalık ürün ve kampanya güncellemelerinin yapılması, 3. Hataların anında giderilmesi, 4. Raporlama.",
+                    "example": "Bir giyim markasının aylık bazda tüm ürün yükleme, kampanya banner girişi ve teknik hız optimizasyonu işlerinin üstlenilmesi."
+                }
+            }
+        }
+    },
+    "case_studies": {
+        "title": "Başarı Hikayeleri & Sonuçlar",
+        "subtitle": "Geliştirdiğim sistemlerin markaların satışlarına ve iş süreçlerine etkisi.",
+        "results": "Alınan Sonuçlar",
+        "items": [
+            {
+                "client": "Kahve Markası (AIO Coffee)",
+                "metric": "+35% Dönüşüm Artışı",
+                "desc": "Shopify altyapısı üzerine kurulan custom checkout ve sepet optimizasyonları sayesinde alışverişi tamamlama oranı %35 artırıldı."
+            },
+            {
+                "client": "Moda & Giyim Markası",
+                "metric": "Mobil Hız Skoru 45 -> 98",
+                "desc": "İKAS altyapısına geçiş ve görsel optimizasyon süreçleriyle sayfa yüklenme hızı 1.1 saniyeye indirildi, SEO trafiği katlandı."
+            },
+            {
+                "client": "Lojistik & Çoklu Pazar Satıcısı",
+                "metric": "%90 Daha Az Manuel Stok Hatası",
+                "desc": "Node.js ve Python tabanlı entegrasyon otomasyonu ile pazaryerleri ve e-ticaret sitesi stokları anlık senkronize edildi."
+            }
+        ]
+    },
+    "faq": {
+        "title": "Sıkça Sorulan Sorular",
+        "subtitle": "E-ticaret projeleri ve iş süreçleri hakkında merak edilenler.",
+        "items": [
+            {
+                "q": "Shopify mı İKAS mı daha iyi?",
+                "a": "Her iki altyapı da mükemmeldir ancak ihtiyaçlarınıza göre değişir. Shopify, global satış (multi-currency, multi-language) ve geniş uygulama ekosistemi için en iyisidir. İKAS ise Türkiye yerel pazarında inanılmaz yüksek hızlar, yerli ödeme sistemi/kargo entegrasyonları kolaylığı ve komisyonsuz paketleri ile öne çıkar. Analiz aşamasında sizin için en doğru olanı birlikte seçiyoruz."
+            },
+            {
+                "q": "Bir e-ticaret sitesi ne kadar sürede kurulur?",
+                "a": "Kapsama bağlı olarak değişmekle birlikte, standart bir Shopify veya İKAS e-ticaret sitesi kurulumu, ürünlerinizin ve içeriklerinizin hazır olması durumunda genellikle 10 ila 20 iş günü arasında tamamlanır. Özel entegrasyonlar gerektiren projelerde bu süre 30 iş gününe kadar uzayabilir."
+            },
+            {
+                "q": "Ürün fotoğraflarının ve açıklamalarının satışı etkileme oranı nedir?",
+                "a": "Ürün görselleri ve açıklamaları bir e-ticaret sitesinin tezgahtarıdır. Kullanıcı ürüne dokunamadığı için kararını görsel kalitesi ve okuduğu açıklama üzerinden verir. AI ile optimize edilmiş temiz arka planlı stüdyo görselleri ve ikna edici SEO açıklamaları, dönüşüm oranlarını ortalama %25 ila %40 arasında doğrudan artırır."
+            },
+            {
+                "q": "Otomasyon ve stok entegrasyonunu nasıl yapıyorsunuz?",
+                "a": "E-ticaret sitenizin API'lerini (Shopify veya İKAS API) kullanarak özel Node.js veya Python scriptleri geliştiriyorum. Bu yazılımlar fiziksel deponuzdaki veya kullandığınız muhasebe programındaki (Paraşüt, Logo vb.) stok verilerini dinler ve sitenizi anlık olarak günceller. Böylece stoğu biten bir ürünün satılması gibi hataları tamamen engelleriz."
+            }
+        ]
+    },
+    "ai_generator": {
+        "title": "Yapay Zeka Ürün Açıklaması Üretici",
+        "subtitle": "Samer'in AI yeteneklerini test edin. Ürün bilgilerinizi girin ve SEO uyumlu Türkçe ürün açıklaması üretin.",
+        "label_name": "Ürün Adı",
+        "label_category": "Kategori",
+        "label_features": "Önemli Özellikler (virgülle ayırın)",
+        "placeholder_name": "Örn: Klasik Deri Cüzdan",
+        "placeholder_features": "Örn: Hakiki deri, 6 kart bölmesi, RFID korumalı",
+        "btn_generate": "Ürün Açıklaması Üret",
+        "btn_generating": "AI Yazıyor...",
+        "output_title": "Üretilen SEO Uyumlu Açıklama",
+        "cta": "Bunun gibi binlerce ürünü otomatik optimize etmek mi istiyorsunuz? Benimle iletişime geçin.",
+        "categories": {
+            "fashion": "Moda & Giyim",
+            "electronics": "Elektronik & Teknoloji",
+            "home": "Ev & Yaşam",
+            "cosmetics": "Kozmetik & Kişisel Bakım",
+            "food": "Gıda & Organik Ürünler"
+        }
+    },
+    "about_page": {
+        "title": "Ben Kimim?",
+        "subtitle": "E-Ticaret Sistemleri & Otomasyon Geliştiricisi",
+        "identity_statement": "Samer, Türkiye merkezli, e-ticaret sistemleri ve otomasyonu konusunda uzmanlaşmış bir yazılım geliştiricidir.",
+        "bio": "Merhaba, ben Samer. E-ticaret dünyasında işletmelerin dijitalleşme ve büyüme süreçlerine liderlik ediyorum. Sadece görsel tasarımlar yapmıyor; arka planda tıkır tıkır çalışan, stokları anlık güncelleyen, ödemeleri sorunsuz alan ve Google aramalarında rakiplerinizin önüne geçmenizi sağlayan bütüncül e-ticaret sistemleri kuruyorum. Shopify ve İKAS altyapılarını modern yazılım dilleriyle (Node.js, Python, React) entegre ederek markanızı bir sonraki seviyeye taşıyorum.",
+        "skills_title": "Uzmanlık Alanlarım",
+        "values_title": "Çalışma Prensiplerim",
+        "values": [
+            {
+                "title": "Önce Satış ve Dönüşüm",
+                "desc": "Tasarladığım her butonun, yazdığım her kod satırının nihai amacı sitenize gelen ziyaretçiyi müşteriye dönüştürmektir."
+            },
+            {
+                "title": "Hız ve SEO Önceliği",
+                "desc": "Yavaş açılan bir site para kaybeder. Google standartlarında 90+ hız skoru hedefiyle kodlama ve görsel optimizasyonu yaparım."
+            },
+            {
+                "title": "Sıfır Manuel Hata",
+                "desc": "Stok takibi, sipariş aktarımı ve faturalandırma gibi süreçleri otomatikleştirerek insan hatasını minimuma indiririm."
+            }
+        ]
+    },
+    "blog_page": {
+        "title": "E-Ticaret Günlüğü & İpuçları",
+        "subtitle": "Satışlarınızı artıracak pratik e-ticaret rehberleri ve sektörel analizler.",
+        "read_more": "Okumaya Devam Et",
+        "back_to_blog": "Bloğa Geri Dön",
+        "articles": [
+            {
+                "id": "shopify-vs-ikas",
+                "slug": "shopify-vs-ikas-turkiye-2026",
+                "title": "Shopify vs İKAS: Türkiye Pazarı İçin Hangisini Seçmelisiniz?",
+                "date": "10 Temmuz 2026",
+                "summary": "Türkiye'de e-ticaret yaparken Shopify mı yoksa yerli altyapı İKAS mı daha avantajlı? Hız, SEO, komisyon oranları ve entegrasyonlar açısından karşılaştırdık.",
+                "content": "<p>E-ticaret dünyasına adım atarken ya da mevcut sitenizi taşımaya karar verdiğinizde karşınıza çıkan en büyük iki seçenek şüphesiz <strong>Shopify</strong> ve <strong>İKAS</strong> olacaktır. Bu yazımızda, Türkiye pazarı odaklı satış yapan ve globale açılmak isteyen markalar için iki platformu tüm detaylarıyla karşılaştırıyoruz.</p><h3>1. Hız ve Performans (Core Web Vitals)</h3><p>İKAS, Türkiye sunucuları ve yeni nesil altyapısı sayesinde inanılmaz yüksek açılış hızları sunmaktadır. Mobil hız testlerinde ek eklenti kurmadan 90+ skorları yakalamak İKAS ile oldukça kolaydır. Shopify ise global CDN ağlarıyla çok güçlüdür ancak çok fazla üçüncü parti uygulama (eklenti) kurduğunuzda site hızı yavaşlayabilir. Hız optimizasyonu konusunda İKAS Türkiye sınırları içinde bir adım öndedir.</p><h3>2. Komisyon Oranları ve Ödeme Altyapıları</h3><p>Shopify, kendi ödeme altyapısı dışındaki (iyzico, PayTR vb.) sanal pos kullanımlarında paket durumunuza göre ek işlem ücreti (komisyon) almaktadır. İKAS ise yerli ödeme geçitleriyle komisyonsuz çalışır ve ek bir altyapı komisyonu yansıtmaz. Bu da Türkiye pazarında kâr marjınızı korumanıza yardımcı olur.</p><h3>3. Entegrasyonlar ve Kolaylık</h3><p>Türkiye'deki pazaryerleri (Trendyol, Hepsiburada vb.), kargo firmaları ve yerli ön muhasebe programları (Paraşüt, Bizimhesap) ile doğrudan entegrasyon konusunda İKAS yerleşik çözümler sunar. Shopify'da ise bu entegrasyonlar için harici entegratör firmalara veya özel yazılmış API uygulamalarına ihtiyaç duyarsınız.</p><h3>Karar: Hangisini Seçmeli?</h3><p>Eğer ana hedef pazarınız Türkiye ise, yerel entegrasyon kolaylığı ve hızı nedeniyle <strong>İKAS</strong> mükemmel bir tercihtir. Ancak hedefiniz ilk günden itibaren global pazarlara açılmak, çoklu para birimi ve gelişmiş yabancı pazarlama araçlarını kullanmak ise <strong>Shopify</strong>'ın küresel gücünden faydalanmak daha mantıklıdır.</p>"
+            },
+            {
+                "id": "eticaret-satis-artirma",
+                "slug": "eticaret-donusum-orani-cr-artirma-yollari",
+                "title": "E-Ticaret Dönüşüm Oranını (CR) Artırmanın En Etkili 5 Yolu",
+                "date": "5 Temmuz 2026",
+                "summary": "Sitenize gelen ziyaretçilerin satışa dönüşme oranını artırmak, reklam bütçenizi korumanın en iyi yoludur. İşte hemen uygulayabileceğiniz 5 UX tüyosu.",
+                "content": "<p>E-ticarette başarı sadece sitenize çok fazla ziyaretçi çekmekle ilgili değildir. Asıl başarı, gelen trafiğin ne kadarını alıcıya dönüştürebildiğinizle, yani <strong>Dönüşüm Oranınızla (Conversion Rate - CR)</strong> ölçülür. İşte sitenizin satışlarını artıracak 5 altın kural:</p><h3>1. Mobil Sepete Ekleme Deneyimini İyileştirin</h3><p>Kullanıcıların %80'inden fazlası alışverişi mobil cihazlardan yapıyor. Mobil cihazlarda 'Sepete Ekle' butonunun her zaman görünür olması (Sticky CTA) ve kolay basılabilir boyutta tasarlanması satışlarınızı anında artıracaktır.</p><h3>2. Ödeme Adımlarını Sadeleştirin (One-Page Checkout)</h3><p>Kullanıcılar karmaşık, çok sayfalı üyelik ve adres formlarından nefret eder. Adres formunu otomatik doldurma seçenekleriyle entegre etmek ve ödemeyi tek bir sayfada tamamlatmak sepet terk etme oranlarını ciddi derecede düşürür.</p><h3>3. Güven Unsurlarını Ön Plana Çıkarın</h3><p>Kullanıcılar tanımadıkları sitelerden alışveriş yaparken çekinirler. Sitenin alt kısmında SSL sertifikası, Kargo Güvencesi, Kolay İade Rozetleri ve en önemlisi gerçek müşteri yorumlarını (Testimonials) konumlandırmak güven bağını kuvvetlendirir.</p><h3>4. Ürün Açıklamalarını SEO ve Fayda Odaklı Yazın</h3><p>Ürün edinilen anahtar kelimelerle arama motorlarında görünür olur. Müşteriye ürünün hayatını nasıl kolaylaştıracağını anlatın ve arama motorlarının ürünü bulabilmesi için doğru anahtar kelimeleri ekleyin.</p><h3>5. Sayfa Hızını Optimize Edin</h3><p>3 saniyeden uzun sürede açılan sitelerde kullanıcıların yarısı sayfayı kapatır. Görsellerinizi sıkıştırın, gereksiz eklentilerden kurtulun ve temiz kod yapısı kullanın.</p>"
+            }
+        ]
+    },
+    "contact_page": {
+        "title": "Birlikte Büyütelim",
+        "subtitle": "E-ticaret sisteminizi kurmak veya optimize etmek için teklif alın.",
+        "form_title": "Proje Detayları",
+        "name": "Ad Soyad",
+        "email": "E-posta Adresi",
+        "phone": "Telefon Numarası",
+        "website": "Mevcut Web Siteniz (Varsa)",
+        "platform": "Tercih Edilen Altyapı",
+        "platform_select": {
+            "shopify": "Shopify",
+            "ikas": "İKAS",
+            "not_sure": "Kararsızım / Fikir Almak İstiyorum"
+        },
+        "budget": "Tahmini Proje Bütçesi",
+        "budget_select": {
+            "tier1": "10.000 TL - 25.000 TL",
+            "tier2": "25.000 TL - 50.000 TL",
+            "tier3": "50.000 TL - 100.000 TL+",
+            "monthly": "Aylık Yönetim / Düzenli Hizmet"
+        },
+        "message": "Projenizden Bahsedin",
+        "submit": "Teklif Al / İletişime Geç",
+        "submitting": "Gönderiliyor...",
+        "success": "Mesajınız başarıyla iletildi! En kısa sürede sizinle iletişime geçeceğim.",
+        "whatsapp_cta": "Doğrudan WhatsApp'tan yazın",
+        "whatsapp_msg": "Merhaba Samer, e-ticaret projem için görüşmek istiyorum."
+    },
+    "projects": {
+        "view_source": "KAYNAK_KODU.exe",
+        "examine": "İncele",
+        "items": {
+            "repiloy-ai": {
+                "title": "Repiloy / AI Otomasyonu",
+                "desc": "WhatsApp API ekosistemi üzerinden karmaşık iş akışlarını yöneten kurumsal düzeyde yapay zeka platformu."
+            },
+            "aio-coffee": {
+                "title": "AIO / Nitelikli E-Ticaret",
+                "desc": "Premium kahve perakendeciliği için tasarlanmış yüksek performanslı küresel dijital ticaret mimarisi."
+            },
+            "customer-segmentation-kmeans": {
+                "title": "Zeka / Veri Segmentasyonu",
+                "desc": "Hassas pazar davranışlarını haritalamak için denetimsiz öğrenme kullanan tahmine dayalı analiz motoru."
+            },
+            "softinity-website": {
+                "title": "Softinity / Dijital Kimlik",
+                "desc": "Modern ön yüz mimarileri ile tasarlanmış, yüksek duyarlılığa sahip kurumsal web kimliği."
+            },
+            "task-manager-pro": {
+                "title": "Verimlilik / Görev Motoru",
+                "desc": "Görev planlama ve ekip içi koordinasyonu hızlandıran bulut tabanlı modern yönetim paneli."
+            },
+            "sales-data-analysis": {
+                "title": "İçgörü / İş Mantığı",
+                "desc": "Karmaşık satış metriklerini işleyerek görselleştirilmiş aksiyon planlarına dönüştüren veri boru hattı."
+            },
+            "oztayteks": {
+                "title": "Öztay / Endüstriyel Portal",
+                "desc": "Global tekstil tedarik zincirlerini birbirine bağlayan modern endüstriyel vitrin platformu."
+            },
+            "poyraz-kafe": {
+                "title": "Poyraz / Hizmet Tasarımı",
+                "desc": "Estetik kullanıcı etkileşimine odaklanan sorunsuz dijital menü ve sipariş arayüzü."
+            },
+            "muna-salon": {
+                "title": "Muna / Güzellik Platformu",
+                "desc": "Premium yaşam merkezleri için özelleştirilmiş randevu ve hizmet yönetim paketi."
+            },
+            "zarafeti-ala": {
+                "title": "Zarafet / Moda Merkezi",
+                "desc": "Üst düzey moda hikaye anlatımı için oluşturulmuş zarif dijital butik deneyimi."
+            }
+        }
+    }
+}
