@@ -36,6 +36,7 @@ export default function ServicesOverview() {
               key={key}
               serviceKey={key}
               serviceData={t(`services.items.${key}`, { returnObjects: true })}
+              recommended={key === 'site-kurulumu'}
             />
           ))}
         </div>
