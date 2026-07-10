@@ -26,6 +26,7 @@
         "desc": "Most agencies or freelancers build websites that only look good. I specialize in engineering integrated sales systems that increase your conversion rates, automate your inventory, and are highly readable by both search engines and AI agents."
     },
     "services": {
+        "recommended": "RECOMMENDED",
         "title": "Professional E-Commerce Services",
         "subtitle": "Tailored solutions designed to automate your business growth and scale your sales.",
         "cta_card": "Examine Details",

@@ -22,30 +22,26 @@ export default function Home() {
       />
 
       {/* 1. HERO SECTION */}
-      <section className="relative px-6 md:px-12 pt-32 pb-24 max-w-[1200px] mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center text-start">
+      <section className="relative px-6 md:px-12 pt-36 pb-28 max-w-[1200px] mx-auto overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center text-start">
           
           {/* Hero Left Column (Copy and CTAs) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 z-10 w-full">
+          <div className="lg:col-span-7 flex flex-col gap-8 z-10 w-full">
             
-            {/* Localized Hello greeting */}
+            {/* Elegant coral greeting line */}
             <div className="flex items-center gap-3">
-              <span className="text-[#ff6b6b] text-base font-extrabold tracking-wider uppercase">
+              <span className="text-accent text-sm font-extrabold tracking-wider uppercase">
                 {i18n.language === 'tr' ? 'Merhaba.' : i18n.language === 'ar' ? 'مرحباً.' : 'Hello.'}
               </span>
-              <div className="w-12 h-[2px] bg-[#ff6b6b]" />
+              <div className="w-12 h-[1px] bg-accent" />
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-300 -mt-2">
-              {i18n.language === 'tr' ? "Ben Samer" : i18n.language === 'ar' ? "أنا سامر" : "I'm Samer"}
-            </h2>
-
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.15] text-white">
+            {/* Dominant H1 Headline */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] text-white">
               {i18n.language === 'tr' ? 'E-Ticaret Sistemleri & Büyüme Uzmanı' : i18n.language === 'ar' ? 'أخصائي أنظمة التجارة والنمو' : 'E-Commerce Systems & Growth Specialist'}
             </h1>
 
-            {/* Subheadline description */}
+            {/* Short Subheadline */}
             <p className="text-neutral-400 text-sm md:text-base leading-relaxed max-w-xl font-medium">
               {t('hero.subheadline')}
             </p>
@@ -54,27 +50,42 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 mt-2">
               <Link
                 to="/iletisim"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-black rounded-xl transition-colors duration-300 text-xs tracking-wider uppercase"
+                className="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent-hover text-white font-black rounded-xl transition-colors duration-300 text-xs tracking-wider uppercase shadow-lg shadow-accent/10"
               >
                 {t('contact_page.submit')}
               </Link>
               <Link
                 to="/hakkimda"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-black rounded-xl transition-all duration-300 text-xs tracking-wider uppercase"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/10 hover:border-white/20 text-white font-black rounded-xl transition-all duration-300 text-xs tracking-wider uppercase"
               >
                 {t('nav.about')}
               </Link>
             </div>
+
+            {/* Trust Badges under CTA */}
+            <div className="border-t border-white/5 pt-6 mt-4">
+              <span className="mono text-[9px] font-black text-neutral-500 uppercase tracking-widest block mb-3">PLATFORM PARTNERS & TECH</span>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-neutral-400 font-extrabold text-[10px] tracking-wider uppercase mono">
+                <span>Shopify Partner</span>
+                <span className="text-accent">•</span>
+                <span>İKAS Specialist</span>
+                <span className="text-accent">•</span>
+                <span>React</span>
+                <span className="text-accent">•</span>
+                <span>Next.js</span>
+              </div>
+            </div>
+
           </div>
 
           {/* Hero Right Column (Avatar and Glowing frame) */}
           <div className="lg:col-span-5 flex justify-center items-center z-10 relative w-full">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center">
               {/* Soft glow behind avatar */}
-              <div className="absolute inset-0 bg-[#ff6b6b]/10 rounded-full blur-[80px] -z-10" />
-              {/* Concentric clean circles matching image */}
-              <div className="absolute inset-0 rounded-full border-2 border-[#ff6b6b]/20" />
-              <div className="absolute inset-4 rounded-full border border-white/5" />
+              <div className="absolute inset-0 bg-accent/10 rounded-full blur-[80px] -z-10" />
+              {/* Clean concentric outline */}
+              <div className="absolute inset-0 rounded-full border border-white/5" />
+              <div className="absolute inset-4 rounded-full border border-accent/20" />
 
               {/* Avatar picture */}
               <div className="w-56 h-56 sm:w-60 sm:h-60 lg:w-60 lg:h-60 xl:w-68 xl:h-68 rounded-full overflow-hidden border-4 border-[#131b2e] bg-[#131b2e] shadow-2xl relative">
@@ -90,137 +101,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. HORIZONTAL TECH STACK ROW */}
-      <section className="w-full border-y border-white/5 bg-[#111622]/30 py-6">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex justify-center lg:justify-between items-center flex-wrap gap-6">
-          <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-neutral-400 font-extrabold text-[10px] md:text-xs tracking-widest uppercase mono">
-            <span>Shopify</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>İKAS</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>Node.js</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>Python</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>React</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>Next.js</span>
-            <span className="text-[#ff6b6b]">•</span>
-            <span>API Integration</span>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. ABOUT ME / PILLARS SECTION */}
-      <section className="px-6 md:px-12 py-28 max-w-[1200px] mx-auto">
+      {/* 2. ABOUT ME SECTION (Clean 2-Column Grid) */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 max-w-[1200px] mx-auto border-t border-white/5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          {/* Bio column: Renders first on mobile (order-1), second on desktop (lg:order-2) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-start order-1 lg:order-2">
+          {/* Bio text column */}
+          <div className="lg:col-span-7 flex flex-col gap-6 text-start">
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
               {i18n.language === 'tr' ? 'Hakkımda' : i18n.language === 'ar' ? 'من أنا' : 'About me'}
             </h2>
             <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-semibold">
               {t('about_page.bio')}
             </p>
-
-            {/* Statistics grid */}
-            <div className="grid grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4">
-              <div className="flex flex-col text-start">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">50+</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Proje' : 'Projects'}
-                </span>
-              </div>
-              <div className="flex flex-col text-start">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">98%</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Memnuniyet' : 'Satisfaction'}
-                </span>
-              </div>
-              <div className="flex flex-col text-start">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">5+</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Yıl Deneyim' : 'Years Exp'}
-                </span>
-              </div>
-            </div>
           </div>
 
-          {/* Pillars column: Renders second on mobile (order-2), first on desktop (lg:order-1) */}
-          <div className="lg:col-span-5 flex flex-col gap-10 text-start relative ps-8 order-2 lg:order-1 mt-8 lg:mt-0">
-            {/* Clean timeline vertical line */}
-            <div className="absolute start-0 top-2 bottom-2 w-[1px] bg-white/10" />
-
-            {/* Pillar 1 */}
-            <div className="relative group">
-              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
-              <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                {t('services.items.site-kurulumu.title')}
-              </h4>
+          {/* Statistics grid column */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-8 w-full mt-4 lg:mt-0">
+            <div className="bg-bg-card border border-white/5 rounded-2xl p-6 text-start hover:border-white/10 transition-colors">
+              <span className="text-3xl md:text-4xl font-black text-accent tracking-tight block">50+</span>
+              <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1 block">
+                {i18n.language === 'tr' ? 'Proje' : 'Projects'}
+              </span>
             </div>
-
-            {/* Pillar 2 */}
-            <div className="relative group">
-              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
-              <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                {t('services.items.stok-depo.title')}
-              </h4>
+            <div className="bg-bg-card border border-white/5 rounded-2xl p-6 text-start hover:border-white/10 transition-colors">
+              <span className="text-3xl md:text-4xl font-black text-accent tracking-tight block">98%</span>
+              <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1 block">
+                {i18n.language === 'tr' ? 'Memnuniyet' : 'Satisfaction'}
+              </span>
             </div>
-
-            {/* Pillar 3 */}
-            <div className="relative group">
-              <div className="absolute start-[-35px] top-1.5 w-2 h-2 rounded-full bg-[#ff6b6b] shadow-[0_0_10px_#ff6b6b]" />
-              <h4 className="text-base font-bold text-white uppercase tracking-wide">
-                {t('services.items.optimizasyon.title')}
-              </h4>
+            <div className="bg-bg-card border border-white/5 rounded-2xl p-6 text-start hover:border-white/10 transition-colors">
+              <span className="text-3xl md:text-4xl font-black text-accent tracking-tight block">5+</span>
+              <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1 block">
+                {i18n.language === 'tr' ? 'Yıl Deneyim' : 'Years Exp'}
+              </span>
             </div>
-
           </div>
 
         </div>
       </section>
 
-      {/* 4. SERVICES PACKAGES */}
-      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto border-t border-white/5">
-        <div className="text-center mb-16 flex flex-col items-center gap-3">
+      {/* 3. SERVICES SECTION */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 max-w-[1200px] mx-auto border-t border-white/5">
+        <div className="text-center mb-20 flex flex-col items-center gap-3">
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('services.title')}</h2>
           <p className="text-neutral-400 text-sm md:text-base max-w-xl font-semibold leading-relaxed">{t('services.subtitle')}</p>
         </div>
 
+        {/* Dynamic Service Grid mapping with Recommended logic */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesKeys.map((key) => (
             <ServiceCard
               key={key}
               serviceKey={key}
               serviceData={t(`services.items.${key}`, { returnObjects: true })}
+              recommended={key === 'site-kurulumu'}
             />
           ))}
         </div>
       </section>
 
-      {/* 5. INTERACTIVE AI DEMO */}
-      <section className="px-6 md:px-12 py-24 bg-[#0e1423]/30 border-y border-white/5">
+      {/* 4. INTERACTIVE AI DEMO */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 bg-[#0e1423]/20 border-y border-white/5">
         <div className="max-w-[1200px] mx-auto text-center">
-          <div className="mb-12 flex flex-col items-center gap-3">
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{i18n.language === 'tr' ? 'Yapay Zeka Servisleri' : 'AI Services Showcase'}</h2>
+          <div className="mb-16 flex flex-col items-center gap-3">
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+              {i18n.language === 'tr' ? 'Yapay Zeka Servisleri' : 'AI Services Showcase'}
+            </h2>
           </div>
           <AIDemo />
         </div>
       </section>
 
-      {/* 6. SUCCESS METRICS CASE STUDIES */}
-      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto text-start">
-        <div className="flex flex-col gap-3 mb-16">
+      {/* 5. SUCCESS METRICS CASE STUDIES */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 max-w-[1200px] mx-auto text-start">
+        <div className="flex flex-col gap-3 mb-20">
           <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('case_studies.title')}</h2>
         </div>
 
         {/* Results Metrics grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {Array.isArray(caseStudies) && caseStudies.map((item, idx) => (
-            <div key={idx} className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-white/10 transition-all duration-300">
+            <div key={idx} className="bg-bg-card border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-white/10 hover:scale-[1.02] transition-all duration-300">
               <div className="flex flex-col gap-4">
-                <span className="mono text-[9px] font-black text-[#ff6b6b] bg-[#ff6b6b]/5 border border-[#ff6b6b]/10 px-3 py-1 rounded-full w-fit">
+                <span className="mono text-2xl font-black text-accent tracking-tight block">
                   {item.metric}
                 </span>
                 <h4 className="text-lg font-black text-white">{item.client}</h4>
@@ -235,10 +198,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. FAQ ACCORDIONS */}
-      <section className="px-6 md:px-12 py-24 bg-[#0e1423]/30 border-y border-white/5">
+      {/* 6. FAQ ACCORDIONS */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 bg-[#0e1423]/20 border-y border-white/5">
         <div className="max-w-[1200px] mx-auto">
-          <div className="text-center mb-16 flex flex-col items-center gap-3">
+          <div className="text-center mb-20 flex flex-col items-center gap-3">
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">{t('faq.title')}</h2>
             <p className="text-neutral-400 text-sm md:text-base font-semibold">{t('faq.subtitle')}</p>
           </div>
@@ -246,8 +209,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. CONTACT FORM */}
-      <section className="px-6 md:px-12 py-24 max-w-[1200px] mx-auto">
+      {/* 7. CONTACT FORM */}
+      <section className="px-6 md:px-12 py-28 lg:py-36 max-w-[1200px] mx-auto">
         <ContactForm />
       </section>
     </div>

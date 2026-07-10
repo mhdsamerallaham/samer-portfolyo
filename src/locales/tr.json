@@ -26,6 +26,7 @@
         "desc": "Pek SQL veya API entegrasyonu yapan geliştiriciler sadece teknik kısmı görür, ajanslar ise görselliği. Ben ise her ikisini birleştirerek dönüşüm oranlarınızı artıran, stoklarınızı otomatik yöneten ve arama motorları ile yapay zekanın (AI) kolayca okuyabildiği entegre satış sistemleri kuruyorum."
     },
     "services": {
+        "recommended": "ÖNERİLEN",
         "title": "Profesyonel E-Ticaret Hizmetleri",
         "subtitle": "İşletmenizin büyümesini otomatikleştiren ve satışlarınızı ölçekleyen özel çözümler.",
         "cta_card": "Detayları İncele",

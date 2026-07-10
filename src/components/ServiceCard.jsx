@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, ArrowUpRight } from 'lucide-react';
+import { Check, ArrowUpRight, ShieldCheck, Zap, Globe, BarChart, Settings } from 'lucide-react';
 
-export default function ServiceCard({ serviceKey, serviceData }) {
+export default function ServiceCard({ serviceKey, serviceData, recommended = false }) {
   const { t } = useTranslation();
 
   const slugMap = {
@@ -13,25 +13,42 @@ export default function ServiceCard({ serviceKey, serviceData }) {
     'aylik-yonetim': '/aylik-yonetim'
   };
 
+  const iconMap = {
+    'site-kurulumu': <Globe className="text-accent" size={24} />,
+    'optimizasyon': <Zap className="text-accent" size={24} />,
+    'urun-gorsel': <ShieldCheck className="text-accent" size={24} />,
+    'stok-depo': <Settings className="text-accent" size={24} />,
+    'aylik-yonetim': <BarChart className="text-accent" size={24} />
+  };
+
   const path = slugMap[serviceKey] || '/hizmetler';
 
   if (!serviceData || typeof serviceData === 'string' || !Array.isArray(serviceData.features)) {
     return null;
   }
 
+  const icon = iconMap[serviceKey] || <Zap className="text-accent" size={24} />;
+
   return (
-    <div className="group relative bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-[#ff6b6b]/20 hover:shadow-[0_0_50px_rgba(255,107,107,0.02)] transition-all duration-500 overflow-hidden text-left min-h-[460px]">
+    <div className={`group relative bg-bg-card border ${recommended ? 'border-accent/40' : 'border-white/5'} rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:border-accent/30 hover:scale-[1.03] hover:shadow-[0_0_80px_rgba(255,107,107,0.06)] transition-all duration-500 overflow-hidden text-start min-h-[480px]`}>
       
+      {/* Recommended Tag */}
+      {recommended && (
+        <span className="absolute top-0 end-8 -translate-y-1/2 px-4 py-1 bg-accent text-white text-[9px] font-black tracking-widest uppercase rounded-full shadow-lg">
+          {t('services.recommended') || 'RECOMMENDED'}
+        </span>
+      )}
+
       {/* Glow Effect */}
-      <div className="absolute top-0 right-0 w-24 h-24 bg-[#ff6b6b]/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-accent/3 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <div>
-        {/* Header: Badge & Pricing */}
-        <div className="flex justify-between items-center mb-6">
-          <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full mono text-[9px] font-black text-neutral-400 tracking-wider uppercase">
-            {serviceData.badge}
-          </span>
-          <span className="mono text-[10px] font-black text-[#ff6b6b] tracking-widest bg-[#ff6b6b]/5 border border-[#ff6b6b]/10 px-3 py-1 rounded-full">
+        {/* Header: Icon & Price */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/15 flex items-center justify-center">
+            {icon}
+          </div>
+          <span className="mono text-sm font-black text-accent tracking-tight bg-accent/5 border border-accent/10 px-3 py-1 rounded-full">
             {serviceData.price}
           </span>
         </div>
@@ -40,15 +57,15 @@ export default function ServiceCard({ serviceKey, serviceData }) {
         <h3 className="text-xl md:text-2xl font-black text-white tracking-tight mb-3">
           {serviceData.title}
         </h3>
-        <p className="text-neutral-400 text-sm leading-relaxed mb-6 font-medium">
+        <p className="text-neutral-400 text-xs md:text-sm leading-relaxed mb-6 font-medium">
           {serviceData.desc}
         </p>
 
-        {/* Features List */}
+        {/* Features List (Max 3 Deliverables to prevent clutter) */}
         <ul className="flex flex-col gap-3 mb-8">
-          {serviceData.features.map((feature, i) => (
+          {serviceData.features.slice(0, 3).map((feature, i) => (
             <li key={i} className="flex items-start gap-2.5 text-xs text-neutral-300 font-semibold leading-relaxed">
-              <Check className="text-[#ff6b6b] flex-shrink-0 mt-0.5" size={14} />
+              <Check className="text-accent flex-shrink-0 mt-0.5" size={14} />
               <span>{feature}</span>
             </li>
           ))}
@@ -65,7 +82,7 @@ export default function ServiceCard({ serviceKey, serviceData }) {
         </Link>
         <Link
           to={`/iletisim?service=${serviceKey}`}
-          className="py-3 bg-[#ff6b6b] hover:bg-[#ff5252] text-white text-center rounded-xl mono text-[9px] font-black tracking-widest uppercase hover:scale-102 transition-all flex items-center justify-center gap-1.5"
+          className="py-3 bg-accent hover:bg-accent-hover text-white text-center rounded-xl mono text-[9px] font-black tracking-widest uppercase hover:scale-102 transition-all flex items-center justify-center gap-1.5"
         >
           {t('services.cta_contact')}
           <ArrowUpRight size={12} />
