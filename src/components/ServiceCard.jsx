@@ -15,6 +15,10 @@ export default function ServiceCard({ serviceKey, serviceData }) {
 
   const path = slugMap[serviceKey] || '/hizmetler';
 
+  if (!serviceData || typeof serviceData === 'string' || !Array.isArray(serviceData.features)) {
+    return null;
+  }
+
   return (
     <div className="group relative bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-[#00ffaa]/20 hover:shadow-[0_0_50px_rgba(0,255,170,0.02)] transition-all duration-500 overflow-hidden text-left min-h-[460px]">
       

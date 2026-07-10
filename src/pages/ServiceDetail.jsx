@@ -34,7 +34,7 @@ export default function ServiceDetail() {
   if (!serviceKey) return null;
 
   const data = t(`services.items.${serviceKey}`, { returnObjects: true });
-  if (!data || typeof data === 'string') return null;
+  if (!data || typeof data === 'string' || !Array.isArray(data.features)) return null;
 
   return (
     <div className="pt-32 pb-24 text-white min-h-screen text-left">
