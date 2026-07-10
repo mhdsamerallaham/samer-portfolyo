@@ -23,10 +23,10 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <section className="relative px-6 md:px-12 pt-32 pb-24 max-w-[1200px] mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center text-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center text-start">
           
           {/* Hero Left Column (Copy and CTAs) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 z-10">
+          <div className="lg:col-span-7 flex flex-col gap-6 z-10 w-full">
             
             {/* Localized Hello greeting */}
             <div className="flex items-center gap-3">
@@ -41,7 +41,7 @@ export default function Home() {
             </h2>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.15] text-white">
               {i18n.language === 'tr' ? 'E-Ticaret Sistemleri & Büyüme Uzmanı' : i18n.language === 'ar' ? 'أخصائي أنظمة التجارة والنمو' : 'E-Commerce Systems & Growth Specialist'}
             </h1>
 
@@ -54,13 +54,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 mt-2">
               <Link
                 to="/iletisim"
-                className="px-8 py-4 bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-black rounded-xl transition-colors duration-300 text-xs tracking-wider uppercase"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#ff6b6b] hover:bg-[#ff5252] text-white font-black rounded-xl transition-colors duration-300 text-xs tracking-wider uppercase"
               >
                 {t('contact_page.submit')}
               </Link>
               <Link
                 to="/hakkimda"
-                className="px-8 py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-black rounded-xl transition-all duration-300 text-xs tracking-wider uppercase"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-black rounded-xl transition-all duration-300 text-xs tracking-wider uppercase"
               >
                 {t('nav.about')}
               </Link>
@@ -68,8 +68,8 @@ export default function Home() {
           </div>
 
           {/* Hero Right Column (Avatar and Glowing frame) */}
-          <div className="lg:col-span-5 flex justify-center items-center z-10 relative">
-            <div className="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
+          <div className="lg:col-span-5 flex justify-center items-center z-10 relative w-full">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-72 lg:h-72 xl:w-80 xl:h-80 flex items-center justify-center">
               {/* Soft glow behind avatar */}
               <div className="absolute inset-0 bg-[#ff6b6b]/10 rounded-full blur-[80px] -z-10" />
               {/* Concentric clean circles matching image */}
@@ -77,7 +77,7 @@ export default function Home() {
               <div className="absolute inset-4 rounded-full border border-white/5" />
 
               {/* Avatar picture */}
-              <div className="w-60 h-60 md:w-68 md:h-68 rounded-full overflow-hidden border-4 border-[#131b2e] bg-[#131b2e] shadow-2xl relative">
+              <div className="w-56 h-56 sm:w-60 sm:h-60 lg:w-60 lg:h-60 xl:w-68 xl:h-68 rounded-full overflow-hidden border-4 border-[#131b2e] bg-[#131b2e] shadow-2xl relative">
                 <img
                   src="/avatar.png"
                   alt="Samer Allaham"

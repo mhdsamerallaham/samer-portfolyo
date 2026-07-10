@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@source ".";
+@source "../index.html";
+
 
 :root {
   --bg-dark: #0b0f19;

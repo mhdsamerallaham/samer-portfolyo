@@ -39,16 +39,16 @@ export default function Navbar() {
   const isRtl = i18n.language === 'ar';
 
   return (
-    <nav className={`fixed top-0 w-full z-[2000] flex items-center transition-all duration-300 ${scrolled ? 'h-20 bg-[#0b0f19]/80 backdrop-blur-md border-b border-white/5' : 'h-24 bg-transparent'}`}>
-      <div className="max-w-[1440px] mx-auto w-full px-6 md:px-12 flex justify-between items-center">
+    <nav className={`fixed top-0 w-full z-[2000] flex items-center transition-all duration-300 ${scrolled ? 'h-20 bg-[#0b0f19]/90 backdrop-blur-md border-b border-white/5' : 'h-24 bg-transparent'}`}>
+      <div className="max-w-[1440px] mx-auto w-full px-4 md:px-8 xl:px-12 flex justify-between items-center gap-4">
         
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
           <div className="w-10 h-10 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 rounded-xl flex items-center justify-center group-hover:bg-[#ff6b6b] transition-all duration-300">
             <ArrowDownRight className="text-[#ff6b6b] group-hover:text-white transition-colors" size={20} />
           </div>
           <div className="flex flex-col text-left">
-            <span className="mono font-black text-base tracking-tighter leading-none text-white">SAMER ALLAHAM</span>
+            <span className="mono font-black text-sm md:text-base tracking-tighter leading-none text-white">SAMER ALLAHAM</span>
             <span className="mono text-[8px] text-[#ff6b6b] tracking-[0.2em] font-bold uppercase mt-1">
               {i18n.language === 'tr' ? 'E-Ticaret Sistemleri' : i18n.language === 'ar' ? 'أنظمة التجارة الإلكترونية' : 'E-Commerce Systems'}
             </span>
@@ -56,13 +56,13 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-8 flex-shrink-0">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `mono text-[10px] font-black uppercase tracking-[0.15em] transition-colors hover:text-[#ff6b6b] ${
+                `mono text-[9px] xl:text-[10px] font-black uppercase tracking-[0.15em] transition-colors hover:text-[#ff6b6b] ${
                   isActive ? 'text-[#ff6b6b] relative after:content-[""] after:absolute after:bottom-[-6px] after:left-0 after:w-full after:height-[1.5px] after:bg-[#ff6b6b]' : 'text-neutral-400'
                 }`
               }
@@ -73,7 +73,7 @@ export default function Navbar() {
         </div>
 
         {/* Action Panel: Lang & CTA */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink-0">
           {/* Language Selector */}
           <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5">
             {['tr', 'en', 'ar'].map((lang) => (
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           <Link
             to="/iletisim"
-            className="px-6 py-2.5 bg-[#ff6b6b] text-white hover:bg-[#ff5252] rounded-full mono text-[10px] font-black hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center px-4 xl:px-6 py-2.5 bg-[#ff6b6b] text-white hover:bg-[#ff5252] rounded-full mono text-[9px] xl:text-[10px] font-black hover:scale-105 transition-all duration-300"
           >
             {t('nav.cta').toUpperCase()}
           </Link>
