@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShieldCheck, Zap, Globe, MessageSquare, Plus, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import ServiceCard from '../components/ServiceCard';
 import AIDemo from '../components/AIDemo';
@@ -25,7 +25,7 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <section className="relative px-6 md:px-12 pt-32 pb-20 max-w-[1280px] mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-start">
           
           {/* Hero Left Column (Copy and CTAs) */}
           <div className="lg:col-span-7 flex flex-col gap-6 z-10">
@@ -85,7 +85,7 @@ export default function Home() {
               </div>
 
               {/* Status active badge */}
-              <div className="absolute bottom-2 right-6 px-4 py-1.5 bg-[#0b0f19] border border-[#ff6b6b]/30 rounded-full shadow-2xl backdrop-blur-md">
+              <div className="absolute bottom-2 end-6 px-4 py-1.5 bg-[#0b0f19] border border-[#ff6b6b]/30 rounded-full shadow-2xl backdrop-blur-md">
                 <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-[#ff6b6b] rounded-full animate-ping" />
                   <span className="mono text-[8px] font-black tracking-widest uppercase text-[#ff6b6b]">
@@ -99,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. HORIZONTAL TECH STACK ROW (Immediately below hero, matching image) */}
+      {/* 2. HORIZONTAL TECH STACK ROW */}
       <section className="w-full border-y border-white/5 bg-[#0e1423]/50 py-5">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-wrap justify-between items-center gap-6">
           <span className="mono text-[8px] font-black text-neutral-500 tracking-[0.2em]">// POWERED_BY</span>
@@ -125,16 +125,51 @@ export default function Home() {
       <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          {/* Left Column: Vertical Service Pillars (Matches image layout) */}
-          <div className="lg:col-span-5 flex flex-col gap-6 text-left relative pl-8 border-l-2 border-white/5">
+          {/* Bio column: Renders first on mobile (order-1), second on desktop (lg:order-2) */}
+          <div className="lg:col-span-7 flex flex-col gap-6 text-start order-1 lg:order-2">
+            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block">
+              // PROFILE_OVERVIEW
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
+              {i18n.language === 'tr' ? 'Hakkımda' : i18n.language === 'ar' ? 'من أنا' : 'About me'}
+            </h2>
+            <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-semibold">
+              {t('about_page.bio')}
+            </p>
+
+            {/* Statistics grid */}
+            <div className="grid grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4">
+              <div className="flex flex-col text-start">
+                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">50+</span>
+                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
+                  {i18n.language === 'tr' ? 'Proje' : 'Projects'}
+                </span>
+              </div>
+              <div className="flex flex-col text-start">
+                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">98%</span>
+                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
+                  {i18n.language === 'tr' ? 'Memnuniyet' : 'Satisfaction'}
+                </span>
+              </div>
+              <div className="flex flex-col text-start">
+                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">5+</span>
+                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
+                  {i18n.language === 'tr' ? 'Yıl Deneyim' : 'Years Exp'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Pillars column: Renders second on mobile (order-2), first on desktop (lg:order-1) */}
+          <div className="lg:col-span-5 flex flex-col gap-6 text-start relative ps-8 border-s-2 border-white/5 order-2 lg:order-1 mt-8 lg:mt-0">
             <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block mb-2">
               // SERVICE_PILLARS
             </span>
 
             {/* Pillar 1 */}
             <div className="relative group">
-              {/* Connecting point dot */}
-              <div className="absolute -left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
+              {/* Connecting point dot aligned logically on the border line */}
+              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
               <div className="flex flex-col gap-1">
                 <h4 className="text-base font-bold text-white uppercase tracking-wide">
                   {t('services.items.site-kurulumu.title')}
@@ -147,7 +182,7 @@ export default function Home() {
 
             {/* Pillar 2 */}
             <div className="relative group mt-4">
-              <div className="absolute -left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
+              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
               <div className="flex flex-col gap-1">
                 <h4 className="text-base font-bold text-white uppercase tracking-wide">
                   {t('services.items.stok-depo.title')}
@@ -160,7 +195,7 @@ export default function Home() {
 
             {/* Pillar 3 */}
             <div className="relative group mt-4">
-              <div className="absolute -left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
+              <div className="absolute start-[-41px] top-1.5 w-4 h-4 rounded-full bg-[#0b0f19] border-2 border-[#ff6b6b] group-hover:bg-[#ff6b6b] transition-colors" />
               <div className="flex flex-col gap-1">
                 <h4 className="text-base font-bold text-white uppercase tracking-wide">
                   {t('services.items.optimizasyon.title')}
@@ -171,41 +206,6 @@ export default function Home() {
               </div>
             </div>
 
-          </div>
-
-          {/* Right Column: Bio text & Metrics (Matches image layout) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest block">
-              // PROFILE_OVERVIEW
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight">
-              {i18n.language === 'tr' ? 'Hakkımda' : i18n.language === 'ar' ? 'من أنا' : 'About me'}
-            </h2>
-            <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-semibold">
-              {t('about_page.bio')}
-            </p>
-
-            {/* Statistics grid (Matches image style exactly) */}
-            <div className="grid grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4">
-              <div className="flex flex-col text-left">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">50+</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Proje' : 'Projects'}
-                </span>
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">98%</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Memnuniyet' : 'Satisfaction'}
-                </span>
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-3xl md:text-4xl font-black text-[#ff6b6b] tracking-tight">5+</span>
-                <span className="text-[10px] md:text-xs text-neutral-400 font-bold uppercase tracking-wider mt-1">
-                  {i18n.language === 'tr' ? 'Yıl Deneyim' : 'Years Exp'}
-                </span>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -242,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* 6. SUCCESS METRICS CASE STUDIES */}
-      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto text-left">
+      <section className="px-6 md:px-12 py-24 max-w-[1280px] mx-auto text-start">
         <div className="flex justify-between items-end mb-16">
           <div className="flex flex-col gap-3">
             <span className="mono text-[#ff6b6b] text-[9px] font-black uppercase tracking-widest">// RESULTS_DELIVERED</span>

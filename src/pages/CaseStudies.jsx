@@ -10,7 +10,7 @@ export default function CaseStudies() {
   const icons = [<TrendingUp size={24} />, <Flame size={24} />, <Cpu size={24} />];
 
   return (
-    <div className="pt-32 pb-24 text-white min-h-screen text-left">
+    <div className="pt-32 pb-24 text-white min-h-screen text-start">
       <SEO
         title={t('nav.case_studies')}
         description={t('case_studies.subtitle')}
@@ -52,7 +52,7 @@ export default function CaseStudies() {
               </div>
 
               {/* Story Description */}
-              <div className="lg:col-span-8 flex flex-col justify-between h-full text-left">
+              <div className="lg:col-span-8 flex flex-col justify-between h-full text-start">
                 <div>
                   <h3 className="text-2xl font-black text-white mb-4">
                     {item.client}

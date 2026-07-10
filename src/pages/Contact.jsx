@@ -6,7 +6,7 @@ export default function Contact() {
   const { t } = useTranslation();
 
   return (
-    <div className="pt-32 pb-24 text-white min-h-screen text-left">
+    <div className="pt-32 pb-24 text-white min-h-screen text-start">
       <SEO
         title={t('nav.contact')}
         description={t('contact_page.subtitle')}

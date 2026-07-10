@@ -11,7 +11,7 @@ export default function Blog() {
 
   if (activeArticle) {
     return (
-      <div className="pt-32 pb-24 text-white min-h-screen text-left">
+      <div className="pt-32 pb-24 text-white min-h-screen text-start">
         <SEO
           title={activeArticle.title}
           description={activeArticle.summary}
@@ -57,7 +57,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="pt-32 pb-24 text-white min-h-screen text-left">
+    <div className="pt-32 pb-24 text-white min-h-screen text-start">
       <SEO
         title={t('nav.blog')}
         description={t('blog_page.subtitle')}
@@ -85,7 +85,7 @@ export default function Blog() {
               key={article.id}
               className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col justify-between hover:border-white/10 transition-all duration-300 group"
             >
-              <div className="flex flex-col gap-4 text-left">
+              <div className="flex flex-col gap-4 text-start">
                 {/* Date */}
                 <span className="mono text-[9px] font-black text-neutral-500 uppercase tracking-widest flex items-center gap-2">
                   <Calendar size={12} />

@@ -14,7 +14,7 @@ export default function About() {
   ];
 
   return (
-    <div className="pt-32 pb-24 text-white min-h-screen text-left">
+    <div className="pt-32 pb-24 text-white min-h-screen text-start">
       <SEO
         title={t('nav.about')}
         description={t('about_page.bio')}
@@ -39,7 +39,7 @@ export default function About() {
             </p>
           </div>
           
-          <div className="lg:col-span-4 bg-[#131b2e] border border-white/5 rounded-3xl p-8 relative overflow-hidden flex flex-col gap-6 w-full text-left">
+          <div className="lg:col-span-4 bg-[#131b2e] border border-white/5 rounded-3xl p-8 relative overflow-hidden flex flex-col gap-6 w-full text-start">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b6b]/5 rounded-full blur-[40px] pointer-events-none" />
             <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-[#ff6b6b]/20 p-1.5 bg-[#ff6b6b]/5 relative mx-auto shadow-2xl">
               <img src="/avatar.png" alt="Samer Allaham" className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700" />
@@ -93,7 +93,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">{t('about_page.values_title')}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-start">
             {Array.isArray(values) && values.map((val, idx) => (
               <div key={idx} className="p-8 bg-[#131b2e] border border-white/5 rounded-3xl flex flex-col gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[#ff6b6b]/10 flex items-center justify-center text-[#ff6b6b]">
