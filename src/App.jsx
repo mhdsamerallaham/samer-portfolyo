@@ -29,22 +29,33 @@ function ScrollToTop() {
 function App() {
   const { i18n } = useTranslation();
 
-  // Setup Lenis smooth scrolling
+  // Setup Lenis smooth scrolling (deferred to avoid layout thrashing during initial mount)
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      smoothWheel: true,
-    });
+    let lenis;
+    let rafId;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    const initLenis = () => {
+      lenis = new Lenis({
+        duration: 1.0,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+      });
 
-    return () => lenis.destroy();
+      function raf(time) {
+        lenis.raf(time);
+        rafId = requestAnimationFrame(raf);
+      }
+      rafId = requestAnimationFrame(raf);
+    };
+
+    const timerId = setTimeout(initLenis, 150);
+
+    return () => {
+      clearTimeout(timerId);
+      if (lenis) lenis.destroy();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Update HTML tag text direction dynamically for RTL language support (Arabic)
