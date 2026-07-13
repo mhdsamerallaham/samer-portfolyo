@@ -1,0 +1,116 @@
+{
+  "system_name": "Multilingual Automated Blog System",
+  "slug": "multilingual-automated-blog-system",
+  "architecture": {
+    "frontend": "React (Vite) SPA + react-router-dom + i18next (with lazy API fetching & local translation fallback)",
+    "backend": "Vercel Serverless Functions (Node.js)",
+    "database": "Supabase PostgreSQL Database (Free Tier)",
+    "ai_provider": "Google Gemini API (100% Free Tier - gemini-1.5-flash / gemini-2.0-flash)",
+    "scheduler": "Vercel Cron Jobs (12-hour interval)",
+    "deployment_platform": "Vercel & Supabase"
+  },
+  "files": [
+    {
+      "path": "api/package.json",
+      "purpose": "Serverless function dependencies",
+      "content": "{\n  \"name\": \"samer-portfolio-api\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@google/generative-ai\": \"^0.21.0\",\n    \"@supabase/supabase-js\": \"^2.39.8\",\n    \"dotenv\": \"^16.4.5\"\n  }\n}"
+    },
+    {
+      "path": "api/blog/schema.sql",
+      "purpose": "Database migrations and seed data for the 7 existing blogs",
+      "content": "-- SQL Schema and seed data for the blog_posts table (Supabase/PostgreSQL)"
+    },
+    {
+      "path": "api/blog/generate.js",
+      "purpose": "Cron job endpoint that handles gap analysis, article generation, translation, internal linking, and database publication using Gemini Free API",
+      "content": "Serverless function running on Vercel at /api/blog/generate"
+    },
+    {
+      "path": "api/blog/posts.js",
+      "purpose": "Client-facing endpoint to fetch localized posts matching i18n language selectors",
+      "content": "Serverless function running on Vercel at /api/blog/posts"
+    },
+    {
+      "path": "src/pages/Blog.jsx",
+      "purpose": "Updated React page to render posts dynamically with SEO meta injection and URL deep-linking",
+      "content": "Vite React component for the Blog UI"
+    }
+  ],
+  "env": {
+    "variables": [
+      {
+        "name": "GEMINI_API_KEY",
+        "required": true,
+        "purpose": "Used to access the Google Gemini API (100% free tier)"
+      },
+      {
+        "name": "SUPABASE_URL",
+        "required": true,
+        "purpose": "Supabase project database URL"
+      },
+      {
+        "name": "SUPABASE_ANON_KEY",
+        "required": true,
+        "purpose": "Supabase project anonymous key"
+      },
+      {
+        "name": "CRON_SECRET",
+        "required": true,
+        "purpose": "Random security token used to authenticate request calls from the scheduler"
+      }
+    ]
+  },
+  "cron": {
+    "schedule": "0 */12 * * *",
+    "endpoint": "/api/blog/generate"
+  },
+  "prompt_templates": {
+    "blog_generation": "You are an expert e-commerce and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap. Then, write a brand new, premium, human-like Turkish blog post that covers this gap...",
+    "translation": "Translate and localize the following Turkish blog post into [language]. Rules: 1. English = clear, professional, global tone. Arabic = simple, modern Fusha tone. 2. Do not do a word-for-word translation...",
+    "internal_linking": "Select EXACTLY 2 related blog posts from the 'Existing Blog Posts' list. Insert links to them inside the content using HTML tags: <a href=\"/blog?post=SLUG\">ANCHOR_TEXT</a>. Select EXACTLY 1 relevant service page from the 'Website Service Pages' list. Insert a link to it using HTML tag: <a href=\"PATH\">ANCHOR_TEXT</a>."
+  },
+  "database_schema": {
+    "tables": [
+      {
+        "name": "blog_posts",
+        "columns": [
+          { "name": "id", "type": "UUID PRIMARY KEY", "default": "gen_random_uuid()" },
+          { "name": "slug", "type": "VARCHAR(255) UNIQUE", "nullable": false },
+          { "name": "published_at", "type": "TIMESTAMP WITH TIME ZONE", "default": "now()" },
+          { "name": "created_at", "type": "TIMESTAMP WITH TIME ZONE", "default": "now()" },
+          { "name": "title_tr", "type": "VARCHAR(255)", "nullable": false },
+          { "name": "summary_tr", "type": "TEXT", "nullable": false },
+          { "name": "content_tr", "type": "TEXT", "nullable": false },
+          { "name": "seo_title_tr", "type": "VARCHAR(255)" },
+          { "name": "seo_description_tr", "type": "TEXT" },
+          { "name": "title_en", "type": "VARCHAR(255)", "nullable": false },
+          { "name": "summary_en", "type": "TEXT", "nullable": false },
+          { "name": "content_en", "type": "TEXT", "nullable": false },
+          { "name": "seo_title_en", "type": "VARCHAR(255)" },
+          { "name": "seo_description_en", "type": "TEXT" },
+          { "name": "title_ar", "type": "VARCHAR(255)", "nullable": false },
+          { "name": "summary_ar", "type": "TEXT", "nullable": false },
+          { "name": "content_ar", "type": "TEXT", "nullable": false },
+          { "name": "seo_title_ar", "type": "VARCHAR(255)" },
+          { "name": "seo_description_ar", "type": "TEXT" }
+        ],
+        "indexes": [
+          "idx_blog_posts_slug ON blog_posts(slug)",
+          "idx_blog_posts_published_at ON blog_posts(published_at DESC)"
+        ]
+      }
+    ]
+  },
+  "deployment_steps": [
+    "Step 1: Setup a free database in Supabase and run api/blog/schema.sql in the SQL Editor to create tables and seed data.",
+    "Step 2: Obtain a free Gemini API Key from Google AI Studio.",
+    "Step 3: Setup local development environment variables in a .env file.",
+    "Step 4: Keep the project strictly local for now as requested. Test endpoints using local serverless execution (e.g. vercel dev).",
+    "Step 5: When ready to publish, add the environment variables in Vercel settings and deploy."
+  ],
+  "notes": [
+    "Gemini 1.5/2.0 Flash is used because its Free Tier offers 1,500 requests per day at $0 cost, making it completely free for our 12-hour schedule.",
+    "The client page automatically falls back to local translation JSON files if the Supabase database is unreachable, ensuring high uptime.",
+    "Deep-linking is supported via the '?post=slug' parameter to ensure specific posts are SEO crawlable and shareable."
+  ]
+}
