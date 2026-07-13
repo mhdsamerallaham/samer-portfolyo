@@ -92,7 +92,7 @@ export default function About() {
                 <div className="w-10 h-10 rounded-xl bg-[#ff6b6b]/10 flex items-center justify-center text-[#ff6b6b]">
                   {idx === 0 ? <Compass size={20} /> : idx === 1 ? <Award size={20} /> : <GraduationCap size={20} />}
                 </div>
-                <h4 className="text-base font-black text-white">{val.title}</h4>
+                <h3 className="text-base font-black text-white">{val.title}</h3>
                 <p className="text-neutral-400 text-xs md:text-sm font-semibold leading-relaxed">{val.desc}</p>
               </div>
             ))}

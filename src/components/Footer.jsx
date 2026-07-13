@@ -37,13 +37,13 @@ export default function Footer() {
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-2">
-              <a href="https://github.com/mhdsamerallaham" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
+              <a href="https://github.com/mhdsamerallaham" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
                 <Github size={16} />
               </a>
-              <a href="https://www.linkedin.com/in/samer-allaham-18a784162/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
+              <a href="https://www.linkedin.com/in/samer-allaham-18a784162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
                 <Linkedin size={16} />
               </a>
-              <a href="mailto:samerallaham3@gmail.com" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
+              <a href="mailto:samerallaham3@gmail.com" aria-label="Send Email" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
                 <Mail size={16} />
               </a>
             </div>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           {/* Quick Sitemap Links */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">SİTEMAP</span>
+            <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">SİTEMAP</span>
             <ul className="flex flex-col gap-2.5">
               <li><Link to="/" onClick={handleLogoClick} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.home')}</Link></li>
               <li><Link to="/hizmetler" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.services')}</Link></li>
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* E-Commerce Solutions Links */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">ÇÖZÜMLER</span>
+            <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">ÇÖZÜMLER</span>
             <ul className="flex flex-col gap-2.5">
               <li><Link to="/eticaret-site-kurulumu" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.site-kurulumu.title')}</Link></li>
               <li><Link to="/eticaret-optimizasyon" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.optimizasyon.title')}</Link></li>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Tech Stack Showcase */}
           <div className="flex flex-col gap-4">
-            <span className="mono text-[9px] font-black text-neutral-500 tracking-[0.2em] uppercase">TEKNOLOJİLER</span>
+            <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">TEKNOLOJİLER</span>
             <div className="flex flex-wrap gap-2">
               {['Shopify', 'İKAS', 'React', 'Next.js', 'Node.js', 'Python', 'PostgreSQL', 'APIs', 'Webhooks'].map((tech) => (
                 <span key={tech} className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] font-bold text-neutral-400 uppercase tracking-wider">

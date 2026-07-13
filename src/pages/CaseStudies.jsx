@@ -58,7 +58,7 @@ export default function CaseStudies() {
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
-                  <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">
+                  <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">
                     CASE_00{idx + 1}
                   </span>
                   <Link

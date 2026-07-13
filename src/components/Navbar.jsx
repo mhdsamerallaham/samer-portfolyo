@@ -97,26 +97,28 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Toggle & Menu Buttons */}
-        <div className="flex items-center gap-4 lg:hidden">
-          {/* Mobile Language Switch Quick Select */}
-          <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5">
-            <button
-              onClick={() => handleLangChange(i18n.language === 'tr' ? 'en' : i18n.language === 'en' ? 'ar' : 'tr')}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] transition-colors"
-            >
-              <Globe size={16} />
-            </button>
-            <span className="mono text-[10px] font-bold text-[#ff6b6b] pr-3 pl-1 uppercase">{i18n.language}</span>
-          </div>
+          {/* Mobile Toggle & Menu Buttons */}
+          <div className="flex items-center gap-4 lg:hidden">
+            {/* Mobile Language Switch Quick Select */}
+            <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5">
+              <button
+                onClick={() => handleLangChange(i18n.language === 'tr' ? 'en' : i18n.language === 'en' ? 'ar' : 'tr')}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] transition-colors"
+                aria-label="Change language"
+              >
+                <Globe size={16} />
+              </button>
+              <span className="mono text-[10px] font-bold text-[#ff6b6b] pr-3 pl-1 uppercase">{i18n.language}</span>
+            </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white hover:text-[#ff6b6b] transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white hover:text-[#ff6b6b] transition-colors"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
 
       </div>
 

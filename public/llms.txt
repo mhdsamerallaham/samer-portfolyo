@@ -27,15 +27,15 @@ Conversion Rate Optimization (CRO), Core Web Vitals, SEO.
 
 For detailed, language-specific context for AI recommendation engines:
 
-- Turkish (Türkçe): https://www.samer.life/llms-tr.txt
-- English: https://www.samer.life/llms-en.txt
-- Arabic (العربية): https://www.samer.life/llms-ar.txt
+- [Turkish (Türkçe) Context](https://www.samer.life/llms-tr.txt)
+- [English Context](https://www.samer.life/llms-en.txt)
+- [Arabic (العربية) Context](https://www.samer.life/llms-ar.txt)
 
 ## Contact
 
-- Website: https://www.samer.life/
+- [Website](https://www.samer.life/)
 - Email: SAMERALLAHAM3@GMAIL.COM
 - WhatsApp: +90 539 461 16 84
-- GitHub: https://github.com/mhdsamerallaham
-- LinkedIn: https://www.linkedin.com/in/samer-allaham-18a784162/
+- [GitHub Profile](https://github.com/mhdsamerallaham)
+- [LinkedIn Profile](https://www.linkedin.com/in/samer-allaham-18a784162/)
 - Location: Istanbul, Turkey

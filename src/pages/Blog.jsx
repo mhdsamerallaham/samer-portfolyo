@@ -84,7 +84,7 @@ export default function Blog() {
             >
               <div className="flex flex-col gap-4 text-left">
                 {/* Date */}
-                <span className="mono text-[9px] font-black text-neutral-500 uppercase tracking-widest flex items-center gap-2">
+                <span className="mono text-[9px] font-black text-neutral-400 uppercase tracking-widest flex items-center gap-2">
                   <Calendar size={12} />
                   {article.date}
                 </span>
@@ -109,7 +109,7 @@ export default function Blog() {
                   <BookOpen size={14} />
                   {t('blog_page.read_more')}
                 </button>
-                <ArrowRight size={14} className="text-neutral-500 group-hover:text-[#ff6b6b] group-hover:translate-x-1 transition-all" />
+                <ArrowRight size={14} className="text-neutral-400 group-hover:text-[#ff6b6b] group-hover:translate-x-1 transition-all" />
               </div>
             </div>
           ))}

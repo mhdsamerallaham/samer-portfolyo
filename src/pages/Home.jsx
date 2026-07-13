@@ -64,7 +64,7 @@ export default function Home() {
 
             {/* Trust Badges under CTA */}
             <div className="border-t border-white/5 pt-6 mt-4">
-              <span className="mono text-[9px] font-black text-neutral-500 uppercase tracking-widest block mb-3">PLATFORM PARTNERS & TECH</span>
+              <span className="mono text-[9px] font-black text-neutral-400 uppercase tracking-widest block mb-3">PLATFORM PARTNERS & TECH</span>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-neutral-400 font-extrabold text-[10px] tracking-wider uppercase mono">
                 <span>Shopify Partner</span>
                 <span className="text-accent">•</span>
@@ -186,11 +186,11 @@ export default function Home() {
                 <span className="mono text-2xl font-black text-accent tracking-tight block">
                   {item.metric}
                 </span>
-                <h4 className="text-lg font-black text-white">{item.client}</h4>
+                <h3 className="text-lg font-black text-white">{item.client}</h3>
                 <p className="text-neutral-400 text-xs md:text-sm font-semibold leading-relaxed">{item.desc}</p>
               </div>
               <div className="border-t border-white/5 pt-6 mt-8 flex justify-between items-center">
-                <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">IMPACT // 0{idx + 1}</span>
+                <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">IMPACT // 0{idx + 1}</span>
                 <span className="text-neutral-400 text-[10px] font-bold">{t('case_studies.results')}</span>
               </div>
             </div>

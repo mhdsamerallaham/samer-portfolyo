@@ -98,6 +98,6 @@
 - **البريد الإلكتروني**: SAMERALLAHAM3@GMAIL.COM
 - **واتساب**: +90 539 461 16 84
 - **الموقع الجغرافي**: تركيا
-- **موقع المحفظة**: https://www.samer.life/
-- **حساب GitHub**: https://github.com/mhdsamerallaham
-- **حساب LinkedIn**: https://www.linkedin.com/in/samer-allaham-18a784162/
+- **موقع المحفظة**: [samer.life](https://www.samer.life/)
+- **حساب GitHub**: [github.com/mhdsamerallaham](https://github.com/mhdsamerallaham)
+- **حساب LinkedIn**: [linkedin.com/in/samer-allaham-18a784162](https://www.linkedin.com/in/samer-allaham-18a784162/)

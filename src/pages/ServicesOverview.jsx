@@ -46,9 +46,9 @@ export default function ServicesOverview() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff6b6b]/5 rounded-full blur-[80px] pointer-events-none" />
           
           <div className="lg:col-span-7 flex flex-col gap-5">
-            <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">
               {i18n.language === 'tr' ? 'Shopify mı İKAS mı? Hangisini Seçmelisiniz?' : 'Shopify or İKAS? Which to Choose?'}
-            </h3>
+            </h2>
             <p className="text-neutral-400 text-xs md:text-sm leading-relaxed font-semibold">
               {i18n.language === 'tr' 
                 ? 'E-ticarette en önemli adım doğru altyapı seçimidir. Shopify ile küresel pazarlara açılabilir ve devasa entegrasyon havuzundan faydalanabilirsiniz. İKAS ise Türkiye pazarında inanılmaz yüksek hızlar, sıfır işlem komisyonu ve yerleşik yerel entegrasyonlar sunar. Hangisinin işletmeniz için doğru karar olduğunu detaylı analiz edip seçiyoruz.'

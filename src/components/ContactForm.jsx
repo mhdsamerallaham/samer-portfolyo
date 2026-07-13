@@ -113,7 +113,7 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-6 border-t border-white/5 pt-6">
           <div>
-            <span className="mono text-[8px] font-black text-neutral-500 tracking-wider uppercase block mb-1">
+            <span className="mono text-[8px] font-black text-neutral-400 tracking-wider uppercase block mb-1">
               DIRECT_MAİL
             </span>
             <a href="mailto:samerallaham3@gmail.com" className="text-sm md:text-base font-bold text-white hover:text-[#ff6b6b] transition-colors">
@@ -122,7 +122,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <span className="mono text-[8px] font-black text-neutral-500 tracking-wider uppercase block mb-2">
+            <span className="mono text-[8px] font-black text-neutral-400 tracking-wider uppercase block mb-2">
               QUİCK_CHANNEL
             </span>
             <a
@@ -142,10 +142,11 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
         
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-name" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.name')}
           </label>
           <input
+            id="contact-name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -155,10 +156,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-email" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.email')}
           </label>
           <input
+            id="contact-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -168,10 +170,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-phone" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.phone')}
           </label>
           <input
+            id="contact-phone"
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -181,10 +184,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-website" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.website')}
           </label>
           <input
+            id="contact-website"
             type="url"
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
@@ -193,10 +197,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-platform" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.platform')}
           </label>
           <select
+            id="contact-platform"
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
@@ -208,10 +213,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-budget" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.budget')}
           </label>
           <select
+            id="contact-budget"
             value={budget}
             onChange={(e) => setBudget(e.target.value)}
             className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 focus:border-[#ff6b6b]/40 focus:outline-none rounded-xl text-xs md:text-sm text-white transition-colors"
@@ -224,10 +230,11 @@ export default function ContactForm() {
         </div>
 
         <div className="sm:col-span-2 flex flex-col gap-2">
-          <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
+          <label htmlFor="contact-message" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">
             {t('contact_page.message')}
           </label>
           <textarea
+            id="contact-message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required

@@ -141,8 +141,9 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
         {/* Form Input */}
         <form onSubmit={generateDescription} className="lg:col-span-5 flex flex-col gap-5">
           <div className="flex flex-col gap-2">
-            <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_name')}</label>
+            <label htmlFor="ai-name" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_name')}</label>
             <input
+              id="ai-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -153,8 +154,9 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_category')}</label>
+            <label htmlFor="ai-category" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_category')}</label>
             <select
+              id="ai-category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors"
@@ -168,8 +170,9 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_features')}</label>
+            <label htmlFor="ai-features" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_features')}</label>
             <textarea
+              id="ai-features"
               value={features}
               onChange={(e) => setFeatures(e.target.value)}
               placeholder={t('ai_generator.placeholder_features')}
@@ -215,7 +218,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[#ff6b6b]/20" />
               </div>
-              <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">AI_LOG_V2.0</span>
+              <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">AI_LOG_V2.0</span>
             </div>
 
             {result ? (
@@ -233,7 +236,7 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
 
           {result && (
             <div className="flex justify-between items-center border-t border-white/5 pt-4 mt-4">
-              <span className="mono text-[8px] font-black text-neutral-500 uppercase tracking-widest">{t('ai_generator.output_title')}</span>
+              <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">{t('ai_generator.output_title')}</span>
               <button
                 onClick={copyToClipboard}
                 className="px-3.5 py-1.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b]/10 hover:border-[#ff6b6b]/20 hover:text-[#ff6b6b] text-white rounded-lg mono text-[8px] font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
