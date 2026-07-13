@@ -10,6 +10,25 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 // Initialize Gemini Client
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+// Helper for API calls with Exponential Backoff retry logic
+async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await model.generateContent(prompt);
+    } catch (error) {
+      const isTransient = error.status === 503 || error.status === 429 || 
+                          (error.message && (error.message.includes("503") || error.message.includes("429") || error.message.includes("RESOURCE_EXHAUSTED") || error.message.includes("fetch failed")));
+      if (isTransient && i < retries - 1) {
+        console.warn(`Gemini API transient error (${error.status || error.message}). Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2;
+      } else {
+        throw error;
+      }
+    }
+  }
+}
+
 module.exports = async (req, res) => {
   // 1. Authorization Check (for secure cron job execution)
   const authHeader = req.headers.authorization;
@@ -81,7 +100,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const trResult = await model.generateContent(trPrompt);
+    const trResult = await generateContentWithRetry(model, trPrompt);
     const trData = JSON.parse(trResult.response.text());
 
     // 4. Step 2: Translation and Localization to English
@@ -116,7 +135,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const enResult = await model.generateContent(enPrompt);
+    const enResult = await generateContentWithRetry(model, enPrompt);
     const enData = JSON.parse(enResult.response.text());
 
     // 5. Step 3: Translation and Localization to Arabic
@@ -151,7 +170,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const arResult = await model.generateContent(arPrompt);
+    const arResult = await generateContentWithRetry(model, arPrompt);
     const arData = JSON.parse(arResult.response.text());
 
     // 6. Step 4: Save the fully localized blog post to Supabase
