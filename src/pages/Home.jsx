@@ -92,7 +92,7 @@ export default function Home() {
                 <img
                   src="/avatar.jpeg"
                   alt="Samer Allaham"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-105"
+                  className="w-full h-full object-top object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </div>

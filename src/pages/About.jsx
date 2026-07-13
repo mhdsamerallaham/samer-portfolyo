@@ -39,7 +39,7 @@ export default function About() {
           <div className="lg:col-span-4 bg-[#131b2e] border border-white/5 rounded-3xl p-8 relative overflow-hidden flex flex-col gap-6 w-full text-start">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b6b]/5 rounded-full blur-[40px] pointer-events-none" />
             <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-[#ff6b6b]/20 p-1.5 bg-[#ff6b6b]/5 relative mx-auto shadow-2xl">
-              <img src="/avatar.jpeg" alt="Samer Allaham" className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700" />
+              <img src="/avatar.jpeg" alt="Samer Allaham" className="w-full h-full object-top object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700" />
             </div>
             <div className="text-center">
               <span className="mono text-[10px] font-black text-white uppercase tracking-wider">SAMER ALLAHAM</span>
