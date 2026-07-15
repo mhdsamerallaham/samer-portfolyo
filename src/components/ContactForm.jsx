@@ -52,22 +52,72 @@ export default function ContactForm() {
     }
   }, [location.search, i18n.language]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate database or API submission
-    setTimeout(() => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.warn('EmailJS credentials are missing. Simulating form submission.');
+      // Simulate database or API submission
+      setTimeout(() => {
+        setLoading(false);
+        setSuccess(true);
+        
+        // Clear form
+        setName('');
+        setEmail('');
+        setPhone('');
+        setWebsite('');
+        setMessage('');
+      }, 1200);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: {
+            from_name: name,
+            from_email: email,
+            phone: phone,
+            website: website,
+            platform: platform,
+            budget: budget,
+            message: message,
+          },
+        }),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        // Clear form
+        setName('');
+        setEmail('');
+        setPhone('');
+        setWebsite('');
+        setMessage('');
+      } else {
+        const errText = await response.text();
+        console.error('EmailJS Error:', errText);
+        alert(i18n.language === 'tr' ? 'Mesaj gönderilirken hata oluştu. Lütfen tekrar deneyin.' : 'Error sending message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission network error:', error);
+      alert(i18n.language === 'tr' ? 'Bir ağ hatası oluştu. Lütfen bağlantınızı kontrol edin.' : 'A network error occurred. Please check your connection.');
+    } finally {
       setLoading(false);
-      setSuccess(true);
-      
-      // Clear form
-      setName('');
-      setEmail('');
-      setPhone('');
-      setWebsite('');
-      setMessage('');
-    }, 1200);
+    }
   };
 
   const getWhatsAppLink = () => {
