@@ -86,13 +86,15 @@ export default function ServiceDetail() {
                 </li>
               ))}
             </ul>
-            <Link
-              to={`/iletisim?service=${serviceKey}`}
+            <a
+              href={`https://wa.me/905394611684?text=${encodeURIComponent(t('services.cta_whatsapp_msg', { service: data.title }))}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full py-4 bg-[#ff6b6b] hover:bg-[#ff5252] text-white text-center rounded-2xl mono text-[10px] font-black tracking-widest uppercase hover:scale-102 transition-all flex items-center justify-center gap-2 mt-4"
             >
               {i18n.language === 'tr' ? 'TEKLİF AL / İLETİŞİME GEÇ' : i18n.language === 'ar' ? 'احصل على عرض' : 'GET QUOTE / CONNECT'}
               <ArrowUpRight size={14} />
-            </Link>
+            </a>
           </div>
         </div>
 
