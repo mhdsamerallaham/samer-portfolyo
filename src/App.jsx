@@ -9,6 +9,7 @@ import './i18n';
 // Components & Pages
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import ServicesOverview from './pages/ServicesOverview';
 import ServiceDetail from './pages/ServiceDetail';
@@ -104,6 +105,9 @@ function App() {
 
       {/* Global rich footer */}
       <Footer />
+
+      {/* Floating WhatsApp chat widget */}
+      <WhatsAppButton />
     </div>
   );
 }
