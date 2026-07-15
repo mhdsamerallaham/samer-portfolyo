@@ -160,13 +160,20 @@ module.exports = async (req, res) => {
       { path: "/eticaret-site-kurulumu", name_tr: "E-Ticaret Site Kurulumu", name_en: "E-Commerce Site Setup", name_ar: "إنشاء موقع تجارة إلكترونية" },
       { path: "/eticaret-optimizasyon", name_tr: "E-Ticaret Optimizasyon", name_en: "E-Commerce Optimization", name_ar: "تحسين التجارة الإلكترونية" },
       { path: "/urun-gorsel-ve-icerik", name_tr: "Ürün Görsel ve İçerik", name_en: "Product Images and Content", name_ar: "صور ومحتوى المنتجات" },
-      { path: "/stok-ve-depo-sistemi", name_tr: "Stok ve Depo Sistemleri", name_en: "Stock & Warehouse Systems", name_ar: "أنظمة المخزون والمستودعات" }
+      { path: "/stok-ve-depo-sistemi", name_tr: "Stok ve Depo Sistemleri", name_en: "Stock & Warehouse Systems", name_ar: "أنظمة المخزون والمستودعات" },
+      { path: "/web-sitesi-gelistirme", name_tr: "Kurumsal & Kişisel Web Sitesi Geliştirme", name_en: "Corporate & Personal Website Development", name_ar: "تطوير المواقع المؤسسية والشخصية" },
+      { path: "/ozel-yazilim-gelistirme", name_tr: "Özel Yazılım & API Geliştirme", name_en: "Custom Software & API Development", name_ar: "تطوير البرمجيات المخصصة وواجهات API" },
+      { path: "/yapay-zeka-cozumleri", name_tr: "Yapay Zeka Entegrasyonu & Chatbot Çözümleri", name_en: "AI Integration & Chatbot Solutions", name_ar: "تكامل الذكاء الاصطناعي وحلول الشات بوت" }
     ];
 
     // 3. Step 1: Content Gap Analysis & Turkish Blog Generation
     const trPrompt = `
-      You are an expert e-commerce and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
+      You are an expert e-commerce, software development, and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
       Then, write a brand new, premium, human-like Turkish blog post that covers this gap.
+      Topics can be about e-commerce (Shopify, İKAS, conversion optimization, product photography, stock management), 
+      OR about software development (React, Next.js, Node.js, API development, web applications, SaaS, database design),
+      OR about AI & technology (chatbots, GPT integration, automation, AI tools for business).
+      Alternate between these topic areas to ensure diverse, high-quality content coverage.
       
       Existing Blog Posts:
       ${JSON.stringify(blogContextList, null, 2)}

@@ -10,7 +10,8 @@ export default function About() {
   const skillGroups = [
     { title: i18n.language === 'tr' ? 'E-Ticaret' : i18n.language === 'ar' ? 'التجارة الإلكترونية' : 'E-Commerce', items: ['Shopify Liquid', 'İKAS API', 'Custom Checkout', 'Payment Integration', 'SEO Auditing'] },
     { title: i18n.language === 'tr' ? 'Arka Yüz & Otomasyon' : i18n.language === 'ar' ? 'الخلفية والأتمتة' : 'Backend & Automation', items: ['Node.js', 'Python', 'RESTful APIs', 'Webhooks', 'ERP Sync'] },
-    { title: i18n.language === 'tr' ? 'Ön Yüz & Tasarım' : i18n.language === 'ar' ? 'الواجهات والتصميم' : 'Frontend & Design', items: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Responsive UX'] }
+    { title: i18n.language === 'tr' ? 'Ön Yüz & Tasarım' : i18n.language === 'ar' ? 'الواجهات والتصميم' : 'Frontend & Design', items: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Responsive UX'] },
+    { title: i18n.language === 'tr' ? 'AI & Yapay Zeka' : i18n.language === 'ar' ? 'الذكاء الاصطناعي' : 'AI & Machine Learning', items: ['GPT / Gemini API', 'Chatbot Development', 'Prompt Engineering', 'AI Automation', 'Data Analysis'] }
   ];
 
   return (
@@ -60,7 +61,7 @@ export default function About() {
 
         {/* Technical Focus Grid */}
         <div className="mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skillGroups.map((group, i) => (
               <div key={i} className="bg-[#131b2e] border border-white/5 rounded-3xl p-8 flex flex-col gap-6">
                 <h3 className="text-lg font-black text-white flex items-center gap-2">

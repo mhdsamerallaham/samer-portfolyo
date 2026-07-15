@@ -91,6 +91,9 @@ function App() {
           <Route path="/urun-gorsel-ve-icerik" element={<ServiceDetail />} />
           <Route path="/stok-ve-depo-sistemi" element={<ServiceDetail />} />
           <Route path="/aylik-yonetim" element={<ServiceDetail />} />
+          <Route path="/web-sitesi-gelistirme" element={<ServiceDetail />} />
+          <Route path="/ozel-yazilim-gelistirme" element={<ServiceDetail />} />
+          <Route path="/yapay-zeka-cozumleri" element={<ServiceDetail />} />
 
           {/* Success studies, bio about, blog listing and contact form */}
           <Route path="/basari-hikayeleri" element={<CaseStudies />} />

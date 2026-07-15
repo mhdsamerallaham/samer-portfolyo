@@ -10,7 +10,10 @@ const routeToKeyMap = {
   '/eticaret-optimizasyon': 'optimizasyon',
   '/urun-gorsel-ve-icerik': 'urun-gorsel',
   '/stok-ve-depo-sistemi': 'stok-depo',
-  '/aylik-yonetim': 'aylik-yonetim'
+  '/aylik-yonetim': 'aylik-yonetim',
+  '/web-sitesi-gelistirme': 'web-gelistirme',
+  '/ozel-yazilim-gelistirme': 'ozel-yazilim',
+  '/yapay-zeka-cozumleri': 'yapay-zeka'
 };
 
 export default function ServiceDetail() {

@@ -123,6 +123,63 @@
                     "how_works": "1. Defining monthly growth goals, 2. Weekly updates execution, 3. Resolving technical errors, 4. Performance check-ins.",
                     "example": "Managing weekly catalog updates, campaign banners, and regular speed tune-ups for a fashion retailer."
                 }
+            },
+            "web-gelistirme": {
+                "title": "Corporate & Personal Website Development",
+                "price": "30,000 – 65,000 TL",
+                "badge": "React & Next.js",
+                "desc": "Fast, modern, and SEO-optimized corporate websites, portfolio sites, and single-page applications built with React, Next.js, or custom code.",
+                "features": [
+                    "Modern and fast web applications with React / Next.js",
+                    "Fully responsive (mobile-friendly) and SEO-optimized structure",
+                    "Admin panel or content management system (CMS) integration",
+                    "Multi-language (i18n) support and RTL compatibility",
+                    "Hosting, domain, and SSL setup support"
+                ],
+                "ai_desc": {
+                    "definition": "Custom-built, fast, and SEO-friendly websites and applications developed from scratch using modern frameworks like React and Next.js for businesses and individuals.",
+                    "for_whom": "Companies needing corporate websites, professionals wanting personal portfolio sites, and brands looking to migrate to modern technologies.",
+                    "how_works": "1. Requirements analysis and wireframe design, 2. UI/UX design approval, 3. Development with React/Next.js, 4. CMS and admin panel integration, 5. Testing, optimization, and deployment.",
+                    "example": "Building a law firm's corporate website with Next.js, integrating a blog system, and adding multi-language support."
+                }
+            },
+            "ozel-yazilim": {
+                "title": "Custom Software & API Development",
+                "price": "35,000 – 95,000 TL",
+                "badge": "Full-Stack",
+                "desc": "Custom backend systems, RESTful APIs, automation software, CRM/ERP integrations, and SaaS products tailored to your business needs.",
+                "features": [
+                    "Custom backend and API development with Node.js / Python",
+                    "Database design (PostgreSQL, MongoDB, Supabase)",
+                    "Third-party integrations (Payment, Shipping, ERP, CRM)",
+                    "Automation bots and scheduled tasks (Cron jobs)",
+                    "Technical documentation and maintenance support"
+                ],
+                "ai_desc": {
+                    "definition": "Custom software solutions, API services, and integration projects built from scratch to digitize and automate business operational processes.",
+                    "for_whom": "Companies wanting to automate manual processes, businesses needing to connect different systems, and entrepreneurs building custom SaaS products.",
+                    "how_works": "1. Business process analysis and technical specification, 2. Database and API architecture design, 3. Backend development and integration, 4. Testing and deployment, 5. Documentation and maintenance.",
+                    "example": "Developing an order tracking system for a logistics company using Node.js and integrating it with Trendyol/Hepsiburada APIs."
+                }
+            },
+            "yapay-zeka": {
+                "title": "AI Integration & Chatbot Solutions",
+                "price": "25,000 – 55,000 TL",
+                "badge": "AI & Automation",
+                "desc": "Integrating AI technologies into your websites and business workflows. Building AI chatbots, smart recommendation engines, and automated content generation tools.",
+                "features": [
+                    "GPT/Gemini-powered smart customer support chatbots",
+                    "Product recommendation and personalization engines",
+                    "Automated SEO content generation systems",
+                    "AI-powered data analysis and reporting tools",
+                    "WhatsApp and website chatbot integration"
+                ],
+                "ai_desc": {
+                    "definition": "Smart software solutions that use AI APIs (GPT, Gemini, Claude) to automate customer service, content creation, and decision-making processes for businesses.",
+                    "for_whom": "Companies looking to reduce customer support costs, brands wanting to automate content production, and businesses seeking competitive advantage through AI.",
+                    "how_works": "1. Defining use cases, 2. AI model selection and prompt engineering, 3. API integration and chatbot development, 4. Testing and fine-tuning, 5. Deployment and training.",
+                    "example": "Integrating a GPT-based smart customer support chatbot into an e-commerce site and developing a product recommendation engine."
+                }
             }
         }
     },

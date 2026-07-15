@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, ArrowUpRight, ShieldCheck, Zap, Globe, BarChart, Settings } from 'lucide-react';
+import { Check, ArrowUpRight, ShieldCheck, Zap, Globe, BarChart, Settings, Code2, Cpu, Bot } from 'lucide-react';
 
 export default function ServiceCard({ serviceKey, serviceData, recommended = false }) {
   const { t } = useTranslation();
@@ -10,7 +10,10 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
     'optimizasyon': '/eticaret-optimizasyon',
     'urun-gorsel': '/urun-gorsel-ve-icerik',
     'stok-depo': '/stok-ve-depo-sistemi',
-    'aylik-yonetim': '/aylik-yonetim'
+    'aylik-yonetim': '/aylik-yonetim',
+    'web-gelistirme': '/web-sitesi-gelistirme',
+    'ozel-yazilim': '/ozel-yazilim-gelistirme',
+    'yapay-zeka': '/yapay-zeka-cozumleri'
   };
 
   const iconMap = {
@@ -18,7 +21,10 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
     'optimizasyon': <Zap className="text-accent" size={24} />,
     'urun-gorsel': <ShieldCheck className="text-accent" size={24} />,
     'stok-depo': <Settings className="text-accent" size={24} />,
-    'aylik-yonetim': <BarChart className="text-accent" size={24} />
+    'aylik-yonetim': <BarChart className="text-accent" size={24} />,
+    'web-gelistirme': <Code2 className="text-accent" size={24} />,
+    'ozel-yazilim': <Cpu className="text-accent" size={24} />,
+    'yapay-zeka': <Bot className="text-accent" size={24} />
   };
 
   const path = slugMap[serviceKey] || '/hizmetler';

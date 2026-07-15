@@ -6,7 +6,7 @@ import ServiceCard from '../components/ServiceCard';
 
 export default function ServicesOverview() {
   const { t, i18n } = useTranslation();
-  const servicesKeys = ['site-kurulumu', 'optimizasyon', 'urun-gorsel', 'stok-depo', 'aylik-yonetim'];
+  const servicesKeys = ['site-kurulumu', 'optimizasyon', 'urun-gorsel', 'stok-depo', 'aylik-yonetim', 'web-gelistirme', 'ozel-yazilim', 'yapay-zeka'];
 
   return (
     <div className="pt-32 pb-24 text-white min-h-screen">

@@ -9,7 +9,7 @@ import ContactForm from '../components/ContactForm';
 export default function Home() {
   const { t, i18n } = useTranslation();
 
-  const servicesKeys = ['site-kurulumu', 'optimizasyon', 'urun-gorsel', 'stok-depo', 'aylik-yonetim'];
+  const servicesKeys = ['site-kurulumu', 'optimizasyon', 'urun-gorsel', 'stok-depo', 'aylik-yonetim', 'web-gelistirme', 'ozel-yazilim', 'yapay-zeka'];
   const caseStudies = t('case_studies.items', { returnObjects: true }) || [];
 
   return (
@@ -38,7 +38,7 @@ export default function Home() {
 
             {/* Dominant H1 Headline */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] text-white">
-              {i18n.language === 'tr' ? 'E-Ticaret Sistemleri & Büyüme Uzmanı' : i18n.language === 'ar' ? 'أخصائي أنظمة التجارة والنمو' : 'E-Commerce Systems & Growth Specialist'}
+              {i18n.language === 'tr' ? 'E-Ticaret & Yazılım Çözümleri Uzmanı' : i18n.language === 'ar' ? 'أخصائي التجارة الإلكترونية وحلول البرمجيات' : 'E-Commerce & Software Solutions Expert'}
             </h1>
 
             {/* Short Subheadline */}
@@ -73,6 +73,10 @@ export default function Home() {
                 <span>React</span>
                 <span className="text-accent">•</span>
                 <span>Next.js</span>
+                <span className="text-accent">•</span>
+                <span>Full-Stack Dev</span>
+                <span className="text-accent">•</span>
+                <span>AI Solutions</span>
               </div>
             </div>
 

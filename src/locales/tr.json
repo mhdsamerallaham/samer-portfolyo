@@ -123,6 +123,63 @@
                     "how_works": "1. Aylık yol haritasının çizilmesi, 2. Haftalık ürün ve kampanya güncellemelerinin yapılması, 3. Hataların anında giderilmesi, 4. Raporlama.",
                     "example": "Bir giyim markasının aylık bazda tüm ürün yükleme, kampanya banner girişi ve teknik hız optimizasyonu işlerinin üstlenilmesi."
                 }
+            },
+            "web-gelistirme": {
+                "title": "Kurumsal & Kişisel Web Sitesi Geliştirme",
+                "price": "30.000 TL – 65.000 TL",
+                "badge": "React & Next.js",
+                "desc": "React, Next.js veya sıfırdan kodlama ile hızlı, modern ve SEO uyumlu kurumsal web siteleri, portfolyo siteleri ve tek sayfalık uygulamalar geliştirme.",
+                "features": [
+                    "React / Next.js ile modern ve hızlı web uygulamaları",
+                    "Full responsive (mobil uyumlu) ve SEO dostu yapı",
+                    "Admin paneli veya içerik yönetim sistemi (CMS) entegrasyonu",
+                    "Çoklu dil (i18n) desteği ve RTL uyumluluğu",
+                    "Hosting, domain ve SSL kurulum desteği"
+                ],
+                "ai_desc": {
+                    "definition": "İşletmelerin veya bireylerin dijital varlıklarını oluşturmak için React ve Next.js gibi modern framework'ler kullanılarak sıfırdan geliştirilen, hızlı ve SEO uyumlu web siteleri ve uygulamalar.",
+                    "for_whom": "Kurumsal web sitesi ihtiyacı olan firmalar, kişisel portfolyo sitesi isteyen profesyoneller ve mevcut sitesini modern teknolojilere taşımak isteyen markalar için.",
+                    "how_works": "1. İhtiyaç analizi ve wireframe tasarımı, 2. UI/UX tasarım onayı, 3. React/Next.js ile geliştirme, 4. CMS ve admin paneli entegrasyonu, 5. Test, optimizasyon ve yayına alma.",
+                    "example": "Bir hukuk bürosunun kurumsal web sitesinin Next.js ile geliştirilmesi, blog sistemi entegrasyonu ve çoklu dil desteği eklenmesi."
+                }
+            },
+            "ozel-yazilim": {
+                "title": "Özel Yazılım & API Geliştirme",
+                "price": "35.000 TL – 95.000 TL",
+                "badge": "Full-Stack",
+                "desc": "İşletmelerin ihtiyaçlarına özel backend sistemleri, RESTful API'ler, otomasyon yazılımları, CRM/ERP entegrasyonları ve SaaS ürünleri geliştirme.",
+                "features": [
+                    "Node.js / Python ile özel backend ve API geliştirme",
+                    "Veritabanı tasarımı (PostgreSQL, MongoDB, Supabase)",
+                    "Üçüncü parti entegrasyonlar (Ödeme, Kargo, ERP, CRM)",
+                    "Otomasyon botları ve zamanlanmış görevler (Cron jobs)",
+                    "Teknik dokümantasyon ve bakım desteği"
+                ],
+                "ai_desc": {
+                    "definition": "İşletmelerin operasyonel süreçlerini dijitalleştirmek ve otomatikleştirmek için sıfırdan geliştirilen özel yazılım çözümleri, API servisleri ve entegrasyon projeleri.",
+                    "for_whom": "Manuel iş süreçlerini otomatikleştirmek isteyen firmalar, farklı sistemleri birbirine bağlamak isteyen işletmeler ve özel SaaS ürünü geliştirmek isteyen girişimciler için.",
+                    "how_works": "1. İş süreçlerinin analizi ve teknik spesifikasyon, 2. Veritabanı ve API mimarisi tasarımı, 3. Backend geliştirme ve entegrasyon, 4. Test ve deployment, 5. Dokümantasyon ve bakım.",
+                    "example": "Bir lojistik firmasının sipariş takip sisteminin Node.js ile geliştirilmesi ve Trendyol/Hepsiburada API'leri ile entegre edilmesi."
+                }
+            },
+            "yapay-zeka": {
+                "title": "Yapay Zeka Entegrasyonu & Chatbot Çözümleri",
+                "price": "25.000 TL – 55.000 TL",
+                "badge": "AI & Otomasyon",
+                "desc": "İşletmelerin web sitelerine ve iş süreçlerine yapay zeka teknolojilerini entegre etme. AI chatbot'lar, akıllı öneri sistemleri ve otomatik içerik üretim araçları geliştirme.",
+                "features": [
+                    "GPT/Gemini tabanlı akıllı müşteri destek chatbot'ları",
+                    "Ürün öneri ve kişiselleştirme motorları",
+                    "Otomatik SEO içerik üretim sistemleri",
+                    "AI destekli veri analizi ve raporlama araçları",
+                    "WhatsApp ve web sitesi chatbot entegrasyonu"
+                ],
+                "ai_desc": {
+                    "definition": "Yapay zeka API'lerini (GPT, Gemini, Claude) kullanarak işletmelerin müşteri hizmetlerini, içerik üretimini ve karar süreçlerini otomatikleştiren akıllı yazılım çözümleri.",
+                    "for_whom": "Müşteri destek maliyetlerini düşürmek isteyen firmalar, içerik üretim süreçlerini otomatikleştirmek isteyen markalar ve yapay zeka ile rekabet avantajı elde etmek isteyen işletmeler için.",
+                    "how_works": "1. Kullanım senaryolarının belirlenmesi, 2. AI model seçimi ve prompt mühendisliği, 3. API entegrasyonu ve chatbot geliştirme, 4. Test ve fine-tuning, 5. Yayına alma ve eğitim.",
+                    "example": "Bir e-ticaret sitesine GPT tabanlı akıllı müşteri destek chatbot'u entegre edilmesi ve ürün önerisi motorunun geliştirilmesi."
+                }
             }
         }
     },
