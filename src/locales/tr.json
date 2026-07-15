@@ -189,19 +189,19 @@
         "results": "Alınan Sonuçlar",
         "items": [
             {
-                "client": "Kahve Markası (AIO Coffee)",
-                "metric": "+35% Dönüşüm Artışı",
-                "desc": "Shopify altyapısı üzerine kurulan custom checkout ve sepet optimizasyonları sayesinde alışverişi tamamlama oranı %35 artırıldı."
+                "client": "E-Ticaret Girişimi (Emma's Studio de Mode)",
+                "metric": "Sınır Ötesi E-Ticaret & 5+ İstihdam",
+                "desc": "Türkiye'den Mısır pazarına yönelik online alışveriş altyapısı kurularak operasyonlar uzaktan yönetildi ve 5 personelli bir yapıya ulaştırıldı."
             },
             {
-                "client": "Moda & Giyim Markası",
-                "metric": "Mobil Hız Skoru 45 -> 98",
-                "desc": "İKAS altyapısına geçiş ve görsel optimizasyon süreçleriyle sayfa yüklenme hızı 1.1 saniyeye indirildi, SEO trafiği katlandı."
+                "client": "Kahve Zinciri (AIO Coffee)",
+                "metric": "Merkezi Reçete & Menü Entegrasyonu",
+                "desc": "Tüm şubelerdeki menü ve ürün içeriklerinin tutarlılığını sağlamak için merkezi veri yapısı kurularak operasyonel verimlilik artırıldı."
             },
             {
-                "client": "Lojistik & Çoklu Pazar Satıcısı",
-                "metric": "%90 Daha Az Manuel Stok Hatası",
-                "desc": "Node.js ve Python tabanlı entegrasyon otomasyonu ile pazaryerleri ve e-ticaret sitesi stokları anlık senkronize edildi."
+                "client": "Yapay Zeka Analitik Yazılımı (InsightAI)",
+                "metric": "15+ Makine Öğrenmesi Algoritması",
+                "desc": "React ve Flask ile geliştirilen, multi-provider yapay zeka destekli platform sayesinde işletmelerin karar alma süreçleri hızlandırıldı."
             }
         ]
     },

@@ -189,19 +189,19 @@
         "results": "Results Achieved",
         "items": [
             {
-                "client": "Specialty Coffee Brand (AIO Coffee)",
-                "metric": "+35% Conversion Increase",
-                "desc": "Custom cart flows and one-page checkout optimization built on Shopify increased overall purchases by 35%."
+                "client": "E-Commerce Startup (Emma's Studio de Mode)",
+                "metric": "Cross-Border Scaling & 5+ Employees",
+                "desc": "Launched a remote cross-border e-commerce brand scaling from Turkey to Egypt, successfully managing all digital operations and growing the team to 5 members."
             },
             {
-                "client": "Fashion & Clothing Retailer",
-                "metric": "Mobile Score 45 -> 98",
-                "desc": "Migrating to İKAS alongside visual styling optimization reduced load times to 1.1 seconds, doubling search engine traffic."
+                "client": "Coffee Chain (AIO Coffee)",
+                "metric": "Centralized Menu & Recipe Standardisation",
+                "desc": "Designed a centralized product and recipe database to standardize menu content across all branch locations, streamlining updates and operational overhead."
             },
             {
-                "client": "High-Volume Marketplace Seller",
-                "metric": "90% Less Stock Errors",
-                "desc": "Node.js and Python middleware synced inventory levels in real-time between local ERP systems and multiple marketplaces."
+                "client": "AI Analytics Platform (InsightAI)",
+                "metric": "15+ Machine Learning Models Integrated",
+                "desc": "Developed a full-stack platform using React, Flask, and multiple AI providers to automate business data analysis and accelerate strategic decisions."
             }
         ]
     },
