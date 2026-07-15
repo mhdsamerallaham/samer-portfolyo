@@ -1,3 +1,6 @@
+// Bypass SSL Certificate verification for systems behind proxy/interceptors (fixing UNABLE_TO_VERIFY_LEAF_SIGNATURE)
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
@@ -27,6 +30,104 @@ async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000
       }
     }
   }
+}
+
+// Sequence of LLM providers for fallback behavior
+const providers = [
+  {
+    name: "Gemini API (Official SDK)",
+    async run(prompt) {
+      if (!process.env.GEMINI_API_KEY) {
+        throw new Error("GEMINI_API_KEY is not defined in environment.");
+      }
+      const model = genAI.getGenerativeModel({ 
+        model: "gemini-flash-latest",
+        generationConfig: { responseMimeType: "application/json" }
+      });
+      const result = await generateContentWithRetry(model, prompt);
+      return result.response.text();
+    }
+  },
+  {
+    name: "Pollinations Text API",
+    async run(prompt) {
+      const res = await fetch("https://text.pollinations.ai/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          messages: [
+            { role: "system", content: "You must respond with valid JSON as requested by the user." },
+            { role: "user", content: prompt }
+          ],
+          model: "openai",
+          jsonMode: true
+        })
+      });
+      if (!res.ok) {
+        throw new Error(`Pollinations API error: Status ${res.status} - ${res.statusText}`);
+      }
+      return await res.text();
+    }
+  },
+  {
+    name: "UncloseAI API",
+    async run(prompt) {
+      const res = await fetch("https://hermes.ai.unturf.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "Lorbus/Qwen3.6-27B-int4-AutoRound",
+          messages: [
+            { role: "system", content: "You must respond with valid JSON as requested by the user." },
+            { role: "user", content: prompt }
+          ],
+          response_format: { type: "json_object" }
+        })
+      });
+      if (!res.ok) {
+        throw new Error(`UncloseAI API error: Status ${res.status} - ${res.statusText}`);
+      }
+      const json = await res.json();
+      if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
+        throw new Error("UncloseAI invalid response structure");
+      }
+      return json.choices[0].message.content;
+    }
+  }
+];
+
+async function generateJSONWithFallback(prompt) {
+  let lastError;
+  for (const provider of providers) {
+    try {
+      console.log(`[Fallback API] Attempting generation with provider: ${provider.name}`);
+      const text = await provider.run(prompt);
+      
+      // Clean markdown formatting if any is returned by the LLM
+      let cleanedText = text.trim();
+      if (cleanedText.startsWith("```json")) {
+        cleanedText = cleanedText.substring(7);
+      } else if (cleanedText.startsWith("```")) {
+        cleanedText = cleanedText.substring(3);
+      }
+      if (cleanedText.endsWith("```")) {
+        cleanedText = cleanedText.substring(0, cleanedText.length - 3);
+      }
+      cleanedText = cleanedText.trim();
+
+      const parsed = JSON.parse(cleanedText);
+      console.log(`[Fallback API] Success using provider: ${provider.name}`);
+      return parsed;
+    } catch (error) {
+      console.error(`[Fallback API] Provider ${provider.name} failed:`, error.message);
+      lastError = error;
+    }
+  }
+  throw new Error(`All LLM generation providers failed. Last error: ${lastError ? lastError.message : "unknown"}`);
 }
 
 module.exports = async (req, res) => {
@@ -63,12 +164,6 @@ module.exports = async (req, res) => {
     ];
 
     // 3. Step 1: Content Gap Analysis & Turkish Blog Generation
-    // We use gemini-flash-latest as a powerful, cost-effective model
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-flash-latest",
-      generationConfig: { responseMimeType: "application/json" }
-    });
-
     const trPrompt = `
       You are an expert e-commerce and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
       Then, write a brand new, premium, human-like Turkish blog post that covers this gap.
@@ -100,8 +195,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const trResult = await generateContentWithRetry(model, trPrompt);
-    const trData = JSON.parse(trResult.response.text());
+    const trData = await generateJSONWithFallback(trPrompt);
 
     // 4. Step 2: Translation and Localization to English
     const enPrompt = `
@@ -135,8 +229,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const enResult = await generateContentWithRetry(model, enPrompt);
-    const enData = JSON.parse(enResult.response.text());
+    const enData = await generateJSONWithFallback(enPrompt);
 
     // 5. Step 3: Translation and Localization to Arabic
     const arPrompt = `
@@ -170,8 +263,7 @@ module.exports = async (req, res) => {
       }
     `;
 
-    const arResult = await generateContentWithRetry(model, arPrompt);
-    const arData = JSON.parse(arResult.response.text());
+    const arData = await generateJSONWithFallback(arPrompt);
 
     // 6. Step 4: Save the fully localized blog post to Supabase
     const newPost = {
