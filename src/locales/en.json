@@ -31,6 +31,7 @@
         "subtitle": "Tailored solutions designed to automate your business growth and scale your sales.",
         "cta_card": "Examine Details",
         "cta_contact": "Get Quote Now",
+        "cta_whatsapp_msg": "Hello Samer, I would like to get information and a quote about your \"{{service}}\" service.",
         "items": {
             "site-kurulumu": {
                 "title": "E-Commerce Website Setup",

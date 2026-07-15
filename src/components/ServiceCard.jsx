@@ -86,13 +86,15 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
         >
           {t('services.cta_card')}
         </Link>
-        <Link
-          to={`/iletisim?service=${serviceKey}`}
+        <a
+          href={`https://wa.me/905394611684?text=${encodeURIComponent(t('services.cta_whatsapp_msg', { service: serviceData.title }))}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="py-3 bg-accent hover:bg-accent-hover text-white text-center rounded-xl mono text-[9px] font-black tracking-widest uppercase hover:scale-102 transition-all flex items-center justify-center gap-1.5"
         >
           {t('services.cta_contact')}
           <ArrowUpRight size={12} />
-        </Link>
+        </a>
       </div>
 
     </div>
