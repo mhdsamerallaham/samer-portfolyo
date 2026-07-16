@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Blog() {
   const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { slug } = useParams();
   const [activeArticle, setActiveArticle] = useState(null);
   const [dynamicArticles, setDynamicArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,9 +42,9 @@ export default function Blog() {
     };
   }, [i18n.language]);
 
-  // Deep-linking from query parameter ?post=slug
+  // Deep-linking from path-based slug or query parameter ?post=slug
   useEffect(() => {
-    const postSlug = searchParams.get('post');
+    const postSlug = slug || searchParams.get('post');
     if (postSlug && articles.length > 0) {
       const match = articles.find((a) => a.slug === postSlug || a.id === postSlug);
       if (match) {
@@ -53,14 +55,14 @@ export default function Blog() {
     } else {
       setActiveArticle(null);
     }
-  }, [searchParams, articles]);
+  }, [slug, searchParams, articles]);
 
   const handleSelectArticle = (article) => {
-    setSearchParams({ post: article.slug || article.id });
+    navigate(`/blog/${article.slug || article.id}`);
   };
 
   const handleBackToBlog = () => {
-    setSearchParams({});
+    navigate('/blog');
   };
 
   if (activeArticle) {
@@ -70,6 +72,12 @@ export default function Blog() {
           title={activeArticle.seo_title || activeArticle.title}
           description={activeArticle.seo_description || activeArticle.summary}
           keywords="shopify, ikas, e-ticaret satış artırma, e-ticaret seo"
+          article={{
+            title: activeArticle.title,
+            description: activeArticle.seo_description || activeArticle.summary,
+            slug: activeArticle.slug || activeArticle.id,
+            date: activeArticle.date
+          }}
         />
 
         <div className="max-w-[800px] mx-auto px-6 md:px-12">

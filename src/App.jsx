@@ -98,6 +98,7 @@ function App() {
           {/* Success studies, bio about, blog listing and contact form */}
           <Route path="/basari-hikayeleri" element={<CaseStudies />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Blog />} />
           <Route path="/hakkimda" element={<About />} />
           <Route path="/iletisim" element={<Contact />} />
 
