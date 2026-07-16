@@ -54,7 +54,7 @@ function slugify(text) {
 // Sequence of LLM providers for fallback behavior
 const providers = [
   {
-    name: "OpenRouter API (Llama 3 8B Free)",
+    name: "OpenRouter API (Dynamic Free Router)",
     async run(prompt) {
       const apiKey = process.env.OPENROUTER_API_KEY;
       if (!apiKey) {
@@ -69,7 +69,7 @@ const providers = [
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "meta-llama/llama-3-8b-instruct:free",
+          model: "openrouter/free",
           messages: [
             { role: "system", content: "You must respond with valid JSON as requested by the user." },
             { role: "user", content: prompt }
@@ -79,18 +79,18 @@ const providers = [
       });
 
       if (!res.ok) {
-        throw new Error(`OpenRouter API error (Llama): Status ${res.status} - ${res.statusText}`);
+        throw new Error(`OpenRouter API error (Free Router): Status ${res.status} - ${res.statusText}`);
       }
       
       const json = await res.json();
       if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
-        throw new Error("OpenRouter invalid response structure (Llama)");
+        throw new Error("OpenRouter invalid response structure (Free Router)");
       }
       return json.choices[0].message.content;
     }
   },
   {
-    name: "OpenRouter API (Qwen 2.5 72B Free)",
+    name: "OpenRouter API (Llama 3.1 8B Free)",
     async run(prompt) {
       const apiKey = process.env.OPENROUTER_API_KEY;
       if (!apiKey) {
@@ -105,7 +105,7 @@ const providers = [
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "qwen/qwen-2.5-72b-instruct:free",
+          model: "meta-llama/llama-3.1-8b-instruct:free",
           messages: [
             { role: "system", content: "You must respond with valid JSON as requested by the user." },
             { role: "user", content: prompt }
@@ -115,12 +115,12 @@ const providers = [
       });
 
       if (!res.ok) {
-        throw new Error(`OpenRouter API error (Qwen): Status ${res.status} - ${res.statusText}`);
+        throw new Error(`OpenRouter API error (Llama 3.1): Status ${res.status} - ${res.statusText}`);
       }
       
       const json = await res.json();
       if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
-        throw new Error("OpenRouter invalid response structure (Qwen)");
+        throw new Error("OpenRouter invalid response structure (Llama 3.1)");
       }
       return json.choices[0].message.content;
     }
@@ -149,7 +149,7 @@ const providers = [
         },
         body: JSON.stringify({
           messages: [
-            { role: "system", content: "You must respond with valid JSON as requested by the user." },
+            { role: "system", content: "You must respond with valid JSON as requested by the user. Keep your responses concise (limit to 500 words maximum) to prevent truncation errors." },
             { role: "user", content: prompt }
           ],
           model: "openai",
