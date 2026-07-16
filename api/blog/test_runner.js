@@ -4,7 +4,8 @@ const handler = require('./generate.js');
 const req = {
   headers: {
     authorization: 'Bearer local_cron_secret_key_123'
-  }
+  },
+  query: {}
 };
 
 const res = {

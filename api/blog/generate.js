@@ -41,7 +41,7 @@ const providers = [
         throw new Error("GEMINI_API_KEY is not defined in environment.");
       }
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-flash-latest",
+        model: "gemini-1.5-flash",
         generationConfig: { responseMimeType: "application/json" }
       });
       const result = await generateContentWithRetry(model, prompt);
@@ -133,7 +133,14 @@ async function generateJSONWithFallback(prompt) {
 module.exports = async (req, res) => {
   // 1. Authorization Check (for secure cron job execution)
   const authHeader = req.headers.authorization;
-  if (!authHeader || authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  const secretParam = req.query?.secret;
+  
+  const isAuthorized = 
+    (authHeader === `Bearer ${process.env.CRON_SECRET}`) ||
+    (secretParam === process.env.CRON_SECRET) ||
+    (process.env.NODE_ENV === 'development');
+
+  if (!isAuthorized) {
     return res.status(401).json({ error: "Unauthorized access" });
   }
 
