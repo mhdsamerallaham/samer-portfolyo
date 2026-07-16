@@ -32,6 +32,25 @@ async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000
   }
 }
 
+// Helper to generate slug from text if AI fails to return it
+function slugify(text) {
+  if (!text) return "";
+  const trMap = {
+    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+    'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u'
+  };
+  let str = text.toString();
+  for (const char in trMap) {
+    str = str.replaceAll(char, trMap[char]);
+  }
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 -]/g, '')     // Remove non-alphanumeric chars
+    .replace(/\s+/g, '-')            // Replace spaces with -
+    .replace(/-+/g, '-');            // Replace multiple dashes with single
+}
+
 // Sequence of LLM providers for fallback behavior
 const providers = [
   {
@@ -279,31 +298,39 @@ module.exports = async (req, res) => {
 
     const arData = await generateJSONWithFallback(arPrompt);
 
+    // Ensure title and slug exist to satisfy database constraints (fallbacks for non-strict AI models)
+    const titleTr = trData.title_tr || "Otomatik E-Ticaret Blogu";
+    const postSlug = trData.slug || slugify(titleTr);
+    
+    if (!postSlug) {
+      throw new Error("Could not generate a valid slug for the blog post.");
+    }
+
     // 6. Step 4: Save the fully localized blog post to Supabase
     const newPost = {
-      slug: trData.slug,
+      slug: postSlug,
       published_at: new Date().toISOString(),
       
       // Turkish
-      title_tr: trData.title_tr,
-      summary_tr: trData.summary_tr,
-      content_tr: trData.content_tr,
-      seo_title_tr: trData.seo_title_tr,
-      seo_description_tr: trData.seo_description_tr,
+      title_tr: titleTr,
+      summary_tr: trData.summary_tr || "E-ticaret ve dijital büyüme süreçlerine dair ipuçları.",
+      content_tr: trData.content_tr || "<p>Yazı içeriği yüklenemedi.</p>",
+      seo_title_tr: trData.seo_title_tr || titleTr,
+      seo_description_tr: trData.seo_description_tr || (trData.summary_tr || "Açıklama bulunmuyor."),
       
       // English
-      title_en: enData.title_en,
-      summary_en: enData.summary_en,
-      content_en: enData.content_en,
-      seo_title_en: enData.seo_title_en,
-      seo_description_en: enData.seo_description_en,
+      title_en: enData.title_en || titleTr,
+      summary_en: enData.summary_en || (trData.summary_tr || "E-commerce updates."),
+      content_en: enData.content_en || (trData.content_tr || "<p>Content unavailable.</p>"),
+      seo_title_en: enData.seo_title_en || (enData.title_en || titleTr),
+      seo_description_en: enData.seo_description_en || (enData.summary_en || "No description."),
       
       // Arabic
-      title_ar: arData.title_ar,
-      summary_ar: arData.summary_ar,
-      content_ar: arData.content_ar,
-      seo_title_ar: arData.seo_title_ar,
-      seo_description_ar: arData.seo_description_ar
+      title_ar: arData.title_ar || titleTr,
+      summary_ar: arData.summary_ar || (trData.summary_tr || "أحدث المقالات حول التجارة الإلكترونية."),
+      content_ar: arData.content_ar || (trData.content_tr || "<p>المحتوى غير متوفر حالياً.</p>"),
+      seo_title_ar: arData.seo_title_ar || (arData.title_ar || titleTr),
+      seo_description_ar: arData.seo_description_ar || (arData.summary_ar || "لا يوجد وصف.")
     };
 
     const { data: insertedData, error: insertError } = await supabase
