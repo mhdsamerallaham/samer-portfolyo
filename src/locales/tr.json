@@ -368,7 +368,9 @@
         "submitting": "Gönderiliyor...",
         "success": "Mesajınız başarıyla iletildi! En kısa sürede sizinle iletişime geçeceğim.",
         "whatsapp_cta": "Doğrudan WhatsApp'tan yazın",
-        "whatsapp_msg": "Merhaba Samer, e-ticaret projem için görüşmek istiyorum."
+        "whatsapp_msg": "Merhaba Samer, e-ticaret projem için görüşmek istiyorum.",
+        "map_title": "Ofis Konumu",
+        "map_subtitle": "Samer | E-Ticaret & Web Tasarım & Yazılım — İstanbul, Türkiye"
     },
     "projects": {
         "view_source": "KAYNAK_KODU.exe",

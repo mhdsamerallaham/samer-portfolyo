@@ -360,7 +360,9 @@
         "submitting": "Submitting...",
         "success": "Your message was sent successfully! I will get in touch with you shortly.",
         "whatsapp_cta": "Message directly on WhatsApp",
-        "whatsapp_msg": "Hi Samer, I would like to schedule a call for my e-commerce project."
+        "whatsapp_msg": "Hi Samer, I would like to schedule a call for my e-commerce project.",
+        "map_title": "Office Location",
+        "map_subtitle": "Samer | E-Commerce & Web Design & Software — Istanbul, Turkey"
     },
     "projects": {
         "view_source": "VIEW_SOURCE.exe",
