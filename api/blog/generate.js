@@ -324,6 +324,43 @@ module.exports = async (req, res) => {
 
   } catch (error) {
     console.error("Cron Job Error:", error);
+    
+    // Trigger automated EmailJS failure notification
+    try {
+      const serviceId = process.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = process.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
+      
+      if (serviceId && templateId && publicKey) {
+        console.log("[Alert System] Sending automated failure notification email via EmailJS...");
+        await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            service_id: serviceId,
+            template_id: templateId,
+            user_id: publicKey,
+            template_params: {
+              from_name: "Automated Blog Bot Alert",
+              from_email: "bot@samer.life",
+              phone: "N/A",
+              website: "https://www.samer.life",
+              platform: "Vercel Cron Job (6 Hours)",
+              budget: "N/A",
+              message: `HATA ALARMI: Otomatik blog yazısı üretme ve paylaşma botu hata verdi!\n\nHata Mesajı: ${error.message}\n\nTarih: ${new Date().toLocaleString('tr-TR')}`
+            },
+          }),
+        });
+        console.log("[Alert System] Email notification sent successfully.");
+      } else {
+        console.warn("[Alert System] EmailJS credentials missing on environment, skipping failure notification.");
+      }
+    } catch (mailError) {
+      console.error("[Alert System] Failed to send error notification email:", mailError.message);
+    }
+
     return res.status(500).json({
       success: false,
       error: error.message

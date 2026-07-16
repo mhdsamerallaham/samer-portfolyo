@@ -6,7 +6,7 @@
     "backend": "Vercel Serverless Functions (Node.js)",
     "database": "Supabase PostgreSQL Database (Free Tier)",
     "ai_provider": "Google Gemini API (100% Free Tier - gemini-1.5-flash / gemini-2.0-flash)",
-    "scheduler": "Vercel Cron Jobs (12-hour interval)",
+    "scheduler": "Vercel Cron Jobs (6-hour interval)",
     "deployment_platform": "Vercel & Supabase"
   },
   "files": [
@@ -61,7 +61,7 @@
     ]
   },
   "cron": {
-    "schedule": "0 */12 * * *",
+    "schedule": "0 */6 * * *",
     "endpoint": "/api/blog/generate"
   },
   "prompt_templates": {
