@@ -54,6 +54,78 @@ function slugify(text) {
 // Sequence of LLM providers for fallback behavior
 const providers = [
   {
+    name: "OpenRouter API (Llama 3 8B Free)",
+    async run(prompt) {
+      const apiKey = process.env.OPENROUTER_API_KEY;
+      if (!apiKey) {
+        throw new Error("OPENROUTER_API_KEY is not defined in environment.");
+      }
+      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "HTTP-Referer": "https://www.samer.life",
+          "X-OpenRouter-Title": "Samer Portfolio Blog Bot",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "meta-llama/llama-3-8b-instruct:free",
+          messages: [
+            { role: "system", content: "You must respond with valid JSON as requested by the user." },
+            { role: "user", content: prompt }
+          ],
+          response_format: { type: "json_object" }
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error(`OpenRouter API error (Llama): Status ${res.status} - ${res.statusText}`);
+      }
+      
+      const json = await res.json();
+      if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
+        throw new Error("OpenRouter invalid response structure (Llama)");
+      }
+      return json.choices[0].message.content;
+    }
+  },
+  {
+    name: "OpenRouter API (Qwen 2.5 72B Free)",
+    async run(prompt) {
+      const apiKey = process.env.OPENROUTER_API_KEY;
+      if (!apiKey) {
+        throw new Error("OPENROUTER_API_KEY is not defined in environment.");
+      }
+      const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "HTTP-Referer": "https://www.samer.life",
+          "X-OpenRouter-Title": "Samer Portfolio Blog Bot",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "qwen/qwen-2.5-72b-instruct:free",
+          messages: [
+            { role: "system", content: "You must respond with valid JSON as requested by the user." },
+            { role: "user", content: prompt }
+          ],
+          response_format: { type: "json_object" }
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error(`OpenRouter API error (Qwen): Status ${res.status} - ${res.statusText}`);
+      }
+      
+      const json = await res.json();
+      if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
+        throw new Error("OpenRouter invalid response structure (Qwen)");
+      }
+      return json.choices[0].message.content;
+    }
+  },
+  {
     name: "Gemini API (Official SDK)",
     async run(prompt) {
       if (!process.env.GEMINI_API_KEY) {
@@ -88,33 +160,6 @@ const providers = [
         throw new Error(`Pollinations API error: Status ${res.status} - ${res.statusText}`);
       }
       return await res.text();
-    }
-  },
-  {
-    name: "UncloseAI API",
-    async run(prompt) {
-      const res = await fetch("https://hermes.ai.unturf.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "Lorbus/Qwen3.6-27B-int4-AutoRound",
-          messages: [
-            { role: "system", content: "You must respond with valid JSON as requested by the user." },
-            { role: "user", content: prompt }
-          ],
-          response_format: { type: "json_object" }
-        })
-      });
-      if (!res.ok) {
-        throw new Error(`UncloseAI API error: Status ${res.status} - ${res.statusText}`);
-      }
-      const json = await res.json();
-      if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
-        throw new Error("UncloseAI invalid response structure");
-      }
-      return json.choices[0].message.content;
     }
   }
 ];
