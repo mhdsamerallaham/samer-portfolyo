@@ -40,7 +40,7 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24083.552435465197!2d28.9048871743164!3d41.01554000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabbc8ef2bace1%3A0x733784865553cf6a!2zU2FtZXIgfCBFLVRpY2FyZXQgJiBXZWIgVGFzYXLEsW0gJiBZYXrEsWzEsW0!5e0!3m2!1sen!2sus!4v1784210158874!5m2!1sen!2sus"
               width="100%"
               height="100%"
-              style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
+              style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
