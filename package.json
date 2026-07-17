@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.cjs && node scripts/ping_search_engines.cjs",
+    "build": "vite build && node --no-warnings scripts/prerender.cjs && node --no-warnings scripts/ping_search_engines.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
