@@ -15,9 +15,14 @@ async function fetchWithRetry(url, options, retries = 3, delay = 2000) {
   for (let i = 0; i < retries; i++) {
     try {
       const res = await fetch(url, options);
-      if (res.status === 429 || res.status === 503) {
+      // Fallback straight to next model/provider on 429 to prevent wasteful rate-limiting retry delay blocks
+      if (res.status === 429) {
+        console.warn(`[HTTP Fetch] Rate limit (429) encountered. Fast-falling back to next configuration...`);
+        return res; 
+      }
+      if (res.status === 503) {
         if (i < retries - 1) {
-          console.warn(`[HTTP Retry] Status ${res.status}. Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
+          console.warn(`[HTTP Retry] Status 503. Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
           await new Promise(resolve => setTimeout(resolve, delay));
           delay *= 2;
           continue;
@@ -43,10 +48,14 @@ async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000
     try {
       return await model.generateContent(prompt);
     } catch (error) {
-      const isTransient = error.status === 503 || error.status === 429 || 
-                          (error.message && (error.message.includes("503") || error.message.includes("429") || error.message.includes("RESOURCE_EXHAUSTED") || error.message.includes("fetch failed")));
+      if (error.status === 429) {
+        console.warn(`[Gemini SDK] Rate limit (429) encountered. Fast-falling back...`);
+        throw error;
+      }
+      const isTransient = error.status === 503 || 
+                          (error.message && (error.message.includes("503") || error.message.includes("RESOURCE_EXHAUSTED") || error.message.includes("fetch failed")));
       if (isTransient && i < retries - 1) {
-        console.warn(`Gemini API transient error (${error.status || error.message}). Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
+        console.warn(`Gemini API transient error. Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
         await new Promise(resolve => setTimeout(resolve, delay));
         delay *= 2;
       } else {
@@ -54,6 +63,30 @@ async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000
       }
     }
   }
+}
+
+// Helper to dynamically fetch and return the active list of OpenRouter free models
+async function getOpenRouterFreeModels() {
+  try {
+    const res = await fetch("https://openrouter.ai/api/v1/models");
+    if (res.ok) {
+      const json = await res.json();
+      const freeModels = json.data
+        .filter(m => m.id.endsWith(':free'))
+        .map(m => m.id);
+      if (freeModels.length > 0) {
+        console.log(`[OpenRouter] Dynamically found ${freeModels.length} free models.`);
+        return freeModels;
+      }
+    }
+  } catch (err) {
+    console.warn("[OpenRouter] Failed to fetch free models list dynamically:", err.message);
+  }
+  // Hardcoded fallback list if the API request fails
+  return [
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "qwen/qwen-2.5-72b-instruct:free"
+  ];
 }
 
 // Helper to safely clean up Markdown block tags and repair incomplete JSON responses (unterminated strings)
@@ -125,30 +158,58 @@ function slugify(text) {
 // Sequence of LLM providers for fallback behavior
 const providers = [
   {
-    name: "OpenRouter API (Rotated Free Models with Backoff)",
+    name: "Gemini API (Direct Key - Model Rotator)",
     async run(prompt) {
-      const apiKey = process.env.OPENROUTER_API_KEY;
-      if (!apiKey) {
-        throw new Error("OPENROUTER_API_KEY is not defined in environment.");
+      if (!process.env.GEMINI_API_KEY) {
+        throw new Error("GEMINI_API_KEY is not defined in environment.");
       }
-
-      // Rotate between multiple active free models to prevent 404/403 errors
       const modelsToTry = [
-        "meta-llama/llama-3.3-70b-instruct:free",
-        "qwen/qwen-2.5-72b-instruct:free",
-        "google/gemini-2.0-flash-exp:free"
+        "gemini-2.5-flash",
+        "gemini-1.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-2.0-flash"
+      ];
+      
+      let lastError;
+      for (const modelName of modelsToTry) {
+        try {
+          console.log(`[Gemini SDK] Attempting model: ${modelName}`);
+          const model = genAI.getGenerativeModel({ 
+            model: modelName,
+            generationConfig: { responseMimeType: "application/json" }
+          });
+          const result = await generateContentWithRetry(model, prompt);
+          return result.response.text();
+        } catch (err) {
+          console.warn(`[Gemini SDK] Model ${modelName} failed:`, err.message);
+          lastError = err;
+        }
+      }
+      throw new Error(`All Gemini models failed. Last error: ${lastError.message}`);
+    }
+  },
+  {
+    name: "Groq API (Direct Key)",
+    async run(prompt) {
+      const apiKey = process.env.GROQ_API_KEY;
+      if (!apiKey) {
+        throw new Error("GROQ_API_KEY is not defined in environment.");
+      }
+      
+      const modelsToTry = [
+        "llama-3.3-70b-versatile",
+        "mixtral-8x7b-32768",
+        "llama-3.1-8b-instant"
       ];
 
       let lastError;
       for (const modelName of modelsToTry) {
         try {
-          console.log(`[OpenRouter] Attempting model: ${modelName}`);
-          const res = await fetchWithRetry("https://openrouter.ai/api/v1/chat/completions", {
+          console.log(`[Groq] Attempting model: ${modelName}`);
+          const res = await fetchWithRetry("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
               "Authorization": `Bearer ${apiKey}`,
-              "HTTP-Referer": "https://www.samer.life",
-              "X-OpenRouter-Title": "Samer Portfolio Blog Bot",
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
@@ -162,35 +223,62 @@ const providers = [
           });
 
           if (!res.ok) {
-            throw new Error(`OpenRouter API model ${modelName} returned status ${res.status}`);
+            throw new Error(`Groq returned status ${res.status}`);
           }
-          
           const json = await res.json();
-          if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
-            throw new Error(`OpenRouter invalid response structure for model ${modelName}`);
-          }
           return json.choices[0].message.content;
         } catch (err) {
-          console.warn(`[OpenRouter] Model ${modelName} failed:`, err.message);
+          console.warn(`[Groq] Model ${modelName} failed:`, err.message);
           lastError = err;
         }
       }
-      throw new Error(`All OpenRouter models failed. Last error: ${lastError.message}`);
+      throw new Error(`All Groq models failed. Last error: ${lastError.message}`);
     }
   },
   {
-    name: "Gemini API (gemini-2.5-flash SDK)",
+    name: "Mistral API (Direct Key)",
     async run(prompt) {
-      if (!process.env.GEMINI_API_KEY) {
-        throw new Error("GEMINI_API_KEY is not defined in environment.");
+      const apiKey = process.env.MISTRAL_API_KEY;
+      if (!apiKey) {
+        throw new Error("MISTRAL_API_KEY is not defined in environment.");
       }
-      // Updated from gemini-1.5-flash to active gemini-2.5-flash model
-      const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.5-flash",
-        generationConfig: { responseMimeType: "application/json" }
-      });
-      const result = await generateContentWithRetry(model, prompt);
-      return result.response.text();
+
+      const modelsToTry = [
+        "mistral-small-latest",
+        "open-mistral-7b"
+      ];
+
+      let lastError;
+      for (const modelName of modelsToTry) {
+        try {
+          console.log(`[Mistral] Attempting model: ${modelName}`);
+          const res = await fetchWithRetry("https://api.mistral.ai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${apiKey}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              model: modelName,
+              messages: [
+                { role: "system", content: "You must respond with valid JSON as requested by the user." },
+                { role: "user", content: prompt }
+              ],
+              response_format: { type: "json_object" }
+            })
+          });
+
+          if (!res.ok) {
+            throw new Error(`Mistral returned status ${res.status}`);
+          }
+          const json = await res.json();
+          return json.choices[0].message.content;
+        } catch (err) {
+          console.warn(`[Mistral] Model ${modelName} failed:`, err.message);
+          lastError = err;
+        }
+      }
+      throw new Error(`All Mistral models failed. Last error: ${lastError.message}`);
     }
   },
   {
@@ -215,6 +303,56 @@ const providers = [
       }
       return await res.text();
     }
+  },
+  {
+    name: "OpenRouter API (Rotated Free Models - Dynamic List)",
+    async run(prompt) {
+      const apiKey = process.env.OPENROUTER_API_KEY;
+      if (!apiKey) {
+        throw new Error("OPENROUTER_API_KEY is not defined in environment.");
+      }
+
+      // Fetch dynamic active free models list to prevent 404s
+      const modelsToTry = await getOpenRouterFreeModels();
+
+      let lastError;
+      for (const modelName of modelsToTry) {
+        try {
+          console.log(`[OpenRouter] Attempting model: ${modelName}`);
+          const res = await fetchWithRetry("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${apiKey}`,
+              "HTTP-Referer": "https://www.samer.life",
+              "X-OpenRouter-Title": "Samer Portfolio Blog Bot",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              model: modelName,
+              messages: [
+                { role: "system", content: "You must respond with valid JSON as requested by the user." },
+                { role: "user", content: prompt }
+              ],
+              response_format: { type: "json_object" }
+            })
+          });
+
+          if (!res.ok) {
+            throw new Error(`OpenRouter model ${modelName} returned status ${res.status}`);
+          }
+          
+          const json = await res.json();
+          if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
+            throw new Error(`OpenRouter empty response for model ${modelName}`);
+          }
+          return json.choices[0].message.content;
+        } catch (err) {
+          console.warn(`[OpenRouter] Model ${modelName} failed:`, err.message);
+          lastError = err;
+        }
+      }
+      throw new Error(`All OpenRouter models failed. Last error: ${lastError.message}`);
+    }
   }
 ];
 
@@ -238,7 +376,7 @@ const fallbackDrafts = [
     summary_ar: "عوامل حاسمة تتعلق بالسيو وسرعة تحميل الصفحات والربط عند اختيار منصة متجرك الإلكتروني.",
     content_ar: `<h3>اختيار منصة التجارة الإلكترونية</h3><p>يعد اختيار منصات حديثة مثل شوبيفاي أو إيكاس أمراً حيوياً لتصدر نتائج البحث. نلخص هنا أهم الخطوات التقنية للسيو.</p><p>للمزيد، يرجى مراجعة صفحة خدمة <a href="/ar/shopify-setup-turkey">إنشاء المتاجر الإلكترونية</a>.</p>`,
     seo_title_ar: "دليل اختيار منصة التجارة الإلكترونية والسيو",
-    seo_description_ar: "نصائح وإرشادات حول اختيار منصات المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع."
+    seo_description_ar: "نصائح وإرشادات حول اختيار منصة المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع."
   }
 ];
 
@@ -278,7 +416,24 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // 2. Fetch existing blogs from database for context (gap analysis & internal linking)
+    // 2. Concurrency Lock: Check if a post was already generated within the last 10 minutes to prevent race conditions
+    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
+    const { data: recentPosts, error: recentError } = await supabase
+      .from("blog_posts")
+      .select("id, published_at")
+      .gte("published_at", tenMinutesAgo);
+
+    if (recentError) {
+      console.warn("[Lock System] Database error checking locks, proceeding with caution:", recentError.message);
+    } else if (recentPosts && recentPosts.length > 0) {
+      console.log("[Lock System] A blog post was already generated in the last 10 minutes. Skipping this run to prevent duplicate posts.");
+      return res.status(200).json({
+        success: true,
+        message: "Skipped to prevent duplicate execution (Lock active)."
+      });
+    }
+
+    // 3. Fetch existing blogs from database for context (gap analysis & internal linking)
     const { data: existingPosts, error: dbError } = await supabase
       .from("blog_posts")
       .select("slug, title_tr, title_en, title_ar")
@@ -306,7 +461,7 @@ module.exports = async (req, res) => {
       { path: "/yapay-zeka-cozumleri", name_tr: "Yapay Zeka Entegrasyonu & Chatbot Çözümleri", name_en: "AI Integration & Chatbot Solutions", name_ar: "تكامل الذكاء الاصطناعي وحلول الشات بوت" }
     ];
 
-    // 3. Step 1: Content Gap Analysis & Turkish Blog Generation
+    // 4. Step 1: Content Gap Analysis & Turkish Blog Generation
     const trPrompt = `
       You are an expert e-commerce, software development, and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
       Then, write a brand new, premium, human-like Turkish blog post that covers this gap.
@@ -342,12 +497,11 @@ module.exports = async (req, res) => {
       }
     `;
 
-    // Wrapping LLM generation calls in a Try-Catch to fall back to static drafts if all AI engines are offline
     let trData, enData, arData;
     try {
       trData = await generateJSONWithFallback(trPrompt);
 
-      // 4. Step 2: Translation and Localization to English
+      // 5. Step 2: Translation and Localization to English
       const enPrompt = `
         You are a professional multilingual translator and SEO strategist. 
         Translate and localize the following Turkish blog post into English.
@@ -380,7 +534,7 @@ module.exports = async (req, res) => {
       `;
       enData = await generateJSONWithFallback(enPrompt);
 
-      // 5. Step 3: Translation and Localization to Arabic
+      // 6. Step 3: Translation and Localization to Arabic
       const arPrompt = `
         You are a professional multilingual translator and SEO strategist. 
         Translate and localize the following Turkish blog post into Arabic.
@@ -452,7 +606,7 @@ module.exports = async (req, res) => {
       throw new Error("Could not generate a valid slug for the blog post.");
     }
 
-    // 6. Step 4: Save the fully localized blog post to Supabase
+    // 7. Step 4: Save the fully localized blog post to Supabase
     const newPost = {
       slug: postSlug,
       published_at: new Date().toISOString(),
