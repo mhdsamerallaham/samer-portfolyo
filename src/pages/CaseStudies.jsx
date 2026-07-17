@@ -50,17 +50,60 @@ export default function CaseStudies() {
               {/* Story Description */}
               <div className="lg:col-span-8 flex flex-col justify-between h-full text-start">
                 <div>
-                  <h3 className="text-2xl font-black text-white mb-4">
+                  <h3 className="text-2xl font-black text-white mb-2">
                     {item.client}
                   </h3>
-                  <p className="text-neutral-400 text-sm md:text-base leading-relaxed font-semibold mb-8">
+                  <p className="text-neutral-400 text-xs md:text-sm leading-relaxed font-semibold mb-6">
                     {item.desc}
                   </p>
+                  
+                  {/* Detailed Case Study breakdown */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-xs md:text-sm">
+                    <div className="flex flex-col gap-1 pl-4 border-l-2 border-[#ff6b6b]/40">
+                      <span className="mono text-[8px] font-black text-[#ff6b6b] uppercase tracking-wider">
+                        {i18n.language === 'tr' ? 'SORUN' : i18n.language === 'ar' ? 'المشكلة' : 'PROBLEM'}
+                      </span>
+                      <p className="text-neutral-300 font-medium leading-relaxed">{item.problem}</p>
+                    </div>
+                    <div className="flex flex-col gap-1 pl-4 border-l-2 border-green-500/40">
+                      <span className="mono text-[8px] font-black text-green-400 uppercase tracking-wider">
+                        {i18n.language === 'tr' ? 'ÇÖZÜM' : i18n.language === 'ar' ? 'الحل' : 'SOLUTION'}
+                      </span>
+                      <p className="text-neutral-300 font-medium leading-relaxed">{item.solution}</p>
+                    </div>
+                    <div className="flex flex-col gap-1 pl-4 border-l-2 border-blue-500/40">
+                      <span className="mono text-[8px] font-black text-blue-400 uppercase tracking-wider">
+                        {i18n.language === 'tr' ? 'SÜREÇ' : i18n.language === 'ar' ? 'العملية' : 'PROCESS'}
+                      </span>
+                      <p className="text-neutral-300 font-medium leading-relaxed">{item.process}</p>
+                    </div>
+                    <div className="flex flex-col gap-1 pl-4 border-l-2 border-yellow-500/40">
+                      <span className="mono text-[8px] font-black text-yellow-400 uppercase tracking-wider">
+                        {i18n.language === 'tr' ? 'ÖLÇÜLEBİLİR SONUÇ' : i18n.language === 'ar' ? 'النتائج' : 'MEASURABLE RESULT'}
+                      </span>
+                      <p className="text-neutral-300 font-medium leading-relaxed">{item.results}</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/5">
-                  <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">
-                    CASE_00{idx + 1}
-                  </span>
+                  <div className="flex items-center gap-3">
+                    <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">
+                      CASE_00{idx + 1}
+                    </span>
+                    {item.linkUrl && (
+                      <>
+                        <span className="text-neutral-700">•</span>
+                        <a 
+                          href={item.linkUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-xs font-semibold text-[#ff6b6b] hover:underline"
+                        >
+                          {item.linkText || item.client}
+                        </a>
+                      </>
+                    )}
+                  </div>
                   <Link
                     to="/iletisim"
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b] hover:text-white text-white text-xs font-bold rounded-xl transition-all"

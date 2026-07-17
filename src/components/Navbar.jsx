@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowDownRight, Menu, X, Globe } from 'lucide-react';
+import { getLocalizedPath, getLanguageUrl } from '../utils/navigation';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,16 +26,18 @@ export default function Navbar() {
   }, [location]);
 
   const navItems = [
-    { name: t('nav.home'), path: '/' },
-    { name: t('nav.services'), path: '/hizmetler' },
-    { name: t('nav.case_studies'), path: '/basari-hikayeleri' },
-    { name: t('nav.blog'), path: '/blog' },
-    { name: t('nav.about'), path: '/hakkimda' },
-    { name: t('nav.contact'), path: '/iletisim' }
+    { name: t('nav.home'), path: getLocalizedPath('/', i18n.language) },
+    { name: t('nav.services'), path: getLocalizedPath('/hizmetler', i18n.language) },
+    { name: t('nav.case_studies'), path: getLocalizedPath('/basari-hikayeleri', i18n.language) },
+    { name: t('nav.blog'), path: getLocalizedPath('/blog', i18n.language) },
+    { name: t('nav.about'), path: getLocalizedPath('/hakkimda', i18n.language) },
+    { name: t('nav.contact'), path: getLocalizedPath('/iletisim', i18n.language) }
   ];
 
   const handleLangChange = (lang) => {
     i18n.changeLanguage(lang);
+    const targetUrl = getLanguageUrl(location.pathname, lang);
+    navigate(targetUrl);
   };
 
   const isRtl = i18n.language === 'ar';
@@ -43,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto w-full px-4 md:px-8 xl:px-12 flex justify-between items-center gap-4">
         
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+        <Link to={getLocalizedPath('/', i18n.language)} className="flex items-center gap-3 group flex-shrink-0">
           <div className="w-10 h-10 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 rounded-xl flex items-center justify-center group-hover:bg-[#ff6b6b] transition-all duration-300">
             <ArrowDownRight className="text-[#ff6b6b] group-hover:text-white transition-colors" size={20} />
           </div>
@@ -90,7 +94,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            to="/iletisim"
+            to={getLocalizedPath('/iletisim', i18n.language)}
             className="inline-flex items-center justify-center px-4 xl:px-6 py-2.5 bg-[#ff6b6b] text-white hover:bg-[#ff5252] rounded-full mono text-[9px] xl:text-[10px] font-black hover:scale-105 transition-all duration-300"
           >
             {t('nav.cta').toUpperCase()}
@@ -154,7 +158,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            to="/iletisim"
+            to={getLocalizedPath('/iletisim', i18n.language)}
             onClick={() => setIsOpen(false)}
             className="w-full py-4 bg-[#ff6b6b] text-white text-center rounded-2xl mono text-xs font-black hover:scale-102 transition-all"
           >

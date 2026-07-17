@@ -97,3 +97,26 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--color-accent) !important;
   box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.15) !important;
 }
+
+/* =============================================
+   PERFORMANCE: Responsive blur for background orbs
+   Mobile devices struggle with large blur radii
+   ============================================= */
+.mesh-blur {
+  filter: blur(60px);
+}
+@media (min-width: 768px) {
+  .mesh-blur {
+    filter: blur(140px);
+  }
+}
+
+/* PERFORMANCE: Reduce continuous animations on mobile */
+@media (max-width: 767px) {
+  .animate-ping {
+    animation: none !important;
+  }
+  .animate-pulse {
+    animation: none !important;
+  }
+}

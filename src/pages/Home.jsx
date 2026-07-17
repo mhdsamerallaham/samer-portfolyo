@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard';
 import AIDemo from '../components/AIDemo';
 import FAQ from '../components/FAQ';
 import ContactForm from '../components/ContactForm';
+import Reviews from '../components/Reviews';
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -96,6 +97,10 @@ export default function Home() {
                 <img
                   src="/avatar.webp"
                   alt="Samer Allaham"
+                  width="240"
+                  height="240"
+                  fetchpriority="high"
+                  decoding="async"
                   className="w-full h-full object-top object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
@@ -201,6 +206,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* 5.5. CUSTOMER REVIEWS CAROUSEL */}
+      <Reviews />
 
       {/* 6. FAQ ACCORDIONS */}
       <section className="px-6 md:px-12 py-28 lg:py-36 bg-[#0e1423]/20 border-y border-white/5">

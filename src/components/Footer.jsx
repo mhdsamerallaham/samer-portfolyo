@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowDownRight, Github, Linkedin, Mail } from 'lucide-react';
+import { getLocalizedPath } from '../utils/navigation';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,7 +24,7 @@ export default function Footer() {
           
           {/* Logo & Identity */}
           <div className="flex flex-col gap-6">
-            <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
+            <Link to={getLocalizedPath('/', i18n.language)} onClick={handleLogoClick} className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 rounded-xl flex items-center justify-center group-hover:bg-[#ff6b6b] transition-all duration-300">
                 <ArrowDownRight className="text-[#ff6b6b] group-hover:text-white transition-colors" size={20} />
               </div>
@@ -53,12 +54,12 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">SİTEMAP</span>
             <ul className="flex flex-col gap-2.5">
-              <li><Link to="/" onClick={handleLogoClick} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.home')}</Link></li>
-              <li><Link to="/hizmetler" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.services')}</Link></li>
-              <li><Link to="/basari-hikayeleri" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.case_studies')}</Link></li>
-              <li><Link to="/blog" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.blog')}</Link></li>
-              <li><Link to="/hakkimda" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/iletisim" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.contact')}</Link></li>
+              <li><Link to={getLocalizedPath('/', i18n.language)} onClick={handleLogoClick} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.home')}</Link></li>
+              <li><Link to={getLocalizedPath('/hizmetler', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.services')}</Link></li>
+              <li><Link to={getLocalizedPath('/basari-hikayeleri', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.case_studies')}</Link></li>
+              <li><Link to={getLocalizedPath('/blog', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.blog')}</Link></li>
+              <li><Link to={getLocalizedPath('/hakkimda', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.about')}</Link></li>
+              <li><Link to={getLocalizedPath('/iletisim', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('nav.contact')}</Link></li>
             </ul>
           </div>
 
@@ -66,11 +67,11 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">ÇÖZÜMLER</span>
             <ul className="flex flex-col gap-2.5">
-              <li><Link to="/eticaret-site-kurulumu" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.site-kurulumu.title')}</Link></li>
-              <li><Link to="/eticaret-optimizasyon" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.optimizasyon.title')}</Link></li>
-              <li><Link to="/urun-gorsel-ve-icerik" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.urun-gorsel.title')}</Link></li>
-              <li><Link to="/stok-ve-depo-sistemi" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.stok-depo.title')}</Link></li>
-              <li><Link to="/aylik-yonetim" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.aylik-yonetim.title')}</Link></li>
+              <li><Link to={getLocalizedPath('/eticaret-site-kurulumu', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.site-kurulumu.title')}</Link></li>
+              <li><Link to={getLocalizedPath('/eticaret-optimizasyon', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.optimizasyon.title')}</Link></li>
+              <li><Link to={getLocalizedPath('/urun-gorsel-ve-icerik', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.urun-gorsel.title')}</Link></li>
+              <li><Link to={getLocalizedPath('/stok-ve-depo-sistemi', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.stok-depo.title')}</Link></li>
+              <li><Link to={getLocalizedPath('/aylik-yonetim', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.aylik-yonetim.title')}</Link></li>
             </ul>
           </div>
 

@@ -1,6 +1,3 @@
-// Bypass SSL Certificate verification for systems behind proxy/interceptors (fixing UNABLE_TO_VERIFY_LEAF_SIGNATURE)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();

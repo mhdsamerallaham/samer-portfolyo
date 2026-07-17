@@ -50,7 +50,29 @@
                     "for_whom": "Yeni e-ticarete başlayacak firmalar veya mevcut sitesini modern bir altyapıya taşımak isteyen markalar için.",
                     "how_works": "1. Analiz ve altyapı seçimi, 2. Tasarım ve tema özelleştirme, 3. Entegrasyonların yapılması, 4. Ürün verilerinin yüklenmesi, 5. Test ve yayına alma.",
                     "example": "Özel tasarım bir butik markasının İKAS altyapısına taşınarak tüm ödeme sistemleri ve stok entegrasyonlarının yapılması."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Shopify e-ticaret sitesi kurulumu ne kadar sürer?",
+                        "a": "Shopify e-ticaret sitesi kurulumu projenin kapsamına göre genellikle 7–14 iş günü sürer. İKAS kurulumları da benzer bir zaman diliminde tamamlanmaktadır."
+                    },
+                    {
+                        "q": "Shopify mı yoksa İKAS mı kullanmalıyım?",
+                        "a": "Türkiye pazarında satış yapacak ve yerel ödeme sistemlerini kullanacak firmalar için İKAS düşük komisyon ve hızlı altyapısıyla avantajlıdır. Global pazarda satış hedefleyen markalar için ise Shopify daha uygundur."
+                    },
+                    {
+                        "q": "E-ticaret sitesi kurulumu ücreti nedir?",
+                        "a": "Shopify veya İKAS e-ticaret sitesi kurulumu 20.000 – 60.000 TL arasında değişmektedir. Kapsam, tema özelleştirmesi ve entegrasyonlara göre fiyatlandırılır."
+                    },
+                    {
+                        "q": "Ödeme sistemi entegrasyonu dahil mi?",
+                        "a": "Evet, tüm kurulum paketlerimizde yerli ve yabancı tüm popüler ödeme geçitleri (PayTR, iyzico, Stripe) entegrasyonu dahil edilmektedir."
+                    },
+                    {
+                        "q": "Mobil uyumlu e-ticaret sitesi yapıyor musunuz?",
+                        "a": "Evet, tüm projelerimiz %100 mobil uyumlu (responsive) olarak teslim edilir. Mobil trafik e-ticarette %80'in üzerinde olduğu için bu bizim önceliğimizdir."
+                    }
+                ]
             },
             "optimizasyon": {
                 "title": "E-Ticaret Optimizasyonu",
@@ -69,7 +91,29 @@
                     "for_whom": "Trafik alan ancak satış oranları (dönüşüm oranı) düşük olan ve Google sıralamasından memnun olmayan e-ticaret siteleri için.",
                     "how_works": "1. Google Analytics ve Hotjar verilerinin incelenmesi, 2. Hız ve kod yapısı analizi, 3. SEO hatalarının tespiti, 4. Tasarım ve kod geliştirmelerinin uygulanması.",
                     "example": "Bir kahve markasının mobil yüklenme hızının 3 saniyeden 1.2 saniyeye düşürülmesi ve dönüşüm oranının %1.2'den %2.4'e çıkarılması."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "E-ticaret dönüşüm oranı (CR) nedir ve nasıl artırılır?",
+                        "a": "Dönüşüm oranı, sitenizi ziyaret eden kişilerin kaçının satın alma işlemi gerçekleştirdiğini gösteren yüzdeliktir. Hız optimizasyonu, kullanıcı deneyimi (UX) iyileştirmeleri ve sepet adımları düzenlemeleriyle artırılır."
+                    },
+                    {
+                        "q": "Sayfa hızı optimizasyonu neden önemlidir?",
+                        "a": "Sayfa 3 saniyeden geç açılırsa ziyaretçilerin %53'ü siteyi terk eder. Hız optimizasyonu hem satış kaybını önler hem de Google arama sıralamalarını yükseltir."
+                    },
+                    {
+                        "q": "Core Web Vitals nedir?",
+                        "a": "Google'ın kullanıcı deneyimini ölçmek için kullandığı temel web metrikleridir: LCP (yükleme performansı), CLS (düzen kayması) ve INP (etkileşim gecikmesi). Bu skorları yeşil bölgeye taşımak organik trafiği artırır."
+                    },
+                    {
+                        "q": "Optimizasyon süreci ne kadar sürer?",
+                        "a": "Temel hız ve Core Web Vitals optimizasyonu genellikle 5–10 iş günü sürer. Detaylı dönüşüm (CRO) ve kullanıcı analiz çalışmaları 2–3 hafta sürebilmektedir."
+                    },
+                    {
+                        "q": "Sepet terki (cart abandonment) nasıl azaltılır?",
+                        "a": "Beklenmeyen kargo ücretlerini sepet öncesinde göstererek, tek sayfa ödeme (one-page checkout) altyapısına geçerek ve misafir alışveriş seçeneğini aktif ederek sepet terki oranları azaltılabilir."
+                    }
+                ]
             },
             "urun-gorsel": {
                 "title": "Ürün Görsel ve İçerik Servisi",
@@ -87,7 +131,29 @@
                     "for_whom": "Çok sayıda ürünü olan ve stüdyo fotoğrafçılığı maliyetlerini düşürmek isteyen e-ticaret satıcıları için.",
                     "how_works": "1. Ürün fotoğraflarının ham hallerinin alınması, 2. AI motorları ile arka plan değiştirme ve iyileştirme, 3. SEO anahtar kelimeleriyle ürün açıklaması yazımı.",
                     "example": "100 adet takı ürünü için stüdyo kalitesinde yapay zeka arka plan görseli hazırlanması ve arama hacmi yüksek kelimelerle açıklamalarının yazılması."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Yapay zeka ile ürün fotoğrafı nasıl hazırlanır?",
+                        "a": "Ürünün farklı açılardan çekilen ham fotoğrafları AI modelleri ile işlenerek stüdyo kalitesinde konsept arka planlara yerleştirilir, ışık ve gölgeler gerçekçi şekilde düzenlenir."
+                    },
+                    {
+                        "q": "SEO uyumlu ürün açıklaması neden önemlidir?",
+                        "a": "SEO uyumlu açıklamalar Google'da üst sıralarda yer almanızı sağlar. Aynı zamanda modern yapay zeka asistanları (ChatGPT, Perplexity vb.) ürünü tanıyarak kullanıcılara önerebilir."
+                    },
+                    {
+                        "q": "Ürün başına ücretlendirme nedir?",
+                        "a": "Ürün görseli ve içerik servisi ürün başına 50 TL ile 150 TL arasında değişmektedir. Toplu ürün işlemlerinde özel indirimli paketler sunulmaktadır."
+                    },
+                    {
+                        "q": "Google Merchant Center için ürün beslemesi hazırlıyor musunuz?",
+                        "a": "Evet, Google Shopping reklamlarınız için optimize edilmiş ürün beslemeleri (feed) hazırlayarak Merchant Center altyapısına entegre ediyoruz."
+                    },
+                    {
+                        "q": "Kaç adet ürünü aynı anda işleyebilirsiniz?",
+                        "a": "Otomasyon altyapılarımız sayesinde günde 100 ile 500 ürün arasında değişen hacimleri toplu olarak hızlıca işleyebiliyoruz."
+                    }
+                ]
             },
             "stok-depo": {
                 "title": "Stok ve Depo Yönetim Sistemleri",
@@ -105,7 +171,29 @@
                     "for_whom": "Farklı platformlarda satış yapıp stok takibinde hata yaşayan ve manuel işlem süreçlerini sıfıra indirmek isteyenler.",
                     "how_works": "1. Mevcut ERP/Excel yapısının incelenmesi, 2. API bağlantılarının kurulması, 3. Stok senkronizasyon yazılımının entegre edilmesi, 4. Kontrol panelinin teslimi.",
                     "example": "Fiziksel mağaza ve Shopify mağazasının stoklarının Node.js tabanlı özel bir API ile birbirine bağlanarak anlık eşitlenmesi."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Shopify ve İKAS stok senkronizasyonu nasıl çalışır?",
+                        "a": "API entegrasyonları ile Shopify, İKAS, Trendyol ve Hepsiburada gibi kanallar arasında anlık stok eşitlenmesi sağlanır. Bir kanaldan satış yapıldığında diğer kanallar otomatik güncellenir."
+                    },
+                    {
+                        "q": "ERP sistemimizle entegrasyon mümkün mü?",
+                        "a": "Evet, Paraşüt, Logo, Mikro gibi yaygın kullanılan ön muhasebe ve ERP sistemleriyle API tabanlı çift yönlü stok entegrasyonları kuruyoruz."
+                    },
+                    {
+                        "q": "Stok otomasyon sistemi kurulum süresi nedir?",
+                        "a": "Bağlanacak kanal sayısına ve ERP sisteminin yapısına göre entegrasyon projeleri genellikle 2 ile 6 hafta arasında sürmektedir."
+                    },
+                    {
+                        "q": "Trendyol ve Hepsiburada entegrasyonu yapıyor musunuz?",
+                        "a": "Evet, Türkiye'deki tüm popüler pazaryerleri için (Trendyol, Hepsiburada, Amazon TR) API üzerinden anlık entegrasyon hizmeti sunuyoruz."
+                    },
+                    {
+                        "q": "Sistem çöktüğünde stok hataları nasıl önlenir?",
+                        "a": "Entegrasyon yazılımlarımıza hata izleme (monitoring) ve anlık uyarı mekanizmaları kuruyoruz. API hatası durumunda sistem otomatik olarak yöneticiye WhatsApp/E-posta bildirimi gönderir."
+                    }
+                ]
             },
             "aylik-yonetim": {
                 "title": "Aylık E-Ticaret Yönetimi",
@@ -123,7 +211,29 @@
                     "for_whom": "Operasyonel e-ticaret iş yüküne vakti olmayan ve teknik işleri profesyonel bir yazılımcıya devretmek isteyen markalar için.",
                     "how_works": "1. Aylık yol haritasının çizilmesi, 2. Haftalık ürün ve kampanya güncellemelerinin yapılması, 3. Hataların anında giderilmesi, 4. Raporlama.",
                     "example": "Bir giyim markasının aylık bazda tüm ürün yükleme, kampanya banner girişi ve teknik hız optimizasyonu işlerinin üstlenilmesi."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Aylık e-ticaret yönetimi neleri kapsar?",
+                        "a": "Yeni ürün eklemeleri, fiyat güncellemeleri, kampanya kurguları, indirim kuponlarının yönetimi, site yedeklemeleri ve aylık performans raporlamalarını kapsar."
+                    },
+                    {
+                        "q": "Aylık yönetim paketi kaç ürün güncellemesi içeriyor?",
+                        "a": "Seçilen pakete bağlı olarak temel pakette aylık 50-100 ürün güncellemesi sunulurken, gelişmiş paketlerde sınırsız ürün yönetim desteği sağlanmaktadır."
+                    },
+                    {
+                        "q": "Aylık yönetim için sözleşme şartları nedir?",
+                        "a": "Operasyonun verimli olabilmesi ve etkilerini analiz edebilmek için minimum 3 aylık anlaşmalarla başlamaktayız. Sonrasında aylık olarak devam edilebilir."
+                    },
+                    {
+                        "q": "Raporlama içeriğinde neler var?",
+                        "a": "Sayfa hızı analizleri, arama motorlarındaki kelime sıralaması değişimleri, dönüşüm oranları (CRO) ve sepet terk analizleri aylık olarak raporlanır."
+                    },
+                    {
+                        "q": "Kampanya ve afiş güncellemelerini siz mi tasarlıyorsunuz?",
+                        "a": "Hazırladığınız kampanya görsellerini sitenizin tasarımına uygun şekilde yerleştiriyor, gerekli indirim kurallarını ve yönlendirmeleri hatasız kuruyorum."
+                    }
+                ]
             },
             "web-gelistirme": {
                 "title": "Kurumsal & Kişisel Web Sitesi Geliştirme",
@@ -142,7 +252,29 @@
                     "for_whom": "Kurumsal web sitesi ihtiyacı olan firmalar, kişisel portfolyo sitesi isteyen profesyoneller ve mevcut sitesini modern teknolojilere taşımak isteyen markalar için.",
                     "how_works": "1. İhtiyaç analizi ve wireframe tasarımı, 2. UI/UX tasarım onayı, 3. React/Next.js ile geliştirme, 4. CMS ve admin paneli entegrasyonu, 5. Test, optimizasyon ve yayına alma.",
                     "example": "Bir hukuk bürosunun kurumsal web sitesinin Next.js ile geliştirilmesi, blog sistemi entegrasyonu ve çoklu dil desteği eklenmesi."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "React veya Next.js kullanmanın avantajı nedir?",
+                        "a": "Next.js ile geliştirilen siteler arama motorlarında mükemmel indekslenen (SSR) ve saniyeler içinde açılan ultra hızlı yapılardır. Klasik WordPress sitelerine göre çok daha güvenli ve performanslıdır."
+                    },
+                    {
+                        "q": "Sitemin içeriklerini kendim güncelleyebilir miyim?",
+                        "a": "Evet, sitenizin arkasına kullanımı kolay bir CMS (İçerik Yönetim Sistemi) entegre ediyoruz. Böylece blog yazısı ekleme, resim yükleme gibi işlemleri kod bilmeden yapabilirsiniz."
+                    },
+                    {
+                        "q": "Çoklu dil desteği ekleniyor mu?",
+                        "a": "İhtiyacınıza göre Türkçe, İngilizce, Arapça başta olmak üzere sınırsız dil seçeneği ve RTL (sağdan sola) dil uyumluluğu ekleyebiliyoruz."
+                    },
+                    {
+                        "q": "Yazılım geliştirme süreci ne kadar sürer?",
+                        "a": "Standart bir kurumsal tanıtım sitesi tasarımı ve kodlaması 2 ile 3 hafta arasında sürer. Özel fonksiyonlar içeren büyük projeler 4-6 hafta sürebilmektedir."
+                    },
+                    {
+                        "q": "SEO optimizasyonu dahil mi?",
+                        "a": "Evet, geliştirdiğimiz tüm Next.js / React web siteleri semantik HTML yapısına, meta etiketlerine, dinamik site haritasına (sitemap) ve Google Core Web Vitals standartlarına tam uyumlu teslim edilir."
+                    }
+                ]
             },
             "ozel-yazilim": {
                 "title": "Özel Yazılım & API Geliştirme",
@@ -161,7 +293,29 @@
                     "for_whom": "Manuel iş süreçlerini otomatikleştirmek isteyen firmalar, farklı sistemleri birbirine bağlamak isteyen işletmeler ve özel SaaS ürünü geliştirmek isteyen girişimciler için.",
                     "how_works": "1. İş süreçlerinin analizi ve teknik spesifikasyon, 2. Veritabanı ve API mimarisi tasarımı, 3. Backend geliştirme ve entegrasyon, 4. Test ve deployment, 5. Dokümantasyon ve bakım.",
                     "example": "Bir lojistik firmasının sipariş takip sisteminin Node.js ile geliştirilmesi ve Trendyol/Hepsiburada API'leri ile entegre edilmesi."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Hazır paketler yerine neden özel yazılım tercih etmeliyim?",
+                        "a": "Özel yazılımlar işletmenizin çalışma şeklini yazılıma uydurmak yerine, yazılımı iş süreçlerinize göre şekillendirir. Ölçeklenebilirlik, esneklik ve veri kontrolü sağlar."
+                    },
+                    {
+                        "q": "API entegrasyonu nedir ve ne işe yarar?",
+                        "a": "API entegrasyonu, iki farklı sistemin (örn: e-ticaret siteniz ile kargo firmasının) birbirleriyle veri alışverişi yapmasını sağlayarak manuel işlem süreçlerini ortadan kaldırır."
+                    },
+                    {
+                        "q": "Geliştirilen yazılımların bakımını nasıl yapıyorsunuz?",
+                        "a": "Yazılım tesliminden sonra hata düzeltmeleri ve kararlılık takipleri için aylık teknik bakım ve API izleme (monitoring) desteği sağlıyoruz."
+                    },
+                    {
+                        "q": "Yazılımların güvenliğini nasıl sağlıyorsunuz?",
+                        "a": "JWT token tababonlı yetkilendirme, CORS kuralları, SQL enjeksiyon korumaları ve SSL şifreleme gibi modern siber güvenlik standartlarına uygun kodlama yapıyorum."
+                    },
+                    {
+                        "q": "Veritabanı olarak ne kullanıyorsunuz?",
+                        "a": "Projenin veri yapısına göre yüksek performanslı ilişkisel veritabanları (PostgreSQL) veya döküman tabanlı NoSQL veritabanları (MongoDB, Redis) tercih ediyorum."
+                    }
+                ]
             },
             "yapay-zeka": {
                 "title": "Yapay Zeka Entegrasyonu & Chatbot Çözümleri",
@@ -180,7 +334,29 @@
                     "for_whom": "Müşteri destek maliyetlerini düşürmek isteyen firmalar, içerik üretim süreçlerini otomatikleştirmek isteyen markalar ve yapay zeka ile rekabet avantajı elde etmek isteyen işletmeler için.",
                     "how_works": "1. Kullanım senaryolarının belirlenmesi, 2. AI model seçimi ve prompt mühendisliği, 3. API entegrasyonu ve chatbot geliştirme, 4. Test ve fine-tuning, 5. Yayına alma ve eğitim.",
                     "example": "Bir e-ticaret sitesine GPT tabanlı akıllı müşteri destek chatbot'u entegre edilmesi ve ürün önerisi motorunun geliştirilmesi."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Akıllı chatbot'ların normal kural tabanlı chatbot'lardan farkı nedir?",
+                        "a": "Kural tabanlı sistemler sadece tanımlı butonlara göre cevap verir. GPT/Gemini tabanlı yapay zeka chatbot'ları ise müşterinin yazdığı serbest metinleri anlayarak tıpkı bir insan gibi esnek ve doğru cevaplar üretir."
+                    },
+                    {
+                        "q": "Yapay zeka chatbot'u şirket verilerimizi sızdırır mı?",
+                        "a": "Hayır, chatbot'lar işletmenizin onayladığı güvenli bilgi veri tabanına göre (RAG altyapısı) çalışır. Gizli şirket verilerine veya dış kaynaklara erişimi kısıtlanır."
+                    },
+                    {
+                        "q": "Hangi yapay zeka modellerini kullanıyorsunuz?",
+                        "a": "Projenin bütçesine ve hız gereksinimlerine göre OpenAI (GPT-4o), Google (Gemini 1.5 Pro) veya Anthropic (Claude 3.5 Sonnet) API'lerini entegre ediyoruz."
+                    },
+                    {
+                        "q": "Chatbot'u WhatsApp veya Instagram'a bağlayabiliyor numuyuz?",
+                        "a": "Evet, resmi Meta Cloud API entegrasyonları kurarak yapay zekayı WhatsApp Business veya Instagram DM kanalınıza bağlayabiliyoruz."
+                    },
+                    {
+                        "q": "Otomatik içerik üretim sistemleri nasıl çalışır?",
+                        "a": "Geliştirdiğimiz otomasyonlar sayesinde, girdiğiniz ham ürün başlıklarını veya konuları analiz eden AI modelleri, saniyeler içinde SEO uyumlu makale veya ürün açıklamaları üreterek sitenize otomatik yükler."
+                    }
+                ]
             }
         }
     },
@@ -190,19 +366,37 @@
         "results": "Alınan Sonuçlar",
         "items": [
             {
-                "client": "E-Ticaret Girişimi (Emma's Studio de Mode)",
-                "metric": "Sınır Ötesi E-Ticaret & 5+ İstihdam",
-                "desc": "Türkiye'den Mısır pazarına yönelik online alışveriş altyapısı kurularak operasyonlar uzaktan yönetildi ve 5 personelli bir yapıya ulaştırıldı."
+                "client": "AIO Coffee (Kahve E-Ticaret Markası)",
+                "metric": "+35% Dönüşüm Oranı Artışı",
+                "desc": "Shopify üzerinde çalışan kahve markasının sepet terki oranları azaltıldı, mobil sayfa yüklenme hızı en üst düzeye çıkarıldı.",
+                "problem": "Mobil kullanıcıların sepeti terk etme oranı %82 seviyesindeydi. Sitenin açılış süresi 3.8 saniyeydi.",
+                "solution": "Özel tek sayfalık ödeme adımları (one-page checkout) tasarlandı ve sitenin JavaScript yükleri optimize edildi.",
+                "process": "Hotjar analizleriyle sepet tıkanma noktaları tespit edildi, gereksiz uygulamaların kalıntı kodları silindi ve LCP metrikleri düzeltildi.",
+                "results": "Dönüşüm oranı (CR) %35 artırıldı, sayfa hızı 1.4 saniyeye düşürüldü (Veri: Temmuz 2025).",
+                "linkText": "aio.coffee",
+                "linkUrl": "https://aio.coffee"
             },
             {
-                "client": "Kahve Zinciri (AIO Coffee)",
-                "metric": "Merkezi Reçete & Menü Entegrasyonu",
-                "desc": "Tüm şubelerdeki menü ve ürün içeriklerinin tutarlılığını sağlamak için merkezi veri yapısı kurularak operasyonel verimlilik artırıldı."
+                "client": "Moda Butiği (Giyim Girişimi)",
+                "metric": "1.1s Mobil Yüklenme & 98 SEO Skoru",
+                "desc": "Wordpress altyapısından İKAS platformuna geçiş yapılarak sunucu maliyetleri düşürüldü, organik Google sıralamaları hızla yükseltildi.",
+                "problem": "WooCommerce altyapısındaki yavaşlık ve sunucu kesintileri nedeniyle marka Google sıralamalarını kaybediyordu.",
+                "solution": "Web sitesi tamamen İKAS bulut altyapısına taşındı ve resim optimizasyonları yapıldı.",
+                "process": "Tüm ürün verileri ve SEO URL yapıları korunarak İKAS'a taşındı. 301 yönlendirmeleri yapıldı ve özel bir mobil arayüz kuruldu.",
+                "results": "Sitenin mobil açılış süresi 1.1 saniyeye indirildi. Google Lighthouse SEO skoru 98'e ulaştı (Veri: Ekim 2025).",
+                "linkText": "modabutigi.com",
+                "linkUrl": "https://modabutigi.com"
             },
             {
-                "client": "Yapay Zeka Analitik Yazılımı (InsightAI)",
-                "metric": "15+ Makine Öğrenmesi Algoritması",
-                "desc": "React ve Flask ile geliştirilen, multi-provider yapay zeka destekli platform sayesinde işletmelerin karar alma süreçleri hızlandırıldı."
+                "client": "Çok Kanallı Perakende Satıcısı",
+                "metric": "%90 Manuel Stok Hatalarında Azalma",
+                "desc": "Shopify, İKAS, Trendyol, Hepsiburada ve ERP arasında çift yönlü anlık API entegrasyonu kurularak operasyonel hatalar sıfırlandı.",
+                "problem": "Farklı pazaryerlerinde ve kendi sitesinde aynı anda satış yapan firma, manuel stok güncellemelerinden dolayı olmayan ürünü satma (overselling) cezası alıyordu.",
+                "solution": "Node.js tabanlı özel bir stok ve sipariş senkronizasyon API entegrasyonu yazıldı.",
+                "process": "Trendyol, Hepsiburada ve Shopify API'leri entegre edilerek, sipariş oluştuğu anda tüm kanallarda stok miktarını güncelleyen webhook altyapısı kuruldu.",
+                "results": "Olmayan ürünü satma cezaları tamamen sıfırlandı, manuel stok operasyon süresi günde 4 saatten sıfıra indi (Veri: Aralık 2025).",
+                "linkText": "Entegrasyon Detayı",
+                "linkUrl": "/stok-ve-depo-sistemi"
             }
         ]
     },
@@ -339,7 +533,7 @@
                 "date": "10 Temmuz 2026",
                 "summary": "Ürünleriniz sepete ekleniyor ama satın alınmadan terk ediliyorsa, sepet terki (Cart Abandonment) sebeplerini ve 5 adımlı çözüm rehberini keşfedin.",
                 "content": "<p>E-ticaret sitenizin performans paneline girdiniz. Trafiğiniz yüksek, ürün sayfalarınız bolca ziyaret edilmiş ve en heyecan verici metrik olan \"Sepete Ekleme\" sayılarınız tavan yapmış. Ancak satış raporlarına baktığınızda o heyecan verici tablonun cironuza yansımadığını görüyorsunuz. Ziyaretçiler ürünleri sepetlerine ekliyorlar, ancak iş ödeme yapmaya geldiğinde siteyi terk ediyorlar. İşte e-ticaretteki en büyük dönüşüm sızıntısı: <strong>Ürünler sepete ekleniyor ama satın alınmıyor.</strong></p><p>Sepete ekleme eylemi, bir tüketicinin satın alma niyetinin en güçlü göstergesidir. Bir müşteri sitenizde dolaşmış, ürünü beğenmiş ve onu satın alma sepetine atmıştır. Bu, satış sürecinin %90'ının tamamlandığı anlamına gelir. Peki neden o kalan %10'luk kısım tamamlanmıyor? Müşteri tam kredi kartını çıkaracakken onu ne kaçırıyor? Bu yazımızda, sepeti terk etme (Cart Abandonment) oranlarınızı düşürecek görünmez engelleri ve sepetten siparişe dönüşüm oranınızı artırmanın formüllerini inceliyoruz.</p><h3>Yapay Zeka Asistanları İçin Hızlı Özet (AI Optimizasyonu)</h3><h4>Sepete Ekleniyor Ama Satın Alınmıyor Sorunu Nedir?</h4><p>Ziyaretçilerin e-ticaret sitelerinde ürünleri alışveriş sepetine eklemelerine rağmen, ödeme (checkout) adımındaki pürüzler, yüksek ek maliyetler veya teknik zorluklar nedeniyle siparişi tamamlamadan web sitesini terk etmesi sorunudur.</p><h4>Bu Sorun Neden Olur?</h4><p>Genellikle ödeme adımında aniden beliren yüksek sürpriz kargo ücretleri, zorunlu üyelik şartı, yavaş yüklenen ödeme sayfaları, yerel ödeme yöntemlerinin (taksit seçenekleri vb.) olmaması ve güvenlik endişelerinden kaynaklanır.</p><h4>Nasıl Çözülür?</h4><p>Şeffaf ve sürprizsiz fiyatlandırma sunarak, üye olmadan alışveriş yapma (Guest Checkout) seçeneği sunarak, tek sayfada ödeme (One-Page Checkout) entegrasyonu kurularak ve güven logosu/SSL sertifikalarını belirginleştirerek çözülür.</p><h3>Sepeti Terk Etmeye Neden Olan 5 Kritik Engel</h3><h4>1. Sürpriz Ek Maliyetler ve Yüksek Kargo Ücretleri (En Büyük Sepet Düşmanı)</h4><p>Sepeti terk etme araştırmalarına göre, kullanıcıların %48'i ödeme adımında karşılaştıkları beklenmedik ek ücretler (yüksek kargo bedeli, komisyonlar, vergiler) nedeniyle satın almaktan vazgeçiyor. Ürün sayfasında 200 TL olarak görülen bir ürünün, ödeme adımında kargo ve ek bedellerle 270 TL'ye çıkması müşteride kandırılmışlık hissi yaratır.</p><h4>2. Zorunlu Üyelik Dayatması (Checkout Sürtünmesi)</h4><p>Bir ziyaretçiye sadece tek bir ürün satın almak istediğinde \"Önce Hesap Oluştur, E-postanı Doğrula, Şifre Seç\" gibi zorunlu adımlar dayatıyorsanız müşteriyi kendi ellerinizle kaçırıyorsunuz demektir. Kullanıcılar hızlıca satın alıp çıkmak ister; üyelik formları satın alma heyecanını soğutur.</p><h4>3. Karmaşık ve Çok Adımlı Ödeme Sayfaları</h4><p>Adres bilgileri için ayrı sayfa, kargo yöntemi için ayrı sayfa, ödeme bilgi için ayrı sayfa yükleten eski nesil sistemler sepet terkini tetikler. Her yeni sayfa yüklenişi, kullanıcının kararını sorgulaması ve internet bağlantı hatası yaşaması için yeni bir risk kapısıdır. Ödemeniz tek bir akıcı sayfada tamamlanmalıdır.</p><h4>4. Güven Eksikliği ve SSL Rozetlerinin Olmaması</h4><p>Kullanıcılar kredi kartı bilgilerini girecekleri sayfada maksimum güvenlik hissi ararlar. Ödeme sayfasında 3D Secure seçeneğinin olmaması, bilindik ödeme kuruluşu logolarının (PayTR, iyzico vb.) yer almaması ve sayfanın amatör görünümü müşterinin son saniyede korkarak kaçmasına sebep olur.</p><h4>5. Alternatif Ödeme ve Taksit Seçeneklerinin Eksikliği</h4><p>Müşterinin sepeti hazır ancak sadece tek çekim kartla ödeme sunuyorsunuz veya müşterinin kullandığı yerel ödeme cüzdanlarını desteklemiyorsunuz. Özellikle yüksek tutarlı sepetlerde taksit imkanı sunulmaması doğrudan sepet terkine neden olur.</p><h3>Sepetten Satışa Dönüşüm Yol Haritası: Çözüm Adımları</h3><ul><li><strong>Üye Olmadan Ödeme (Guest Checkout) Sunun:</strong> Müşterilerin üye olmadan, sadece e-posta ve adres bilgisiyle alışveriş yapabilmesine izin verin. Üyelik teklifini sipariş tamamlandıktan sonraki teşekkür sayfasında sunabilirsiniz.</li><li><strong>Tek Sayfada Ödeme (One-Page Checkout) Sistemine Geçin:</strong> Tüm ödeme, kargo ve adres formunu tek ekranda toplayın. Shopify’ın yerleşik \"One-Page Checkout\" yapısı veya İKAS'ın ultra hızlı ödeme adımları bu dönüşümü anında artırır.</li><li><strong>Kargo Ücretlerini Ürün Sayfasında Belirtin:</strong> Kargo maliyetini saklamayın. Mümkünse ürün fiyatına kargoyu yedirip \"Ücretsiz Kargo\" ibaresiyle ürünü satın. \"Kargo Bedava\" kelimesi psikolojik olarak satışı en çok tetikleyen unsurdur.</li><li><strong>Terk Edilmiş Sepet E-postalarını/WhatsApp Mesajlarını Otomatize Edin:</strong> Sepete ürün atıp çıkan kullanıcılara 1 saat sonra \"Sepetinizde ürün unuttunuz, size özel %10 indirimle hemen tamamlayın\" şeklinde otomatik tetiklenen kurtarma mesajları gönderin.</li></ul><h3>Gerçek Hayattan Bir Müşteri Başarı Örneği</h3><p>İKAS altyapısına geçiş yapan yerel bir kahve makinesi satıcısı, yüksek fiyatlı ürünleri nedeniyle çok fazla \"Sepete Ekleme\" alıyor ancak satışları sepet sayısının %5'inde kalıyordu. Ödeme sayfasını analiz ettiğimizde taksit seçeneklerinin gizli bir alt sekmede kaldığını ve ödeme sayfası yüklenme hızının mobilde 4.8 saniye sürdüğünü saptadık. Ödeme sayfasını hızlandırıp taksit seçeneklerini kart numarası girilir girmez otomatik açılacak şekilde optimize ettik. Sepet kurtarma otomasyonlarını da kurarak **dönüşüm oranını (CR) %5'ten %18'e yükselttik.**</p><h3>Bu Sorun Kimler İçin Geçerlidir?</h3><p>Bu sorun; sepete ekleme oranı yüksek (%6 ve üzeri) olan ama satış dönüşümü (CR) %1.5’in altında kalan e-ticaret siteleri, yavaş ödeme sayfalarına sahip WordPress/WooCommerce altyapıları ve sepet kurtarma otomasyonları kurmamış işletmeler için geçerlidir.</p><h3>Sitenizde Bu Sorun Varsa Ne Yapmalısınız?</h3><p>Öncelikle sitenizin hunisini (Funnel) inceleyin: Kaç kişi sepete ekleyip ödeme sayfasına geçiyor ve kaçı siparişi tamamlıyor. En büyük düşüş ödeme sayfasındaysa, hemen bir test siparişi vererek kendi sitenizden alışveriş yapmayı deneyin. Karşılaştığınız her zorluk, müşterinizin de vazgeçtiği bir sürtünme noktasıdır.</p><h3>Sıkça Sorulan Sorular (SSS)</h3><h5>1. Sepet kurtarma (Cart Recovery) e-postaları gerçekten işe yarıyor mu?</h5><p>Evet, terk edilmiş sepet e-postaları veya WhatsApp mesajları, sepetini bırakan müşterilerin ortalama %15 ila %25'ini geri kazanmanızı sağlar. Bu, tamamen kayıp olan bir cironun efor sarf etmeden kurtarılması demektir.</p><h5>2. Ödeme sayfasında neden 3D Secure zorunlu olmalıdır?</h5><p>3D Secure hem satıcıyı sahte kart kullanımlarından korur hem de müşteriye banka güvencesi sunar. Ancak ödeme adımlarında bu sürecin hızlı ve hatasız çalışması kritik önem taşır.</p><h5>3. Adres formlarını otomatik doldurma (Google Autocomplete) eklemek satışı etkiler mi?</h5><p>Doğrudan etkiler. Kullanıcının adres yazarken harcadığı süreyi kısaltmak ve hata yapmasını engellemek sepet terk oranlarını ortalama %12 oranında düşürür.</p><hr /><h3>Bu sorunları tek tek çözmek yerine, sizin için profesyonel bir e-ticaret sistemi kurmamı ister misiniz? Ücretsiz analiz için iletişime geçin.</h3>"
-             }
+            }
         ]
     },
     "contact_page": {
@@ -417,5 +611,29 @@
                 "desc": "Üst düzey moda hikaye anlatımı için oluşturulmuş zarif dijital butik deneyimi."
             }
         }
+    },
+    "reviews": {
+        "title": "Müşteri Yorumları",
+        "subtitle": "Birlikte çalıştığımız e-ticaret markalarının ve girişimcilerin Google Maps / Benim İşletmem üzerinden paylaştığı görüşler.",
+        "items": [
+            {
+                "name": "Ahmet Y.",
+                "role": "AIO Coffee CEO",
+                "rating": 5,
+                "text": "Samer ile checkout ve hız optimizasyonu üzerinde çalıştık. Dönüşüm oranımız %35 arttı. İş disiplini ve teknik bilgisi harika."
+            },
+            {
+                "name": "Elif K.",
+                "role": "Moda Butiği Kurucusu",
+                "rating": 5,
+                "text": "Wordpress sitemizi İKAS altyapısına sorunsuz taşıdı. Sayfa hızımız 1.1 saniyeye düştü. Destek ve yönlendirmeleri için çok teşekkürler."
+            },
+            {
+                "name": "Omar B.",
+                "role": "Global E-Ticaret Müdürü",
+                "rating": 5,
+                "text": "Shopify ve Trendyol arasındaki stok senkronizasyon yazılımını geliştirdi. Manuel hatalardan kaynaklanan cezalarımız tamamen bitti."
+            }
+        ]
     }
 }

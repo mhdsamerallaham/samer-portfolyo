@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import { getLanguageUrl } from '../utils/navigation';
 
 // ─────────────────────────────────────────────────
 // Per-route SEO configuration map (Turkish-primary)
@@ -362,6 +363,7 @@ export default function SEO({
   keywords = '',
   schema = null,
   article = null, // { title, description, slug, date } for blog posts
+  faqItems = null, // Dynamic array of FAQs
 }) {
   const { i18n } = useTranslation();
   const location = useLocation();
@@ -377,11 +379,16 @@ export default function SEO({
   const canonicalUrl = `https://www.samer.life${pathname}`;
   const pageTitle = `${finalTitle} | Samer Allaham`;
 
+  // Alternate Multilingual URLs (hreflang)
+  const trUrl = `https://www.samer.life${getLanguageUrl(pathname, 'tr')}`;
+  const enUrl = `https://www.samer.life${getLanguageUrl(pathname, 'en')}`;
+  const arUrl = `https://www.samer.life${getLanguageUrl(pathname, 'ar')}`;
+
   // Collect all schemas for this page
   const schemas = [];
 
   // 1. FAQ schema for service pages
-  const faqs = serviceFAQs[pathname];
+  const faqs = faqItems || serviceFAQs[pathname];
   if (faqs) schemas.push(buildFAQSchema(faqs));
 
   // 2. Service schema for service pages
@@ -410,6 +417,12 @@ export default function SEO({
 
       {/* Canonical */}
       <link rel="canonical" href={canonicalUrl} />
+
+      {/* Alternate Language Links (hreflang) */}
+      <link rel="alternate" hreflang="tr" href={trUrl} />
+      <link rel="alternate" hreflang="en" href={enUrl} />
+      <link rel="alternate" hreflang="ar" href={arUrl} />
+      <link rel="alternate" hreflang="x-default" href={trUrl} />
 
       {/* Open Graph */}
       <meta property="og:type" content={article ? 'article' : 'website'} />

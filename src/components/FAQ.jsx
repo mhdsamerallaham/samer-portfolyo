@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Plus, Minus } from 'lucide-react';
 
-export default function FAQ() {
+export default function FAQ({ items }) {
   const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(null);
 
-  // Load FAQ list dynamically from locales JSON
-  const faqItems = t('faq.items', { returnObjects: true }) || [];
+  // Load FAQ list dynamically: use passed items, or fallback to general FAQs from locales
+  const defaultItems = t('faq.items', { returnObjects: true }) || [];
+  const faqItems = items || defaultItems;
 
   const toggleAccordion = (idx) => {
     setActiveIdx(activeIdx === idx ? null : idx);

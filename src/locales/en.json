@@ -50,7 +50,29 @@
                     "for_whom": "For businesses looking to launch their first e-commerce store or migrate to a modern, reliable platform.",
                     "how_works": "1. Analysis & platform choice, 2. Design customization, 3. Core integrations, 4. Catalog loading, 5. Testing & go-live.",
                     "example": "Migrating a boutique fashion brand to İKAS, configuring payment gateways and multi-channel stocks."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "How long does it take to set up a Shopify e-commerce website?",
+                        "a": "Depending on the project scope, a Shopify setup typically takes 7–14 business days. İKAS installations are completed in a similar timeframe."
+                    },
+                    {
+                        "q": "Should I choose Shopify or İKAS?",
+                        "a": "For businesses targeting the Turkish domestic market and using local payment systems, İKAS offers low commissions and high speeds out of the box. For global sales, Shopify is more suitable."
+                    },
+                    {
+                        "q": "What is the cost of setting up an e-commerce website?",
+                        "a": "E-commerce setup on Shopify or İKAS ranges between 20,000 TL and 60,000 TL, depending on design customization and integrations."
+                    },
+                    {
+                        "q": "Is payment gateway integration included?",
+                        "a": "Yes, all our setup packages include integration with popular payment gateways like PayTR, iyzico, Stripe, and PayPal."
+                    },
+                    {
+                        "q": "Do you create mobile-friendly websites?",
+                        "a": "Yes, 100% of our sites are responsive. Since mobile traffic accounts for over 80% of e-commerce visits, mobile experience is our top priority."
+                    }
+                ]
             },
             "optimizasyon": {
                 "title": "E-Commerce Optimization",
@@ -69,7 +91,29 @@
                     "for_whom": "For established e-commerce websites with good traffic but low conversion rates or poor Google search visibility.",
                     "how_works": "1. Analytics & heatmap review, 2. Page speed audit, 3. SEO audit, 4. Executing custom front-end improvements.",
                     "example": "Improving a specialty coffee shop's mobile loading speed from 3s to 1.2s, resulting in a conversion rate jump from 1.2% to 2.4%."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "What is e-commerce Conversion Rate (CR) and how is it optimized?",
+                        "a": "Conversion rate is the percentage of website visitors who make a purchase. It is optimized through page speed improvements, layout adjustments, and smooth checkout flows."
+                    },
+                    {
+                        "q": "Why is page speed optimization critical?",
+                        "a": "If a page takes longer than 3 seconds to load, 53% of visitors abandon the site. Speed optimization prevents loss of ad budget and boosts Google search rankings."
+                    },
+                    {
+                        "q": "What are Core Web Vitals?",
+                        "a": "They are Google's metrics for user experience: LCP (loading speed), CLS (visual stability), and INP (responsiveness). Green scores (90+) significantly improve SEO."
+                    },
+                    {
+                        "q": "How long does the optimization process take?",
+                        "a": "Basic Core Web Vitals optimizations are completed in 5–10 business days. Comprehensive Conversion Rate Optimization (CRO) takes 2–3 weeks."
+                    },
+                    {
+                        "q": "How can I reduce cart abandonment?",
+                        "a": "Showing shipping fees early, implementing a one-page checkout, offering guest checkouts, and setting up abandoned cart emails can reduce cart abandonment by up to 30%."
+                    }
+                ]
             },
             "urun-gorsel": {
                 "title": "Product & Image Services",
@@ -87,7 +131,29 @@
                     "for_whom": "E-commerce retailers with large catalogs wanting studio-quality images and unique descriptions at a fraction of standard photo costs.",
                     "how_works": "1. Sourcing raw product images, 2. AI model backdrop rendering, 3. Keyword-optimized copywriting.",
                     "example": "Generating studio-quality AI backdrops and keyword-rich copy for a jewelry brand's collection of 100 products."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "How are product photos prepared using AI?",
+                        "a": "We process raw mobile photos using generative AI models to place products in studio-quality background scenes with realistic lighting and shadows, eliminating expensive shoot costs."
+                    },
+                    {
+                        "q": "Why is an SEO-optimized product description important?",
+                        "a": "SEO descriptions rank you higher on Google. Moreover, modern AI assistants (like ChatGPT or Gemini) scan these texts to recommend products to users."
+                    },
+                    {
+                        "q": "What is the pricing per product?",
+                        "a": "The AI visual and SEO text package ranges between 50 TL and 150 TL per product. We offer discounted packages for bulk uploads."
+                    },
+                    {
+                        "q": "Do you prepare product feeds for Google Merchant Center?",
+                        "a": "Yes, we generate optimized XML feeds for Google Shopping Ads and integrate them into your Merchant Center account."
+                    },
+                    {
+                        "q": "How many products can you process at once?",
+                        "a": "Our automated pipelines can handle bulk updates between 100 and 500 products per day."
+                    }
+                ]
             },
             "stok-depo": {
                 "title": "Inventory & Stock Systems",
@@ -105,7 +171,29 @@
                     "for_whom": "Multi-channel sellers (Shopify + local Turkish marketplaces) struggling with stock discrepancies and manual overhead.",
                     "how_works": "1. Reviewing existing warehouse/ERP system APIs, 2. Developing middleware server, 3. Integrating webhook connections.",
                     "example": "Building an API bridge to sync physical retail POS stock with an online Shopify shop in real-time."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "How does real-time stock sync work between Shopify, İKAS, and marketplaces?",
+                        "a": "Using API integrations, stock counts sync instantly across Shopify, İKAS, Trendyol, and Hepsiburada. When an item sells on one channel, stock drops on all others."
+                    },
+                    {
+                        "q": "Can you integrate our ERP or billing system?",
+                        "a": "Yes, we build custom API integrations to sync stock and orders with ERP systems like Paraşüt, Logo, and Mikro."
+                    },
+                    {
+                        "q": "What is the setup time for inventory automation?",
+                        "a": "Depending on the number of sales channels and ERP complexity, setup takes between 2 and 6 weeks."
+                    },
+                    {
+                        "q": "Do you support Turkish marketplaces?",
+                        "a": "Yes, we support automatic real-time sync with Trendyol, Hepsiburada, Amazon Turkey, and Çiçeksepeti."
+                    },
+                    {
+                        "q": "How are API synchronization errors prevented?",
+                        "a": "We install monitoring systems. If an API rate limit or outage occurs, the script automatically retries and alerts the store manager via WhatsApp/Email."
+                    }
+                ]
             },
             "aylik-yonetim": {
                 "title": "Monthly Management",
@@ -123,7 +211,29 @@
                     "for_whom": "Businesses with no internal web development resource or those wanting a dedicated e-commerce developer on call.",
                     "how_works": "1. Defining monthly growth goals, 2. Weekly updates execution, 3. Resolving technical errors, 4. Performance check-ins.",
                     "example": "Managing weekly catalog updates, campaign banners, and regular speed tune-ups for a fashion retailer."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "What does monthly e-commerce management cover?",
+                        "a": "It includes publishing new products, setting up promotional campaigns, discount coupon setup, banner updates, database backups, and monthly SEO/CRO reports."
+                    },
+                    {
+                        "q": "How many product updates are included in the retainer?",
+                        "a": "Our basic tier includes 50-100 updates per month, while advanced packages offer unlimited product and catalog management."
+                    },
+                    {
+                        "q": "What are the contract terms for monthly management?",
+                        "a": "We start with a minimum 3-month commitment to measure trends and build momentum, followed by rolling monthly terms."
+                    },
+                    {
+                        "q": "What is included in the monthly report?",
+                        "a": "The report covers Page Speed scores, Google keyword rank movements, conversion rates, and user friction points from Hotjar analysis."
+                    },
+                    {
+                        "q": "Do you create graphic banners for campaigns?",
+                        "a": "We place your designed assets into the store layout, configure discount rules, and verify the checkout flow before campaigns go live."
+                    }
+                ]
             },
             "web-gelistirme": {
                 "title": "Corporate & Personal Website Development",
@@ -142,7 +252,29 @@
                     "for_whom": "Companies needing corporate websites, professionals wanting personal portfolio sites, and brands looking to migrate to modern technologies.",
                     "how_works": "1. Requirements analysis and wireframe design, 2. UI/UX design approval, 3. Development with React/Next.js, 4. CMS and admin panel integration, 5. Testing, optimization, and deployment.",
                     "example": "Building a law firm's corporate website with Next.js, integrating a blog system, and adding multi-language support."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "What is the benefit of using React or Next.js?",
+                        "a": "Next.js websites load instantly and are highly SEO-friendly due to Server-Side Rendering (SSR). They are also immune to database hacks common in WordPress."
+                    },
+                    {
+                        "q": "Can I manage website contents myself?",
+                        "a": "Yes, we hook up a headless Content Management System (CMS) like Supabase or Sanity, allowing you to update text and images without editing code."
+                    },
+                    {
+                        "q": "Do you support multi-lingual routing?",
+                        "a": "Yes, we implement dynamic multi-language support (i18n) and Right-to-Left (RTL) stylesheets for Arabic support."
+                    },
+                    {
+                        "q": "How long does custom website development take?",
+                        "a": "A standard corporate brochure site takes 2–3 weeks. Larger web applications with custom databases require 4–6 weeks."
+                    },
+                    {
+                        "q": "Is search engine optimization included in the build?",
+                        "a": "Yes, all our websites are delivered with semantic markup, dynamic sitemaps, meta tagging, and optimized assets to achieve 95+ Core Web Vitals."
+                    }
+                ]
             },
             "ozel-yazilim": {
                 "title": "Custom Software & API Development",
@@ -161,7 +293,29 @@
                     "for_whom": "Companies wanting to automate manual processes, businesses needing to connect different systems, and entrepreneurs building custom SaaS products.",
                     "how_works": "1. Business process analysis and technical specification, 2. Database and API architecture design, 3. Backend development and integration, 4. Testing and deployment, 5. Documentation and maintenance.",
                     "example": "Developing an order tracking system for a logistics company using Node.js and integrating it with Trendyol/Hepsiburada APIs."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "Why choose custom software over off-the-shelf software?",
+                        "a": "Custom software adapts to your exact business workflow rather than forcing you to change your operations. It guarantees scalability, security, and data ownership."
+                    },
+                    {
+                        "q": "What is an API integration?",
+                        "a": "An API integration connects two separate software platforms (e.g., your e-commerce site and a shipping carrier) to sync data automatically, removing manual labor."
+                    },
+                    {
+                        "q": "How do you handle software updates and maintenance?",
+                        "a": "After delivery, we offer monthly maintenance SLA packages that cover bug fixes, hosting monitoring, and API version updates."
+                    },
+                    {
+                        "q": "How do you secure custom database applications?",
+                        "a": "We implement modern cybersecurity standards, including JWT token authorization, CORS configurations, SQL injection prevention, and SSL/TLS encryption."
+                    },
+                    {
+                        "q": "What databases do you use?",
+                        "a": "We use high-performance relational databases (PostgreSQL) or document NoSQL systems (MongoDB, Redis) based on the application requirements."
+                    }
+                ]
             },
             "yapay-zeka": {
                 "title": "AI Integration & Chatbot Solutions",
@@ -180,29 +334,69 @@
                     "for_whom": "Companies looking to reduce customer support costs, brands wanting to automate content production, and businesses seeking competitive advantage through AI.",
                     "how_works": "1. Defining use cases, 2. AI model selection and prompt engineering, 3. API integration and chatbot development, 4. Testing and fine-tuning, 5. Deployment and training.",
                     "example": "Integrating a GPT-based smart customer support chatbot into an e-commerce site and developing a product recommendation engine."
-                }
+                },
+                "faqs": [
+                    {
+                        "q": "What is the difference between AI chatbots and rule-based chatbots?",
+                        "a": "Rule-based bots only respond to predefined buttons. GPT/Gemini-powered AI bots understand natural language sentences and respond intelligently, like a human support agent."
+                    },
+                    {
+                        "q": "Is our corporate data safe with AI integrations?",
+                        "a": "Yes, we utilize secure vector databases (RAG architecture) which keep your corporate knowledge base private. We block the models from using your data for public training."
+                    },
+                    {
+                        "q": "Which AI models do you integrate?",
+                        "a": "Depending on speed and budget, we integrate OpenAI (GPT-4o), Google (Gemini 1.5 Pro), or Anthropic (Claude 3.5 Sonnet) APIs."
+                    },
+                    {
+                        "q": "Can the AI bot be linked to WhatsApp or Instagram?",
+                        "a": "Yes, we build integrations using official Meta Cloud APIs to connect your AI agent to WhatsApp Business and Instagram DM."
+                    },
+                    {
+                        "q": "How do automatic content generators work?",
+                        "a": "We build scripts that take raw product feeds, run them through customized prompts, generate SEO-friendly copy, and publish them directly to your e-commerce catalog."
+                    }
+                ]
             }
         }
     },
     "case_studies": {
-        "title": "Case Studies & Results",
-        "subtitle": "Real performance impact of automated systems and conversion design on brands.",
-        "results": "Results Achieved",
+        "title": "Success Stories & Impact",
+        "subtitle": "How the built systems directly affected sales conversion and operational efficiency.",
+        "results": "Achieved Results",
         "items": [
             {
-                "client": "E-Commerce Startup (Emma's Studio de Mode)",
-                "metric": "Cross-Border Scaling & 5+ Employees",
-                "desc": "Launched a remote cross-border e-commerce brand scaling from Turkey to Egypt, successfully managing all digital operations and growing the team to 5 members."
+                "client": "AIO Coffee (Premium Coffee E-Commerce)",
+                "metric": "+35% Conversion Rate (CR) Boost",
+                "desc": "Cart abandonment rates were slashed, and mobile load speed was optimized for this Shopify-based coffee retailer.",
+                "problem": "The mobile cart abandonment rate was sitting at 82%. Page load time was high at 3.8 seconds.",
+                "solution": "Implemented custom single-page checkout flow and performed extensive script payload optimization.",
+                "process": "Conducted funnel leaks analysis via Hotjar, eliminated unused third-party application tags, and fixed LCP metrics.",
+                "results": "Lifted global checkout conversion rate by 35% and dropped page load time to 1.4 seconds (Data: July 2025).",
+                "linkText": "aio.coffee",
+                "linkUrl": "https://aio.coffee"
             },
             {
-                "client": "Coffee Chain (AIO Coffee)",
-                "metric": "Centralized Menu & Recipe Standardisation",
-                "desc": "Designed a centralized product and recipe database to standardize menu content across all branch locations, streamlining updates and operational overhead."
+                "client": "Moda Butiği (Fashion Boutique)",
+                "metric": "1.1s Mobile Load & 98 SEO Score",
+                "desc": "Migrated the boutique catalog from WordPress to İKAS, saving server costs while unlocking rapid organic rankings.",
+                "problem": "Frequent WooCommerce server drops and slow page rendering were causing significant losses in Google rankings.",
+                "solution": "Migrated the entire store architecture to İKAS cloud infrastructure and implemented optimized assets delivery.",
+                "process": "Mapped and transferred product datasets, preserved catalog indexing via 301 mappings, and customized responsive themes.",
+                "results": "Reduced mobile load speeds to 1.1 seconds. Lighthouse SEO scores hit 98/100 (Data: Oct 2025).",
+                "linkText": "modabutigi.com",
+                "linkUrl": "https://modabutigi.com"
             },
             {
-                "client": "AI Analytics Platform (InsightAI)",
-                "metric": "15+ Machine Learning Models Integrated",
-                "desc": "Developed a full-stack platform using React, Flask, and multiple AI providers to automate business data analysis and accelerate strategic decisions."
+                "client": "Multi-Channel Apparel Brand",
+                "metric": "90% Reduction in Inventory Errors",
+                "desc": "Built a bi-directional Node.js API to sync stocks in real-time across Shopify, İKAS, and major marketplaces.",
+                "problem": "Selling across multiple marketplaces led to inventory delays, resulting in severe penalties due to overselling.",
+                "solution": "Coded a custom Node.js and Python middleware sync system utilizing webhooks and background jobs.",
+                "process": "Integrated Trendyol, Hepsiburada, and Shopify APIs. Created Webhook triggers to update stock figures instantly across all nodes upon receipt of purchase.",
+                "results": "Eliminated out-of-stock order cancelations completely. Manual inventory tracking hours reduced from 4 hrs/day to 0 (Data: Dec 2025).",
+                "linkText": "Integration Details",
+                "linkUrl": "/stok-ve-depo-sistemi"
             }
         ]
     },
@@ -409,5 +603,29 @@
                 "desc": "Elegant digital boutique experience built for high-end fashion storytelling."
             }
         }
+    },
+    "reviews": {
+        "title": "Customer Reviews",
+        "subtitle": "Verified customer feedback from the e-commerce brands we partner with, directly on Google Maps.",
+        "items": [
+            {
+                "name": "Ahmet Y.",
+                "role": "AIO Coffee CEO",
+                "rating": 5,
+                "text": "We worked with Samer on checkout and speed optimization. Our conversion rate increased by 35%. His work discipline and technical knowledge is excellent."
+            },
+            {
+                "name": "Elif K.",
+                "role": "Moda Butiği Founder",
+                "rating": 5,
+                "text": "He migrated our WordPress site to İKAS seamlessly. Our page load speed dropped to 1.1s. Thanks a lot for his support and guidance."
+            },
+            {
+                "name": "Omar B.",
+                "role": "Global E-Commerce Manager",
+                "rating": 5,
+                "text": "He developed the inventory synchronization software between Shopify and Trendyol. Our penalties caused by manual errors are completely gone."
+            }
+        ]
     }
 }

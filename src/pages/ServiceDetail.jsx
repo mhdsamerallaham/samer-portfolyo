@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import FAQ from '../components/FAQ';
 
 const routeToKeyMap = {
+  // Turkish
   '/eticaret-site-kurulumu': 'site-kurulumu',
   '/eticaret-optimizasyon': 'optimizasyon',
   '/urun-gorsel-ve-icerik': 'urun-gorsel',
@@ -13,7 +14,27 @@ const routeToKeyMap = {
   '/aylik-yonetim': 'aylik-yonetim',
   '/web-sitesi-gelistirme': 'web-gelistirme',
   '/ozel-yazilim-gelistirme': 'ozel-yazilim',
-  '/yapay-zeka-cozumleri': 'yapay-zeka'
+  '/yapay-zeka-cozumleri': 'yapay-zeka',
+
+  // English
+  '/en/ecommerce-setup': 'site-kurulumu',
+  '/en/ecommerce-optimization': 'optimizasyon',
+  '/en/product-visuals-content': 'urun-gorsel',
+  '/en/inventory-stock-automation': 'stok-depo',
+  '/en/monthly-management': 'aylik-yonetim',
+  '/en/web-development': 'web-gelistirme',
+  '/en/custom-software': 'ozel-yazilim',
+  '/en/ai-solutions': 'yapay-zeka',
+
+  // Arabic
+  '/ar/shopify-setup-turkey': 'site-kurulumu',
+  '/ar/ecommerce-optimization': 'optimizasyon',
+  '/ar/product-content-ai': 'urun-gorsel',
+  '/ar/stock-inventory-system': 'stok-depo',
+  '/ar/monthly-ecommerce-management': 'aylik-yonetim',
+  '/ar/web-development': 'web-gelistirme',
+  '/ar/custom-software': 'ozel-yazilim',
+  '/ar/ai-solutions': 'yapay-zeka'
 };
 
 export default function ServiceDetail() {
@@ -46,6 +67,7 @@ export default function ServiceDetail() {
         title={data.title}
         description={data.desc}
         keywords={`${data.title.toLowerCase()}, shopify site kurma, ikas e ticaret sitesi, e ticaret danışmanlığı`}
+        faqItems={data.faqs}
       />
 
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
@@ -160,7 +182,7 @@ export default function ServiceDetail() {
               {i18n.language === 'tr' ? 'Hizmet Hakkında SSS' : i18n.language === 'ar' ? 'الأسئلة Şarkı' : 'Service FAQ'}
             </h2>
           </div>
-          <FAQ />
+          <FAQ items={data.faqs} />
         </div>
 
       </div>
