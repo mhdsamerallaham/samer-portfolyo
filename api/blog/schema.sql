@@ -92,3 +92,16 @@ INSERT INTO blog_posts (
   '5 طرق لزيادة معدل تحويل المبيعات في المتاجر الإلكترونية',
   'اكتشف 5 طرق برمجية وتصميمية لزيادة معدل التحويل (CR) وتقليل نسب التخلي عن السلال عبر صفحة الدفع السريعة وأزرار الشراء الفعالة.'
 );
+
+-- 3. Create contact submissions backup table
+CREATE TABLE IF NOT EXISTS contact_submissions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(255),
+  website VARCHAR(255),
+  platform VARCHAR(255) DEFAULT 'not_sure',
+  budget VARCHAR(255) DEFAULT 'tier1',
+  message TEXT NOT NULL
+);

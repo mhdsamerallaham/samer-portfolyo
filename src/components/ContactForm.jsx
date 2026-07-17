@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Send, CheckCircle, RefreshCw } from 'lucide-react';
+import { MessageSquare, Send, CheckCircle, RefreshCw, AlertTriangle } from 'lucide-react';
 
 export default function ContactForm() {
   const { t, i18n } = useTranslation();
@@ -17,6 +17,7 @@ export default function ContactForm() {
   
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorState, setErrorState] = useState(false);
 
   // Pre-fill preferences from URL query strings
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,25 +56,51 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setErrorState(false);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // 1. PRIMARY OPTION: Try submitting to our Vercel Serverless Contact API (saves directly to Supabase)
+    try {
+      const apiResponse = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          website,
+          platform,
+          budget,
+          message
+        })
+      });
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.warn('EmailJS credentials are missing. Simulating form submission.');
-      // Simulate database or API submission
-      setTimeout(() => {
-        setLoading(false);
+      if (apiResponse.ok) {
         setSuccess(true);
-        
+        setErrorState(false);
         // Clear form
         setName('');
         setEmail('');
         setPhone('');
         setWebsite('');
         setMessage('');
-      }, 1200);
+        setLoading(false);
+        return; // Success!
+      }
+    } catch (apiError) {
+      console.warn('Backend API connection failed, trying EmailJS fallback...', apiError);
+    }
+
+    // 2. FALLBACK OPTION: Submit to EmailJS client API
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.warn('EmailJS credentials are missing. Displaying WhatsApp fallback.');
+      setErrorState(true);
+      setLoading(false);
       return;
     }
 
@@ -101,6 +128,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSuccess(true);
+        setErrorState(false);
         // Clear form
         setName('');
         setEmail('');
@@ -110,11 +138,11 @@ export default function ContactForm() {
       } else {
         const errText = await response.text();
         console.error('EmailJS Error:', errText);
-        alert(i18n.language === 'tr' ? 'Mesaj gönderilirken hata oluştu. Lütfen tekrar deneyin.' : 'Error sending message. Please try again.');
+        setErrorState(true);
       }
     } catch (error) {
       console.error('Form submission network error:', error);
-      alert(i18n.language === 'tr' ? 'Bir ağ hatası oluştu. Lütfen bağlantınızı kontrol edin.' : 'A network error occurred. Please check your connection.');
+      setErrorState(true);
     } finally {
       setLoading(false);
     }
@@ -124,6 +152,16 @@ export default function ContactForm() {
     const waPhone = '905394611684';
     const waText = encodeURIComponent(t('contact_page.whatsapp_msg'));
     return `https://wa.me/${waPhone}?text=${waText}`;
+  };
+
+  const getWhatsAppCustomLink = () => {
+    const waPhone = '905394611684';
+    const budgetText = budget === 'tier1' ? '10k-25k TL' : budget === 'tier2' ? '25k-50k TL' : budget === 'tier3' ? '50k-100k TL+' : 'Aylık Yönetim';
+    const platformText = platform === 'shopify' ? 'Shopify' : platform === 'ikas' ? 'İKAS' : 'Belirsiz';
+    const msg = i18n.language === 'tr' 
+      ? `Merhaba Samer, ben ${name}. E-ticaret sitem için teklif almak istiyorum. Bütçem: ${budgetText}. Tercih ettiğim altyapı: ${platformText}. E-posta adresim: ${email}. Telefonum: ${phone}. Sitem: ${website || 'Yok'}. Mesajım: ${message}`
+      : `Hi Samer, I am ${name}. I would like to get a quote for my e-commerce project. Budget: ${budgetText}. Platform: ${platformText}. Email: ${email}. Phone: ${phone}. Website: ${website || 'None'}. Message: ${message}`;
+    return `https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`;
   };
 
   if (success) {
@@ -137,8 +175,44 @@ export default function ContactForm() {
           onClick={() => setSuccess(false)}
           className="mt-6 px-6 py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl mono text-[9px] font-black uppercase tracking-wider transition-colors cursor-pointer"
         >
-          YENİ MESAJ GÖNDER
+          {i18n.language === 'tr' ? 'YENİ MESAJ GÖNDER' : i18n.language === 'ar' ? 'إرسال رسالة جديدة' : 'SEND NEW MESSAGE'}
         </button>
+      </div>
+    );
+  }
+
+  if (errorState) {
+    return (
+      <div className="w-full bg-[#131b2e] border border-[#ff6b6b]/20 rounded-3xl p-8 md:p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
+        <div className="w-16 h-16 rounded-full bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 flex items-center justify-center text-[#ff6b6b] mb-6 animate-pulse">
+          <AlertTriangle size={32} />
+        </div>
+        <h3 className="text-xl md:text-2xl font-black text-white mb-3">
+          {i18n.language === 'tr' ? 'Bağlantı Hatası' : i18n.language === 'ar' ? 'خطأ في الاتصال' : 'Connection Error'}
+        </h3>
+        <p className="text-neutral-400 text-xs md:text-sm max-w-md font-semibold leading-relaxed mb-8">
+          {i18n.language === 'tr' 
+            ? 'E-posta sunucumuzda geçici bir bağlantı sorunu oluştu. Form verilerinizi kaybetmemek için talebinizi hemen WhatsApp üzerinden tek tıkla iletmek ister misiniz?' 
+            : i18n.language === 'ar'
+            ? 'حدث خطأ مؤقت في الاتصال بخادم البريد الإلكتروني. هل تود إرسال طلبك فوراً بضغطة واحدة عبر الواتساب لتفادي فقدان البيانات؟'
+            : 'A temporary connection issue occurred with our email server. Would you like to submit your inquiry directly via WhatsApp with one click instead?'}
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a
+            href={getWhatsAppCustomLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 bg-[#ff6b6b] hover:bg-[#ff5252] text-white rounded-xl mono text-[10px] font-black uppercase tracking-wider transition-all hover:scale-105"
+          >
+            {i18n.language === 'tr' ? 'WHATSAPP İLE GÖNDER' : i18n.language === 'ar' ? 'إرسال عبر الواتساب' : 'SEND VIA WHATSAPP'}
+          </a>
+          <button
+            onClick={() => setErrorState(false)}
+            className="px-6 py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl mono text-[10px] font-black uppercase tracking-wider transition-all cursor-pointer"
+          >
+            {i18n.language === 'tr' ? 'TEKRAR DENE' : i18n.language === 'ar' ? 'إعادة المحاولة' : 'TRY AGAIN'}
+          </button>
+        </div>
       </div>
     );
   }
