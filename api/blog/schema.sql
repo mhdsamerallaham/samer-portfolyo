@@ -105,3 +105,14 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
   budget VARCHAR(255) DEFAULT 'tier1',
   message TEXT NOT NULL
 );
+
+-- 4. Create cron_locks table for atomic concurrency locking
+CREATE TABLE IF NOT EXISTS cron_locks (
+  job_name text PRIMARY KEY,
+  is_processing boolean NOT NULL DEFAULT false,
+  started_at timestamptz
+);
+
+INSERT INTO cron_locks (job_name, is_processing) VALUES ('blog_generate', false)
+ON CONFLICT (job_name) DO NOTHING;
+

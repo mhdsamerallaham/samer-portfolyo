@@ -305,6 +305,42 @@ const fallbackDrafts = [
   }
 ];
 
+// ─── Atomic Concurrency Lock Helpers ─────────────────────────────────────
+const STALE_LOCK_MINUTES = 5;
+
+async function acquireAtomicLock() {
+  try {
+    const staleThreshold = new Date(Date.now() - STALE_LOCK_MINUTES * 60 * 1000).toISOString();
+
+    const { data, error } = await supabase
+      .from('cron_locks')
+      .update({ is_processing: true, started_at: new Date().toISOString() })
+      .eq('job_name', 'blog_generate')
+      .or(`is_processing.eq.false,started_at.lt.${staleThreshold}`)
+      .select();
+
+    if (error) {
+      console.warn("[Atomic Lock] Lock query warning (will proceed):", error.message);
+      return true; // proceed if cron_locks table hasn't been created yet
+    }
+    return data && data.length > 0;
+  } catch (err) {
+    console.warn("[Atomic Lock] Lock exception (will proceed):", err.message);
+    return true;
+  }
+}
+
+async function releaseAtomicLock() {
+  try {
+    await supabase
+      .from('cron_locks')
+      .update({ is_processing: false })
+      .eq('job_name', 'blog_generate');
+  } catch (err) {
+    console.warn("[Atomic Lock] Lock release warning:", err.message);
+  }
+}
+
 module.exports = async (req, res) => {
   // 1. Authorization Check (for secure cron job execution)
   const authHeader = req.headers.authorization;
@@ -312,15 +348,27 @@ module.exports = async (req, res) => {
   
   const isAuthorized = 
     (authHeader === `Bearer ${process.env.CRON_SECRET}`) ||
-    (secretParam === process.env.CRON_SECRET) ||
+    (secretParam === secretParam && secretParam === process.env.CRON_SECRET) ||
     (process.env.NODE_ENV === 'development');
 
   if (!isAuthorized) {
     return res.status(401).json({ error: "Unauthorized access" });
   }
 
+  // 2. Atomic Lock Check (Prevents overlapping cron executions & token wastage)
+  const gotLock = await acquireAtomicLock();
+  if (!gotLock) {
+    console.log('[Atomic Lock] Another blog generation process is currently running. Skipping this invocation.');
+    return res.status(200).json({
+      success: true,
+      skipped: true,
+      reason: 'already_running',
+      message: 'Skipped: Another generation process is currently running.'
+    });
+  }
+
   try {
-    // 2. Concurrency Lock: Check if a post was already generated within the last 10 minutes to prevent race conditions
+    // 3. Concurrency Lock: Check if a post was already generated within the last 10 minutes to prevent race conditions
     const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
     const { data: recentPosts, error: recentError } = await supabase
       .from("blog_posts")
@@ -615,5 +663,7 @@ module.exports = async (req, res) => {
       success: false,
       error: error.message
     });
+  } finally {
+    await releaseAtomicLock();
   }
 };
