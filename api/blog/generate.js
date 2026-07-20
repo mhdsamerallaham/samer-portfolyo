@@ -112,7 +112,36 @@ async function fetchOpenRouterFreeModels() {
   }
 }
 
-// Tek bir OpenAI-uyumlu provider'a istek at (15 sn sıkı timeout)
+// Helper to sanitize and auto-close cut-off HTML tags or truncated sentences
+function sanitizeHTMLContent(html) {
+  if (!html) return "<p>İçerik yüklenemedi.</p>";
+  let str = html.trim();
+
+  // If text ends abruptly mid-word without punctuation or closing tag, trim back to last full sentence
+  if (!str.endsWith('>') && !str.endsWith('.') && !str.endsWith('!') && !str.endsWith('?')) {
+    const lastPunct = Math.max(str.lastIndexOf('.'), str.lastIndexOf('!'), str.lastIndexOf('?'), str.lastIndexOf('</p>'));
+    if (lastPunct > 100) {
+      str = str.slice(0, lastPunct + 1);
+    }
+  }
+
+  // Auto-close missing HTML tags
+  const openP = (str.match(/<p>/gi) || []).length;
+  const closeP = (str.match(/<\/p>/gi) || []).length;
+  for (let i = 0; i < openP - closeP; i++) str += '</p>';
+
+  const openH3 = (str.match(/<h3>/gi) || []).length;
+  const closeH3 = (str.match(/<\/h3>/gi) || []).length;
+  for (let i = 0; i < openH3 - closeH3; i++) str += '</h3>';
+
+  const openUl = (str.match(/<ul>/gi) || []).length;
+  const closeUl = (str.match(/<\/ul>/gi) || []).length;
+  for (let i = 0; i < openUl - closeUl; i++) str += '</ul>';
+
+  return str;
+}
+
+// Tek bir OpenAI-uyumlu provider'a istek at (18 sn sıkı timeout)
 async function callProvider(provider, prompt) {
   const headers = {
     "Content-Type": "application/json",
@@ -124,8 +153,9 @@ async function callProvider(provider, prompt) {
 
   const body = {
     model: provider.model,
+    max_tokens: 2500,
     messages: [
-      { role: "system", content: "You must respond with valid JSON as requested by the user." },
+      { role: "system", content: "You must respond with valid JSON as requested by the user. Ensure all HTML tags and JSON fields are fully closed and never truncated." },
       { role: "user", content: prompt }
     ]
   };
@@ -594,21 +624,21 @@ module.exports = async (req, res) => {
       // Turkish
       title_tr: titleTr,
       summary_tr: trData.summary_tr || "E-ticaret ve dijital büyüme süreçlerine dair ipuçları.",
-      content_tr: trData.content_tr || "<p>Yazı içeriği yüklenemedi.</p>",
+      content_tr: sanitizeHTMLContent(trData.content_tr),
       seo_title_tr: trData.seo_title_tr || titleTr,
       seo_description_tr: trData.seo_description_tr || (trData.summary_tr || "Açıklama bulunmuyor."),
       
       // English
       title_en: enData.title_en || titleTr,
       summary_en: enData.summary_en || (trData.summary_tr || "E-commerce updates."),
-      content_en: enData.content_en || (trData.content_tr || "<p>Content unavailable.</p>"),
+      content_en: sanitizeHTMLContent(enData.content_en),
       seo_title_en: enData.seo_title_en || (enData.title_en || titleTr),
       seo_description_en: enData.seo_description_en || (enData.summary_en || "No description."),
       
       // Arabic
       title_ar: arData.title_ar || titleTr,
       summary_ar: arData.summary_ar || (trData.summary_tr || "أحدث المقالات حول التجارة الإلكترونية."),
-      content_ar: arData.content_ar || (trData.content_tr || "<p>المحتوى غير متوفر حالياً.</p>"),
+      content_ar: sanitizeHTMLContent(arData.content_ar),
       seo_title_ar: arData.seo_title_ar || (arData.title_ar || titleTr),
       seo_description_ar: arData.seo_description_ar || (arData.summary_ar || "لا يوجد وصف.")
     };
