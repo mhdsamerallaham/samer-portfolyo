@@ -9,7 +9,7 @@
     },
     {
       "path": "/api/faq/generate",
-      "schedule": "0 12 * * *"
+      "schedule": "0 */3 * * *"
     }
   ]
 }

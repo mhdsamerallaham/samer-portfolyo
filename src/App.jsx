@@ -18,6 +18,7 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Blog = lazy(() => import('./pages/Blog'));
 const FAQ = lazy(() => import('./pages/FAQ'));
+const FAQDetail = lazy(() => import('./pages/FAQDetail'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 
@@ -127,7 +128,9 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/faq/:slug" element={<FAQDetail />} />
             <Route path="/sss" element={<FAQ />} />
+            <Route path="/sss/:slug" element={<FAQDetail />} />
             <Route path="/hakkimda" element={<About />} />
             <Route path="/iletisim" element={<Contact />} />
 
@@ -146,6 +149,7 @@ function App() {
             <Route path="/en/blog" element={<Blog />} />
             <Route path="/en/blog/:slug" element={<Blog />} />
             <Route path="/en/faq" element={<FAQ />} />
+            <Route path="/en/faq/:slug" element={<FAQDetail />} />
             <Route path="/en/about" element={<About />} />
             <Route path="/en/contact" element={<Contact />} />
 
@@ -164,6 +168,7 @@ function App() {
             <Route path="/ar/blog" element={<Blog />} />
             <Route path="/ar/blog/:slug" element={<Blog />} />
             <Route path="/ar/faq" element={<FAQ />} />
+            <Route path="/ar/faq/:slug" element={<FAQDetail />} />
             <Route path="/ar/about" element={<About />} />
             <Route path="/ar/contact" element={<Contact />} />
 

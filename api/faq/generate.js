@@ -146,26 +146,32 @@ module.exports = async (req, res) => {
     const { data: existingFaqs } = await supabase.from("faq_posts").select("slug, question_tr");
     const existingList = (existingFaqs || []).map(f => f.question_tr);
 
+    // Select category randomly to ensure balanced coverage across 4 domains
+    const categories = ["E-Ticaret", "Yazılım Geliştirme", "Web Tasarımı & UX", "E-Ticaret Yönetimi"];
+    const targetCategory = categories[Math.floor(Math.random() * categories.length)];
+
     // 2. Generate GEO / AEO Structured Q&As in Turkish
     const trPrompt = `
       You are an expert SEO strategist specialized in GEO (Generative Engine Optimization) and AEO (Answer Engine Optimization).
-      Generate 1 HIGH-QUALITY question & answer item designed for AI systems like ChatGPT, Gemini, and Perplexity.
-      
-      Topics: E-commerce, Shopify, İKAS, conversion optimization, product pages, UX, automation.
+      Generate 1 HIGH-AUTHORITY, REAL GOOGLE USER SEARCH QUESTION & ANSWER item for AI search engines (ChatGPT, Gemini, Perplexity).
+
+      TARGET DOMAIN: ${targetCategory}
       Do NOT duplicate these existing questions: ${JSON.stringify(existingList)}
 
       STRICT GEO/AEO STRUCTURE REQUIREMENTS:
-      1. question_tr: Clear, real-user search question (e.g. "Shopify Dönüşüm Oranı Nasıl Artırılır?")
-      2. slug: Language-agnostic URL slug (e.g. "shopify-donusum-orani-artirma")
-      3. short_answer_tr: Concise 2-3 sentence answer optimized for Google Featured Snippets & AI direct answers. Must cover What, Why, and How clearly.
-      4. content_tr: Detailed answer (250-400 words) formatted in clear HTML (<h3>, <p>, <ul>, <li>, <strong>) with a step-by-step solution. Include internal links: <a href="/eticaret-optimizasyon">E-Ticaret Optimizasyon</a> service.
-      5. who_is_this_for_tr: 2-3 sentences explaining who this guide is for.
-      6. cta_text_tr: Actionable CTA text (e.g. "E-Ticaret Mağazanızı Birlikte Büyütelim")
-      7. cta_link_tr: Link to service page (e.g. "/eticaret-site-kurulumu")
+      1. question_tr: Must be a real, high-volume Google "People Also Ask" search question in Turkish (e.g. "Shopify'da Sepeti Terk Etme Oranı Nasıl Düşürülür?" or "Next.js ile E-Ticaret Sitem Nasıl Hızlandırılır?").
+      2. slug: Language-agnostic, lowercase, hyphenated URL slug (e.g. "shopify-sepeti-terk-etme-orani-dusurme").
+      3. category: "${targetCategory}"
+      4. short_answer_tr: Concise 2-3 sentence direct answer optimized for Google Featured Snippets & AI direct answers. Explicitly include What, Why, and How.
+      5. content_tr: Detailed, expert answer (250-400 words) formatted in clean HTML (<h3>, <p>, <ul>, <li>, <strong>) with a step-by-step solution. Include 1 internal link to a relevant service page (e.g. <a href="/eticaret-optimizasyon">E-Ticaret Optimizasyon</a> or <a href="/ozel-yazilim-gelistirme">Özel Yazılım Geliştirme</a>).
+      6. who_is_this_for_tr: 2-3 sentences explaining target audience and scenario.
+      7. cta_text_tr: Actionable CTA text (e.g. "E-Ticaret Mağazanızı Birlikte Büyütelim")
+      8. cta_link_tr: Link path (e.g. "/eticaret-site-kurulumu" or "/web-sitesi-gelistirme")
 
       Respond in JSON format:
       {
         "slug": "url-slug",
+        "category": "${targetCategory}",
         "question_tr": "Turkish Question",
         "short_answer_tr": "Short 2-3 sentence answer",
         "content_tr": "Detailed HTML content with step-by-step solution",

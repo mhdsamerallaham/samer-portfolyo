@@ -267,12 +267,16 @@ export default function FAQ() {
                         </div>
                       )}
 
-                      {/* Call to Action Button */}
-                      {faq.cta_text && (
-                        <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-gray-800/50">
-                          <span className="text-xs text-gray-400">
-                            Projeniz için özel bir kurguya mı ihtiyacınız var?
-                          </span>
+                      {/* Call to Action Button & Dedicated Page Link */}
+                      <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-gray-800/50">
+                        <Link
+                          to={`/faq/${faq.slug}`}
+                          className="inline-flex items-center gap-1.5 text-xs text-[#ff6b6b] hover:underline font-semibold"
+                        >
+                          Müstakil Detay Sayfasında Gör <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                        
+                        {faq.cta_text && (
                           <button
                             onClick={() => navigate(faq.cta_link || '/contact')}
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#ff6b6b] hover:bg-[#ff5252] text-white text-xs sm:text-sm font-semibold transition-all shadow-md shadow-[#ff6b6b]/20"
@@ -280,8 +284,8 @@ export default function FAQ() {
                             {faq.cta_text}
                             <ArrowRight className="w-4 h-4" />
                           </button>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
                     </div>
                   )}
