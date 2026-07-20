@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowDownRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { getLocalizedPath } from '../utils/navigation';
 
 export default function Footer() {
@@ -38,6 +38,9 @@ export default function Footer() {
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4 mt-2">
+              <a href="https://share.google/IrAWdrTQOMekMNmwh" target="_blank" rel="noopener noreferrer" aria-label="Google Maps Business Profile" title="Google Maps İşletme Profili" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
+                <MapPin size={16} />
+              </a>
               <a href="https://github.com/mhdsamerallaham" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 transition-all">
                 <Github size={16} />
               </a>
