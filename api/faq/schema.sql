@@ -34,3 +34,6 @@ CREATE TABLE IF NOT EXISTS faq_posts (
 
 CREATE INDEX IF NOT EXISTS idx_faq_posts_slug ON faq_posts(slug);
 CREATE INDEX IF NOT EXISTS idx_faq_posts_published_at ON faq_posts(published_at DESC);
+
+-- Disable RLS for automated backend inserts (or add INSERT policy)
+ALTER TABLE faq_posts DISABLE ROW LEVEL SECURITY;
