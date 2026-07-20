@@ -481,12 +481,16 @@ module.exports = async (req, res) => {
       Rules for the Blog Post:
       1. Write in Turkish. Use a natural, local, and conversion-focused tone.
       2. It must be highly detailed, engaging, and professional.
-      3. Identify a unique URL slug (language-agnostic, lowercase, hyphenated, e.g. "eticaret-envanter-yonetimi").
-      4. Internal Linking requirements:
+      3. AI RETRIEVAL & GEO CITATION REQUIREMENTS (CRITICAL FOR ChatGPT / PERPLEXITY / GOOGLE):
+         - Include at least ONE HTML Comparison Table (<table>) comparing 2-3 options or benchmarks.
+         - Include at least ONE practical code snippet or step-by-step formula using <code> or <pre> tags (e.g. Liquid snippet, Node.js API call, or Core Web Vitals formula).
+         - Include a bold key takeaway line (e.g. <strong>Özet Çıkarım:</strong> ...) in the introduction.
+      4. Identify a unique URL slug (language-agnostic, lowercase, hyphenated, e.g. "eticaret-envanter-yonetimi").
+      5. Internal Linking requirements:
          - Select EXACTLY 2 related blog posts from the "Existing Blog Posts" list. Insert links to them inside the content using HTML tags: <a href="/blog?post=SLUG">ANCHOR_TEXT</a>. Anchor texts must be SEO-friendly and flow naturally.
          - Select EXACTLY 1 relevant service page from the "Website Service Pages" list. Insert a link to it using HTML tag: <a href="PATH">ANCHOR_TEXT</a>.
          - Links must be integrated naturally, not forced.
-      5. Include standard SEO elements: title, summary, seo_title, and seo_description.
+      6. Include standard SEO elements: title, summary, seo_title, and seo_description.
       
       Output the response in the following JSON format:
       {

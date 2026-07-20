@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, ArrowRight, BookOpen, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import AuthorBox from '../components/AuthorBox';
 
 export default function Blog() {
   const { t, i18n } = useTranslation();
@@ -112,6 +113,9 @@ export default function Blog() {
             className="prose prose-invert max-w-none text-neutral-300 text-sm md:text-base leading-relaxed font-medium space-y-6"
             dangerouslySetInnerHTML={{ __html: activeArticle.content }}
           />
+
+          {/* E-E-A-T Author Box */}
+          <AuthorBox />
 
         </div>
       </div>

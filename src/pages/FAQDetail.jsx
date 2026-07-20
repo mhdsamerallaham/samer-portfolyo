@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Sparkles, ChevronRight, ArrowRight, UserCheck, Zap, ShieldCheck, Share2, CheckCircle, HelpCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import AuthorBox from '../components/AuthorBox';
 import { getLocalizedPath } from '../utils/navigation';
 
 export default function FAQDetail() {
@@ -170,6 +171,9 @@ export default function FAQDetail() {
                 </p>
               </div>
             )}
+
+            {/* E-E-A-T Author Box */}
+            <AuthorBox />
 
             {/* CTA Box */}
             {faq.cta_text && (
