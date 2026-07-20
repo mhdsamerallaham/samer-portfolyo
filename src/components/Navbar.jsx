@@ -30,6 +30,7 @@ export default function Navbar() {
     { name: t('nav.services'), path: getLocalizedPath('/hizmetler', i18n.language) },
     { name: t('nav.case_studies'), path: getLocalizedPath('/basari-hikayeleri', i18n.language) },
     { name: t('nav.blog'), path: getLocalizedPath('/blog', i18n.language) },
+    { name: t('nav.faq', { defaultValue: i18n.language === 'tr' ? 'SSS' : i18n.language === 'ar' ? 'الأسئلة' : 'FAQ' }), path: getLocalizedPath('/faq', i18n.language) },
     { name: t('nav.about'), path: getLocalizedPath('/hakkimda', i18n.language) },
     { name: t('nav.contact'), path: getLocalizedPath('/iletisim', i18n.language) }
   ];
