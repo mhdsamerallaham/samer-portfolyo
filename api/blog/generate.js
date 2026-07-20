@@ -12,13 +12,16 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 // OmniRoute'un yaptığını ~60 satırda, ayrı servis deploy etmeden yapıyoruz.
 // ────────────────────────────────────────────────────────────────────────────
 
+// Global in-memory flag to skip Gemini once 429 quota exceeded in current run
+let geminiQuotaExceeded = false;
+
 // Her provider, OpenAI chat/completions formatında tanımlanır.
 // Sıra = öncelik. Biri başarısız olursa sonrakine geçer.
 function getProviders() {
   const providers = [];
 
-  // 1) Gemini — en güvenilir, free tier 1500 req/gün
-  if (process.env.GEMINI_API_KEY) {
+  // 1) Gemini — en güvenilir (Gemini 429 verdiyse bu turda atlanır)
+  if (process.env.GEMINI_API_KEY && !geminiQuotaExceeded) {
     const geminiModels = [
       "gemini-2.5-flash",
       "gemini-2.0-flash",
@@ -30,7 +33,8 @@ function getProviders() {
         url: `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`,
         model,
         apiKey: process.env.GEMINI_API_KEY,
-        headers: {}
+        headers: {},
+        isGemini: true
       });
     }
   }
@@ -61,12 +65,22 @@ function getProviders() {
     }
   }
 
-  // 4) OpenRouter — dinamik free model keşfi (ID'ler sık değişir, bu yüzden runtime'da çekiyoruz)
+  // 4) Pollinations — API key gerektirmez, 1-3 saniyede hızlı yanıt verir
+  providers.push({
+    name: "Pollinations (free, fast)",
+    url: "https://text.pollinations.ai/openai",
+    model: "openai",
+    apiKey: null,
+    headers: {},
+    noJsonMode: true
+  });
+
+  // 5) OpenRouter — dinamik HIZLI free modeller (ağır 550B modeller filtrelenir)
   if (process.env.OPENROUTER_API_KEY) {
     providers.push({
-      name: "OpenRouter (dynamic free models)",
+      name: "OpenRouter (fast free models)",
       url: "https://openrouter.ai/api/v1/chat/completions",
-      model: "__dynamic__", // runtime'da doldurulacak
+      model: "__dynamic__",
       apiKey: process.env.OPENROUTER_API_KEY,
       headers: {
         "HTTP-Referer": "https://www.samer.life",
@@ -76,28 +90,21 @@ function getProviders() {
     });
   }
 
-  // 5) Pollinations — API key gerektirmez, her zaman açık, son çare
-  providers.push({
-    name: "Pollinations (free, no key)",
-    url: "https://text.pollinations.ai/openai",
-    model: "openai",
-    apiKey: null,
-    headers: {},
-    noJsonMode: true // json_object response_format desteklemiyor
-  });
-
   return providers;
 }
 
-// OpenRouter'daki aktif free modelleri çek (404 sorununu çözer)
+// OpenRouter'daki aktif HIZLI free modelleri çek (sıra uzatan ağır modeller hariç)
 async function fetchOpenRouterFreeModels() {
   try {
     const res = await fetch("https://openrouter.ai/api/v1/models");
     if (!res.ok) return [];
     const json = await res.json();
+    
+    // Yavaş ağır modelleri (550b, 405b, ultra, nemotron) filtrele, hızlı modelleri seç
+    const slowKeywords = ["550b", "405b", "ultra", "nemotron", "large"];
     return json.data
       .filter(m => m.id.endsWith(':free'))
-      .sort((a, b) => (b.context_length || 0) - (a.context_length || 0))
+      .filter(m => !slowKeywords.some(kw => m.id.toLowerCase().includes(kw)))
       .slice(0, 5)
       .map(m => m.id);
   } catch {
@@ -105,7 +112,7 @@ async function fetchOpenRouterFreeModels() {
   }
 }
 
-// Tek bir OpenAI-uyumlu provider'a istek at
+// Tek bir OpenAI-uyumlu provider'a istek at (15 sn sıkı timeout)
 async function callProvider(provider, prompt) {
   const headers = {
     "Content-Type": "application/json",
@@ -123,13 +130,12 @@ async function callProvider(provider, prompt) {
     ]
   };
 
-  // JSON mode desteği varsa ekle
   if (!provider.noJsonMode) {
     body.response_format = { type: "json_object" };
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 60000); // 60s timeout
+  const timeout = setTimeout(() => controller.abort(), 18000); // 18s fast timeout
 
   try {
     const res = await fetch(provider.url, {
@@ -141,6 +147,10 @@ async function callProvider(provider, prompt) {
 
     if (!res.ok) {
       const errText = await res.text().catch(() => "");
+      if (res.status === 429 && provider.isGemini) {
+        console.warn("[Router] Gemini quota 429 hit. Short-circuiting Gemini for rest of session.");
+        geminiQuotaExceeded = true;
+      }
       throw new Error(`HTTP ${res.status}: ${errText.slice(0, 150)}`);
     }
 
@@ -159,14 +169,12 @@ async function generateJSONWithFallback(prompt) {
   let lastError;
 
   for (const provider of providers) {
-    // OpenRouter dinamik model keşfi
     if (provider.isDynamic) {
       const freeModels = await fetchOpenRouterFreeModels();
       if (freeModels.length === 0) {
-        console.warn(`[Router] ${provider.name}: No free models found, skipping.`);
+        console.warn(`[Router] ${provider.name}: No fast free models found, skipping.`);
         continue;
       }
-      // Her free modeli dene
       for (const model of freeModels) {
         try {
           const dynamicProvider = { ...provider, model, name: `OpenRouter (${model})` };
@@ -186,7 +194,6 @@ async function generateJSONWithFallback(prompt) {
       continue;
     }
 
-    // Normal provider
     try {
       console.log(`[Router] Trying: ${provider.name}`);
       const text = await callProvider(provider, prompt);
