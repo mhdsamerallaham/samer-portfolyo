@@ -306,27 +306,46 @@ const fallbackDrafts = [
 ];
 
 // ─── Atomic Concurrency Lock Helpers ─────────────────────────────────────
-const STALE_LOCK_MINUTES = 5;
+const STALE_LOCK_MINUTES = 2; // Short 2-minute stale threshold
 
-async function acquireAtomicLock() {
-  try {
-    const staleThreshold = new Date(Date.now() - STALE_LOCK_MINUTES * 60 * 1000).toISOString();
-
-    const { data, error } = await supabase
-      .from('cron_locks')
-      .update({ is_processing: true, started_at: new Date().toISOString() })
-      .eq('job_name', 'blog_generate')
-      .or(`is_processing.eq.false,started_at.lt.${staleThreshold}`)
-      .select();
-
-    if (error) {
-      console.warn("[Atomic Lock] Lock query warning (will proceed):", error.message);
-      return true; // proceed if cron_locks table hasn't been created yet
-    }
-    return data && data.length > 0;
-  } catch (err) {
-    console.warn("[Atomic Lock] Lock exception (will proceed):", err.message);
+async function acquireAtomicLock(forceBypass = false) {
+  if (forceBypass) {
+    console.log("[Atomic Lock] Bypassed via force parameter.");
     return true;
+  }
+  try {
+    // Check existing lock state from database
+    const { data: locks, error: selectErr } = await supabase
+      .from('cron_locks')
+      .select('*')
+      .eq('job_name', 'blog_generate');
+
+    // If table missing or row doesn't exist yet, auto-create row & proceed
+    if (selectErr || !locks || locks.length === 0) {
+      await supabase
+        .from('cron_locks')
+        .upsert({ job_name: 'blog_generate', is_processing: true, started_at: new Date().toISOString() });
+      return true;
+    }
+
+    const currentLock = locks[0];
+    const startedAt = currentLock.started_at ? new Date(currentLock.started_at).getTime() : 0;
+    const isStale = (Date.now() - startedAt) > STALE_LOCK_MINUTES * 60 * 1000;
+
+    // If lock is free OR stale (>2 mins), acquire it
+    if (!currentLock.is_processing || isStale) {
+      await supabase
+        .from('cron_locks')
+        .update({ is_processing: true, started_at: new Date().toISOString() })
+        .eq('job_name', 'blog_generate');
+      return true;
+    }
+
+    // Active lock in progress (within last 2 minutes)
+    return false;
+  } catch (err) {
+    console.warn("[Atomic Lock] Exception (proceeding with execution):", err.message);
+    return true; // Never block execution on exception
   }
 }
 
@@ -345,10 +364,11 @@ module.exports = async (req, res) => {
   // 1. Authorization Check (for secure cron job execution)
   const authHeader = req.headers.authorization;
   const secretParam = req.query?.secret;
+  const forceParam = req.query?.force === 'true';
   
   const isAuthorized = 
     (authHeader === `Bearer ${process.env.CRON_SECRET}`) ||
-    (secretParam === secretParam && secretParam === process.env.CRON_SECRET) ||
+    (secretParam === process.env.CRON_SECRET) ||
     (process.env.NODE_ENV === 'development');
 
   if (!isAuthorized) {
@@ -356,7 +376,7 @@ module.exports = async (req, res) => {
   }
 
   // 2. Atomic Lock Check (Prevents overlapping cron executions & token wastage)
-  const gotLock = await acquireAtomicLock();
+  const gotLock = await acquireAtomicLock(forceParam);
   if (!gotLock) {
     console.log('[Atomic Lock] Another blog generation process is currently running. Skipping this invocation.');
     return res.status(200).json({
