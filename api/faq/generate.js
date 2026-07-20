@@ -232,23 +232,10 @@ module.exports = async (req, res) => {
           "cta_link_tr": "CTA link path"
         }
       `;
+      // Step 1: Turkish Q&A generation
       trData = await generateJSONWithFallback(trPrompt);
 
-      const enPrompt = `
-        Translate and localize into English:
-        ${JSON.stringify(trData)}
-        Respond in JSON format:
-        {
-          "question_en": "English Question",
-          "short_answer_en": "English 2-3 sentence short answer",
-          "content_en": "English detailed HTML content",
-          "who_is_this_for_en": "English target audience",
-          "cta_text_en": "English CTA text",
-          "cta_link_en": "English CTA link path"
-        }
-      `;
-      enData = await generateJSONWithFallback(enPrompt);
-
+      // Step 2: Sequential Translation to Arabic FIRST (Önce Arapça)
       const arPrompt = `
         Translate and localize into modern Arabic (Fusha):
         ${JSON.stringify(trData)}
@@ -263,6 +250,22 @@ module.exports = async (req, res) => {
         }
       `;
       arData = await generateJSONWithFallback(arPrompt);
+
+      // Step 3: Sequential Translation to English SECOND (Sonra İngilizce)
+      const enPrompt = `
+        Translate and localize into English:
+        ${JSON.stringify(trData)}
+        Respond in JSON format:
+        {
+          "question_en": "English Question",
+          "short_answer_en": "English 2-3 sentence short answer",
+          "content_en": "English detailed HTML content",
+          "who_is_this_for_en": "English target audience",
+          "cta_text_en": "English CTA text",
+          "cta_link_en": "English CTA link path"
+        }
+      `;
+      enData = await generateJSONWithFallback(enPrompt);
 
     } catch (llmErr) {
       console.warn("[FAQ Generator] All LLM providers timed out or failed. Loading fail-safe fallback draft...", llmErr.message);

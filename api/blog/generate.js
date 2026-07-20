@@ -504,10 +504,43 @@ module.exports = async (req, res) => {
     `;
 
     let trData, enData, arData;
-    try {
+      // Step 1: Turkish content generation
       trData = await generateJSONWithFallback(trPrompt);
 
-      // 5. Step 2: Translation and Localization to English
+      // Step 2: Sequential Translation to Arabic FIRST (Önce Arapça)
+      const arPrompt = `
+        You are a professional multilingual translator and SEO strategist. 
+        Translate and localize the following Turkish blog post into modern Arabic (Fusha).
+        
+        Turkish Post:
+        ${JSON.stringify(trData, null, 2)}
+        
+        Existing Blog Posts Context:
+        ${JSON.stringify(blogContextList, null, 2)}
+
+        Website Service Pages Context:
+        ${JSON.stringify(servicePages, null, 2)}
+        
+        Translation Rules:
+        1. Use a simple, modern Arabic (Fusha) tone that is easy to read.
+        2. Do not do a word-for-word translation. Ensure proper flow and structure for Arabic readers.
+        3. Adapt the internal links:
+           - Keep the exact same link URLs (e.g. "/blog?post=SLUG" and "PATH").
+           - Translate the anchor text of the links naturally into Arabic so it fits the Arabic sentence flow and remains SEO-friendly.
+        4. Translate the title, summary, and generate Arabic SEO metadata (seo_title, seo_description).
+        
+        Output the response in the following JSON format:
+        {
+          "title_ar": "Arabic Title",
+          "summary_ar": "Arabic Summary",
+          "content_ar": "Arabic HTML Content with the updated Arabic links",
+          "seo_title_ar": "Arabic SEO Title",
+          "seo_description_ar": "Arabic Meta Description"
+        }
+      `;
+      arData = await generateJSONWithFallback(arPrompt);
+
+      // Step 3: Sequential Translation to English SECOND (Sonra İngilizce)
       const enPrompt = `
         You are a professional multilingual translator and SEO strategist. 
         Translate and localize the following Turkish blog post into English.
@@ -539,39 +572,6 @@ module.exports = async (req, res) => {
         }
       `;
       enData = await generateJSONWithFallback(enPrompt);
-
-      // 6. Step 3: Translation and Localization to Arabic
-      const arPrompt = `
-        You are a professional multilingual translator and SEO strategist. 
-        Translate and localize the following Turkish blog post into Arabic.
-        
-        Turkish Post:
-        ${JSON.stringify(trData, null, 2)}
-        
-        Existing Blog Posts Context:
-        ${JSON.stringify(blogContextList, null, 2)}
-
-        Website Service Pages Context:
-        ${JSON.stringify(servicePages, null, 2)}
-        
-        Translation Rules:
-        1. Use a simple, modern Arabic (Fusha) tone that is easy to read.
-        2. Do not do a word-for-word translation. Ensure proper flow and structure for Arabic readers.
-        3. Adapt the internal links:
-           - Keep the exact same link URLs (e.g. "/blog?post=SLUG" and "PATH").
-           - Translate the anchor text of the links naturally into Arabic so it fits the Arabic sentence flow and remains SEO-friendly.
-        4. Translate the title, summary, and generate Arabic SEO metadata (seo_title, seo_description).
-        
-        Output the response in the following JSON format:
-        {
-          "title_ar": "Arabic Title",
-          "summary_ar": "Arabic Summary",
-          "content_ar": "Arabic HTML Content with the updated Arabic links",
-          "seo_title_ar": "Arabic SEO Title",
-          "seo_description_ar": "Arabic Meta Description"
-        }
-      `;
-      arData = await generateJSONWithFallback(arPrompt);
     } catch (generationError) {
       console.warn("[Cron Job] All LLM providers failed. Loading static backup draft fallback...", generationError.message);
       
