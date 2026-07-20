@@ -5,7 +5,7 @@
     "frontend": "React (Vite) SPA + react-router-dom + i18next (with lazy API fetching & local translation fallback)",
     "backend": "Vercel Serverless Functions (Node.js)",
     "database": "Supabase PostgreSQL Database (Free Tier)",
-    "ai_provider": "Google Gemini API (100% Free Tier - gemini-1.5-flash / gemini-2.0-flash)",
+    "ai_provider": "Embedded LLM Router (unified OpenAI-compat format — Gemini, Groq, Mistral, OpenRouter dynamic free, Pollinations no-key fallback)",
     "scheduler": "Vercel Cron Jobs (6-hour interval)",
     "deployment_platform": "Vercel & Supabase"
   },
@@ -13,7 +13,7 @@
     {
       "path": "api/package.json",
       "purpose": "Serverless function dependencies",
-      "content": "{\n  \"name\": \"samer-portfolio-api\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@google/generative-ai\": \"^0.21.0\",\n    \"@supabase/supabase-js\": \"^2.39.8\",\n    \"dotenv\": \"^16.4.5\"\n  }\n}"
+      "content": "{\n  \"name\": \"samer-portfolio-api\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@supabase/supabase-js\": \"^2.39.8\",\n    \"dotenv\": \"^16.4.5\"\n  }\n}"
     },
     {
       "path": "api/blog/schema.sql",
@@ -22,8 +22,8 @@
     },
     {
       "path": "api/blog/generate.js",
-      "purpose": "Cron job endpoint that handles gap analysis, article generation, translation, internal linking, and database publication using Gemini Free API",
-      "content": "Serverless function running on Vercel at /api/blog/generate"
+      "purpose": "Cron job endpoint that handles gap analysis, article generation, translation, internal linking, and database publication via OmniRoute gateway",
+      "content": "Serverless function running on Vercel at /api/blog/generate — sends OpenAI-compatible requests to OmniRoute (model: auto)"
     },
     {
       "path": "api/blog/posts.js",
@@ -40,8 +40,23 @@
     "variables": [
       {
         "name": "GEMINI_API_KEY",
-        "required": true,
-        "purpose": "Used to access the Google Gemini API (100% free tier)"
+        "required": false,
+        "purpose": "Google Gemini API key (free tier: 1500 req/day). Skipped if not set."
+      },
+      {
+        "name": "GROQ_API_KEY",
+        "required": false,
+        "purpose": "Groq API key (free tier). Skipped if not set."
+      },
+      {
+        "name": "MISTRAL_API_KEY",
+        "required": false,
+        "purpose": "Mistral API key (free tier). Skipped if not set."
+      },
+      {
+        "name": "OPENROUTER_API_KEY",
+        "required": false,
+        "purpose": "OpenRouter API key (dynamic free model discovery). Skipped if not set."
       },
       {
         "name": "SUPABASE_URL",

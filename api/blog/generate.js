@@ -1,4 +1,3 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
@@ -7,89 +6,209 @@ const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Initialize Gemini Client
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// ─── Lightweight LLM Router ────────────────────────────────────────────────
+// OpenAI-uyumlu unified format: her provider tek bir fonksiyonla çağrılır.
+// Otomatik fallback, dinamik model keşfi, zero-config free provider'lar.
+// OmniRoute'un yaptığını ~60 satırda, ayrı servis deploy etmeden yapıyoruz.
+// ────────────────────────────────────────────────────────────────────────────
 
-// Helper for HTTP fetch requests with Exponential Backoff retry logic
-async function fetchWithRetry(url, options, retries = 3, delay = 2000) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      const res = await fetch(url, options);
-      // Fallback straight to next model/provider on 429 to prevent wasteful rate-limiting retry delay blocks
-      if (res.status === 429) {
-        console.warn(`[HTTP Fetch] Rate limit (429) encountered. Fast-falling back to next configuration...`);
-        return res; 
-      }
-      if (res.status === 503) {
-        if (i < retries - 1) {
-          console.warn(`[HTTP Retry] Status 503. Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2;
-          continue;
-        }
-      }
-      return res;
-    } catch (err) {
-      if (i < retries - 1) {
-        console.warn(`[HTTP Retry] Fetch failed: ${err.message}. Retrying in ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-        delay *= 2;
-      } else {
-        throw err;
-      }
+// Her provider, OpenAI chat/completions formatında tanımlanır.
+// Sıra = öncelik. Biri başarısız olursa sonrakine geçer.
+function getProviders() {
+  const providers = [];
+
+  // 1) Gemini — en güvenilir, free tier 1500 req/gün
+  if (process.env.GEMINI_API_KEY) {
+    const geminiModels = [
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-2.5-flash-lite"
+    ];
+    for (const model of geminiModels) {
+      providers.push({
+        name: `Gemini (${model})`,
+        url: `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`,
+        model,
+        apiKey: process.env.GEMINI_API_KEY,
+        headers: {}
+      });
     }
   }
-  return await fetch(url, options); // Final fallback attempt
-}
 
-// Helper for Gemini SDK content generation with retry logic
-async function generateContentWithRetry(model, prompt, retries = 3, delay = 2000) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      return await model.generateContent(prompt);
-    } catch (error) {
-      if (error.status === 429) {
-        console.warn(`[Gemini SDK] Rate limit (429) encountered. Fast-falling back...`);
-        throw error;
-      }
-      const isTransient = error.status === 503 || 
-                          (error.message && (error.message.includes("503") || error.message.includes("RESOURCE_EXHAUSTED") || error.message.includes("fetch failed")));
-      if (isTransient && i < retries - 1) {
-        console.warn(`Gemini API transient error. Retrying in ${delay}ms... (Attempt ${i + 1}/${retries})`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-        delay *= 2;
-      } else {
-        throw error;
-      }
+  // 2) Groq — hızlı, free tier cömert
+  if (process.env.GROQ_API_KEY) {
+    for (const model of ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "llama-3.1-8b-instant"]) {
+      providers.push({
+        name: `Groq (${model})`,
+        url: "https://api.groq.com/openai/v1/chat/completions",
+        model,
+        apiKey: process.env.GROQ_API_KEY,
+        headers: {}
+      });
     }
   }
+
+  // 3) Mistral — free tier mevcut
+  if (process.env.MISTRAL_API_KEY) {
+    for (const model of ["mistral-small-latest", "open-mistral-7b"]) {
+      providers.push({
+        name: `Mistral (${model})`,
+        url: "https://api.mistral.ai/v1/chat/completions",
+        model,
+        apiKey: process.env.MISTRAL_API_KEY,
+        headers: {}
+      });
+    }
+  }
+
+  // 4) OpenRouter — dinamik free model keşfi (ID'ler sık değişir, bu yüzden runtime'da çekiyoruz)
+  if (process.env.OPENROUTER_API_KEY) {
+    providers.push({
+      name: "OpenRouter (dynamic free models)",
+      url: "https://openrouter.ai/api/v1/chat/completions",
+      model: "__dynamic__", // runtime'da doldurulacak
+      apiKey: process.env.OPENROUTER_API_KEY,
+      headers: {
+        "HTTP-Referer": "https://www.samer.life",
+        "X-OpenRouter-Title": "Samer Portfolio Blog Bot"
+      },
+      isDynamic: true
+    });
+  }
+
+  // 5) Pollinations — API key gerektirmez, her zaman açık, son çare
+  providers.push({
+    name: "Pollinations (free, no key)",
+    url: "https://text.pollinations.ai/openai",
+    model: "openai",
+    apiKey: null,
+    headers: {},
+    noJsonMode: true // json_object response_format desteklemiyor
+  });
+
+  return providers;
 }
 
-// Helper to dynamically fetch and return the active list of OpenRouter free models
-async function getOpenRouterFreeModels() {
+// OpenRouter'daki aktif free modelleri çek (404 sorununu çözer)
+async function fetchOpenRouterFreeModels() {
   try {
     const res = await fetch("https://openrouter.ai/api/v1/models");
-    if (res.ok) {
-      const json = await res.json();
-      const freeModels = json.data
-        .filter(m => m.id.endsWith(':free'))
-        .map(m => m.id);
-      if (freeModels.length > 0) {
-        console.log(`[OpenRouter] Dynamically found ${freeModels.length} free models.`);
-        return freeModels;
-      }
-    }
-  } catch (err) {
-    console.warn("[OpenRouter] Failed to fetch free models list dynamically:", err.message);
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.data
+      .filter(m => m.id.endsWith(':free'))
+      .sort((a, b) => (b.context_length || 0) - (a.context_length || 0))
+      .slice(0, 5)
+      .map(m => m.id);
+  } catch {
+    return [];
   }
-  // Hardcoded fallback list if the API request fails
-  return [
-    "meta-llama/llama-3.3-70b-instruct:free",
-    "qwen/qwen-2.5-72b-instruct:free"
-  ];
 }
 
-// Helper to safely clean up Markdown block tags and repair incomplete JSON responses (unterminated strings)
+// Tek bir OpenAI-uyumlu provider'a istek at
+async function callProvider(provider, prompt) {
+  const headers = {
+    "Content-Type": "application/json",
+    ...provider.headers
+  };
+  if (provider.apiKey) {
+    headers["Authorization"] = `Bearer ${provider.apiKey}`;
+  }
+
+  const body = {
+    model: provider.model,
+    messages: [
+      { role: "system", content: "You must respond with valid JSON as requested by the user." },
+      { role: "user", content: prompt }
+    ]
+  };
+
+  // JSON mode desteği varsa ekle
+  if (!provider.noJsonMode) {
+    body.response_format = { type: "json_object" };
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000); // 60s timeout
+
+  try {
+    const res = await fetch(provider.url, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+      signal: controller.signal
+    });
+
+    if (!res.ok) {
+      const errText = await res.text().catch(() => "");
+      throw new Error(`HTTP ${res.status}: ${errText.slice(0, 150)}`);
+    }
+
+    const json = await res.json();
+    const content = json.choices?.[0]?.message?.content;
+    if (!content) throw new Error("Empty response (no choices)");
+    return content;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+// Ana router: tüm provider'ları sırayla dener, başarılı olanı döndürür
+async function generateJSONWithFallback(prompt) {
+  const providers = getProviders();
+  let lastError;
+
+  for (const provider of providers) {
+    // OpenRouter dinamik model keşfi
+    if (provider.isDynamic) {
+      const freeModels = await fetchOpenRouterFreeModels();
+      if (freeModels.length === 0) {
+        console.warn(`[Router] ${provider.name}: No free models found, skipping.`);
+        continue;
+      }
+      // Her free modeli dene
+      for (const model of freeModels) {
+        try {
+          const dynamicProvider = { ...provider, model, name: `OpenRouter (${model})` };
+          console.log(`[Router] Trying: ${dynamicProvider.name}`);
+          const text = await callProvider(dynamicProvider, prompt);
+          const parsed = safeParseJSON(text);
+          if (parsed) {
+            console.log(`[Router] ✓ Success: ${dynamicProvider.name}`);
+            return parsed;
+          }
+          throw new Error("JSON verification failed");
+        } catch (err) {
+          console.warn(`[Router] ✗ ${provider.name} (${model}): ${err.message}`);
+          lastError = err;
+        }
+      }
+      continue;
+    }
+
+    // Normal provider
+    try {
+      console.log(`[Router] Trying: ${provider.name}`);
+      const text = await callProvider(provider, prompt);
+      const parsed = safeParseJSON(text);
+      if (parsed) {
+        console.log(`[Router] ✓ Success: ${provider.name}`);
+        return parsed;
+      }
+      throw new Error("JSON verification failed");
+    } catch (err) {
+      console.warn(`[Router] ✗ ${provider.name}: ${err.message}`);
+      lastError = err;
+    }
+  }
+
+  throw new Error(`All providers failed. Last: ${lastError?.message || "unknown"}`);
+}
+
+// ─── JSON Auto-Repair ──────────────────────────────────────────────────────
+// Markdown block tag'lerini temizle, eksik parantezleri kapat
+// ────────────────────────────────────────────────────────────────────────────
+
 function safeParseJSON(raw) {
   if (!raw) return null;
   let cleaned = raw.trim();
@@ -155,207 +274,6 @@ function slugify(text) {
     .replace(/-+/g, '-');            // Replace multiple dashes with single
 }
 
-// Sequence of LLM providers for fallback behavior
-const providers = [
-  {
-    name: "Gemini API (Direct Key - Model Rotator)",
-    async run(prompt) {
-      if (!process.env.GEMINI_API_KEY) {
-        throw new Error("GEMINI_API_KEY is not defined in environment.");
-      }
-      const modelsToTry = [
-        "gemini-2.5-flash",
-        "gemini-1.5-flash",
-        "gemini-2.5-flash-lite",
-        "gemini-2.0-flash"
-      ];
-      
-      let lastError;
-      for (const modelName of modelsToTry) {
-        try {
-          console.log(`[Gemini SDK] Attempting model: ${modelName}`);
-          const model = genAI.getGenerativeModel({ 
-            model: modelName,
-            generationConfig: { responseMimeType: "application/json" }
-          });
-          const result = await generateContentWithRetry(model, prompt);
-          return result.response.text();
-        } catch (err) {
-          console.warn(`[Gemini SDK] Model ${modelName} failed:`, err.message);
-          lastError = err;
-        }
-      }
-      throw new Error(`All Gemini models failed. Last error: ${lastError.message}`);
-    }
-  },
-  {
-    name: "Groq API (Direct Key)",
-    async run(prompt) {
-      const apiKey = process.env.GROQ_API_KEY;
-      if (!apiKey) {
-        throw new Error("GROQ_API_KEY is not defined in environment.");
-      }
-      
-      const modelsToTry = [
-        "llama-3.3-70b-versatile",
-        "mixtral-8x7b-32768",
-        "llama-3.1-8b-instant"
-      ];
-
-      let lastError;
-      for (const modelName of modelsToTry) {
-        try {
-          console.log(`[Groq] Attempting model: ${modelName}`);
-          const res = await fetchWithRetry("https://api.groq.com/openai/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${apiKey}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              model: modelName,
-              messages: [
-                { role: "system", content: "You must respond with valid JSON as requested by the user." },
-                { role: "user", content: prompt }
-              ],
-              response_format: { type: "json_object" }
-            })
-          });
-
-          if (!res.ok) {
-            throw new Error(`Groq returned status ${res.status}`);
-          }
-          const json = await res.json();
-          return json.choices[0].message.content;
-        } catch (err) {
-          console.warn(`[Groq] Model ${modelName} failed:`, err.message);
-          lastError = err;
-        }
-      }
-      throw new Error(`All Groq models failed. Last error: ${lastError.message}`);
-    }
-  },
-  {
-    name: "Mistral API (Direct Key)",
-    async run(prompt) {
-      const apiKey = process.env.MISTRAL_API_KEY;
-      if (!apiKey) {
-        throw new Error("MISTRAL_API_KEY is not defined in environment.");
-      }
-
-      const modelsToTry = [
-        "mistral-small-latest",
-        "open-mistral-7b"
-      ];
-
-      let lastError;
-      for (const modelName of modelsToTry) {
-        try {
-          console.log(`[Mistral] Attempting model: ${modelName}`);
-          const res = await fetchWithRetry("https://api.mistral.ai/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${apiKey}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              model: modelName,
-              messages: [
-                { role: "system", content: "You must respond with valid JSON as requested by the user." },
-                { role: "user", content: prompt }
-              ],
-              response_format: { type: "json_object" }
-            })
-          });
-
-          if (!res.ok) {
-            throw new Error(`Mistral returned status ${res.status}`);
-          }
-          const json = await res.json();
-          return json.choices[0].message.content;
-        } catch (err) {
-          console.warn(`[Mistral] Model ${modelName} failed:`, err.message);
-          lastError = err;
-        }
-      }
-      throw new Error(`All Mistral models failed. Last error: ${lastError.message}`);
-    }
-  },
-  {
-    name: "Pollinations Text API (Qwen Model)",
-    async run(prompt) {
-      const res = await fetchWithRetry("https://text.pollinations.ai/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          messages: [
-            { role: "system", content: "You must respond with valid JSON as requested by the user. Keep your responses concise (limit to 500 words maximum) to prevent truncation errors." },
-            { role: "user", content: prompt }
-          ],
-          model: "openai",
-          jsonMode: true
-        })
-      });
-      if (!res.ok) {
-        throw new Error(`Pollinations API error: Status ${res.status} - ${res.statusText}`);
-      }
-      return await res.text();
-    }
-  },
-  {
-    name: "OpenRouter API (Rotated Free Models - Dynamic List)",
-    async run(prompt) {
-      const apiKey = process.env.OPENROUTER_API_KEY;
-      if (!apiKey) {
-        throw new Error("OPENROUTER_API_KEY is not defined in environment.");
-      }
-
-      // Fetch dynamic active free models list to prevent 404s
-      const modelsToTry = await getOpenRouterFreeModels();
-
-      let lastError;
-      for (const modelName of modelsToTry) {
-        try {
-          console.log(`[OpenRouter] Attempting model: ${modelName}`);
-          const res = await fetchWithRetry("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${apiKey}`,
-              "HTTP-Referer": "https://www.samer.life",
-              "X-OpenRouter-Title": "Samer Portfolio Blog Bot",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              model: modelName,
-              messages: [
-                { role: "system", content: "You must respond with valid JSON as requested by the user." },
-                { role: "user", content: prompt }
-              ],
-              response_format: { type: "json_object" }
-            })
-          });
-
-          if (!res.ok) {
-            throw new Error(`OpenRouter model ${modelName} returned status ${res.status}`);
-          }
-          
-          const json = await res.json();
-          if (!json.choices || json.choices.length === 0 || !json.choices[0].message) {
-            throw new Error(`OpenRouter empty response for model ${modelName}`);
-          }
-          return json.choices[0].message.content;
-        } catch (err) {
-          console.warn(`[OpenRouter] Model ${modelName} failed:`, err.message);
-          lastError = err;
-        }
-      }
-      throw new Error(`All OpenRouter models failed. Last error: ${lastError.message}`);
-    }
-  }
-];
-
 // Fallback drafts in case all AI generation engines fail completely (100% fail-safe)
 const fallbackDrafts = [
   {
@@ -379,27 +297,6 @@ const fallbackDrafts = [
     seo_description_ar: "نصائح وإرشادات حول اختيار منصة المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع."
   }
 ];
-
-async function generateJSONWithFallback(prompt) {
-  let lastError;
-  for (const provider of providers) {
-    try {
-      console.log(`[Fallback API] Attempting generation with provider: ${provider.name}`);
-      const text = await provider.run(prompt);
-      const parsed = safeParseJSON(text);
-      if (parsed) {
-        console.log(`[Fallback API] Success using provider: ${provider.name}`);
-        return parsed;
-      } else {
-        throw new Error("Response failed JSON verification");
-      }
-    } catch (error) {
-      console.error(`[Fallback API] Provider ${provider.name} failed:`, error.message);
-      lastError = error;
-    }
-  }
-  throw new Error(`All LLM generation providers failed. Last error: ${lastError ? lastError.message : "unknown"}`);
-}
 
 module.exports = async (req, res) => {
   // 1. Authorization Check (for secure cron job execution)
@@ -567,7 +464,7 @@ module.exports = async (req, res) => {
       `;
       arData = await generateJSONWithFallback(arPrompt);
     } catch (generationError) {
-      console.warn("[Cron Job] All LLM providers failed or returned invalid responses. Loading static backup draft fallback...", generationError.message);
+      console.warn("[Cron Job] All LLM providers failed. Loading static backup draft fallback...", generationError.message);
       
       const draft = fallbackDrafts[Math.floor(Math.random() * fallbackDrafts.length)];
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
@@ -598,15 +495,23 @@ module.exports = async (req, res) => {
       };
     }
 
-    // Ensure title and slug exist to satisfy database constraints
+    // Ensure title and slug exist and are strictly unique to prevent DB constraint crashes
     const titleTr = trData.title_tr || "Otomatik E-Ticaret Blogu";
-    const postSlug = trData.slug || slugify(titleTr);
-    
-    if (!postSlug) {
-      throw new Error("Could not generate a valid slug for the blog post.");
+    let baseSlug = trData.slug || slugify(titleTr);
+    if (!baseSlug) {
+      baseSlug = `blog-post-${Math.floor(1000 + Math.random() * 9000)}`;
     }
 
-    // 7. Step 4: Save the fully localized blog post to Supabase
+    // Check against existing blog slugs fetched in Step 3
+    let postSlug = baseSlug;
+    const existingSlugs = new Set((existingPosts || []).map(p => p.slug));
+    if (existingSlugs.has(postSlug)) {
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      postSlug = `${baseSlug}-${randomSuffix}`;
+      console.log(`[Slug System] Existing slug collision detected. Resolved "${baseSlug}" -> "${postSlug}"`);
+    }
+
+    // 7. Step 4: Save the fully localized blog post to Supabase (Single multilingual row)
     const newPost = {
       slug: postSlug,
       published_at: new Date().toISOString(),
@@ -633,10 +538,21 @@ module.exports = async (req, res) => {
       seo_description_ar: arData.seo_description_ar || (arData.summary_ar || "لا يوجد وصف.")
     };
 
-    const { data: insertedData, error: insertError } = await supabase
+    let insertedData, insertError;
+    ({ data: insertedData, error: insertError } = await supabase
       .from("blog_posts")
       .insert([newPost])
-      .select();
+      .select());
+
+    // Fail-safe: If Postgres throws duplicate slug error (23505 constraint), append unique suffix and retry once
+    if (insertError && (insertError.code === '23505' || insertError.message?.includes("unique constraint") || insertError.message?.includes("slug"))) {
+      console.warn(`[DB Insert Conflict] Duplicate slug "${newPost.slug}" encountered. Retrying with unique suffix...`);
+      newPost.slug = `${postSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
+      ({ data: insertedData, error: insertError } = await supabase
+        .from("blog_posts")
+        .insert([newPost])
+        .select());
+    }
 
     if (insertError) {
       throw new Error(`Database error saving post: ${insertError.message}`);
