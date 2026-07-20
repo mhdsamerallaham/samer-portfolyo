@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { Search, ChevronDown, Sparkles, HelpCircle, ArrowRight, CheckCircle2, UserCheck, Zap, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 
