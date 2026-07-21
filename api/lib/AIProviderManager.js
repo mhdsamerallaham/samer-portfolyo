@@ -46,9 +46,10 @@ class AIProviderManager {
         return content;
       } catch (err) {
         const msg = err.message || "Bilinmeyen hata";
+        const causeMsg = err.cause ? ` (Cause: ${err.cause.message || err.cause.code || err.cause})` : "";
 
         // Hata tipini belirle (log okunabilirliği için)
-        let label = msg.slice(0, 100);
+        let label = (msg + causeMsg).slice(0, 150);
         if (msg.includes("429") || /rate.?limit/i.test(msg)) label = "429 Rate Limit";
         else if (/quota/i.test(msg)) label = "Quota Exceeded";
         else if (/timeout|aborted/i.test(msg)) label = "Timeout";
@@ -111,7 +112,8 @@ class AIProviderManager {
         return parsed;
       } catch (err) {
         const msg = err.message || "Bilinmeyen hata";
-        let label = msg.slice(0, 100);
+        const causeMsg = err.cause ? ` [Cause: ${err.cause.message || err.cause.code || err.cause}]` : "";
+        let label = (msg + causeMsg).slice(0, 150);
         if (msg.includes("429") || /rate.?limit/i.test(msg)) label = "429 Rate Limit";
         else if (/quota/i.test(msg)) label = "Quota Exceeded";
         else if (/timeout|aborted/i.test(msg)) label = "Timeout";

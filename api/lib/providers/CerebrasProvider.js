@@ -3,15 +3,15 @@ const OpenAICompatibleProvider = require("../OpenAICompatibleProvider");
 /**
  * Cerebras Provider — Öncelik 1
  *
- * Cerebras, ultra hızlı OpenAI uyumlu endpoint sunar.
- * Base URL: https://api.cerebras.ai/v1
- * Model isimleri: llama3.3-70b, llama3.1-8b, qwen-2.5-72b
+ * Cerebras API'sinde aktif onaylanmış modeller:
+ * gemma-4-31b, zai-glm-4.7, gpt-oss-120b
  *
  * Env: CEREBRAS_API_KEY
  */
 const CEREBRAS_MODELS = [
-  "llama3.3-70b",
-  "llama3.1-8b",
+  "gemma-4-31b",
+  "zai-glm-4.7",
+  "gpt-oss-120b",
 ];
 
 /**
