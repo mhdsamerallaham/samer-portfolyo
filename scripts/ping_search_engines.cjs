@@ -66,12 +66,41 @@ blogSlugs.forEach(slug => {
   urls.push(`https://${HOST}/ar/blog/${slug}`);
 });
 
+async function verifyKeyFile() {
+  try {
+    const res = await fetch(KEY_LOCATION, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) return false;
+    const text = (await res.text()).trim();
+    return text === KEY;
+  } catch {
+    return false;
+  }
+}
+
 async function pingSearchEngines() {
   console.log(`\n[Search Engine Auto-Ping] Initializing pings for ${urls.length} URLs...`);
 
   // IndexNow API — Bing, Yandex, Seznam ve diğer destekleyen motorları tek seferde bilgilendirir.
   // Not: bing.com/ping endpoint'i 2023'te kalıcı olarak kapatıldı (410 Gone).
   // IndexNow zaten Bing'i de kapsıyor, ayrıca ping gerekmiyor.
+
+  // Önce key dosyasının canlı sitede doğru şekilde erişilebilir olduğunu doğrula.
+  // Bu adım, deploy geçiş sürecinde boş yere 403 almayı önler.
+  console.log(`[Search Engine Auto-Ping] Verifying key file at ${KEY_LOCATION} ...`);
+  const keyOk = await verifyKeyFile();
+
+  if (!keyOk) {
+    console.warn(
+      `⚠ IndexNow skipped: key file not yet accessible at ${KEY_LOCATION}\n` +
+      `  → Bu uyarı yeni bir deploy'un ilk build'inde normaldir.\n` +
+      `  → Bir sonraki build'de key doğrulanacak ve IndexNow çalışacak.`
+    );
+    console.log('[Search Engine Auto-Ping] Completed.\n');
+    return;
+  }
+
+  console.log(`✓ Key file verified. Proceeding with IndexNow submission...`);
+
   try {
     const indexNowPayload = {
       host: HOST,
@@ -109,3 +138,4 @@ pingSearchEngines().then(() => {
   console.error('Unhandled ping error:', err);
   process.exit(0); // Always exit with 0 to ensure the Vercel build succeeds
 });
+
