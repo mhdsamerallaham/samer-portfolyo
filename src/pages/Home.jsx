@@ -101,7 +101,7 @@ export default function Home() {
                   height="240"
                   fetchpriority="high"
                   decoding="async"
-                  className="w-full h-full object-top object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-center object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </div>
