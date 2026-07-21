@@ -88,34 +88,7 @@ function slugify(text) {
     .replace(/-+/g, "-");
 }
 
-// ─── Fallback Taslaklar ───────────────────────────────────────────────────────
-// Tüm AI sağlayıcıları başarısız olursa kullanılır (%100 güvenli yedek)
-const fallbackDrafts = [
-  {
-    slug: "eticaret-altyapi-secimi-ve-seo-ipuclari",
-    title_tr: "E-Ticarette Doğru Altyapı Seçimi ve SEO Stratejileri",
-    summary_tr:
-      "E-ticaret mağazanız için doğru altyapıyı seçerken dikkat etmeniz gereken SEO, hız ve entegrasyon faktörleri.",
-    content_tr: `<h3>E-Ticarette Doğru Altyapı Seçimi</h3><p>E-ticaret sitenizi kurarken Shopify veya İKAS gibi modern altyapıları seçmek, arama motorlarında üst sıralarda listelenmeniz için kritik bir öneme sahiptir.</p><h3>Hız ve Mobil Uyumluluk</h3><p>Google Core Web Vitals skorlarınızı yüksek tutarak sepeti terk etme oranlarınızı düşürebilir ve satışlarınızı artırabilirsiniz.</p><p>Detaylı bilgi için <a href="/eticaret-site-kurulumu">E-Ticaret Kurulumu</a> hizmet sayfamızı ziyaret edebilirsiniz.</p>`,
-    seo_title_tr: "E-Ticaret Altyapı Seçimi ve SEO Rehberi",
-    seo_description_tr:
-      "E-ticaret siteleri için platform seçimi, SEO uyumluluğu ve dönüşüm oranı optimizasyonuna yönelik temel ipuçları.",
-    title_en: "Choosing the Right E-Commerce Platform and SEO Tips",
-    summary_en:
-      "Crucial factors regarding SEO, page load speed, and integrations when choosing an e-commerce platform.",
-    content_en: `<h3>Choosing the Right E-Commerce Platform</h3><p>Selecting modern platforms like Shopify or İKAS is vital for search engine rankings.</p><p>For details, check our <a href="/en/ecommerce-setup">E-Commerce Setup</a> service page.</p>`,
-    seo_title_en: "E-Commerce Platform Selection and SEO Guide",
-    seo_description_en:
-      "Key guidelines for choosing e-commerce platforms, optimizing SEO, and improving checkout speed.",
-    title_ar: "اختيار منصة التجارة الإلكترونية المناسبة ونصائح السيو",
-    summary_ar:
-      "عوامل حاسمة تتعلق بالسيو وسرعة تحميل الصفحات والربط عند اختيار منصة متجرك الإلكتروني.",
-    content_ar: `<h3>اختيار منصة التجارة الإلكترونية</h3><p>يعد اختيار منصات حديثة مثل شوبيفاي أو إيكاس أمراً حيوياً لتصدر نتائج البحث.</p><p>للمزيد، يرجى مراجعة صفحة خدمة <a href="/ar/shopify-setup-turkey">إنشاء المتاجر الإلكترونية</a>.</p>`,
-    seo_title_ar: "دليل اختيار منصة التجارة الإلكترونية والسيو",
-    seo_description_ar:
-      "نصائح وإرشادات حول اختيار منصة المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع.",
-  },
-];
+
 
 // ─── Atomic Concurrency Lock ──────────────────────────────────────────────────
 const STALE_LOCK_MINUTES = 2;
@@ -372,36 +345,11 @@ module.exports = async (req, res) => {
       enData = await manager.generateJSON(enPrompt, BLOG_SYSTEM_PROMPT);
 
     } catch (generationError) {
-      console.warn(
-        "[Blog Generator] All LLM providers failed. Loading static backup draft fallback...",
+      console.error(
+        "[Blog Generator] All LLM providers failed. Skipping publication to avoid duplicate fallback posts.",
         generationError.message
       );
-
-      const draft = fallbackDrafts[Math.floor(Math.random() * fallbackDrafts.length)];
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-
-      trData = {
-        slug: `${draft.slug}-${randomSuffix}`,
-        title_tr: draft.title_tr,
-        summary_tr: draft.summary_tr,
-        content_tr: draft.content_tr,
-        seo_title_tr: draft.seo_title_tr,
-        seo_description_tr: draft.seo_description_tr,
-      };
-      enData = {
-        title_en: draft.title_en,
-        summary_en: draft.summary_en,
-        content_en: draft.content_en,
-        seo_title_en: draft.seo_title_en,
-        seo_description_en: draft.seo_description_en,
-      };
-      arData = {
-        title_ar: draft.title_ar,
-        summary_ar: draft.summary_ar,
-        content_ar: draft.content_ar,
-        seo_title_ar: draft.seo_title_ar,
-        seo_description_ar: draft.seo_description_ar,
-      };
+      throw new Error(`AI generation failed across all providers: ${generationError.message}`);
     }
 
     // 6. Slug oluştur ve benzersizliği garanti et
