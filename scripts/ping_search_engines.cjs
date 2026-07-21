@@ -69,21 +69,9 @@ blogSlugs.forEach(slug => {
 async function pingSearchEngines() {
   console.log(`\n[Search Engine Auto-Ping] Initializing pings for ${urls.length} URLs...`);
 
-  // 1. Ping Bing Sitemap Endpoint
-  try {
-    const bingUrl = `https://www.bing.com/ping?sitemap=${encodeURIComponent(SITEMAP_URL)}`;
-    console.log(`Sending sitemap update notification to Bing...`);
-    const res = await fetch(bingUrl);
-    if (res.ok) {
-      console.log(`✓ Bing sitemap ping successful! (Status: ${res.status})`);
-    } else {
-      console.warn(`⚠ Bing sitemap ping returned non-200 status: ${res.status}`);
-    }
-  } catch (err) {
-    console.warn(`⚠ Failed to ping Bing sitemap (possibly offline or firewall):`, err.message);
-  }
-
-  // 2. IndexNow API Submission (Bing, Yandex, Seznam, etc.)
+  // IndexNow API — Bing, Yandex, Seznam ve diğer destekleyen motorları tek seferde bilgilendirir.
+  // Not: bing.com/ping endpoint'i 2023'te kalıcı olarak kapatıldı (410 Gone).
+  // IndexNow zaten Bing'i de kapsıyor, ayrıca ping gerekmiyor.
   try {
     const indexNowPayload = {
       host: HOST,
@@ -92,7 +80,7 @@ async function pingSearchEngines() {
       urlList: urls
     };
 
-    console.log(`Submitting URLs to IndexNow API (Bing, Yandex, Seznam)...`);
+    console.log(`Submitting ${urls.length} URLs to IndexNow API (Bing, Yandex, Seznam)...`);
     const res = await fetch('https://api.indexnow.org/indexnow', {
       method: 'POST',
       headers: {
@@ -102,9 +90,10 @@ async function pingSearchEngines() {
     });
 
     if (res.ok) {
-      console.log(`✓ IndexNow URL submission successful! (Status: ${res.status})`);
+      console.log(`✓ IndexNow submission successful — ${urls.length} URLs queued for indexing. (Status: ${res.status})`);
     } else {
-      console.warn(`⚠ IndexNow API returned non-200 status: ${res.status}`);
+      const body = await res.text().catch(() => '');
+      console.warn(`⚠ IndexNow API returned non-200 status: ${res.status}`, body.slice(0, 200));
     }
   } catch (err) {
     console.warn(`⚠ Failed to submit to IndexNow API:`, err.message);
