@@ -8,11 +8,6 @@ const OpenAICompatibleProvider = require("../OpenAICompatibleProvider");
  * Base URL: https://router.huggingface.co/v1
  *
  * Env: HF_TOKEN
- *
- * Model formatı: "owner/ModelName:backend"
- *   - :groq    → Groq altyapısı
- *   - :novita  → Novita altyapısı
- *   - :nscale  → Nscale altyapısı
  */
 const HF_MODELS = [
   {
@@ -20,12 +15,16 @@ const HF_MODELS = [
     label: "HuggingFace Router (Llama-3.3-70B via Groq)",
   },
   {
-    model: "deepseek-ai/DeepSeek-V3:novita",
-    label: "HuggingFace Router (DeepSeek-V3 via Novita)",
+    model: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B:novita",
+    label: "HuggingFace Router (DeepSeek-R1-32B via Novita)",
   },
   {
-    model: "Qwen/Qwen3-32B:nscale",
-    label: "HuggingFace Router (Qwen3-32B via Nscale)",
+    model: "Qwen/Qwen2.5-Coder-32B-Instruct:nscale",
+    label: "HuggingFace Router (Qwen2.5-Coder-32B via Nscale)",
+  },
+  {
+    model: "mistralai/Mistral-7B-Instruct-v0.3:featherless",
+    label: "HuggingFace Router (Mistral-7B via Featherless)",
   },
 ];
 
@@ -41,9 +40,8 @@ function createHuggingFaceProviders(hfToken) {
         baseUrl: "https://router.huggingface.co/v1",
         apiKey: hfToken,
         model,
-        // HF Router bazı modellerde json_object formatını desteklemeyebilir
         supportsJsonMode: false,
-        timeout: 30000,
+        timeout: 25000,
       })
   );
 }

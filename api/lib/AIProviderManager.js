@@ -160,9 +160,23 @@ function safeParseJSON(raw) {
     .replace(/```\s*$/i, "")
     .trim();
 
+  // Try direct parse first
   try {
     return JSON.parse(cleaned);
   } catch {
+    // Try extracting JSON object {...} substring if model included text before/after
+    const firstBrace = cleaned.indexOf("{");
+    const lastBrace = cleaned.lastIndexOf("}");
+
+    if (firstBrace !== -1 && lastBrace > firstBrace) {
+      cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+      try {
+        return JSON.parse(cleaned);
+      } catch {
+        // Continue to auto-repair below
+      }
+    }
+
     try {
       let patched = cleaned;
 

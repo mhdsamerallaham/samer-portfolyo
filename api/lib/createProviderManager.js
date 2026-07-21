@@ -35,7 +35,7 @@ function createProviderManager() {
 
   // ── 1. Cerebras ─────────────────────────────────────────────
   if (process.env.CEREBRAS_API_KEY) {
-    providers.push(createCerebrasProvider(process.env.CEREBRAS_API_KEY));
+    providers.push(...createCerebrasProvider(process.env.CEREBRAS_API_KEY));
   }
 
   // ── 2–4. Groq ───────────────────────────────────────────────

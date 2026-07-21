@@ -4,13 +4,15 @@ const OpenAICompatibleProvider = require("../OpenAICompatibleProvider");
  * Groq Provider — Öncelik 2
  *
  * Groq, OpenAI uyumlu hızlı inference sağlar.
- * Birden fazla model denenir; hızdan ödün vermemek için büyükten küçüğe sıralanır.
+ * Decommission edilmiş modeller (mixtral-8x7b-32768) kaldırıldı, aktif güncel modeller eklendi.
  *
  * Env: GROQ_API_KEY
  */
 const GROQ_MODELS = [
   "llama-3.3-70b-versatile",
-  "mixtral-8x7b-32768",
+  "deepseek-r1-distill-llama-70b",
+  "qwen-2.5-coder-32b",
+  "gemma2-9b-it",
   "llama-3.1-8b-instant",
 ];
 
