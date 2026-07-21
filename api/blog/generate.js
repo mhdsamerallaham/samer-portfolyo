@@ -1,342 +1,124 @@
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
+const createProviderManager = require("../lib/createProviderManager");
 
-// Initialize Supabase Client
+// ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SERVICE_KEY ||
+  process.env.SUPABASE_ANON_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// ─── Lightweight LLM Router ────────────────────────────────────────────────
-// OpenAI-uyumlu unified format: her provider tek bir fonksiyonla çağrılır.
-// Otomatik fallback, dinamik model keşfi, zero-config free provider'lar.
-// OmniRoute'un yaptığını ~60 satırda, ayrı servis deploy etmeden yapıyoruz.
-// ────────────────────────────────────────────────────────────────────────────
+// ─── AI Provider Manager ──────────────────────────────────────────────────────
+// Öncelik: Cerebras → Groq → HuggingFace Router → Gemini → Mistral
+// Her yeni istek Cerebras'tan başlar (cache yok).
+const manager = createProviderManager();
 
-// Global in-memory flag to skip Gemini once 429 quota exceeded in current run
-let geminiQuotaExceeded = false;
+// Blog generation sistem promptu
+const BLOG_SYSTEM_PROMPT =
+  "You must respond with valid JSON as requested by the user. " +
+  "Ensure all HTML tags and JSON fields are fully closed and never truncated.";
 
-// Her provider, OpenAI chat/completions formatında tanımlanır.
-// Sıra = öncelik. Biri başarısız olursa sonrakine geçer.
-function getProviders() {
-  const providers = [];
+// ─── Yardımcı Fonksiyonlar ───────────────────────────────────────────────────
 
-  // 1) Gemini — en güvenilir (Gemini 429 verdiyse bu turda atlanır)
-  if (process.env.GEMINI_API_KEY && !geminiQuotaExceeded) {
-    const geminiModels = [
-      "gemini-2.5-flash",
-      "gemini-2.0-flash",
-      "gemini-2.5-flash-lite"
-    ];
-    for (const model of geminiModels) {
-      providers.push({
-        name: `Gemini (${model})`,
-        url: `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`,
-        model,
-        apiKey: process.env.GEMINI_API_KEY,
-        headers: {},
-        isGemini: true
-      });
-    }
-  }
-
-  // 2) Groq — hızlı, free tier cömert
-  if (process.env.GROQ_API_KEY) {
-    for (const model of ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "llama-3.1-8b-instant"]) {
-      providers.push({
-        name: `Groq (${model})`,
-        url: "https://api.groq.com/openai/v1/chat/completions",
-        model,
-        apiKey: process.env.GROQ_API_KEY,
-        headers: {}
-      });
-    }
-  }
-
-  // 3) Mistral — free tier mevcut
-  if (process.env.MISTRAL_API_KEY) {
-    for (const model of ["mistral-small-latest", "open-mistral-7b"]) {
-      providers.push({
-        name: `Mistral (${model})`,
-        url: "https://api.mistral.ai/v1/chat/completions",
-        model,
-        apiKey: process.env.MISTRAL_API_KEY,
-        headers: {}
-      });
-    }
-  }
-
-  // 4) Pollinations — API key gerektirmez, 1-3 saniyede hızlı yanıt verir
-  providers.push({
-    name: "Pollinations (free, fast)",
-    url: "https://text.pollinations.ai/openai",
-    model: "openai",
-    apiKey: null,
-    headers: {},
-    noJsonMode: true
-  });
-
-  // 5) OpenRouter — dinamik HIZLI free modeller (ağır 550B modeller filtrelenir)
-  if (process.env.OPENROUTER_API_KEY) {
-    providers.push({
-      name: "OpenRouter (fast free models)",
-      url: "https://openrouter.ai/api/v1/chat/completions",
-      model: "__dynamic__",
-      apiKey: process.env.OPENROUTER_API_KEY,
-      headers: {
-        "HTTP-Referer": "https://www.samer.life",
-        "X-OpenRouter-Title": "Samer Portfolio Blog Bot"
-      },
-      isDynamic: true
-    });
-  }
-
-  return providers;
-}
-
-// OpenRouter'daki aktif HIZLI free modelleri çek (sıra uzatan ağır modeller hariç)
-async function fetchOpenRouterFreeModels() {
-  try {
-    const res = await fetch("https://openrouter.ai/api/v1/models");
-    if (!res.ok) return [];
-    const json = await res.json();
-    
-    // Yavaş ağır modelleri (550b, 405b, ultra, nemotron) filtrele, hızlı modelleri seç
-    const slowKeywords = ["550b", "405b", "ultra", "nemotron", "large"];
-    return json.data
-      .filter(m => m.id.endsWith(':free'))
-      .filter(m => !slowKeywords.some(kw => m.id.toLowerCase().includes(kw)))
-      .slice(0, 5)
-      .map(m => m.id);
-  } catch {
-    return [];
-  }
-}
-
-// Helper to sanitize and auto-close cut-off HTML tags or truncated sentences
+// Kesilmiş HTML etiketlerini otomatik kapat
 function sanitizeHTMLContent(html) {
   if (!html) return "<p>İçerik yüklenemedi.</p>";
   let str = html.trim();
 
-  // If text ends abruptly mid-word without punctuation or closing tag, trim back to last full sentence
-  if (!str.endsWith('>') && !str.endsWith('.') && !str.endsWith('!') && !str.endsWith('?')) {
-    const lastPunct = Math.max(str.lastIndexOf('.'), str.lastIndexOf('!'), str.lastIndexOf('?'), str.lastIndexOf('</p>'));
+  if (
+    !str.endsWith(">") &&
+    !str.endsWith(".") &&
+    !str.endsWith("!") &&
+    !str.endsWith("?")
+  ) {
+    const lastPunct = Math.max(
+      str.lastIndexOf("."),
+      str.lastIndexOf("!"),
+      str.lastIndexOf("?"),
+      str.lastIndexOf("</p>")
+    );
     if (lastPunct > 100) {
       str = str.slice(0, lastPunct + 1);
     }
   }
 
-  // Auto-close missing HTML tags
   const openP = (str.match(/<p>/gi) || []).length;
   const closeP = (str.match(/<\/p>/gi) || []).length;
-  for (let i = 0; i < openP - closeP; i++) str += '</p>';
+  for (let i = 0; i < openP - closeP; i++) str += "</p>";
 
   const openH3 = (str.match(/<h3>/gi) || []).length;
   const closeH3 = (str.match(/<\/h3>/gi) || []).length;
-  for (let i = 0; i < openH3 - closeH3; i++) str += '</h3>';
+  for (let i = 0; i < openH3 - closeH3; i++) str += "</h3>";
 
   const openUl = (str.match(/<ul>/gi) || []).length;
   const closeUl = (str.match(/<\/ul>/gi) || []).length;
-  for (let i = 0; i < openUl - closeUl; i++) str += '</ul>';
+  for (let i = 0; i < openUl - closeUl; i++) str += "</ul>";
 
   return str;
 }
 
-// Tek bir OpenAI-uyumlu provider'a istek at (18 sn sıkı timeout)
-async function callProvider(provider, prompt) {
-  const headers = {
-    "Content-Type": "application/json",
-    ...provider.headers
-  };
-  if (provider.apiKey) {
-    headers["Authorization"] = `Bearer ${provider.apiKey}`;
-  }
-
-  const body = {
-    model: provider.model,
-    max_tokens: 2500,
-    messages: [
-      { role: "system", content: "You must respond with valid JSON as requested by the user. Ensure all HTML tags and JSON fields are fully closed and never truncated." },
-      { role: "user", content: prompt }
-    ]
-  };
-
-  if (!provider.noJsonMode) {
-    body.response_format = { type: "json_object" };
-  }
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 18000); // 18s fast timeout
-
-  try {
-    const res = await fetch(provider.url, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body),
-      signal: controller.signal
-    });
-
-    if (!res.ok) {
-      const errText = await res.text().catch(() => "");
-      if (res.status === 429 && provider.isGemini) {
-        console.warn("[Router] Gemini quota 429 hit. Short-circuiting Gemini for rest of session.");
-        geminiQuotaExceeded = true;
-      }
-      throw new Error(`HTTP ${res.status}: ${errText.slice(0, 150)}`);
-    }
-
-    const json = await res.json();
-    const content = json.choices?.[0]?.message?.content;
-    if (!content) throw new Error("Empty response (no choices)");
-    return content;
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-// Ana router: tüm provider'ları sırayla dener, başarılı olanı döndürür
-async function generateJSONWithFallback(prompt) {
-  const providers = getProviders();
-  let lastError;
-
-  for (const provider of providers) {
-    if (provider.isDynamic) {
-      const freeModels = await fetchOpenRouterFreeModels();
-      if (freeModels.length === 0) {
-        console.warn(`[Router] ${provider.name}: No fast free models found, skipping.`);
-        continue;
-      }
-      for (const model of freeModels) {
-        try {
-          const dynamicProvider = { ...provider, model, name: `OpenRouter (${model})` };
-          console.log(`[Router] Trying: ${dynamicProvider.name}`);
-          const text = await callProvider(dynamicProvider, prompt);
-          const parsed = safeParseJSON(text);
-          if (parsed) {
-            console.log(`[Router] ✓ Success: ${dynamicProvider.name}`);
-            return parsed;
-          }
-          throw new Error("JSON verification failed");
-        } catch (err) {
-          console.warn(`[Router] ✗ ${provider.name} (${model}): ${err.message}`);
-          lastError = err;
-        }
-      }
-      continue;
-    }
-
-    try {
-      console.log(`[Router] Trying: ${provider.name}`);
-      const text = await callProvider(provider, prompt);
-      const parsed = safeParseJSON(text);
-      if (parsed) {
-        console.log(`[Router] ✓ Success: ${provider.name}`);
-        return parsed;
-      }
-      throw new Error("JSON verification failed");
-    } catch (err) {
-      console.warn(`[Router] ✗ ${provider.name}: ${err.message}`);
-      lastError = err;
-    }
-  }
-
-  throw new Error(`All providers failed. Last: ${lastError?.message || "unknown"}`);
-}
-
-// ─── JSON Auto-Repair ──────────────────────────────────────────────────────
-// Markdown block tag'lerini temizle, eksik parantezleri kapat
-// ────────────────────────────────────────────────────────────────────────────
-
-function safeParseJSON(raw) {
-  if (!raw) return null;
-  let cleaned = raw.trim();
-  
-  // Strip Markdown code block delimiters if present
-  cleaned = cleaned.replace(/^```json\s*/i, '');
-  cleaned = cleaned.replace(/^```\s*/i, '');
-  cleaned = cleaned.replace(/```$/, '');
-  cleaned = cleaned.trim();
-  
-  try {
-    return JSON.parse(cleaned);
-  } catch (e) {
-    console.error("JSON parse failed, attempting auto-repair. Raw snippet:", cleaned.slice(0, 300));
-    
-    try {
-      let openBraces = (cleaned.match(/\{/g) || []).length;
-      let closeBraces = (cleaned.match(/\}/g) || []).length;
-      let openBrackets = (cleaned.match(/\[/g) || []).length;
-      let closeBrackets = (cleaned.match(/\]/g) || []).length;
-      
-      let patched = cleaned;
-      if (patched.endsWith(',')) patched = patched.slice(0, -1);
-      
-      // Close missing string quotes if cut off inside a text field
-      if ((patched.match(/"/g) || []).length % 2 !== 0) {
-        patched += '"';
-      }
-      
-      while (closeBraces < openBraces) {
-        patched += '}';
-        closeBraces++;
-      }
-      while (closeBrackets < openBrackets) {
-        patched += ']';
-        closeBrackets++;
-      }
-      
-      return JSON.parse(patched);
-    } catch (err) {
-      console.error("JSON auto-repair failed:", err.message);
-      return null;
-    }
-  }
-}
-
-// Helper to generate slug from text if AI fails to return it
+// Türkçe karakterleri de destekleyen slug üretici
 function slugify(text) {
   if (!text) return "";
   const trMap = {
-    'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-    'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u'
+    ç: "c",
+    ğ: "g",
+    ı: "i",
+    ö: "o",
+    ş: "s",
+    ü: "u",
+    Ç: "c",
+    Ğ: "g",
+    İ: "i",
+    Ö: "o",
+    Ş: "s",
+    Ü: "u",
   };
   let str = text.toString();
-  for (const char in trMap) {
-    str = str.replaceAll(char, trMap[char]);
-  }
+  for (const char in trMap) str = str.replaceAll(char, trMap[char]);
   return str
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9 -]/g, '')     // Remove non-alphanumeric chars
-    .replace(/\s+/g, '-')            // Replace spaces with -
-    .replace(/-+/g, '-');            // Replace multiple dashes with single
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
 }
 
-// Fallback drafts in case all AI generation engines fail completely (100% fail-safe)
+// ─── Fallback Taslaklar ───────────────────────────────────────────────────────
+// Tüm AI sağlayıcıları başarısız olursa kullanılır (%100 güvenli yedek)
 const fallbackDrafts = [
   {
     slug: "eticaret-altyapi-secimi-ve-seo-ipuclari",
     title_tr: "E-Ticarette Doğru Altyapı Seçimi ve SEO Stratejileri",
-    summary_tr: "E-ticaret mağazanız için doğru altyapıyı seçerken dikkat etmeniz gereken SEO, hız ve entegrasyon faktörleri.",
-    content_tr: `<h3>E-Ticarette Doğru Altyapı Seçimi</h3><p>E-ticaret sitenizi kurarken Shopify veya İKAS gibi modern altyapıları seçmek, arama motorlarında üst sıralarda listelenmeniz için kritik bir öneme sahiptir. Bu yazımızda, teknik SEO ve dönüşüm oranı optimizasyonuna dair temel adımları özetledik.</p><h3>Hız ve Mobil Uyumluluk</h3><p>Google Core Web Vitals skorlarınızı yüksek tutarak sepeti terk etme oranlarınızı düşürebilir ve satışlarınızı artırabilirsiniz.</p><p>Detaylı bilgi için <a href="/eticaret-site-kurulumu">E-Ticaret Kurulumu</a> hizmet sayfamızı ziyaret edebilirsiniz.</p>`,
+    summary_tr:
+      "E-ticaret mağazanız için doğru altyapıyı seçerken dikkat etmeniz gereken SEO, hız ve entegrasyon faktörleri.",
+    content_tr: `<h3>E-Ticarette Doğru Altyapı Seçimi</h3><p>E-ticaret sitenizi kurarken Shopify veya İKAS gibi modern altyapıları seçmek, arama motorlarında üst sıralarda listelenmeniz için kritik bir öneme sahiptir.</p><h3>Hız ve Mobil Uyumluluk</h3><p>Google Core Web Vitals skorlarınızı yüksek tutarak sepeti terk etme oranlarınızı düşürebilir ve satışlarınızı artırabilirsiniz.</p><p>Detaylı bilgi için <a href="/eticaret-site-kurulumu">E-Ticaret Kurulumu</a> hizmet sayfamızı ziyaret edebilirsiniz.</p>`,
     seo_title_tr: "E-Ticaret Altyapı Seçimi ve SEO Rehberi",
-    seo_description_tr: "E-ticaret siteleri için platform seçimi, SEO uyumluluğu ve dönüşüm oranı optimizasyonuna yönelik temel ipuçları.",
-    
+    seo_description_tr:
+      "E-ticaret siteleri için platform seçimi, SEO uyumluluğu ve dönüşüm oranı optimizasyonuna yönelik temel ipuçları.",
     title_en: "Choosing the Right E-Commerce Platform and SEO Tips",
-    summary_en: "Crucial factors regarding SEO, page load speed, and integrations when choosing an e-commerce platform.",
-    content_en: `<h3>Choosing the Right E-Commerce Platform</h3><p>Selecting modern platforms like Shopify or İKAS is vital for search engine rankings. We summarize key technical SEO steps here.</p><p>For details, check our <a href="/en/ecommerce-setup">E-Commerce Setup</a> service page.</p>`,
+    summary_en:
+      "Crucial factors regarding SEO, page load speed, and integrations when choosing an e-commerce platform.",
+    content_en: `<h3>Choosing the Right E-Commerce Platform</h3><p>Selecting modern platforms like Shopify or İKAS is vital for search engine rankings.</p><p>For details, check our <a href="/en/ecommerce-setup">E-Commerce Setup</a> service page.</p>`,
     seo_title_en: "E-Commerce Platform Selection and SEO Guide",
-    seo_description_en: "Key guidelines for choosing e-commerce platforms, optimizing SEO, and improving checkout speed.",
-    
+    seo_description_en:
+      "Key guidelines for choosing e-commerce platforms, optimizing SEO, and improving checkout speed.",
     title_ar: "اختيار منصة التجارة الإلكترونية المناسبة ونصائح السيو",
-    summary_ar: "عوامل حاسمة تتعلق بالسيو وسرعة تحميل الصفحات والربط عند اختيار منصة متجرك الإلكتروني.",
-    content_ar: `<h3>اختيار منصة التجارة الإلكترونية</h3><p>يعد اختيار منصات حديثة مثل شوبيفاي أو إيكاس أمراً حيوياً لتصدر نتائج البحث. نلخص هنا أهم الخطوات التقنية للسيو.</p><p>للمزيد، يرجى مراجعة صفحة خدمة <a href="/ar/shopify-setup-turkey">إنشاء المتاجر الإلكترونية</a>.</p>`,
+    summary_ar:
+      "عوامل حاسمة تتعلق بالسيو وسرعة تحميل الصفحات والربط عند اختيار منصة متجرك الإلكتروني.",
+    content_ar: `<h3>اختيار منصة التجارة الإلكترونية</h3><p>يعد اختيار منصات حديثة مثل شوبيفاي أو إيكاس أمراً حيوياً لتصدر نتائج البحث.</p><p>للمزيد، يرجى مراجعة صفحة خدمة <a href="/ar/shopify-setup-turkey">إنشاء المتاجر الإلكترونية</a>.</p>`,
     seo_title_ar: "دليل اختيار منصة التجارة الإلكترونية والسيو",
-    seo_description_ar: "نصائح وإرشادات حول اختيار منصة المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع."
-  }
+    seo_description_ar:
+      "نصائح وإرشادات حول اختيار منصة المتاجر، تحسين السيو، وزيادة سرعة التصفح والدفع.",
+  },
 ];
 
-// ─── Atomic Concurrency Lock Helpers ─────────────────────────────────────
-const STALE_LOCK_MINUTES = 2; // Short 2-minute stale threshold
+// ─── Atomic Concurrency Lock ──────────────────────────────────────────────────
+const STALE_LOCK_MINUTES = 2;
 
 async function acquireAtomicLock(forceBypass = false) {
   if (forceBypass) {
@@ -344,81 +126,94 @@ async function acquireAtomicLock(forceBypass = false) {
     return true;
   }
   try {
-    // Check existing lock state from database
     const { data: locks, error: selectErr } = await supabase
-      .from('cron_locks')
-      .select('*')
-      .eq('job_name', 'blog_generate');
+      .from("cron_locks")
+      .select("*")
+      .eq("job_name", "blog_generate");
 
-    // If table missing or row doesn't exist yet, auto-create row & proceed
     if (selectErr || !locks || locks.length === 0) {
       await supabase
-        .from('cron_locks')
-        .upsert({ job_name: 'blog_generate', is_processing: true, started_at: new Date().toISOString() });
+        .from("cron_locks")
+        .upsert({ job_name: "blog_generate", is_processing: true, started_at: new Date().toISOString() });
       return true;
     }
 
     const currentLock = locks[0];
     const startedAt = currentLock.started_at ? new Date(currentLock.started_at).getTime() : 0;
-    const isStale = (Date.now() - startedAt) > STALE_LOCK_MINUTES * 60 * 1000;
+    const isStale = Date.now() - startedAt > STALE_LOCK_MINUTES * 60 * 1000;
 
-    // If lock is free OR stale (>2 mins), acquire it
     if (!currentLock.is_processing || isStale) {
       await supabase
-        .from('cron_locks')
+        .from("cron_locks")
         .update({ is_processing: true, started_at: new Date().toISOString() })
-        .eq('job_name', 'blog_generate');
+        .eq("job_name", "blog_generate");
       return true;
     }
 
-    // Active lock in progress (within last 2 minutes)
     return false;
   } catch (err) {
     console.warn("[Atomic Lock] Exception (proceeding with execution):", err.message);
-    return true; // Never block execution on exception
+    return true;
   }
 }
 
 async function releaseAtomicLock() {
   try {
     await supabase
-      .from('cron_locks')
+      .from("cron_locks")
       .update({ is_processing: false })
-      .eq('job_name', 'blog_generate');
+      .eq("job_name", "blog_generate");
   } catch (err) {
     console.warn("[Atomic Lock] Lock release warning:", err.message);
   }
 }
 
+// ─── Ana Handler ──────────────────────────────────────────────────────────────
 module.exports = async (req, res) => {
-  // 1. Authorization Check (for secure cron job execution)
+  // 1. Authorization Check
+  // Vercel Cron, CRON_SECRET ortam değişkeni tanımlanmışsa otomatik olarak
+  // "Authorization: Bearer <CRON_SECRET>" header'ı gönderir.
+  // ⚠️ CRON_SECRET Vercel Dashboard → Settings → Environment Variables'a eklenmeli!
   const authHeader = req.headers.authorization;
   const secretParam = req.query?.secret;
-  const forceParam = req.query?.force === 'true';
-  
-  const isAuthorized = 
-    (authHeader === `Bearer ${process.env.CRON_SECRET}`) ||
-    (secretParam === process.env.CRON_SECRET) ||
-    (process.env.NODE_ENV === 'development');
+  const forceParam = req.query?.force === "true";
+  const hasCronSecret = Boolean(process.env.CRON_SECRET);
+
+  const isAuthorized =
+    (hasCronSecret && authHeader === `Bearer ${process.env.CRON_SECRET}`) ||
+    (hasCronSecret && secretParam === process.env.CRON_SECRET) ||
+    req.headers["x-vercel-cron"] === "1" ||
+    process.env.NODE_ENV === "development";
 
   if (!isAuthorized) {
-    return res.status(401).json({ error: "Unauthorized access" });
+    // Debug: hangi koşulun neden başarısız olduğunu logla
+    console.error("[Blog Generator] 401 Unauthorized. Debug:", {
+      hasCronSecret,
+      receivedHeader: authHeader ? authHeader.slice(0, 20) + "..." : "(boş)",
+      hasSecretParam: Boolean(secretParam),
+      isVercelCron: req.headers["x-vercel-cron"],
+      nodeEnv: process.env.NODE_ENV,
+    });
+    return res.status(401).json({
+      error: "Unauthorized access",
+      hint: "CRON_SECRET Vercel Dashboard'a eklenmiş mi? Settings → Environment Variables",
+    });
   }
 
-  // 2. Atomic Lock Check (Prevents overlapping cron executions & token wastage)
+  // 2. Atomic Lock Check (paralel çalışmayı önler)
   const gotLock = await acquireAtomicLock(forceParam);
   if (!gotLock) {
-    console.log('[Atomic Lock] Another blog generation process is currently running. Skipping this invocation.');
+    console.log("[Atomic Lock] Another blog generation process is currently running. Skipping.");
     return res.status(200).json({
       success: true,
       skipped: true,
-      reason: 'already_running',
-      message: 'Skipped: Another generation process is currently running.'
+      reason: "already_running",
+      message: "Skipped: Another generation process is currently running.",
     });
   }
 
   try {
-    // 3. Concurrency Lock: Check if a post was already generated within the last 10 minutes to prevent race conditions
+    // 3. Son 10 dakika içinde yazı oluşturuldu mu? (race condition koruması)
     const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
     const { data: recentPosts, error: recentError } = await supabase
       .from("blog_posts")
@@ -426,16 +221,16 @@ module.exports = async (req, res) => {
       .gte("published_at", tenMinutesAgo);
 
     if (recentError) {
-      console.warn("[Lock System] Database error checking locks, proceeding with caution:", recentError.message);
+      console.warn("[Lock System] Database error checking locks, proceeding:", recentError.message);
     } else if (recentPosts && recentPosts.length > 0) {
-      console.log("[Lock System] A blog post was already generated in the last 10 minutes. Skipping this run to prevent duplicate posts.");
+      console.log("[Lock System] A blog post was already generated in the last 10 minutes. Skipping.");
       return res.status(200).json({
         success: true,
-        message: "Skipped to prevent duplicate execution (Lock active)."
+        message: "Skipped to prevent duplicate execution (Lock active).",
       });
     }
 
-    // 3. Fetch existing blogs from database for context (gap analysis & internal linking)
+    // 4. Mevcut blog yazılarını çek (gap analizi + iç linkleme için)
     const { data: existingPosts, error: dbError } = await supabase
       .from("blog_posts")
       .select("slug, title_tr, title_en, title_ar")
@@ -445,14 +240,14 @@ module.exports = async (req, res) => {
       throw new Error(`Database error fetching posts: ${dbError.message}`);
     }
 
-    const blogContextList = existingPosts.map(p => ({
+    const blogContextList = existingPosts.map((p) => ({
       slug: p.slug,
       title_tr: p.title_tr,
       title_en: p.title_en,
-      title_ar: p.title_ar
+      title_ar: p.title_ar,
     }));
 
-    // List of website service pages
+    // Hizmet sayfaları listesi
     const servicePages = [
       { path: "/eticaret-site-kurulumu", name_tr: "E-Ticaret Site Kurulumu", name_en: "E-Commerce Site Setup", name_ar: "إنشاء موقع تجارة إلكترونية" },
       { path: "/eticaret-optimizasyon", name_tr: "E-Ticaret Optimizasyon", name_en: "E-Commerce Optimization", name_ar: "تحسين التجارة الإلكترونية" },
@@ -460,10 +255,10 @@ module.exports = async (req, res) => {
       { path: "/stok-ve-depo-sistemi", name_tr: "Stok ve Depo Sistemleri", name_en: "Stock & Warehouse Systems", name_ar: "أنظمة المخزون والمستودعات" },
       { path: "/web-sitesi-gelistirme", name_tr: "Kurumsal & Kişisel Web Sitesi Geliştirme", name_en: "Corporate & Personal Website Development", name_ar: "تطوير المواقع المؤسسية والشخصية" },
       { path: "/ozel-yazilim-gelistirme", name_tr: "Özel Yazılım & API Geliştirme", name_en: "Custom Software & API Development", name_ar: "تطوير البرمجيات المخصصة وواجهات API" },
-      { path: "/yapay-zeka-cozumleri", name_tr: "Yapay Zeka Entegrasyonu & Chatbot Çözümleri", name_en: "AI Integration & Chatbot Solutions", name_ar: "تكامل الذكاء الاصطناعي وحلول الشات بوت" }
+      { path: "/yapay-zeka-cozumleri", name_tr: "Yapay Zeka Entegrasyonu & Chatbot Çözümleri", name_en: "AI Integration & Chatbot Solutions", name_ar: "تكامل الذكاء الاصطناعي وحلول الشات بوت" },
     ];
 
-    // 4. Step 1: Content Gap Analysis & Turkish Blog Generation
+    // 5. Adım 1: Türkçe blog içeriği üret
     const trPrompt = `
       You are an expert e-commerce, software development, and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
       Then, write a brand new, premium, human-like Turkish blog post that covers this gap.
@@ -504,10 +299,13 @@ module.exports = async (req, res) => {
     `;
 
     let trData, enData, arData;
-      // Step 1: Turkish content generation
-      trData = await generateJSONWithFallback(trPrompt);
 
-      // Step 2: Sequential Translation to Arabic FIRST (Önce Arapça)
+    // ── AI Üretim Bloğu ──────────────────────────────────────────────────────
+    try {
+      // Adım 1: Türkçe içerik
+      trData = await manager.generateJSON(trPrompt, BLOG_SYSTEM_PROMPT);
+
+      // Adım 2: Arapça çeviri (önce Arapça)
       const arPrompt = `
         You are a professional multilingual translator and SEO strategist. 
         Translate and localize the following Turkish blog post into modern Arabic (Fusha).
@@ -538,9 +336,9 @@ module.exports = async (req, res) => {
           "seo_description_ar": "Arabic Meta Description"
         }
       `;
-      arData = await generateJSONWithFallback(arPrompt);
+      arData = await manager.generateJSON(arPrompt, BLOG_SYSTEM_PROMPT);
 
-      // Step 3: Sequential Translation to English SECOND (Sonra İngilizce)
+      // Adım 3: İngilizce çeviri (sonra İngilizce)
       const enPrompt = `
         You are a professional multilingual translator and SEO strategist. 
         Translate and localize the following Turkish blog post into English.
@@ -571,80 +369,76 @@ module.exports = async (req, res) => {
           "seo_description_en": "English Meta Description"
         }
       `;
-      enData = await generateJSONWithFallback(enPrompt);
+      enData = await manager.generateJSON(enPrompt, BLOG_SYSTEM_PROMPT);
+
     } catch (generationError) {
-      console.warn("[Cron Job] All LLM providers failed. Loading static backup draft fallback...", generationError.message);
-      
+      console.warn(
+        "[Blog Generator] All LLM providers failed. Loading static backup draft fallback...",
+        generationError.message
+      );
+
       const draft = fallbackDrafts[Math.floor(Math.random() * fallbackDrafts.length)];
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      
+
       trData = {
         slug: `${draft.slug}-${randomSuffix}`,
         title_tr: draft.title_tr,
         summary_tr: draft.summary_tr,
         content_tr: draft.content_tr,
         seo_title_tr: draft.seo_title_tr,
-        seo_description_tr: draft.seo_description_tr
+        seo_description_tr: draft.seo_description_tr,
       };
-      
       enData = {
         title_en: draft.title_en,
         summary_en: draft.summary_en,
         content_en: draft.content_en,
         seo_title_en: draft.seo_title_en,
-        seo_description_en: draft.seo_description_en
+        seo_description_en: draft.seo_description_en,
       };
-      
       arData = {
         title_ar: draft.title_ar,
         summary_ar: draft.summary_ar,
         content_ar: draft.content_ar,
         seo_title_ar: draft.seo_title_ar,
-        seo_description_ar: draft.seo_description_ar
+        seo_description_ar: draft.seo_description_ar,
       };
     }
 
-    // Ensure title and slug exist and are strictly unique to prevent DB constraint crashes
+    // 6. Slug oluştur ve benzersizliği garanti et
     const titleTr = trData.title_tr || "Otomatik E-Ticaret Blogu";
     let baseSlug = trData.slug || slugify(titleTr);
-    if (!baseSlug) {
-      baseSlug = `blog-post-${Math.floor(1000 + Math.random() * 9000)}`;
-    }
+    if (!baseSlug) baseSlug = `blog-post-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    // Check against existing blog slugs fetched in Step 3
     let postSlug = baseSlug;
-    const existingSlugs = new Set((existingPosts || []).map(p => p.slug));
+    const existingSlugs = new Set((existingPosts || []).map((p) => p.slug));
     if (existingSlugs.has(postSlug)) {
       const randomSuffix = Math.floor(1000 + Math.random() * 9000);
       postSlug = `${baseSlug}-${randomSuffix}`;
-      console.log(`[Slug System] Existing slug collision detected. Resolved "${baseSlug}" -> "${postSlug}"`);
+      console.log(`[Slug System] Collision resolved: "${baseSlug}" → "${postSlug}"`);
     }
 
-    // 7. Step 4: Save the fully localized blog post to Supabase (Single multilingual row)
+    // 7. Supabase'e kaydet
     const newPost = {
       slug: postSlug,
       published_at: new Date().toISOString(),
-      
-      // Turkish
+      // Türkçe
       title_tr: titleTr,
       summary_tr: trData.summary_tr || "E-ticaret ve dijital büyüme süreçlerine dair ipuçları.",
       content_tr: sanitizeHTMLContent(trData.content_tr),
       seo_title_tr: trData.seo_title_tr || titleTr,
-      seo_description_tr: trData.seo_description_tr || (trData.summary_tr || "Açıklama bulunmuyor."),
-      
-      // English
+      seo_description_tr: trData.seo_description_tr || trData.summary_tr || "Açıklama bulunmuyor.",
+      // İngilizce
       title_en: enData.title_en || titleTr,
-      summary_en: enData.summary_en || (trData.summary_tr || "E-commerce updates."),
+      summary_en: enData.summary_en || trData.summary_tr || "E-commerce updates.",
       content_en: sanitizeHTMLContent(enData.content_en),
-      seo_title_en: enData.seo_title_en || (enData.title_en || titleTr),
-      seo_description_en: enData.seo_description_en || (enData.summary_en || "No description."),
-      
-      // Arabic
+      seo_title_en: enData.seo_title_en || enData.title_en || titleTr,
+      seo_description_en: enData.seo_description_en || enData.summary_en || "No description.",
+      // Arapça
       title_ar: arData.title_ar || titleTr,
-      summary_ar: arData.summary_ar || (trData.summary_tr || "أحدث المقالات حول التجارة الإلكترونية."),
+      summary_ar: arData.summary_ar || trData.summary_tr || "أحدث المقالات حول التجارة الإلكترونية.",
       content_ar: sanitizeHTMLContent(arData.content_ar),
-      seo_title_ar: arData.seo_title_ar || (arData.title_ar || titleTr),
-      seo_description_ar: arData.seo_description_ar || (arData.summary_ar || "لا يوجد وصف.")
+      seo_title_ar: arData.seo_title_ar || arData.title_ar || titleTr,
+      seo_description_ar: arData.seo_description_ar || arData.summary_ar || "لا يوجد وصف.",
     };
 
     let insertedData, insertError;
@@ -653,9 +447,14 @@ module.exports = async (req, res) => {
       .insert([newPost])
       .select());
 
-    // Fail-safe: If Postgres throws duplicate slug error (23505 constraint), append unique suffix and retry once
-    if (insertError && (insertError.code === '23505' || insertError.message?.includes("unique constraint") || insertError.message?.includes("slug"))) {
-      console.warn(`[DB Insert Conflict] Duplicate slug "${newPost.slug}" encountered. Retrying with unique suffix...`);
+    // Slug çakışması için tek deneme yeniden dene
+    if (
+      insertError &&
+      (insertError.code === "23505" ||
+        insertError.message?.includes("unique constraint") ||
+        insertError.message?.includes("slug"))
+    ) {
+      console.warn(`[DB Insert Conflict] Duplicate slug "${newPost.slug}". Retrying with unique suffix...`);
       newPost.slug = `${postSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
       ({ data: insertedData, error: insertError } = await supabase
         .from("blog_posts")
@@ -667,29 +466,26 @@ module.exports = async (req, res) => {
       throw new Error(`Database error saving post: ${insertError.message}`);
     }
 
-    // Return Success Response
     return res.status(200).json({
       success: true,
       message: "Blog post generated, translated, linked, and saved successfully.",
-      post: insertedData[0]
+      post: insertedData[0],
     });
 
   } catch (error) {
     console.error("Cron Job Error:", error);
-    
-    // Trigger automated EmailJS failure notification
+
+    // E-posta ile hata bildirimi gönder
     try {
       const serviceId = process.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = process.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
-      
+
       if (serviceId && templateId && publicKey) {
         console.log("[Alert System] Sending automated failure notification email via EmailJS...");
-        await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+        await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             service_id: serviceId,
             template_id: templateId,
@@ -699,24 +495,21 @@ module.exports = async (req, res) => {
               from_email: "bot@samer.life",
               phone: "N/A",
               website: "https://www.samer.life",
-              platform: "Vercel Cron Job (6 Hours)",
+              platform: "Vercel Cron Job (3 Hours)",
               budget: "N/A",
-              message: `HATA ALARMI: Otomatik blog yazısı üretme ve paylaşma botu hata verdi!\n\nHata Mesajı: ${error.message}\n\nTarih: ${new Date().toLocaleString('tr-TR')}`
+              message: `HATA ALARMI: Otomatik blog yazısı üretme botu hata verdi!\n\nHata Mesajı: ${error.message}\n\nTarih: ${new Date().toLocaleString("tr-TR")}`,
             },
           }),
         });
         console.log("[Alert System] Email notification sent successfully.");
       } else {
-        console.warn("[Alert System] EmailJS credentials missing on environment, skipping failure notification.");
+        console.warn("[Alert System] EmailJS credentials missing, skipping failure notification.");
       }
     } catch (mailError) {
       console.error("[Alert System] Failed to send error notification email:", mailError.message);
     }
 
-    return res.status(500).json({
-      success: false,
-      error: error.message
-    });
+    return res.status(500).json({ success: false, error: error.message });
   } finally {
     await releaseAtomicLock();
   }
