@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const HOST = 'www.samer.life';
-const KEY = '850b5523ab0e43d1a84f3c051a66bfb1';
+const KEY = 'd94e2b81a7054f1c91823c4a5e6b7c8d';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 
