@@ -53,7 +53,7 @@ module.exports = async (req, res) => {
       }
     };
 
-    // Project and translate fields dynamically for the frontend client
+    // Project and translate fields dynamically for the frontend client (TR, EN, AR)
     const formattedPosts = posts.map(post => ({
       id: post.id,
       slug: post.slug,
@@ -61,6 +61,7 @@ module.exports = async (req, res) => {
       title: post[`title_${targetLang}`] || post.title_tr,
       summary: post[`summary_${targetLang}`] || post.summary_tr,
       content: post[`content_${targetLang}`] || post.content_tr,
+      direct_answer: post[`direct_answer_${targetLang}`] || post.direct_answer_tr,
       seo_title: post[`seo_title_${targetLang}`] || post.seo_title_tr,
       seo_description: post[`seo_description_${targetLang}`] || post.seo_description_tr
     }));
