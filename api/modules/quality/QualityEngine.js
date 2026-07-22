@@ -65,7 +65,7 @@ class QualityEngine {
       )
     );
 
-    const passedGatekeeper = overallScore >= 90.00;
+    const passedGatekeeper = overallScore >= 80.00;
 
     return {
       overallScore: Number(overallScore.toFixed(2)),

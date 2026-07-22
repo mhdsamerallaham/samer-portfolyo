@@ -126,7 +126,7 @@ module.exports = async (req, res) => {
     if (!qualityAudit.passedGatekeeper && process.env.NODE_ENV !== "development") {
       return res.status(422).json({
         success: false,
-        message: "Content score below 90/100 threshold. Refinement required.",
+        message: "Content score below 80/100 threshold. Refinement required.",
         audit: qualityAudit,
       });
     }
