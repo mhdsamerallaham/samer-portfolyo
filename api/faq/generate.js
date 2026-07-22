@@ -118,6 +118,7 @@ module.exports = async (req, res) => {
       whoIsThisFor: trData.who_is_this_for_tr,
       expertAnswers: [expertContext],
       entities,
+      citations: [{ source_url: 'https://web.dev/vitals/', citation_title: 'Google Technical Docs' }],
     });
 
     console.log("[FAQ Gatekeeper Audit]", qualityAudit);

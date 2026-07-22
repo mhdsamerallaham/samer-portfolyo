@@ -133,6 +133,7 @@ module.exports = async (req, res) => {
       contentHtml: linkedHtmlTr,
       expertAnswers: [expertContext],
       entities,
+      citations: research.sources || [],
     });
 
     console.log("[Blog Gatekeeper Quality Audit]", qualityAudit);
