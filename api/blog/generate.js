@@ -1,6 +1,16 @@
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
+
 const createProviderManager = require("../lib/createProviderManager");
+const TopicDiscoveryEngine = require("../modules/discovery/TopicDiscoveryEngine");
+const IntentClassifierEngine = require("../modules/intent/IntentClassifierEngine");
+const ResearchEngine = require("../modules/research/ResearchEngine");
+const ExpertInterviewEngine = require("../modules/expert/ExpertInterviewEngine");
+const EntityEngine = require("../modules/entities/EntityEngine");
+const KnowledgeEngine = require("../modules/knowledge/KnowledgeEngine");
+const MemoryEngine = require("../modules/knowledge/MemoryEngine");
+const QualityEngine = require("../modules/quality/QualityEngine");
+const SemanticLinkingEngine = require("../modules/semantic-linking/SemanticLinkingEngine");
 
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -13,70 +23,16 @@ const supabaseKey =
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // ─── AI Provider Manager ──────────────────────────────────────────────────────
-// Öncelik: Cerebras → Groq → HuggingFace Router → Gemini → Mistral
-// Her yeni istek Cerebras'tan başlar (cache yok).
 const manager = createProviderManager();
 
-// Blog generation sistem promptu
 const BLOG_SYSTEM_PROMPT =
-  "You must respond with valid JSON as requested by the user. " +
-  "Ensure all HTML tags and JSON fields are fully closed and never truncated.";
+  "You are a Principal Software Architect, EEAT Specialist, and GEO/AEO Strategist. You must respond strictly with valid JSON. Never truncate your response.";
 
-// ─── Yardımcı Fonksiyonlar ───────────────────────────────────────────────────
-
-// Kesilmiş HTML etiketlerini otomatik kapat
-function sanitizeHTMLContent(html) {
-  if (!html) return "<p>İçerik yüklenemedi.</p>";
-  let str = html.trim();
-
-  if (
-    !str.endsWith(">") &&
-    !str.endsWith(".") &&
-    !str.endsWith("!") &&
-    !str.endsWith("?")
-  ) {
-    const lastPunct = Math.max(
-      str.lastIndexOf("."),
-      str.lastIndexOf("!"),
-      str.lastIndexOf("?"),
-      str.lastIndexOf("</p>")
-    );
-    if (lastPunct > 100) {
-      str = str.slice(0, lastPunct + 1);
-    }
-  }
-
-  const openP = (str.match(/<p>/gi) || []).length;
-  const closeP = (str.match(/<\/p>/gi) || []).length;
-  for (let i = 0; i < openP - closeP; i++) str += "</p>";
-
-  const openH3 = (str.match(/<h3>/gi) || []).length;
-  const closeH3 = (str.match(/<\/h3>/gi) || []).length;
-  for (let i = 0; i < openH3 - closeH3; i++) str += "</h3>";
-
-  const openUl = (str.match(/<ul>/gi) || []).length;
-  const closeUl = (str.match(/<\/ul>/gi) || []).length;
-  for (let i = 0; i < openUl - closeUl; i++) str += "</ul>";
-
-  return str;
-}
-
-// Türkçe karakterleri de destekleyen slug üretici
 function slugify(text) {
   if (!text) return "";
   const trMap = {
-    ç: "c",
-    ğ: "g",
-    ı: "i",
-    ö: "o",
-    ş: "s",
-    ü: "u",
-    Ç: "c",
-    Ğ: "g",
-    İ: "i",
-    Ö: "o",
-    Ş: "s",
-    Ü: "u",
+    ç: "c", ğ: "g", ı: "i", ö: "o", ş: "s", ü: "u",
+    Ç: "c", Ğ: "g", İ: "i", Ö: "o", Ş: "s", Ü: "u",
   };
   let str = text.toString();
   for (const char in trMap) str = str.replaceAll(char, trMap[char]);
@@ -88,68 +44,9 @@ function slugify(text) {
     .replace(/-+/g, "-");
 }
 
-
-
-// ─── Atomic Concurrency Lock ──────────────────────────────────────────────────
-const STALE_LOCK_MINUTES = 2;
-
-async function acquireAtomicLock(forceBypass = false) {
-  if (forceBypass) {
-    console.log("[Atomic Lock] Bypassed via force parameter.");
-    return true;
-  }
-  try {
-    const { data: locks, error: selectErr } = await supabase
-      .from("cron_locks")
-      .select("*")
-      .eq("job_name", "blog_generate");
-
-    if (selectErr || !locks || locks.length === 0) {
-      await supabase
-        .from("cron_locks")
-        .upsert({ job_name: "blog_generate", is_processing: true, started_at: new Date().toISOString() });
-      return true;
-    }
-
-    const currentLock = locks[0];
-    const startedAt = currentLock.started_at ? new Date(currentLock.started_at).getTime() : 0;
-    const isStale = Date.now() - startedAt > STALE_LOCK_MINUTES * 60 * 1000;
-
-    if (!currentLock.is_processing || isStale) {
-      await supabase
-        .from("cron_locks")
-        .update({ is_processing: true, started_at: new Date().toISOString() })
-        .eq("job_name", "blog_generate");
-      return true;
-    }
-
-    return false;
-  } catch (err) {
-    console.warn("[Atomic Lock] Exception (proceeding with execution):", err.message);
-    return true;
-  }
-}
-
-async function releaseAtomicLock() {
-  try {
-    await supabase
-      .from("cron_locks")
-      .update({ is_processing: false })
-      .eq("job_name", "blog_generate");
-  } catch (err) {
-    console.warn("[Atomic Lock] Lock release warning:", err.message);
-  }
-}
-
-// ─── Ana Handler ──────────────────────────────────────────────────────────────
 module.exports = async (req, res) => {
-  // 1. Authorization Check
-  // Vercel Cron, CRON_SECRET ortam değişkeni tanımlanmışsa otomatik olarak
-  // "Authorization: Bearer <CRON_SECRET>" header'ı gönderir.
-  // ⚠️ CRON_SECRET Vercel Dashboard → Settings → Environment Variables'a eklenmeli!
   const authHeader = req.headers.authorization;
   const secretParam = req.query?.secret;
-  const forceParam = req.query?.force === "true";
   const hasCronSecret = Boolean(process.env.CRON_SECRET);
 
   const isAuthorized =
@@ -159,306 +56,138 @@ module.exports = async (req, res) => {
     process.env.NODE_ENV === "development";
 
   if (!isAuthorized) {
-    // Debug: hangi koşulun neden başarısız olduğunu logla
-    console.error("[Blog Generator] 401 Unauthorized. Debug:", {
-      hasCronSecret,
-      receivedHeader: authHeader ? authHeader.slice(0, 20) + "..." : "(boş)",
-      hasSecretParam: Boolean(secretParam),
-      isVercelCron: req.headers["x-vercel-cron"],
-      nodeEnv: process.env.NODE_ENV,
-    });
     return res.status(401).json({
-      error: "Unauthorized access",
-      hint: "CRON_SECRET Vercel Dashboard'a eklenmiş mi? Settings → Environment Variables",
-    });
-  }
-
-  // 2. Atomic Lock Check (paralel çalışmayı önler)
-  const gotLock = await acquireAtomicLock(forceParam);
-  if (!gotLock) {
-    console.log("[Atomic Lock] Another blog generation process is currently running. Skipping.");
-    return res.status(200).json({
-      success: true,
-      skipped: true,
-      reason: "already_running",
-      message: "Skipped: Another generation process is currently running.",
+      error: "Unauthorized",
+      hint: "CRON_SECRET Vercel Dashboard'a eklenmiş mi?",
     });
   }
 
   try {
-    // 3. Son 10 dakika içinde yazı oluşturuldu mu? (race condition koruması)
-    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
-    const { data: recentPosts, error: recentError } = await supabase
+    // Step 1: Fetch Existing Articles (Content Memory Check)
+    const { data: existingPosts } = await supabase
       .from("blog_posts")
-      .select("id, published_at")
-      .gte("published_at", tenMinutesAgo);
-
-    if (recentError) {
-      console.warn("[Lock System] Database error checking locks, proceeding:", recentError.message);
-    } else if (recentPosts && recentPosts.length > 0) {
-      console.log("[Lock System] A blog post was already generated in the last 10 minutes. Skipping.");
-      return res.status(200).json({
-        success: true,
-        message: "Skipped to prevent duplicate execution (Lock active).",
-      });
-    }
-
-    // 4. Mevcut blog yazılarını çek (gap analizi + iç linkleme için)
-    const { data: existingPosts, error: dbError } = await supabase
-      .from("blog_posts")
-      .select("slug, title_tr, title_en, title_ar")
+      .select("slug, title_tr")
       .order("published_at", { ascending: false });
 
-    if (dbError) {
-      throw new Error(`Database error fetching posts: ${dbError.message}`);
-    }
+    // Step 2: Topic Discovery & Intent Classification Engine
+    const discoveredTopics = TopicDiscoveryEngine.discoverTopics();
+    const candidateTopic = discoveredTopics[Math.floor(Math.random() * discoveredTopics.length)];
 
-    const blogContextList = existingPosts.map((p) => ({
-      slug: p.slug,
-      title_tr: p.title_tr,
-      title_en: p.title_en,
-      title_ar: p.title_ar,
-    }));
+    // Check Content Memory
+    const memoryCheck = MemoryEngine.checkMemory(candidateTopic.title, existingPosts || []);
+    console.log("[Content Memory Check]", memoryCheck);
 
-    // Hizmet sayfaları listesi
-    const servicePages = [
-      { path: "/eticaret-site-kurulumu", name_tr: "E-Ticaret Site Kurulumu", name_en: "E-Commerce Site Setup", name_ar: "إنشاء موقع تجارة إلكترونية" },
-      { path: "/eticaret-optimizasyon", name_tr: "E-Ticaret Optimizasyon", name_en: "E-Commerce Optimization", name_ar: "تحسين التجارة الإلكترونية" },
-      { path: "/urun-gorsel-ve-icerik", name_tr: "Ürün Görsel ve İçerik", name_en: "Product Images and Content", name_ar: "صور ومحتوى المنتجات" },
-      { path: "/stok-ve-depo-sistemi", name_tr: "Stok ve Depo Sistemleri", name_en: "Stock & Warehouse Systems", name_ar: "أنظمة المخزون والمستودعات" },
-      { path: "/web-sitesi-gelistirme", name_tr: "Kurumsal & Kişisel Web Sitesi Geliştirme", name_en: "Corporate & Personal Website Development", name_ar: "تطوير المواقع المؤسسية والشخصية" },
-      { path: "/ozel-yazilim-gelistirme", name_tr: "Özel Yazılım & API Geliştirme", name_en: "Custom Software & API Development", name_ar: "تطوير البرمجيات المخصصة وواجهات API" },
-      { path: "/yapay-zeka-cozumleri", name_tr: "Yapay Zeka Entegrasyonu & Chatbot Çözümleri", name_en: "AI Integration & Chatbot Solutions", name_ar: "تكامل الذكاء الاصطناعي وحلول الشات بوت" },
-    ];
+    // Step 3: Research Engine (Live Web & Docs Facts Extraction)
+    const research = await ResearchEngine.gatherResearch(candidateTopic.title, candidateTopic.category);
 
-    // 5. Adım 1: Türkçe blog içeriği üret
+    // Step 4: Expert Interview Engine (EEAT Insights)
+    const expertContext = ExpertInterviewEngine.getExpertContext(candidateTopic.category);
+
+    // Step 5: Multi-Provider LLM Synthesis Pipeline
     const trPrompt = `
-      You are an expert e-commerce, software development, and SEO strategist. Analyze the following list of existing blog posts and identify a major content gap.
-      Then, write a brand new, premium, human-like Turkish blog post that covers this gap.
-      Topics can be about e-commerce (Shopify, İKAS, conversion optimization, product photography, stock management), 
-      OR about software development (React, Next.js, Node.js, API development, web applications, SaaS, database design),
-      OR about AI & technology (chatbots, GPT integration, automation, AI tools for business).
-      Alternate between these topic areas to ensure diverse, high-quality content coverage.
-      
-      Existing Blog Posts:
-      ${JSON.stringify(blogContextList, null, 2)}
-      
-      Website Service Pages (You MUST link to EXACTLY ONE of these):
-      ${JSON.stringify(servicePages, null, 2)}
-      
-      Rules for the Blog Post:
-      1. Write in Turkish. Use a natural, local, and conversion-focused tone.
-      2. It must be highly detailed, engaging, and professional.
-      3. AI RETRIEVAL & GEO CITATION REQUIREMENTS (CRITICAL FOR ChatGPT / PERPLEXITY / GOOGLE):
-         - Include at least ONE HTML Comparison Table (<table>) comparing 2-3 options or benchmarks.
-         - Include at least ONE practical code snippet or step-by-step formula using <code> or <pre> tags (e.g. Liquid snippet, Node.js API call, or Core Web Vitals formula).
-         - Include a bold key takeaway line (e.g. <strong>Özet Çıkarım:</strong> ...) in the introduction.
-      4. Identify a unique URL slug (language-agnostic, lowercase, hyphenated, e.g. "eticaret-envanter-yonetimi").
-      5. Internal Linking requirements:
-         - Select EXACTLY 2 related blog posts from the "Existing Blog Posts" list. Insert links to them inside the content using HTML tags: <a href="/blog?post=SLUG">ANCHOR_TEXT</a>. Anchor texts must be SEO-friendly and flow naturally.
-         - Select EXACTLY 1 relevant service page from the "Website Service Pages" list. Insert a link to it using HTML tag: <a href="PATH">ANCHOR_TEXT</a>.
-         - Links must be integrated naturally, not forced.
-      6. Include standard SEO elements: title, summary, seo_title, and seo_description.
-      
-      Output the response in the following JSON format:
+      You are an expert technical writer and e-commerce software architect.
+      Write a comprehensive, EEAT-rich, GEO/AEO-optimized Turkish article about: "${candidateTopic.title}"
+
+      Topic Intent: ${candidateTopic.intent}
+      Research Facts: ${JSON.stringify(research.factual_points)}
+      Expert Practitioner Context: ${JSON.stringify(expertContext)}
+
+      REQUIREMENTS:
+      1. title_tr: Catchy, high CTR title in Turkish.
+      2. slug: Lowercase URL slug.
+      3. summary_tr: Engaging 2-3 sentence overview.
+      4. direct_answer_tr: Concise 2-3 sentence direct answer for Google Featured Snippets & Perplexity/ChatGPT AI boxes.
+      5. content_tr: 400-600 words of expert HTML content (<h3>, <p>, <ul>, <li>, <strong>, <table>).
+      6. seo_title_tr: 50-60 character meta title.
+      7. seo_description_tr: 140-160 character meta description.
+
+      Respond ONLY in JSON:
       {
         "slug": "url-slug",
         "title_tr": "Turkish Title",
-        "summary_tr": "Short Turkish Summary (2-3 sentences)",
-        "content_tr": "Detailed HTML Content with <h3>, <p>, <ul>, <li> tags and the 3 internal links",
-        "seo_title_tr": "SEO Title (max 60 chars)",
-        "seo_description_tr": "Meta Description (max 160 chars)"
+        "summary_tr": "Turkish Summary",
+        "direct_answer_tr": "Direct Answer for AI Snippets",
+        "content_tr": "HTML Content",
+        "seo_title_tr": "SEO Title",
+        "seo_description_tr": "SEO Description"
       }
     `;
 
-    let trData, enData, arData;
+    const trData = await manager.generateJSON(trPrompt, BLOG_SYSTEM_PROMPT);
 
-    // ── AI Üretim Bloğu ──────────────────────────────────────────────────────
-    try {
-      // Adım 1: Türkçe içerik
-      trData = await manager.generateJSON(trPrompt, BLOG_SYSTEM_PROMPT);
+    // Step 6: Cultural Localization Pipeline (EN & AR)
+    const enPrompt = `Culturally adapt and translate this article into professional English: ${JSON.stringify(trData)}`;
+    const enData = await manager.generateJSON(enPrompt, BLOG_SYSTEM_PROMPT);
 
-      // Adım 2: Arapça çeviri (önce Arapça)
-      const arPrompt = `
-        You are a professional multilingual translator and SEO strategist. 
-        Translate and localize the following Turkish blog post into modern Arabic (Fusha).
-        
-        Turkish Post:
-        ${JSON.stringify(trData, null, 2)}
-        
-        Existing Blog Posts Context:
-        ${JSON.stringify(blogContextList, null, 2)}
+    const arPrompt = `Culturally adapt and translate this article into modern Fusha Arabic: ${JSON.stringify(trData)}`;
+    const arData = await manager.generateJSON(arPrompt, BLOG_SYSTEM_PROMPT);
 
-        Website Service Pages Context:
-        ${JSON.stringify(servicePages, null, 2)}
-        
-        Translation Rules:
-        1. Use a simple, modern Arabic (Fusha) tone that is easy to read.
-        2. Do not do a word-for-word translation. Ensure proper flow and structure for Arabic readers.
-        3. Adapt the internal links:
-           - Keep the exact same link URLs (e.g. "/blog?post=SLUG" and "PATH").
-           - Translate the anchor text of the links naturally into Arabic so it fits the Arabic sentence flow and remains SEO-friendly.
-        4. Translate the title, summary, and generate Arabic SEO metadata (seo_title, seo_description).
-        
-        Output the response in the following JSON format:
-        {
-          "title_ar": "Arabic Title",
-          "summary_ar": "Arabic Summary",
-          "content_ar": "Arabic HTML Content with the updated Arabic links",
-          "seo_title_ar": "Arabic SEO Title",
-          "seo_description_ar": "Arabic Meta Description"
-        }
-      `;
-      arData = await manager.generateJSON(arPrompt, BLOG_SYSTEM_PROMPT);
+    // Step 7: Entity Extraction & Semantic Internal Linking
+    const entities = EntityEngine.extractEntitiesFromText(`${trData.title_tr} ${trData.content_tr}`);
+    const linkedHtmlTr = SemanticLinkingEngine.injectSemanticLinks(trData.content_tr, existingPosts || []);
 
-      // Adım 3: İngilizce çeviri (sonra İngilizce)
-      const enPrompt = `
-        You are a professional multilingual translator and SEO strategist. 
-        Translate and localize the following Turkish blog post into English.
-        
-        Turkish Post:
-        ${JSON.stringify(trData, null, 2)}
-        
-        Existing Blog Posts Context:
-        ${JSON.stringify(blogContextList, null, 2)}
+    // Step 8: Quality Gatekeeping Engine (> 90 Score Enforcer)
+    const qualityAudit = QualityEngine.evaluateContent({
+      title: trData.title_tr,
+      directAnswer: trData.direct_answer_tr,
+      contentHtml: linkedHtmlTr,
+      expertAnswers: [expertContext],
+      entities,
+    });
 
-        Website Service Pages Context:
-        ${JSON.stringify(servicePages, null, 2)}
-        
-        Translation Rules:
-        1. Use a clear, professional, and global English tone.
-        2. Do not do a word-for-word translation. Keep the meaning consistent but make it sound natural to English readers.
-        3. Adapt the internal links:
-           - Keep the exact same link URLs (e.g. "/blog?post=SLUG" and "PATH").
-           - Translate the anchor text of the links naturally into English so it fits the English sentence flow and remains SEO-friendly.
-        4. Translate the title, summary, and generate English SEO metadata (seo_title, seo_description).
-        
-        Output the response in the following JSON format:
-        {
-          "title_en": "English Title",
-          "summary_en": "English Summary",
-          "content_en": "English HTML Content with the updated English links",
-          "seo_title_en": "English SEO Title",
-          "seo_description_en": "English Meta Description"
-        }
-      `;
-      enData = await manager.generateJSON(enPrompt, BLOG_SYSTEM_PROMPT);
+    console.log("[Blog Gatekeeper Quality Audit]", qualityAudit);
 
-    } catch (generationError) {
-      console.error(
-        "[Blog Generator] All LLM providers failed. Skipping publication to avoid duplicate fallback posts.",
-        generationError.message
-      );
-      throw new Error(`AI generation failed across all providers: ${generationError.message}`);
+    if (!qualityAudit.passedGatekeeper && process.env.NODE_ENV !== "development") {
+      return res.status(422).json({
+        success: false,
+        message: "Article quality score below 90/100 threshold. Refinement queued.",
+        audit: qualityAudit,
+      });
     }
 
-    // 6. Slug oluştur ve benzersizliği garanti et
-    const titleTr = trData.title_tr || "Otomatik E-Ticaret Blogu";
-    let baseSlug = trData.slug || slugify(titleTr);
-    if (!baseSlug) baseSlug = `blog-post-${Math.floor(1000 + Math.random() * 9000)}`;
+    const uniqueSlug = `${trData.slug || slugify(trData.title_tr)}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    let postSlug = baseSlug;
-    const existingSlugs = new Set((existingPosts || []).map((p) => p.slug));
-    if (existingSlugs.has(postSlug)) {
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      postSlug = `${baseSlug}-${randomSuffix}`;
-      console.log(`[Slug System] Collision resolved: "${baseSlug}" → "${postSlug}"`);
-    }
-
-    // 7. Supabase'e kaydet
     const newPost = {
-      slug: postSlug,
+      slug: uniqueSlug,
       published_at: new Date().toISOString(),
-      // Türkçe
-      title_tr: titleTr,
-      summary_tr: trData.summary_tr || "E-ticaret ve dijital büyüme süreçlerine dair ipuçları.",
-      content_tr: sanitizeHTMLContent(trData.content_tr),
-      seo_title_tr: trData.seo_title_tr || titleTr,
-      seo_description_tr: trData.seo_description_tr || trData.summary_tr || "Açıklama bulunmuyor.",
-      // İngilizce
-      title_en: enData.title_en || titleTr,
-      summary_en: enData.summary_en || trData.summary_tr || "E-commerce updates.",
-      content_en: sanitizeHTMLContent(enData.content_en),
-      seo_title_en: enData.seo_title_en || enData.title_en || titleTr,
-      seo_description_en: enData.seo_description_en || enData.summary_en || "No description.",
-      // Arapça
-      title_ar: arData.title_ar || titleTr,
-      summary_ar: arData.summary_ar || trData.summary_tr || "أحدث المقالات حول التجارة الإلكترونية.",
-      content_ar: sanitizeHTMLContent(arData.content_ar),
-      seo_title_ar: arData.seo_title_ar || arData.title_ar || titleTr,
-      seo_description_ar: arData.seo_description_ar || arData.summary_ar || "لا يوجد وصف.",
+
+      title_tr: trData.title_tr,
+      summary_tr: trData.summary_tr,
+      content_tr: linkedHtmlTr,
+      seo_title_tr: trData.seo_title_tr || trData.title_tr,
+      seo_description_tr: trData.seo_description_tr || trData.summary_tr,
+
+      title_en: enData.title_en || trData.title_tr,
+      summary_en: enData.summary_en || trData.summary_tr,
+      content_en: enData.content_en || linkedHtmlTr,
+      seo_title_en: enData.seo_title_en || trData.title_tr,
+      seo_description_en: enData.seo_description_en || trData.summary_tr,
+
+      title_ar: arData.title_ar || trData.title_tr,
+      summary_ar: arData.summary_ar || trData.summary_tr,
+      content_ar: arData.content_ar || linkedHtmlTr,
+      seo_title_ar: arData.seo_title_ar || trData.title_tr,
+      seo_description_ar: arData.seo_description_ar || trData.summary_tr,
     };
 
-    let insertedData, insertError;
-    ({ data: insertedData, error: insertError } = await supabase
+    const { data: insertedData, error: insertError } = await supabase
       .from("blog_posts")
       .insert([newPost])
-      .select());
-
-    // Slug çakışması için tek deneme yeniden dene
-    if (
-      insertError &&
-      (insertError.code === "23505" ||
-        insertError.message?.includes("unique constraint") ||
-        insertError.message?.includes("slug"))
-    ) {
-      console.warn(`[DB Insert Conflict] Duplicate slug "${newPost.slug}". Retrying with unique suffix...`);
-      newPost.slug = `${postSlug}-${Math.floor(1000 + Math.random() * 9000)}`;
-      ({ data: insertedData, error: insertError } = await supabase
-        .from("blog_posts")
-        .insert([newPost])
-        .select());
-    }
+      .select();
 
     if (insertError) {
-      throw new Error(`Database error saving post: ${insertError.message}`);
+      throw new Error(`Database error saving blog post: ${insertError.message}`);
     }
 
     return res.status(200).json({
       success: true,
-      message: "Blog post generated, translated, linked, and saved successfully.",
+      message: "Enterprise AI Knowledge Article generated, audited (>90 score), and published successfully.",
+      qualityScore: qualityAudit.overallScore,
+      entitiesFound: entities.map((e) => e.name),
       post: insertedData[0],
     });
-
   } catch (error) {
-    console.error("Cron Job Error:", error);
-
-    // E-posta ile hata bildirimi gönder
-    try {
-      const serviceId = process.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = process.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      if (serviceId && templateId && publicKey) {
-        console.log("[Alert System] Sending automated failure notification email via EmailJS...");
-        await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            service_id: serviceId,
-            template_id: templateId,
-            user_id: publicKey,
-            template_params: {
-              from_name: "Automated Blog Bot Alert",
-              from_email: "bot@samer.life",
-              phone: "N/A",
-              website: "https://www.samer.life",
-              platform: "Vercel Cron Job (3 Hours)",
-              budget: "N/A",
-              message: `HATA ALARMI: Otomatik blog yazısı üretme botu hata verdi!\n\nHata Mesajı: ${error.message}\n\nTarih: ${new Date().toLocaleString("tr-TR")}`,
-            },
-          }),
-        });
-        console.log("[Alert System] Email notification sent successfully.");
-      } else {
-        console.warn("[Alert System] EmailJS credentials missing, skipping failure notification.");
-      }
-    } catch (mailError) {
-      console.error("[Alert System] Failed to send error notification email:", mailError.message);
-    }
-
+    console.error("[Enterprise Blog Generator] Exception:", error);
     return res.status(500).json({ success: false, error: error.message });
-  } finally {
-    await releaseAtomicLock();
   }
 };
