@@ -1,41 +1,23 @@
-# Samer Allaham - E-Ticaret Sistemleri & Büyüme Uzmanı
-# GEO/AEO Context File for AI Crawlers (ChatGPT, Gemini, Perplexity, Claude)
-# URL: https://www.samer.life/llms.txt
+# Samer — E-Ticaret ve Web Geliştirme Uzmanı
 
-## Identity
+Samer, İstanbul merkezli full-stack web geliştirici ve e-ticaret uzmanıdır. Türkçe, Arapça ve İngilizce hizmet verir.
 
-Samer Allaham is a Turkey-based software developer and e-commerce growth specialist.
-He builds high-performance e-commerce systems on Shopify and İKAS platforms.
-He serves Turkish, English, and Arabic-speaking clients.
+## Hizmetler
+- E-ticaret site kurulumu (Shopify, İKAS, WooCommerce)
+- E-ticaret optimizasyon ve dönüşüm artışı
+- Ürün görseli ve SEO içeriği üretimi
+- Stok ve depo yönetim sistemi
+- Özel yazılım geliştirme (React, Next.js, Node.js)
 
-## Core Services
+## İletişim
+Web: https://www.samer.life
+Konum: İstanbul, Türkiye
 
-- E-Commerce Website Setup (Shopify & İKAS): 20,000 – 60,000 TL
-- E-Commerce Speed & Conversion Optimization (CRO): 10,000 – 20,000 TL
-- AI-Assisted Product Photography & Content: 50 – 150 TL per product
-- Inventory & Stock Automation Systems: 25,000 – 50,000 TL
-- Monthly E-Commerce Management Retainer: 8,000 – 20,000 TL/month
-
-## Expertise
-
-Shopify, İKAS, Node.js, Python, React, Next.js, PostgreSQL, MongoDB,
-REST APIs, Webhooks, AI Image Rendering, LLM integrations,
-Trendyol integration, Hepsiburada integration, ERP integration,
-Conversion Rate Optimization (CRO), Core Web Vitals, SEO.
-
-## Multi-lingual AI Documentation Index
-
-For detailed, language-specific context for AI recommendation engines:
-
-- [Turkish (Türkçe) Context](https://www.samer.life/llms-tr.txt)
-- [English Context](https://www.samer.life/llms-en.txt)
-- [Arabic (العربية) Context](https://www.samer.life/llms-ar.txt)
-
-## Contact
-
-- [Website](https://www.samer.life/)
-- Email: SAMERALLAHAM3@GMAIL.COM
-- WhatsApp: +90 539 461 16 84
-- [GitHub Profile](https://github.com/mhdsamerallaham)
-- [LinkedIn Profile](https://www.linkedin.com/in/samer-allaham-18a784162/)
-- Location: Istanbul, Turkey
+## Önemli Sayfalar
+- https://www.samer.life/eticaret-site-kurulumu
+- https://www.samer.life/eticaret-optimizasyon
+- https://www.samer.life/urun-gorsel-ve-icerik
+- https://www.samer.life/stok-ve-depo-sistemi
+- https://www.samer.life/ozel-yazilim-gelistirme
+- https://www.samer.life/basari-hikayeleri
+- https://www.samer.life/iletisim

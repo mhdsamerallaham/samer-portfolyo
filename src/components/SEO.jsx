@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getLanguageUrl } from '../utils/navigation';
 
 // ─────────────────────────────────────────────────
-// Per-route SEO configuration map (Turkish-primary)
+// Per-route SEO configuration map
 // ─────────────────────────────────────────────────
 const routeSEOMap = {
   '/': {
@@ -22,37 +22,44 @@ const routeSEOMap = {
       'shopify hizmetleri, ikas kurulum, e-ticaret optimizasyon hizmetleri, stok entegrasyon, ürün içerik servisi',
   },
   '/eticaret-site-kurulumu': {
-    title: 'E-Ticaret Web Sitesi Kurulumu (Shopify & İKAS)',
+    title: 'E-Ticaret Site Kurulumu İstanbul | Shopify & İKAS Uzmanı — Samer',
     description:
-      'Shopify veya İKAS üzerinde profesyonel e-ticaret sitesi kurulumu. Tema tasarımı, ödeme entegrasyonu, mobil uyumlu yapı. 20.000 – 60.000 TL.',
+      'İstanbul\'da profesyonel e-ticaret sitesi kurulumu. Shopify, İKAS ve WooCommerce ile 3-7 günde yayına al. Fiyat için iletişime geç.',
     keywords:
-      'shopify kurulumu, ikas e-ticaret kurulumu, e-ticaret sitesi nasıl kurulur, shopify türkiye',
+      'shopify kurulumu istanbul, ikas e-ticaret kurulumu, e-ticaret sitesi kurma, shopify tasarım, ikas uzmanı',
   },
   '/eticaret-optimizasyon': {
-    title: 'E-Ticaret Hız & Dönüşüm Optimizasyonu',
+    title: 'E-Ticaret Optimizasyon | Dönüşüm ve Satış Artışı — Samer',
     description:
-      'E-ticaret sitenizin dönüşüm oranını artırın. Sayfa hızı optimizasyonu, CRO, SEO ve Core Web Vitals iyileştirmeleri. 10.000 – 20.000 TL.',
+      'E-ticaret mağazanızın dönüşüm oranını artırın. A/B test, hız optimizasyonu ve UX iyileştirmeleriyle satışlarınızı büyütün.',
     keywords:
       'e-ticaret optimizasyon, dönüşüm oranı artırma, shopify hız optimizasyon, core web vitals, e-ticaret seo',
   },
   '/urun-gorsel-ve-icerik': {
-    title: 'Ürün Görseli ve İçerik Servisi',
+    title: 'Ürün Görseli ve İçerik Üretimi | E-Ticaret — Samer',
     description:
-      'Yapay zeka destekli ürün fotoğrafı hazırlama, stüdyo kalitesinde arka plan temizleme ve SEO uyumlu ürün açıklamaları. Ürün başına 50 – 150 TL.',
+      'Profesyonel ürün fotoğrafı ve SEO uyumlu içerik üretimi. E-ticaret mağazanız için dönüştüren görseller ve açıklamalar.',
     keywords:
       'ürün fotoğrafı düzenleme, yapay zeka ürün görseli, ürün açıklaması yazma, e-ticaret içerik, seo ürün açıklaması',
   },
   '/stok-ve-depo-sistemi': {
-    title: 'Stok ve Depo Otomasyon Sistemi',
+    title: 'Stok ve Depo Yönetim Sistemi | Otomasyon — Samer',
     description:
-      'Shopify, İKAS, Trendyol ve ERP sistemleri arası anlık stok senkronizasyonu. Node.js ve Python ile özel entegrasyon API\'leri. 25.000 – 50.000 TL.',
+      'Stok takibi ve depo yönetimini otomatikleştirin. Özel yazılım çözümleriyle manuel hatalardan kurtulun.',
     keywords:
       'stok yönetim sistemi, shopify ikas entegrasyon, trendyol stok senkronizasyon, depo otomasyon, erp entegrasyon',
+  },
+  '/ozel-yazilim-gelistirme': {
+    title: 'Özel Yazılım Geliştirme İstanbul | Full-Stack — Samer',
+    description:
+      'React, Next.js ve Node.js ile özel web uygulamaları. İstanbul merkezli freelance full-stack geliştirici.',
+    keywords:
+      'özel yazılım geliştirme istanbul, full stack geliştirici istanbul, react next.js freelance, api geliştirme',
   },
   '/aylik-yonetim': {
     title: 'Aylık E-Ticaret Yönetimi',
     description:
-      'E-ticaret sitenizin aylık yönetimi: ürün güncellemeleri, kampanya yönetimi, teknik bakım ve SEO raporlamaları. 8.000 – 20.000 TL/ay.',
+      'E-ticaret sitenizin aylık yönetimi: ürün güncellemeleri, kampanya yönetimi, teknik bakım ve SEO raporlamaları.',
     keywords:
       'aylık e-ticaret yönetimi, shopify bakım, ikas yönetim, e-ticaret danışmanlık aylık',
   },
@@ -73,7 +80,7 @@ const routeSEOMap = {
   '/hakkimda': {
     title: 'Hakkımda — Samer Allaham',
     description:
-      'Türkiye merkezli e-ticaret büyüme uzmanı Samer Allaham hakkında. Shopify ve İKAS konusunda uzman yazılım geliştirici. Deneyim ve teknoloji stack\'i.',
+      'Türkiye merkezli e-ticaret büyüme uzmanı Samer Allaham hakkında. Shopify ve İKAS konusunda uzman yazılım geliştirici.',
     keywords:
       'samer allaham kim, e-ticaret uzmanı türkiye, shopify geliştirici türkiye, ikas uzmanı',
   },
@@ -92,24 +99,24 @@ const routeSEOMap = {
 const serviceFAQs = {
   '/eticaret-site-kurulumu': [
     {
-      q: 'Shopify e-ticaret sitesi kurulumu ne kadar sürer?',
-      a: 'Shopify e-ticaret sitesi kurulumu genellikle 7–14 iş günü sürer. İKAS kurulumu da benzer süreçte tamamlanır. Kapsam büyüklüğüne göre değişebilir.',
+      q: 'Shopify mi İKAS mı daha iyi?',
+      a: 'Türkiye pazarında satış yapacak ve yerel ödeme/kargo sistemlerini kullanacak işletmeler için İKAS düşük komisyon ve hızlı yerel altyapısıyla daha avantajlıdır. Global pazarda satış hedefleyen markalar için ise geniş eklenti ve çoklu para birimi desteğiyle Shopify öne çıkar.',
     },
     {
-      q: 'Shopify mu yoksa İKAS mı kullanmalıyım?',
-      a: 'Türkiye\'de faaliyet gösteren ve TL ile satış yapan işletmeler için İKAS genellikle daha avantajlıdır; düşük komisyon oranları ve yerel ödeme entegrasyonları sunar. Global satış yapacaksanız Shopify daha uygundur.',
+      q: 'E-ticaret sitesi kurulumu ne kadar sürer?',
+      a: 'Profesyonel bir e-ticaret sitesi kurulumu projenin kapsamına, tasarım taleplerine ve entegrasyonlara göre genellikle 3–7 iş günü içinde tamamlanarak anahtar teslim yayına alınır.',
     },
     {
-      q: 'E-ticaret sitesi kurulumu ücreti nedir?',
-      a: 'Shopify veya İKAS e-ticaret sitesi kurulumu 20.000 – 60.000 TL arasında değişmektedir. Kapsam, tema özelleştirmesi ve entegrasyonlara göre değişir.',
+      q: 'En ucuz e-ticaret sitesi hangi platformda kurulur?',
+      a: 'Başlangıç maliyeti açısından WooCommerce en esnek seçeneği sunarken, ek sunucu ve bakım masrafları olmaksızın en hızlı ve maliyet-etkin kurulum İKAS ve Shopify paketleriyle sağlanmaktadır.',
     },
     {
-      q: 'Ödeme sistemi entegrasyonu dahil mi?',
-      a: 'Evet, iyzico ve PayTR gibi yerli ödeme sistemleri ile uluslararası kart kabul sistemleri entegrasyon kapsamında yer almaktadır.',
+      q: 'Site kurulumu sonrası bakım desteği veriyor musunuz?',
+      a: 'Evet, site kurulumu sonrasında 30 gün boyunca ücretsiz teknik destek veriyoruz. İsteğe bağlı olarak aylık teknik bakım ve yönetim hizmeti sunuyoruz.',
     },
     {
-      q: 'Mobil uyumlu e-ticaret sitesi yapıyor musunuz?',
-      a: 'Evet, tüm projelerimiz %100 mobil uyumlu (responsive) olarak teslim edilir. Mobil trafik ortalama %80\'in üzerinde olduğundan bu bizim için kritik bir önceliktir.',
+      q: 'Türkiye\'de en çok hangi ödeme sistemi kullanılır?',
+      a: 'Türkiye e-ticaret pazarında en yaygın kullanılan yerel sanal POS ve ödeme altyapıları PayTR ve iyzico\'dur. Tüm kurulum paketlerimize bu ödeme geçitlerinin entegrasyonu dahildir.',
     },
   ],
   '/eticaret-optimizasyon': [
@@ -178,6 +185,28 @@ const serviceFAQs = {
       a: 'Tüm sistemlere hata izleme (monitoring) ve otomatik uyarı mekanizmaları kurulmaktadır. Kritik hatalarda anlık bildirim gönderilir ve müdahale edilir.',
     },
   ],
+  '/ozel-yazilim-gelistirme': [
+    {
+      q: 'React ve Next.js ile özel yazılım geliştirme ne kadar sürer?',
+      a: 'Özel web uygulaması ve yazılım projeleri kapsamına göre 2–8 hafta arasında geliştirilerek test ortamında ve canlı sunucuda yayına alınır.',
+    },
+    {
+      q: 'Mobil uygulama entegrasyonu ve API geliştiriyor musunuz?',
+      a: 'Evet, Node.js ve REST/GraphQL API mimarileri ile yüksek performanslı, güvenli backend servisleri ve mobil entegrasyonlar geliştiriyoruz.',
+    },
+    {
+      q: 'Proje sonrası kaynak kodları ve mülkiyet teslim ediliyor mu?',
+      a: 'Evet, tüm kaynak kodları (source code) ve fikri mülkiyet hakları tam teslimat kapsamında müşteriye aktarılır.',
+    },
+    {
+      q: 'Freelance yazılım geliştirici ile çalışmanın avantajı nedir?',
+      a: 'Ajans bürokrasisi olmaksızın doğrudan geliştirici ile birebir iletişim, daha hızlı karar alma ve esnek maliyet avantajı sağlarsınız.',
+    },
+    {
+      q: 'Var olan mevcut projeler için bakım ve geliştirme yapıyor musunuz?',
+      a: 'Evet, mevcut React, Next.js, Node.js veya Vue codebase projelerinizde performans iyileştirmesi, hata giderimi ve yeni modül ekleme hizmeti sunuyoruz.',
+    },
+  ],
   '/aylik-yonetim': [
     {
       q: 'Aylık e-ticaret yönetimi hizmeti neyi kapsar?',
@@ -207,30 +236,54 @@ const serviceFAQs = {
 // ─────────────────────────────────────────────────
 const serviceSchemas = {
   '/eticaret-site-kurulumu': {
-    name: 'E-Ticaret Web Sitesi Kurulumu',
-    description: 'Shopify veya İKAS üzerinde profesyonel e-ticaret sitesi kurulumu. Tema tasarımı, ödeme entegrasyonu ve SEO temeli dahil.',
+    name: 'E-Ticaret Web Sitesi Kurulumu İstanbul',
+    description: 'İstanbul\'da Shopify veya İKAS üzerinde profesyonel e-ticaret sitesi kurulumu. Tema tasarımı, ödeme ve kargo entegrasyonu dahil.',
     offers: { price: '20000', priceCurrency: 'TRY', priceSpecification: '20.000 – 60.000 TL' },
   },
   '/eticaret-optimizasyon': {
     name: 'E-Ticaret Hız & Dönüşüm Optimizasyonu',
-    description: 'Sayfa hızı, Core Web Vitals ve dönüşüm oranı optimizasyonu. SEO iyileştirmeleri ve UX analizi dahil.',
+    description: 'Sayfa hızı, Core Web Vitals ve dönüşüm oranı optimizasyonu. SEO iyileştirmeleri ve A/B test analizi.',
     offers: { price: '10000', priceCurrency: 'TRY', priceSpecification: '10.000 – 20.000 TL' },
   },
   '/urun-gorsel-ve-icerik': {
-    name: 'Ürün Görsel ve İçerik Servisi',
-    description: 'Yapay zeka destekli ürün fotoğrafı ve SEO uyumlu ürün açıklamaları. Google Merchant Center feed optimizasyonu dahil.',
+    name: 'Ürün Görseli ve İçerik Üretimi',
+    description: 'Profesyonel ürün fotoğrafı ve SEO uyumlu içerik üretimi. E-ticaret mağazanız için dönüştüren görseller ve açıklamalar.',
     offers: { price: '50', priceCurrency: 'TRY', priceSpecification: 'Ürün başına 50 – 150 TL' },
   },
   '/stok-ve-depo-sistemi': {
-    name: 'Stok ve Depo Otomasyon Sistemi',
-    description: 'Shopify, İKAS ve Trendyol arası anlık stok senkronizasyonu. ERP entegrasyonu ve özel API geliştirme.',
+    name: 'Stok ve Depo Yönetim Sistemi',
+    description: 'Stok takibi ve depo yönetimini otomatikleştirin. Özel yazılım çözümleriyle manuel hatalardan kurtulun.',
     offers: { price: '25000', priceCurrency: 'TRY', priceSpecification: '25.000 – 50.000 TL' },
+  },
+  '/ozel-yazilim-gelistirme': {
+    name: 'Özel Yazılım Geliştirme İstanbul',
+    description: 'React, Next.js ve Node.js ile özel web uygulamaları. İstanbul merkezli freelance full-stack geliştirici.',
+    offers: { price: '30000', priceCurrency: 'TRY', priceSpecification: '30.000 – 80.000 TL' },
   },
   '/aylik-yonetim': {
     name: 'Aylık E-Ticaret Yönetimi',
     description: 'Aylık ürün güncellemeleri, kampanya yönetimi, teknik bakım ve SEO raporlaması.',
     offers: { price: '8000', priceCurrency: 'TRY', priceSpecification: '8.000 – 20.000 TL/ay' },
   },
+};
+
+// ─────────────────────────────────────────────────
+// Person + ProfessionalService Schema
+// ─────────────────────────────────────────────────
+const personProfessionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Person', 'ProfessionalService'],
+  name: 'Samer',
+  url: 'https://www.samer.life',
+  jobTitle: 'Full-Stack Web Developer & E-Ticaret Uzmanı',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'İstanbul',
+    addressCountry: 'TR',
+  },
+  sameAs: ['https://github.com/mhdsamerallaham'],
+  knowsLanguage: ['tr', 'ar', 'en'],
+  areaServed: ['TR', 'SY', 'EG'],
 };
 
 // ─────────────────────────────────────────────────
@@ -263,20 +316,9 @@ function buildServiceSchema(svc, url) {
     '@id': `https://www.samer.life${url}#service`,
     name: svc.name,
     description: svc.description,
+    provider: { '@type': 'Person', name: 'Samer' },
+    areaServed: 'İstanbul, Türkiye',
     url: `https://www.samer.life${url}`,
-    provider: {
-      '@type': 'Person',
-      '@id': 'https://www.samer.life/#person',
-      name: 'Samer Allaham',
-    },
-    areaServed: { '@type': 'Country', name: 'Turkey' },
-    offers: {
-      '@type': 'Offer',
-      price: svc.offers.price,
-      priceCurrency: svc.offers.priceCurrency,
-      description: svc.offers.priceSpecification,
-      availability: 'https://schema.org/InStock',
-    },
   };
 }
 
@@ -331,6 +373,7 @@ function buildBreadcrumbSchema(pathname) {
     'eticaret-optimizasyon': 'E-Ticaret Optimizasyon',
     'urun-gorsel-ve-icerik': 'Ürün Görsel ve İçerik',
     'stok-ve-depo-sistemi': 'Stok ve Depo Sistemi',
+    'ozel-yazilim-gelistirme': 'Özel Yazılım Geliştirme',
     'aylik-yonetim': 'Aylık Yönetim',
     'basari-hikayeleri': 'Başarı Hikayeleri',
     blog: 'Blog',
@@ -362,8 +405,8 @@ export default function SEO({
   description,
   keywords = '',
   schema = null,
-  article = null, // { title, description, slug, date } for blog posts
-  faqItems = null, // Dynamic array of FAQs
+  article = null,
+  faqItems = null,
 }) {
   const { i18n } = useTranslation();
   const location = useLocation();
@@ -376,8 +419,10 @@ export default function SEO({
   const finalTitle = title || routeData.title || 'E-Ticaret Uzmanı';
   const finalDesc = description || routeData.description || '';
   const finalKeywords = keywords || routeData.keywords || '';
+
+  // Canonical URL always points strictly to pathname (stripping query parameters)
   const canonicalUrl = `https://www.samer.life${pathname}`;
-  const pageTitle = `${finalTitle} | Samer Allaham`;
+  const pageTitle = `${finalTitle} | Samer`;
 
   // Alternate Multilingual URLs (hreflang)
   const trUrl = `https://www.samer.life${getLanguageUrl(pathname, 'tr')}`;
@@ -387,21 +432,24 @@ export default function SEO({
   // Collect all schemas for this page
   const schemas = [];
 
-  // 1. FAQ schema for service pages
+  // 1. Global Person + ProfessionalService Schema
+  schemas.push(personProfessionalServiceSchema);
+
+  // 2. FAQ schema for service pages
   const faqs = faqItems || serviceFAQs[pathname];
   if (faqs) schemas.push(buildFAQSchema(faqs));
 
-  // 2. Service schema for service pages
+  // 3. Service schema for service pages
   const svc = serviceSchemas[pathname];
   if (svc) schemas.push(buildServiceSchema(svc, pathname));
 
-  // 3. Article schema for blog posts
+  // 4. Article schema for blog posts
   if (article) schemas.push(buildArticleSchema(article));
 
-  // 4. Breadcrumb for all pages
+  // 5. Breadcrumb for all pages
   if (pathname !== '/') schemas.push(buildBreadcrumbSchema(pathname));
 
-  // 5. Custom schema override/addition
+  // 6. Custom schema override/addition
   if (schema) schemas.push(schema);
 
   return (
@@ -409,13 +457,13 @@ export default function SEO({
       {/* Language & direction */}
       <html lang={lang} dir={dir} />
 
-      {/* Titles */}
+      {/* Titles & Meta */}
       <title>{pageTitle}</title>
       <meta name="description" content={finalDesc} />
       {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       <meta name="author" content="Samer Allaham" />
 
-      {/* Canonical */}
+      {/* Canonical Link (Parametresiz Temiz URL) */}
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Alternate Language Links (hreflang) */}
@@ -426,15 +474,12 @@ export default function SEO({
 
       {/* Open Graph */}
       <meta property="og:type" content={article ? 'article' : 'website'} />
-      <meta property="og:site_name" content="Samer Allaham | E-Ticaret Uzmanı" />
+      <meta property="og:site_name" content="Samer | E-Ticaret & Web Geliştirme Uzmanı" />
       <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : lang === 'ar' ? 'ar_SA' : 'en_US'} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={finalDesc} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content="https://www.samer.life/avatar.jpeg" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Samer Allaham - E-Ticaret Uzmanı" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

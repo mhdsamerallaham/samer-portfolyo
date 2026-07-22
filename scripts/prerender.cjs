@@ -43,13 +43,13 @@ const pages = {
     `
   },
   'eticaret-site-kurulumu': {
-    title: 'Shopify & İKAS E-Ticaret Sitesi Kurulumu | Samer Allaham',
-    description: 'Shopify ve İKAS altyapıları üzerinde profesyonel, yüksek dönüşüm oranlı e-ticaret mağazaları kuruyorum. Tema özelleştirme, ödeme ve kargo entegrasyonları dahil anahtar teslim çözümler.',
-    keywords: 'shopify kurulumu türkiye, ikas e-ticaret kurulumu, e-ticaret sitesi kurma, shopify tasarım, ikas uzmanı, shopify partner',
+    title: 'E-Ticaret Site Kurulumu İstanbul | Shopify & İKAS Uzmanı — Samer',
+    description: 'İstanbul\'da profesyonel e-ticaret sitesi kurulumu. Shopify, İKAS ve WooCommerce ile 3-7 günde yayına al. Fiyat için iletişime geç.',
+    keywords: 'shopify kurulumu istanbul, ikas e-ticaret kurulumu, e-ticaret sitesi kurma, shopify tasarım, ikas uzmanı',
     canonical: 'https://www.samer.life/eticaret-site-kurulumu',
     lang: 'tr',
     content: `
-      <h1>Shopify & İKAS E-Ticaret Sitesi Kurulumu</h1>
+      <h1>E-Ticaret Site Kurulumu İstanbul | Shopify & İKAS Uzmanı — Samer</h1>
       <p>Ben, markanızın ihtiyaçlarına en uygun altyapıyı (Shopify veya İKAS) belirleyerek A'dan Z'ye anahtar teslim e-ticaret kurulum hizmetleri sunuyorum.</p>
       <h2>E-Ticaret Kurulum Kapsamında Neler Yapıyorum?</h2>
       <ul>
@@ -60,46 +60,57 @@ const pages = {
     `
   },
   'eticaret-optimizasyon': {
-    title: 'E-Ticaret Hız & Dönüşüm Oranı Optimizasyonu (CRO) | Samer Allaham',
-    description: 'E-ticaret sitenizin sayfa açılış hızını artırın, sepet terki oranlarını düşürün. Core Web Vitals (LCP, CLS, INP) skorlarını yükselterek satışlarınızı ve SEO sıralamalarınızı yukarı taşıyın.',
-    keywords: 'e-ticaret hız optimizasyonu, shopify hızlandırma, ikas cro, dönüşüm oranı artırma, core web vitals optimizasyonu, sepet terki azaltma',
+    title: 'E-Ticaret Optimizasyon | Dönüşüm ve Satış Artışı — Samer',
+    description: 'E-ticaret mağazanızın dönüşüm oranını artırın. A/B test, hız optimizasyonu ve UX iyileştirmeleriyle satışlarınızı büyütün.',
+    keywords: 'e-ticaret optimizasyon, dönüşüm oranı artırma, shopify hız optimizasyon, core web vitals, e-ticaret seo',
     canonical: 'https://www.samer.life/eticaret-optimizasyon',
     lang: 'tr',
     content: `
-      <h1>E-Ticaret Hız & Dönüşüm Oranı Optimizasyonu (CRO)</h1>
+      <h1>E-Ticaret Optimizasyon | Dönüşüm ve Satış Artışı — Samer</h1>
       <p>Google LCP, CLS ve INP metriklerinizi yeşil bölgeye (90+) taşımak için CSS, JS ve resim yükleme optimizasyonları yapıyorum.</p>
     `
   },
   'urun-gorsel-ve-icerik': {
-    title: 'Yapay Zeka Ürün Görseli & SEO İçerik Hazırlama | Samer Allaham',
-    description: 'Ürünlerinizi yapay zeka ile stüdyo kalitesinde arka planlara yerleştirin. Google ve yapay zeka asistanlarında (AEO) üst sıralarda listelenmek için SEO uyumlu ürün açıklamaları hazırlayın.',
-    keywords: 'yapay zeka ürün görseli, ürün fotoğrafı düzenleme, arka plan temizleme, seo ürün açıklaması, ürün açıklama yazma, google merchant feed',
+    title: 'Ürün Görseli ve İçerik Üretimi | E-Ticaret — Samer',
+    description: 'Profesyonel ürün fotoğrafı ve SEO uyumlu içerik üretimi. E-ticaret mağazanız için dönüştüren görseller ve açıklamalar.',
+    keywords: 'ürün fotoğrafı düzenleme, yapay zeka ürün görseli, ürün açıklaması yazma, e-ticaret içerik, seo ürün açıklaması',
     canonical: 'https://www.samer.life/urun-gorsel-ve-icerik',
     lang: 'tr',
     content: `
-      <h1>Yapay Zeka Ürün Görseli & SEO İçerik Üretimi</h1>
+      <h1>Ürün Görseli ve İçerik Üretimi | E-Ticaret — Samer</h1>
       <p>Ürünlerinizin ham fotoğraflarını yapay zeka ile şık, konsept ve gerçekçi arka planlara yerleştiriyorum ve SEO uyumlu ürün açıklamaları yazıyorum.</p>
     `
   },
   'stok-ve-depo-sistemi': {
-    title: 'Çok Kanallı Stok & Depo Otomasyon Entegrasyonu | Samer Allaham',
-    description: 'Shopify, İKAS, Trendyol, Hepsiburada ve ERP sistemleriniz (Paraşüt, Logo vb.) arasında anlık, hatasız stok ve sipariş senkronizasyonu. Özel API entegrasyon çözümleri.',
-    keywords: 'stok entegrasyonu, shopify trendyol entegrasyonu, ikas api entegrasyonu, erp stok senkronizasyon, depo otomasyonu, logo entegrasyonu',
+    title: 'Stok ve Depo Yönetim Sistemi | Otomasyon — Samer',
+    description: 'Stok takibi ve depo yönetimini otomatikleştirin. Özel yazılım çözümleriyle manuel hatalardan kurtulun.',
+    keywords: 'stok yönetim sistemi, shopify ikas entegrasyon, trendyol stok senkronizasyon, depo otomasyon, erp entegrasyon',
     canonical: 'https://www.samer.life/stok-ve-depo-sistemi',
     lang: 'tr',
     content: `
-      <h1>Çok Kanallı Stok & Depo Otomasyon Entegrasyonu</h1>
+      <h1>Stok ve Depo Yönetim Sistemi | Otomasyon — Samer</h1>
       <p>Trendyol, Hepsiburada ve Shopify API'leri entegre edilerek, sipariş oluştuğu anda tüm kanallarda stok miktarını güncelleyen webhook altyapısı kuruyorum.</p>
     `
   },
+  'ozel-yazilim-gelistirme': {
+    title: 'Özel Yazılım Geliştirme İstanbul | Full-Stack — Samer',
+    description: 'React, Next.js ve Node.js ile özel web uygulamaları. İstanbul merkezli freelance full-stack geliştirici.',
+    keywords: 'özel yazılım geliştirme istanbul, full stack geliştirici istanbul, react next.js freelance, api geliştirme',
+    canonical: 'https://www.samer.life/ozel-yazilim-gelistirme',
+    lang: 'tr',
+    content: `
+      <h1>Özel Yazılım Geliştirme İstanbul | Full-Stack — Samer</h1>
+      <p>React, Next.js ve Node.js ile modern, hızlı ve güvenli özel web uygulamaları ve API servisleri geliştiriyorum.</p>
+    `
+  },
   'aylik-yonetim': {
-    title: 'Aylık E-Ticaret Yönetimi & Teknik Destek | Samer Allaham',
-    description: 'E-ticaret sitenizi profesyonellere emanet edin. Aylık ürün ekleme/güncelleme, kampanya kurguları, düzenli yedekleme, teknik bakım, hız takibi ve SEO raporlama hizmetleri.',
-    keywords: 'aylık e-ticaret yönetimi, shopify teknik destek, ikas danışmanlık, e-ticaret bakım anlaşması, e-ticaret sitesi yönetimi, seo raporlama',
+    title: 'Aylık E-Ticaret Yönetimi',
+    description: 'E-ticaret sitenizin aylık yönetimi: ürün güncellemeleri, kampanya yönetimi, teknik bakım ve SEO raporlamaları.',
+    keywords: 'aylık e-ticaret yönetimi, shopify bakım, ikas yönetim, e-ticaret danışmanlık aylık',
     canonical: 'https://www.samer.life/aylik-yonetim',
     lang: 'tr',
     content: `
-      <h1>Aylık E-Ticaret Yönetimi & Teknik Destek</h1>
+      <h1>Aylık E-Ticaret Yönetimi</h1>
       <p>Sitenizin aylık yönetimini, bakımını ve raporlamasını bana devrederek işinizi büyütmeye odaklanabilirsiniz.</p>
     `
   },

@@ -53,24 +53,24 @@
                 },
                 "faqs": [
                     {
-                        "q": "Shopify e-ticaret sitesi kurulumu ne kadar sürer?",
-                        "a": "Shopify e-ticaret sitesi kurulumu projenin kapsamına göre genellikle 7–14 iş günü sürer. İKAS kurulumları da benzer bir zaman diliminde tamamlanmaktadır."
+                        "q": "Shopify mi İKAS mı daha iyi?",
+                        "a": "Türkiye pazarında satış yapacak ve yerel ödeme/kargo sistemlerini kullanacak işletmeler için İKAS düşük komisyon ve hızlı yerel altyapısıyla daha avantajlıdır. Global pazarda satış hedefleyen markalar için ise geniş eklenti ve çoklu para birimi desteğiyle Shopify öne çıkar."
                     },
                     {
-                        "q": "Shopify mı yoksa İKAS mı kullanmalıyım?",
-                        "a": "Türkiye pazarında satış yapacak ve yerel ödeme sistemlerini kullanacak firmalar için İKAS düşük komisyon ve hızlı altyapısıyla avantajlıdır. Global pazarda satış hedefleyen markalar için ise Shopify daha uygundur."
+                        "q": "E-ticaret sitesi kurulumu ne kadar sürer?",
+                        "a": "Profesyonel bir e-ticaret sitesi kurulumu projenin kapsamına, tasarım taleplerine ve entegrasyonlara göre genellikle 3–7 iş günü içinde tamamlanarak anahtar teslim yayına alınır."
                     },
                     {
-                        "q": "E-ticaret sitesi kurulumu ücreti nedir?",
-                        "a": "Shopify veya İKAS e-ticaret sitesi kurulumu 20.000 – 60.000 TL arasında değişmektedir. Kapsam, tema özelleştirmesi ve entegrasyonlara göre fiyatlandırılır."
+                        "q": "En ucuz e-ticaret sitesi hangi platformda kurulur?",
+                        "a": "Başlangıç maliyeti açısından WooCommerce en esnek seçeneği sunarken, ek sunucu ve bakım masrafları olmaksızın en hızlı ve maliyet-etkin kurulum İKAS ve Shopify paketleriyle sağlanmaktadır."
                     },
                     {
-                        "q": "Ödeme sistemi entegrasyonu dahil mi?",
-                        "a": "Evet, tüm kurulum paketlerimizde yerli ve yabancı tüm popüler ödeme geçitleri (PayTR, iyzico, Stripe) entegrasyonu dahil edilmektedir."
+                        "q": "Site kurulumu sonrası bakım desteği veriyor musunuz?",
+                        "a": "Evet, site kurulumu sonrasında 30 gün boyunca ücretsiz teknik destek veriyoruz. İsteğe bağlı olarak aylık teknik bakım ve yönetim hizmeti sunuyoruz."
                     },
                     {
-                        "q": "Mobil uyumlu e-ticaret sitesi yapıyor musunuz?",
-                        "a": "Evet, tüm projelerimiz %100 mobil uyumlu (responsive) olarak teslim edilir. Mobil trafik e-ticarette %80'in üzerinde olduğu için bu bizim önceliğimizdir."
+                        "q": "Türkiye'de en çok hangi ödeme sistemi kullanılır?",
+                        "a": "Türkiye e-ticaret pazarında en yaygın kullanılan yerel sanal POS ve ödeme altyapıları PayTR ve iyzico'dur. Tüm kurulum paketlerimize bu ödeme geçitlerinin entegrasyonu dahildir."
                     }
                 ]
             },
