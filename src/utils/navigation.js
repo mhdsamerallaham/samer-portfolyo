@@ -8,6 +8,14 @@ export const pageLanguageMap = {
   '/en/services': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
   '/ar/services': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
 
+  '/web-tasarim': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+  '/en/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+  '/ar/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+
+  '/e-ticaret-web-tasarim': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+  '/en/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+  '/ar/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+
   '/eticaret-site-kurulumu': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
   '/en/ecommerce-setup': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
   '/ar/shopify-setup-turkey': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },

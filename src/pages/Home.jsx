@@ -39,7 +39,7 @@ export default function Home() {
 
             {/* Dominant H1 Headline */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] text-white">
-              {i18n.language === 'tr' ? 'E-Ticaret & Yazılım Çözümleri Uzmanı' : i18n.language === 'ar' ? 'أخصائي التجارة الإلكترونية وحلول البرمجيات' : 'E-Commerce & Software Solutions Expert'}
+              {i18n.language === 'tr' ? 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı' : i18n.language === 'ar' ? 'خبير تصميم مواقع التجارة الإلكترونية وتطوير الويب' : 'E-Commerce Web Design & Website Development Expert'}
             </h1>
 
             {/* Short Subheadline */}

@@ -19,17 +19,18 @@ const pages = {
   // TURKISH PAGES (Default / Root)
   // ==========================================
   '': {
-    title: 'E-Ticaret Sitesi Kurulumu & Büyüme Uzmanı | Samer Allaham',
-    description: 'Shopify ve İKAS ile profesyonel e-ticaret sitesi kuruyorum. Dönüşüm odaklı optimizasyon, stok otomasyonu ve ürün içerik servisleri. Türkiye\'nin e-ticaret büyüme uzmanı Samer Allaham.',
-    keywords: 'shopify kurulumu türkiye, ikas e-ticaret sitesi, e-ticaret sitesi kurulumu, e-ticaret optimizasyon, shopify danışmanlık, samer allaham, e-ticaret büyüme uzmanı',
+    title: 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı | Samer Allaham',
+    description: 'Profesyonel e-ticaret web tasarım ve websitesi geliştirme hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağaza kurulumu. İstanbul merkezli uzman — Samer Allaham.',
+    keywords: 'e ticaret web tasarım, web tasarım, websitesi, shopify kurulumu türkiye, ikas e-ticaret sitesi, e-ticaret sitesi kurulumu, e-ticaret optimizasyon, shopify danışmanlık, samer allaham, e-ticaret büyüme uzmanı',
     canonical: 'https://www.samer.life/',
     lang: 'tr',
     content: `
-      <h1>E-Ticaret Sitesi Kurulumu & Büyüme Uzmanı | Samer Allaham</h1>
-      <p>Merhaba, ben Samer Allaham — Türkiye merkezli e-ticaret büyüme uzmanı. Shopify ve İKAS platformlarında yüksek dönüşüm oranlı e-ticaret sistemleri kuruyorum.</p>
-      <h2>E-Ticaret Büyüme Hizmetlerim</h2>
+      <h1>E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı | Samer Allaham</h1>
+      <p>Merhaba, ben Samer Allaham — İstanbul merkezli profesyonel e-ticaret web tasarım ve websitesi geliştirme uzmanı. Shopify ve İKAS platformlarında yüksek dönüşüm oranlı e-ticaret sistemleri kuruyorum.</p>
+      <h2>E-Ticaret & Web Tasarım Hizmetlerim</h2>
       <ul>
-        <li><strong>E-Ticaret Web Sitesi Kurulumu (Shopify & İKAS):</strong> A'dan Z'ye profesyonel mağaza tasarımı, ödeme sistemleri ve kargo entegrasyonu.</li>
+        <li><strong>E-Ticaret Web Tasarım & Kurulumu (Shopify & İKAS):</strong> A'dan Z'ye profesyonel mağaza tasarımı, ödeme sistemleri ve kargo entegrasyonu.</li>
+        <li><strong>Profesyonel Web Tasarım:</strong> React ve Next.js ile ultra hızlı, modern ve SEO uyumlu kurumsal websitesi tasarımı.</li>
         <li><strong>E-Ticaret Hız & Dönüşüm Optimizasyonu (CRO):</strong> Google Core Web Vitals skorlarınızı yükselterek sepet terki oranlarını düşüren teknik geliştirmeler.</li>
         <li><strong>Yapay Zeka Destekli Ürün Görseli & SEO İçerik:</strong> Stüdyo kalitesinde ürün arka plan tasarımları ve Google/AI uyumlu zengin ürün açıklamaları.</li>
         <li><strong>Stok ve Depo Entegrasyon Otomasyonu:</strong> Pazaryerleri, ERP ve e-ticaret siteniz arasında API tabanlı anlık stok senkronizasyonu.</li>
@@ -40,6 +41,28 @@ const pages = {
         <li><strong>Elif K. (Moda Butiği Kurucusu):</strong> "Wordpress sitemizi İKAS altyapısına sorunsuz taşıdı. Sayfa hızımız 1.1 saniyeye düştü. Destek ve yönlendirmeleri için çok teşekkürler."</li>
         <li><strong>Omar B. (Global E-Ticaret Müdürü):</strong> "Shopify ve Trendyol arasındaki stok senkronizasyon yazılımını geliştirdi. Manuel hatalardan kaynaklanan cezalarımız tamamen bitti."</li>
       </ul>
+    `
+  },
+  'web-tasarim': {
+    title: 'Profesyonel Web Tasarım | Modern Websitesi Geliştirme — Samer',
+    description: 'React & Next.js ile modern, hızlı ve SEO uyumlu web tasarım hizmetleri. Kurumsal websitesi, portfolyo ve e-ticaret web tasarımı.',
+    keywords: 'web tasarım, web tasarım istanbul, profesyonel web tasarım, websitesi tasarımı, kurumsal web tasarım, modern web tasarım',
+    canonical: 'https://www.samer.life/web-tasarim',
+    lang: 'tr',
+    content: `
+      <h1>Profesyonel Web Tasarım Hizmetleri | Samer Allaham</h1>
+      <p>React ve Next.js altyapıları ile modern, hızlı ve SEO uyumlu web tasarım ve websitesi geliştirme hizmetleri. İşletmenizin dijital varlığını güçlendirecek özel web çözümleri.</p>
+    `
+  },
+  'e-ticaret-web-tasarim': {
+    title: 'E-Ticaret Web Tasarım | Profesyonel Online Mağaza — Samer',
+    description: 'E-ticaret web tasarım hizmetleri. Shopify & İKAS ile satış yapan, mobil uyumlu ve SEO dostu online mağaza websitesi tasarımı.',
+    keywords: 'e ticaret web tasarım, e-ticaret web tasarım, online mağaza tasarımı, e-ticaret websitesi, shopify web tasarım, ikas web tasarım',
+    canonical: 'https://www.samer.life/e-ticaret-web-tasarim',
+    lang: 'tr',
+    content: `
+      <h1>E-Ticaret Web Tasarım | Profesyonel Online Mağaza Kurulumu</h1>
+      <p>Shopify ve İKAS platformlarında yüksek dönüşümlü e-ticaret web tasarım ve online mağaza kurulum hizmetleri. Mobil uyumlu, hızlı ve satış odaklı websitesi tasarımları.</p>
     `
   },
   'eticaret-site-kurulumu': {
@@ -376,12 +399,14 @@ const pages = {
   }
 };
 
-// Define blog posts configurations (4 posts * 3 languages = 12 pages)
+// Define blog posts configurations (6 posts * 3 languages = 18 pages)
 const blogPostsList = [
   'eticaret-sitem-var-ama-satis-yok-sorun-nerede',
   'urunlerim-goruntuleniyor-ama-satilmiyor-ne-yapmaliyim',
   'eticarette-ilk-5-saniye-musteri-neden-terk-ediyor',
-  'sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne'
+  'sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne',
+  'e-ticaret-web-tasarim-rehberi-2026',
+  'profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi'
 ];
 
 const blogDetails = {
@@ -405,6 +430,16 @@ const blogDetails = {
       title: 'Sepete Ekleniyor Ama Satılmıyor, Sorunun Kaynağı Ne? | Samer Allaham',
       description: 'Sepete ekleme yapıldığı halde ödeme adımında yaşanan satış kayıplarının (Cart Abandonment) tespiti ve CRO iyileştirmeleri.',
       content: `<h1>Sepete Ekleniyor Ama Satılmıyor, Sorunun Kaynağı Ne?</h1><p>Ödeme adımı iyileştirmeleri: 1. Sürpriz kargo ücretlerini kaldırmak, 2. Misafir ödemeyi açmak, 3. Güven logoları eklemek.</p>`
+    },
+    'e-ticaret-web-tasarim-rehberi-2026': {
+      title: 'E-Ticaret Web Tasarım Rehberi: Satış Yapan Online Mağaza Tasarımı | Samer Allaham',
+      description: 'Satışlarınızı artıran e-ticaret web tasarım prensipleri, mobil öncelikli kullanıcı deneyimi (UX) ve 2026 trendleri ile dönüşüm odaklı online mağaza kurma rehberi.',
+      content: `<h1>E-Ticaret Web Tasarım Rehberi: Satış Yapan Online Mağaza Tasarımı</h1><p>Shopify ve İKAS ile dönüşüm odaklı e-ticaret web tasarım prensipleri, mobil uyumluluk ve hızlı ödeme çözümleri.</p>`
+    },
+    'profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi': {
+      title: 'Profesyonel Web Tasarım ve Websitesi Yaptırma Rehberi 2026 | Samer Allaham',
+      description: 'İşletmeniz için profesyonel web tasarım yaptırırken dikkat edilmesi gerekenler, SEO altyapısı, React & Next.js modern kodlama ve websitesi maliyet analizi.',
+      content: `<h1>Profesyonel Web Tasarım ve Websitesi Yaptırma Rehberi 2026</h1><p>Modern React & Next.js altyapıları ile kurumsal web tasarım, SEO dostu kodlama ve performans çözümleri.</p>`
     }
   },
   en: {
@@ -427,6 +462,16 @@ const blogDetails = {
       title: 'Added to Cart But Not Buying? Checkout CRO | Samer Allaham',
       description: 'Reduce cart abandonment rates. Discover checkout optimizations like guest buying, transparent shipping fees, and local payment methods.',
       content: `<h1>Added to Cart But Not Buying? Checkout CRO</h1><p>Reduce abandonment: 1. Hide unexpected shipping charges, 2. Enable checkout without registering, 3. Display secure gateway icons.</p>`
+    },
+    'e-ticaret-web-tasarim-rehberi-2026': {
+      title: 'E-Commerce Web Design Guide: High-Converting Stores | Samer Allaham',
+      description: 'E-commerce web design principles, mobile-first UX layouts, and 2026 trends to scale your online shop checkouts.',
+      content: `<h1>E-Commerce Web Design Guide</h1><p>Conversion-driven web design for Shopify & İKAS platforms.</p>`
+    },
+    'profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi': {
+      title: 'Professional Web Design & Website Guide 2026 | Samer Allaham',
+      description: 'Key factors when hiring for professional web design, Technical SEO foundation, and modern React/Next.js stack benefits.',
+      content: `<h1>Professional Web Design & Website Guide</h1><p>Modern React & Next.js web design solutions for corporate brands.</p>`
     }
   },
   ar: {
@@ -444,6 +489,16 @@ const blogDetails = {
       title: 'أول 5 ثوانٍ بالمتجر: لماذا يخرج العميل سريعاً؟ | سامر اللحام',
       description: 'علاج مشكلة معدل الارتداد السريع (Bounce Rate) لزوار المتاجر الإلكترونية وتعديل واجهات المستخدم للجوال.',
       content: `<h1>أول 5 ثوانٍ بالمتجر: لماذا يخرج العميل سريعاً؟</h1><p>أسباب الخروج السريع: 1. غموض محتوى الشاشة الأولى، 2. مشاكل التصفح بالجوال، 3. النوافذ المنبثقة المزعجة.</p>`
+    },
+    'e-ticaret-web-tasarim-rehberi-2026': {
+      title: 'دليل تصميم مواقع التجارة الإلكترونية | سامر اللحام',
+      description: 'مبادئ تصميم المتاجر الإلكترونية لزيادة المبيعات، واجهات الجوال السريعة، وأحدث التوجهات لعام 2026.',
+      content: `<h1>دليل تصميم مواقع التجارة الإلكترونية</h1><p>حلول تصميم متاجر شوبيفاي وإيكاس لزيادة المبيعات والتحويلات.</p>`
+    },
+    'profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi': {
+      title: 'دليل تصميم المواقع الإلكترونية والويب 2026 | سامر اللحام',
+      description: 'كل ما تحتاج معرفته حول تصميم موقع إلكتروني احترافي للشركات وتقنيات React & Next.js الحديثة.',
+      content: `<h1>دليل تصميم المواقع الإلكترونية</h1><p>تصميم برمجيات ويب احترافية تناسب متطلبات محركات البحث والذكاء الاصطناعي.</p>`
     },
     'ar/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne': {
       title: 'يضيفون السلة ولكن لا يكملون الدفع، ما السبب؟ | سامر اللحام',
@@ -549,6 +604,10 @@ Object.entries(allPages).forEach(([route, data]) => {
     '/': { tr: '/', en: '/en', ar: '/ar' },
     '/services': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
     '/hizmetler': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
+    '/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+    '/web-tasarim': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+    '/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+    '/e-ticaret-web-tasarim': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
     '/ecommerce-setup': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
     '/shopify-setup-turkey': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
     '/eticaret-site-kurulumu': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },

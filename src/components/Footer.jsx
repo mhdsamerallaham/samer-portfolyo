@@ -70,6 +70,8 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">ÇÖZÜMLER</span>
             <ul className="flex flex-col gap-2.5">
+              <li><Link to={getLocalizedPath('/e-ticaret-web-tasarim', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{i18n.language === 'tr' ? 'E-Ticaret Web Tasarım' : 'E-Commerce Web Design'}</Link></li>
+              <li><Link to={getLocalizedPath('/web-tasarim', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{i18n.language === 'tr' ? 'Web Tasarım & Geliştirme' : 'Web Design & Development'}</Link></li>
               <li><Link to={getLocalizedPath('/eticaret-site-kurulumu', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.site-kurulumu.title')}</Link></li>
               <li><Link to={getLocalizedPath('/eticaret-optimizasyon', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.optimizasyon.title')}</Link></li>
               <li><Link to={getLocalizedPath('/urun-gorsel-ve-icerik', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.urun-gorsel.title')}</Link></li>

@@ -4,9 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check, Award, ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQ from '../components/FAQ';
+import ServiceCard from '../components/ServiceCard';
 
 const routeToKeyMap = {
   // Turkish
+  '/web-tasarim': 'web-gelistirme',
+  '/e-ticaret-web-tasarim': 'site-kurulumu',
   '/eticaret-site-kurulumu': 'site-kurulumu',
   '/eticaret-optimizasyon': 'optimizasyon',
   '/urun-gorsel-ve-icerik': 'urun-gorsel',
@@ -17,6 +20,8 @@ const routeToKeyMap = {
   '/yapay-zeka-cozumleri': 'yapay-zeka',
 
   // English
+  '/en/web-design': 'web-gelistirme',
+  '/en/ecommerce-web-design': 'site-kurulumu',
   '/en/ecommerce-setup': 'site-kurulumu',
   '/en/ecommerce-optimization': 'optimizasyon',
   '/en/product-visuals-content': 'urun-gorsel',
@@ -27,6 +32,8 @@ const routeToKeyMap = {
   '/en/ai-solutions': 'yapay-zeka',
 
   // Arabic
+  '/ar/web-design': 'web-gelistirme',
+  '/ar/ecommerce-web-design': 'site-kurulumu',
   '/ar/shopify-setup-turkey': 'site-kurulumu',
   '/ar/ecommerce-optimization': 'optimizasyon',
   '/ar/product-content-ai': 'urun-gorsel',
@@ -179,10 +186,29 @@ export default function ServiceDetail() {
         <div className="border-t border-white/5 pt-20 mb-20 text-center">
           <div className="flex flex-col items-center gap-3 mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
-              {i18n.language === 'tr' ? 'Hizmet Hakkında SSS' : i18n.language === 'ar' ? 'الأسئلة Şarkı' : 'Service FAQ'}
+              {i18n.language === 'tr' ? 'Hizmet Hakkında SSS' : i18n.language === 'ar' ? 'الأسئلة الشائعة' : 'Service FAQ'}
             </h2>
           </div>
           <FAQ items={data.faqs} />
+        </div>
+
+        {/* Related Services — Internal Linking */}
+        <div className="border-t border-white/5 pt-20">
+          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-8">
+            {i18n.language === 'tr' ? 'İlgili Hizmetler' : i18n.language === 'ar' ? 'خدمات ذات صلة' : 'Related Services'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {['site-kurulumu', 'optimizasyon', 'web-gelistirme', 'ozel-yazilim', 'yapay-zeka']
+              .filter(k => k !== serviceKey)
+              .slice(0, 3)
+              .map(key => (
+                <ServiceCard
+                  key={key}
+                  serviceKey={key}
+                  serviceData={t(`services.items.${key}`, { returnObjects: true })}
+                />
+              ))}
+          </div>
         </div>
 
       </div>

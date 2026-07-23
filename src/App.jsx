@@ -116,6 +116,8 @@ function App() {
             {/* === TURKISH ROUTES (Default) === */}
             <Route path="/" element={<Home />} />
             <Route path="/hizmetler" element={<ServicesOverview />} />
+            <Route path="/web-tasarim" element={<ServiceDetail />} />
+            <Route path="/e-ticaret-web-tasarim" element={<ServiceDetail />} />
             <Route path="/eticaret-site-kurulumu" element={<ServiceDetail />} />
             <Route path="/eticaret-optimizasyon" element={<ServiceDetail />} />
             <Route path="/urun-gorsel-ve-icerik" element={<ServiceDetail />} />
@@ -137,6 +139,8 @@ function App() {
             {/* === ENGLISH ROUTES === */}
             <Route path="/en" element={<Home />} />
             <Route path="/en/services" element={<ServicesOverview />} />
+            <Route path="/en/web-design" element={<ServiceDetail />} />
+            <Route path="/en/ecommerce-web-design" element={<ServiceDetail />} />
             <Route path="/en/ecommerce-setup" element={<ServiceDetail />} />
             <Route path="/en/ecommerce-optimization" element={<ServiceDetail />} />
             <Route path="/en/product-visuals-content" element={<ServiceDetail />} />
@@ -156,6 +160,8 @@ function App() {
             {/* === ARABIC ROUTES === */}
             <Route path="/ar" element={<Home />} />
             <Route path="/ar/services" element={<ServicesOverview />} />
+            <Route path="/ar/web-design" element={<ServiceDetail />} />
+            <Route path="/ar/ecommerce-web-design" element={<ServiceDetail />} />
             <Route path="/ar/shopify-setup-turkey" element={<ServiceDetail />} />
             <Route path="/ar/ecommerce-optimization" element={<ServiceDetail />} />
             <Route path="/ar/product-content-ai" element={<ServiceDetail />} />

@@ -8,18 +8,46 @@ import { getLanguageUrl } from '../utils/navigation';
 // ─────────────────────────────────────────────────
 const routeSEOMap = {
   '/': {
-    title: 'samer | e-ticaret & web tasarım & yazılım',
+    title: 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı',
     description:
-      'Shopify ve İKAS ile profesyonel e-ticaret sitesi kuruyorum. Dönüşüm odaklı optimizasyon, stok otomasyonu ve ürün içerik servisleri. Türkiye\'nin e-ticaret büyüme uzmanı Samer Allaham.',
+      'Profesyonel e-ticaret web tasarım ve websitesi geliştirme hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağaza kurulumu. İstanbul merkezli uzman — Samer Allaham.',
     keywords:
-      'shopify kurulumu türkiye, ikas e-ticaret sitesi, e-ticaret sitesi kurulumu, e-ticaret optimizasyon, shopify danışmanlık, samer allaham',
+      'e ticaret web tasarım, web tasarım, websitesi, e-ticaret sitesi kurulumu, shopify kurulumu türkiye, ikas e-ticaret, web tasarım istanbul, profesyonel web tasarım, websitesi yaptırmak',
   },
   '/hizmetler': {
-    title: 'E-Ticaret Hizmetleri',
+    title: 'Web Tasarım & E-Ticaret Websitesi Hizmetleri',
     description:
-      'Shopify kurulumu, İKAS e-ticaret sitesi, dönüşüm optimizasyonu, ürün görseli hazırlama ve stok otomasyon hizmetleri. Samer Allaham ile e-ticarette büyüyün.',
+      'Profesyonel web tasarım, e-ticaret websitesi kurulumu, dönüşüm optimizasyonu ve stok otomasyon hizmetleri. Shopify & İKAS uzmanı Samer Allaham.',
     keywords:
-      'shopify hizmetleri, ikas kurulum, e-ticaret optimizasyon hizmetleri, stok entegrasyon, ürün içerik servisi',
+      'web tasarım hizmetleri, e ticaret web tasarım, websitesi kurulumu, shopify hizmetleri, ikas kurulum, e-ticaret optimizasyon',
+  },
+  '/web-tasarim': {
+    title: 'Profesyonel Web Tasarım | Modern Websitesi Geliştirme — Samer',
+    description:
+      'React & Next.js ile modern, hızlı ve SEO uyumlu web tasarım hizmetleri. Kurumsal websitesi, portfolyo ve e-ticaret web tasarımı. İstanbul merkezli uzman.',
+    keywords:
+      'web tasarım, web tasarım istanbul, profesyonel web tasarım, websitesi tasarımı, kurumsal web tasarım, modern web tasarım',
+  },
+  '/e-ticaret-web-tasarim': {
+    title: 'E-Ticaret Web Tasarım | Profesyonel Online Mağaza Kurulumu — Samer',
+    description:
+      'E-ticaret web tasarım hizmetleri. Shopify & İKAS ile satış yapan, mobil uyumlu ve SEO dostu online mağaza websitesi tasarımı. Samer Allaham.',
+    keywords:
+      'e ticaret web tasarım, e-ticaret web tasarım, online mağaza tasarımı, e-ticaret websitesi, shopify web tasarım, ikas web tasarım',
+  },
+  '/web-sitesi-gelistirme': {
+    title: 'Web Sitesi Geliştirme | React & Next.js — Samer',
+    description:
+      'React ve Next.js ile modern, hızlı ve SEO uyumlu kurumsal web sitesi geliştirme. Portfolyo, tanıtım ve e-ticaret websitesi tasarımı.',
+    keywords:
+      'web sitesi geliştirme, react web sitesi, next.js web sitesi, kurumsal websitesi, web tasarım',
+  },
+  '/yapay-zeka-cozumleri': {
+    title: 'Yapay Zeka Çözümleri | AI Destekli E-Ticaret — Samer',
+    description:
+      'E-ticaret mağazanız için yapay zeka destekli ürün görseli, otomatik içerik üretimi ve akıllı chatbot çözümleri.',
+    keywords:
+      'yapay zeka çözümleri, ai e-ticaret, yapay zeka ürün fotoğrafı, chatbot, otomatik içerik',
   },
   '/eticaret-site-kurulumu': {
     title: 'E-Ticaret Site Kurulumu İstanbul | Shopify & İKAS Uzmanı — Samer',
@@ -229,6 +257,34 @@ const serviceFAQs = {
       a: 'Evet, sezonsal kampanyalar, indirim kuponları ve fiyat güncellemeleri aylık yönetim paketi kapsamında sizin onayınızla uygulanmaktadır.',
     },
   ],
+  '/web-tasarim': [
+    {
+      q: 'Web tasarım ve web geliştirme arasındaki fark nedir?',
+      a: 'Web tasarım sitenin görsel tasarımı ve kullanıcı deneyimini kapsar; web geliştirme ise kodlama ve altyapı kurulumunu içerir. Tüm projelerimizde tasarım ve geliştirmeyi bir arada sunuyoruz.',
+    },
+    {
+      q: 'Web tasarım süreci ne kadar sürer?',
+      a: 'Standart bir kurumsal web tasarım projesi 2-3 haftada tamamlanır. Özel yazılım gerektiren karmaşık projeler ise 4-6 hafta sürebilir.',
+    },
+    {
+      q: 'Mobil uyumlu (responsive) web tasarım yapıyor musunuz?',
+      a: 'Evet, geliştirdiğimiz tüm web tasarımları Mobile-First (önce mobil) anlayışıyla üretilir ve tüm ekran boyutlarına kusursuz uyum sağlar.',
+    },
+  ],
+  '/e-ticaret-web-tasarim': [
+    {
+      q: 'E-ticaret web tasarım ile standart web tasarım arasındaki fark nedir?',
+      a: 'E-ticaret web tasarım, ödeme geçitleri, sepet akışı, stok takibi ve dönüşüm optimizasyonu (CRO) gibi doğrudan satış odaklı teknik bileşenler içerir.',
+    },
+    {
+      q: 'Hangi e-ticaret altyapılarında tasarım yapıyorsunuz?',
+      a: 'Shopify ve İKAS altyapılarında yüksek performanslı, modern ve dönüşüm odaklı e-ticaret web tasarım hizmetleri sunuyoruz.',
+    },
+    {
+      q: 'E-ticaret web tasarım paketlerinize SEO dahil mi?',
+      a: 'Evet, hazırladığımız tüm e-ticaret web tasarımları arama motorlarına tam uyumlu (Technical SEO & Schema markup) olarak teslim edilir.',
+    },
+  ],
 };
 
 // ─────────────────────────────────────────────────
@@ -265,6 +321,16 @@ const serviceSchemas = {
     description: 'Aylık ürün güncellemeleri, kampanya yönetimi, teknik bakım ve SEO raporlaması.',
     offers: { price: '8000', priceCurrency: 'TRY', priceSpecification: '8.000 – 20.000 TL/ay' },
   },
+  '/web-tasarim': {
+    name: 'Profesyonel Web Tasarım Hizmeti',
+    description: 'React & Next.js ile modern, hızlı, SEO uyumlu web tasarım ve websitesi geliştirme hizmetleri.',
+    offers: { price: '30000', priceCurrency: 'TRY', priceSpecification: '30.000 – 65.000 TL' },
+  },
+  '/e-ticaret-web-tasarim': {
+    name: 'E-Ticaret Web Tasarım Hizmeti',
+    description: 'Shopify ve İKAS ile profesyonel e-ticaret web tasarım ve online mağaza kurulumu.',
+    offers: { price: '20000', priceCurrency: 'TRY', priceSpecification: '20.000 – 60.000 TL' },
+  },
 };
 
 // ─────────────────────────────────────────────────
@@ -275,7 +341,7 @@ const personProfessionalServiceSchema = {
   '@type': ['Person', 'ProfessionalService'],
   name: 'Samer',
   url: 'https://www.samer.life',
-  jobTitle: 'Full-Stack Web Developer & E-Ticaret Uzmanı',
+  jobTitle: 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'İstanbul',
@@ -368,7 +434,11 @@ function buildBreadcrumbSchema(pathname) {
   ];
 
   const labelMap = {
-    hizmetler: 'E-Ticaret Hizmetleri',
+    hizmetler: 'E-Ticaret & Web Tasarım Hizmetleri',
+    'web-tasarim': 'Web Tasarım',
+    'e-ticaret-web-tasarim': 'E-Ticaret Web Tasarım',
+    'web-sitesi-gelistirme': 'Web Sitesi Geliştirme',
+    'yapay-zeka-cozumleri': 'Yapay Zeka Çözümleri',
     'eticaret-site-kurulumu': 'E-Ticaret Sitesi Kurulumu',
     'eticaret-optimizasyon': 'E-Ticaret Optimizasyon',
     'urun-gorsel-ve-icerik': 'Ürün Görsel ve İçerik',

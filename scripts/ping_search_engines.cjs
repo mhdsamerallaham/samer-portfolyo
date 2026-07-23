@@ -9,10 +9,15 @@ const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 // List of core routes to ping (mirroring prerender.cjs)
 const coreRoutes = [
   '',
+  'web-tasarim',
+  'e-ticaret-web-tasarim',
   'eticaret-site-kurulumu',
   'eticaret-optimizasyon',
   'urun-gorsel-ve-icerik',
   'stok-ve-depo-sistemi',
+  'ozel-yazilim-gelistirme',
+  'web-sitesi-gelistirme',
+  'yapay-zeka-cozumleri',
   'aylik-yonetim',
   'hizmetler',
   'iletisim',
@@ -23,6 +28,8 @@ const coreRoutes = [
   // English
   'en',
   'en/services',
+  'en/web-design',
+  'en/ecommerce-web-design',
   'en/ecommerce-setup',
   'en/ecommerce-optimization',
   'en/product-visuals-content',
@@ -36,6 +43,8 @@ const coreRoutes = [
   // Arabic
   'ar',
   'ar/services',
+  'ar/web-design',
+  'ar/ecommerce-web-design',
   'ar/shopify-setup-turkey',
   'ar/ecommerce-optimization',
   'ar/product-content-ai',
@@ -51,7 +60,9 @@ const blogSlugs = [
   'eticaret-sitem-var-ama-satis-yok-sorun-nerede',
   'urunlerim-goruntuleniyor-ama-satilmiyor-ne-yapmaliyim',
   'eticarette-ilk-5-saniye-musteri-neden-terk-ediyor',
-  'sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne'
+  'sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne',
+  'e-ticaret-web-tasarim-rehberi-2026',
+  'profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi'
 ];
 
 // Combine all URLs
