@@ -33,35 +33,33 @@ const createHuggingFaceProviders = require("./providers/HuggingFaceProvider");
 function createProviderManager() {
   const providers = [];
 
-  // ── 1. Cerebras ─────────────────────────────────────────────
-  if (process.env.CEREBRAS_API_KEY) {
-    providers.push(...createCerebrasProvider(process.env.CEREBRAS_API_KEY));
+  // ── 1. Gemini (gemini-2.0-flash — En yüksek kota & güvenilirlik) ───
+  if (process.env.GEMINI_API_KEY) {
+    providers.push(
+      new OpenAICompatibleProvider({
+        name: "Gemini (gemini-2.0-flash)",
+        baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai",
+        apiKey: process.env.GEMINI_API_KEY,
+        model: "gemini-2.0-flash",
+        supportsJsonMode: true,
+        timeout: 20000,
+      })
+    );
   }
 
-  // ── 2–4. Groq ───────────────────────────────────────────────
+  // ── 2. Groq (Yüksek hız & 14,400 RPD) ──────────────────────
   if (process.env.GROQ_API_KEY) {
     providers.push(...createGroqProviders(process.env.GROQ_API_KEY));
   }
 
-  // ── 5–7. HuggingFace Router ─────────────────────────────────
-  if (process.env.HF_TOKEN) {
-    providers.push(...createHuggingFaceProviders(process.env.HF_TOKEN));
+  // ── 3. Cerebras ─────────────────────────────────────────────
+  if (process.env.CEREBRAS_API_KEY) {
+    providers.push(...createCerebrasProvider(process.env.CEREBRAS_API_KEY));
   }
 
-  // ── 8–9. Gemini (legacy, düşük öncelik) ─────────────────────
-  if (process.env.GEMINI_API_KEY) {
-    for (const model of ["gemini-1.5-flash", "gemini-2.0-flash"]) {
-      providers.push(
-        new OpenAICompatibleProvider({
-          name: `Gemini (${model})`,
-          baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai",
-          apiKey: process.env.GEMINI_API_KEY,
-          model,
-          supportsJsonMode: true,
-          timeout: 20000,
-        })
-      );
-    }
+  // ── 4. HuggingFace Router ─────────────────────────────────
+  if (process.env.HF_TOKEN) {
+    providers.push(...createHuggingFaceProviders(process.env.HF_TOKEN));
   }
 
   // ── 10. Mistral (legacy, düşük öncelik) ─────────────────────
