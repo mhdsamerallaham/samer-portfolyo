@@ -76,12 +76,23 @@ module.exports = async (req, res) => {
     "profesyonel-web-tasarim-ve-websitesi-yaptirma-rehberi"
   ];
 
+  let faqSlugs = [
+    "shopify-donusum-orani-nasil-artirilir",
+    "ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi",
+    "urun-detay-sayfasi-ux-ve-otomasyon-rehberi",
+    "eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir"
+  ];
+
   if (supabaseUrl && supabaseAnonKey) {
     try {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
       const { data: posts } = await supabase.from("blog_posts").select("slug");
       if (posts && posts.length > 0) {
         blogSlugs = posts.map(p => p.slug).filter(Boolean);
+      }
+      const { data: faqs } = await supabase.from("faq_posts").select("slug");
+      if (faqs && faqs.length > 0) {
+        faqSlugs = faqs.map(f => f.slug).filter(Boolean);
       }
     } catch (e) {
       console.warn("Supabase fetch error for sitemap:", e.message);
@@ -105,6 +116,19 @@ module.exports = async (req, res) => {
   // 2. Add blog routes in TR, EN, AR
   blogSlugs.forEach(slug => {
     ["blog", "en/blog", "ar/blog"].forEach(prefix => {
+      const loc = `${domain}/${prefix}/${slug}`;
+      sitemapUrls.push(`  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`);
+    });
+  });
+
+  // 3. Add FAQ routes in TR, EN, AR
+  faqSlugs.forEach(slug => {
+    ["faq", "sss", "en/faq", "ar/faq"].forEach(prefix => {
       const loc = `${domain}/${prefix}/${slug}`;
       sitemapUrls.push(`  <url>
     <loc>${loc}</loc>

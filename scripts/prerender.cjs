@@ -798,6 +798,72 @@ async function main() {
     });
   }
 
+  // 2. Fetch dynamic FAQ posts from Supabase database
+  let dbFaqs = [];
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      console.log('Connecting to Supabase to fetch dynamic FAQ posts...');
+      const supabase = createClient(supabaseUrl, supabaseAnonKey);
+      const { data, error } = await supabase.from('faq_posts').select('*');
+      if (!error && Array.isArray(data) && data.length > 0) {
+        dbFaqs = data;
+        console.log(`✓ Successfully retrieved ${dbFaqs.length} dynamic FAQ posts from Supabase!`);
+      } else if (error) {
+        console.warn(`⚠ Supabase faq_posts table query warning: ${error.message}`);
+      }
+    } catch (e) {
+      console.warn(`⚠ Supabase FAQ connection exception: ${e.message}`);
+    }
+  }
+
+  if (dbFaqs.length > 0) {
+    dbFaqs.forEach((faq) => {
+      const slug = faq.slug;
+      if (!slug) return;
+
+      const qTr = faq.question_tr || faq.question || 'Sıkça Sorulan Soru';
+      const aTr = faq.short_answer_tr || faq.short_answer || '';
+      const cTr = faq.content_tr || faq.content || '';
+
+      const qEn = faq.question_en || qTr;
+      const aEn = faq.short_answer_en || aTr;
+      const cEn = faq.content_en || cTr;
+
+      const qAr = faq.question_ar || qTr;
+      const aAr = faq.short_answer_ar || aTr;
+      const cAr = faq.content_ar || cTr;
+
+      allPages[`faq/${slug}`] = {
+        title: `${qTr} | Samer Allaham`,
+        description: aTr || qTr,
+        canonical: `https://www.samer.life/faq/${slug}`,
+        lang: 'tr',
+        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div>`
+      };
+      allPages[`sss/${slug}`] = {
+        title: `${qTr} | Samer Allaham`,
+        description: aTr || qTr,
+        canonical: `https://www.samer.life/sss/${slug}`,
+        lang: 'tr',
+        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div>`
+      };
+      allPages[`en/faq/${slug}`] = {
+        title: `${qEn} | Samer Allaham`,
+        description: aEn || qEn,
+        canonical: `https://www.samer.life/en/faq/${slug}`,
+        lang: 'en',
+        content: `<h1>${qEn}</h1><p><strong>${aEn}</strong></p><div>${cEn}</div>`
+      };
+      allPages[`ar/faq/${slug}`] = {
+        title: `${qAr} | سامر اللحام`,
+        description: aAr || qAr,
+        canonical: `https://www.samer.life/ar/faq/${slug}`,
+        lang: 'ar',
+        content: `<h1>${qAr}</h1><p><strong>${aAr}</strong></p><div>${cAr}</div>`
+      };
+    });
+  }
+
   console.log(`Starting prerendering for ${Object.keys(allPages).length} total routes...`);
 
   // Helper to replace tag block (like <title> or <meta name="description">)

@@ -170,6 +170,16 @@ module.exports = async (req, res) => {
       throw new Error(`Database error saving FAQ post: ${insertError.message}`);
     }
 
+    // Trigger instant search engine index ping
+    try {
+      const https = require("https");
+      const sitemapUrl = "https://www.samer.life/sitemap.xml";
+      https.get(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`);
+      https.get(`https://www.bing.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`);
+    } catch (pingErr) {
+      console.warn("[Auto-Ping] FAQ sitemap ping warning:", pingErr.message);
+    }
+
     return res.status(200).json({
       success: true,
       message: "GEO/AEO FAQ post generated, audited (>90 score) and saved successfully.",
