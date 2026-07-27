@@ -100,25 +100,13 @@ export default function FAQDetail() {
     }
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Anasayfa", "item": window.location.origin },
-      { "@type": "ListItem", "position": 2, "name": "SSS & Bilgi Bankası", "item": `${window.location.origin}/faq` },
-      { "@type": "ListItem", "position": 3, "name": faq.question, "item": window.location.href }
-    ]
-  };
-
   return (
     <>
       <SEO
         title={`${faq.question} | GEO & AEO Rehberi`}
         description={faq.short_answer}
+        schema={qnaSchema}
       />
-
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(qnaSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <div className="min-h-screen bg-[#0d0f12] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-8">

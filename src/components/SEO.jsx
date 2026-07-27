@@ -381,9 +381,17 @@ function buildServiceSchema(svc, url) {
     '@type': 'Service',
     '@id': `https://www.samer.life${url}#service`,
     name: svc.name,
+    serviceType: svc.name,
     description: svc.description,
-    provider: { '@type': 'Person', name: 'Samer' },
-    areaServed: 'İstanbul, Türkiye',
+    provider: {
+      '@type': 'Person',
+      name: 'Samer Allaham',
+      url: 'https://www.samer.life/hakkimda'
+    },
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'İstanbul, Türkiye'
+    },
     url: `https://www.samer.life${url}`,
   };
 }
