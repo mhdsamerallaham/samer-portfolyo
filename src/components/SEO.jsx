@@ -10,7 +10,7 @@ const routeSEOMap = {
   '/': {
     title: 'E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer',
     description:
-      'Profesyonel e-ticaret web tasarım ve websitesi geliştirme hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağaza kurulumu. İstanbul merkezli uzman — Samer Allaham.',
+      'Profesyonel e-ticaret web tasarım ve kurulum hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağazanızı kurun. İstanbul e-ticaret uzmanı — Samer.',
     keywords:
       'e ticaret web tasarım, web tasarım, websitesi, e-ticaret sitesi kurulumu, shopify kurulumu türkiye, ikas e-ticaret, web tasarım istanbul, profesyonel web tasarım, websitesi yaptırmak',
   },

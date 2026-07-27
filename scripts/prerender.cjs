@@ -22,12 +22,12 @@ const pages = {
   // ==========================================
   '': {
     title: 'E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer',
-    description: 'Profesyonel e-ticaret web tasarım ve websitesi geliştirme hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağaza kurulumu. İstanbul merkezli uzman — Samer Allaham.',
+    description: 'Profesyonel e-ticaret web tasarım ve kurulum hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağazanızı kurun. İstanbul e-ticaret uzmanı — Samer.',
     keywords: 'e ticaret web tasarım, web tasarım, websitesi, shopify kurulumu türkiye, ikas e-ticaret sitesi, e-ticaret sitesi kurulumu, e-ticaret optimizasyon, shopify danışmanlık, samer allaham, e-ticaret büyüme uzmanı',
     canonical: 'https://www.samer.life/',
     lang: 'tr',
     content: `
-      <h1>E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer</h1>
+      <h1>E-Ticaret Web Tasarım & Geliştirme Uzmanı</h1>
       <p>Merhaba, ben Samer Allaham — İstanbul merkezli profesyonel e-ticaret web tasarım ve websitesi geliştirme uzmanı. Shopify ve İKAS platformlarında yüksek dönüşüm oranlı e-ticaret sistemleri kuruyorum.</p>
       <h2>E-Ticaret & Web Tasarım Hizmetlerim</h2>
       <ul>
@@ -936,7 +936,11 @@ async function main() {
       pageHtml = replaceMetaTag(pageHtml, 'keywords', data.keywords);
     }
 
-    pageHtml = pageHtml.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/gi, `<link rel="canonical" href="${data.canonical}" />`);
+    if (/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i.test(pageHtml)) {
+      pageHtml = pageHtml.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/gi, `<link rel="canonical" href="${data.canonical}" />`);
+    } else {
+      pageHtml = pageHtml.replace('</head>', `  <link rel="canonical" href="${data.canonical}" />\n</head>`);
+    }
     pageHtml = pageHtml.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/gi, `<meta property="og:url" content="${data.canonical}" />`);
 
     const relativePath = route === '' ? '/' : `/${route}`;
