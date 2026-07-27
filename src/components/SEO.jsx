@@ -8,7 +8,7 @@ import { getLanguageUrl } from '../utils/navigation';
 // ─────────────────────────────────────────────────
 const routeSEOMap = {
   '/': {
-    title: 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı',
+    title: 'E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer',
     description:
       'Profesyonel e-ticaret web tasarım ve websitesi geliştirme hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağaza kurulumu. İstanbul merkezli uzman — Samer Allaham.',
     keywords:
