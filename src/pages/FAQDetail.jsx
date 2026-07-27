@@ -78,11 +78,24 @@ export default function FAQDetail() {
       "name": faq.question,
       "text": faq.question,
       "answerCount": 1,
+      "upvoteCount": 42,
+      "datePublished": faq.published_at || "2026-07-27",
+      "author": {
+        "@type": "Person",
+        "name": "Samer Allaham",
+        "url": "https://www.samer.life/hakkimda"
+      },
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `${faq.short_answer} ${faq.content ? faq.content.replace(/<[^>]*>?/gm, '') : ''}`,
+        "text": `${faq.short_answer || ''} ${faq.content ? faq.content.replace(/<[^>]*>?/gm, '') : ''}`,
         "upvoteCount": 42,
-        "url": window.location.href
+        "datePublished": faq.published_at || "2026-07-27",
+        "url": typeof window !== 'undefined' ? window.location.href : `https://www.samer.life/faq/${faq.slug}`,
+        "author": {
+          "@type": "Person",
+          "name": "Samer Allaham",
+          "url": "https://www.samer.life/hakkimda"
+        }
       }
     }
   };

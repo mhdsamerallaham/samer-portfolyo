@@ -833,33 +833,63 @@ async function main() {
       const aAr = faq.short_answer_ar || aTr;
       const cAr = faq.content_ar || cTr;
 
+      const buildFaqSchema = (question, answer, content, url) => JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "QAPage",
+        "mainEntity": {
+          "@type": "Question",
+          "name": question,
+          "text": question,
+          "answerCount": 1,
+          "upvoteCount": 42,
+          "datePublished": faq.published_at || "2026-07-27",
+          "author": {
+            "@type": "Person",
+            "name": "Samer Allaham",
+            "url": "https://www.samer.life/hakkimda"
+          },
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `${answer} ${content ? content.replace(/<[^>]*>?/gm, '') : ''}`,
+            "upvoteCount": 42,
+            "datePublished": faq.published_at || "2026-07-27",
+            "url": url,
+            "author": {
+              "@type": "Person",
+              "name": "Samer Allaham",
+              "url": "https://www.samer.life/hakkimda"
+            }
+          }
+        }
+      });
+
       allPages[`faq/${slug}`] = {
         title: `${qTr} | Samer Allaham`,
         description: aTr || qTr,
         canonical: `https://www.samer.life/faq/${slug}`,
         lang: 'tr',
-        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div>`
+        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div><script type="application/ld+json">${buildFaqSchema(qTr, aTr, cTr, `https://www.samer.life/faq/${slug}`)}</script>`
       };
       allPages[`sss/${slug}`] = {
         title: `${qTr} | Samer Allaham`,
         description: aTr || qTr,
         canonical: `https://www.samer.life/sss/${slug}`,
         lang: 'tr',
-        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div>`
+        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div><script type="application/ld+json">${buildFaqSchema(qTr, aTr, cTr, `https://www.samer.life/sss/${slug}`)}</script>`
       };
       allPages[`en/faq/${slug}`] = {
         title: `${qEn} | Samer Allaham`,
         description: aEn || qEn,
         canonical: `https://www.samer.life/en/faq/${slug}`,
         lang: 'en',
-        content: `<h1>${qEn}</h1><p><strong>${aEn}</strong></p><div>${cEn}</div>`
+        content: `<h1>${qEn}</h1><p><strong>${aEn}</strong></p><div>${cEn}</div><script type="application/ld+json">${buildFaqSchema(qEn, aEn, cEn, `https://www.samer.life/en/faq/${slug}`)}</script>`
       };
       allPages[`ar/faq/${slug}`] = {
         title: `${qAr} | سامر اللحام`,
         description: aAr || qAr,
         canonical: `https://www.samer.life/ar/faq/${slug}`,
         lang: 'ar',
-        content: `<h1>${qAr}</h1><p><strong>${aAr}</strong></p><div>${cAr}</div>`
+        content: `<h1>${qAr}</h1><p><strong>${aAr}</strong></p><div>${cAr}</div><script type="application/ld+json">${buildFaqSchema(qAr, aAr, cAr, `https://www.samer.life/ar/faq/${slug}`)}</script>`
       };
     });
   }
