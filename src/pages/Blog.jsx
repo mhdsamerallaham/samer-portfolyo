@@ -120,9 +120,47 @@ export default function Blog() {
           {/* Author Box */}
           <AuthorBox />
 
+          {/* Internal Linking Block: 2 Related Blog Links + 1 Target Service Link */}
+          <div className="mt-12 pt-8 border-t border-white/10 space-y-6">
+            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+              <BookOpen size={20} className="text-[#ff6b6b]" />
+              İlgili Yazılar ve İlgili Hizmet
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {articles
+                .filter(a => (a.slug || a.id) !== (activeArticle.slug || activeArticle.id))
+                .slice(0, 2)
+                .map((related, rIdx) => (
+                  <div
+                    key={related.id || related.slug || rIdx}
+                    onClick={() => handleSelectArticle(related)}
+                    className="p-4 bg-[#161a20] border border-white/5 hover:border-[#ff6b6b]/30 rounded-xl cursor-pointer transition-all hover:-translate-y-0.5"
+                  >
+                    <span className="text-xs text-[#ff6b6b] font-semibold mono">İlgili Rehber</span>
+                    <h4 className="text-sm font-bold text-white mt-1 line-clamp-2">{related.title}</h4>
+                  </div>
+                ))}
+            </div>
+
+            {/* 1 Targeted Service Link */}
+            <div className="p-6 bg-gradient-to-r from-[#ff6b6b]/10 to-blue-500/10 border border-[#ff6b6b]/20 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 mt-6">
+              <div>
+                <span className="text-xs font-black mono text-[#ff6b6b] uppercase tracking-wider">Uzmanlık Hizmetimiz</span>
+                <h4 className="text-lg font-extrabold text-white mt-1">E-Ticaret Dönüşüm ve Hız Optimizasyonu</h4>
+                <p className="text-xs text-neutral-400 mt-1">Core Web Vitals skorlarınızı yükseltin, satış kaybını önleyin.</p>
+              </div>
+              <button
+                onClick={() => navigate('/eticaret-optimizasyon')}
+                className="px-5 py-2.5 bg-[#ff6b6b] hover:bg-[#ff5252] text-white text-xs font-bold rounded-xl transition-colors whitespace-nowrap cursor-pointer"
+              >
+                Hizmeti İnceleyin →
+              </button>
+            </div>
+          </div>
+
           {/* Knowledge Graph Component */}
           <KnowledgeGraphViewer />
-
         </div>
       </div>
     );

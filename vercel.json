@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "crons": [
     {
       "path": "/api/blog/generate",
@@ -10,6 +12,7 @@
     }
   ],
   "routes": [
+    { "src": "/sitemap.xml", "dest": "/api/sitemap" },
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
   ]

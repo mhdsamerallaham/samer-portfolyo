@@ -1,5 +1,7 @@
-const fs = require('fs');
+const fs = require('path') ? require('fs') : null;
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
 
 // Target directory for build
 const BUILD_DIR = path.resolve(__dirname, '../dist');
@@ -177,6 +179,94 @@ const pages = {
     lang: 'tr',
     content: `<h1>E-Ticaret & Satış Artırma Blogu</h1><p>E-ticaret mağazanızda dönüşüm oranlarını (CRO) yükseltmek ve SEO sıralamalarınızı geliştirmek için rehber yazılarım.</p>`
   },
+  'web-sitesi-gelistirme': {
+    title: 'Web Sitesi Geliştirme İstanbul | Modern React & Next.js — Samer',
+    description: 'React ve Next.js ile özel web sitesi geliştirme. Ultra hızlı, mobil uyumlu ve SEO dostu kurumsal yazılım çözümleri.',
+    keywords: 'web sitesi geliştirme, react web geliştirici, next.js uzmanı istanbul, özel yazılım',
+    canonical: 'https://www.samer.life/web-sitesi-gelistirme',
+    lang: 'tr',
+    content: `<h1>Web Sitesi Geliştirme Hizmetleri</h1><p>React ve Next.js altyapıları ile yüksek performanslı, güvenli ve SEO uyumlu web uygulamaları geliştiriyorum.</p>`
+  },
+  'yapay-zeka-cozumleri': {
+    title: 'Yapay Zeka Çözümleri & Chatbot Entegrasyonu — Samer',
+    description: 'E-ticaret ve işletmeniz için yapay zeka çözümleri. GPT tabanlı chatbot entegrasyonu, otomatik ürün içerik üretimi ve akıllı süreçler.',
+    keywords: 'yapay zeka çözümleri, e-ticaret chatbot entegrasyonu, gpt chatbot, yapay zeka ürün içeriği',
+    canonical: 'https://www.samer.life/yapay-zeka-cozumleri',
+    lang: 'tr',
+    content: `<h1>Yapay Zeka Çözümleri & Otomasyon</h1><p>Müşteri hizmetlerini otomatikleştiren ve satış dönüşümlerini artıran özel yapay zeka çözümleri sunuyorum.</p>`
+  },
+  'faq': {
+    title: 'Sıkça Sorulan Sorular (SSS) & Bilgi Bankası | Samer Allaham',
+    description: 'E-ticaret web tasarım, Shopify, İKAS, hız optimizasyonu, stok entegrasyonu ve yapay zeka çözümleri hakkında merak edilen sorular ve cevapları.',
+    keywords: 'e-ticaret sss, shopify sıkça sorulan sorular, ikas rehber, e-ticaret bilgi bankası',
+    canonical: 'https://www.samer.life/faq',
+    lang: 'tr',
+    content: `<h1>Sıkça Sorulan Sorular & E-Ticaret Bilgi Bankası</h1><p>E-ticaret mağazanızın teknik altyapısı, dönüşüm optimizasyonu ve entegrasyonlar hakkında aradığınız tüm yanıtlar.</p>`
+  },
+  'sss': {
+    title: 'Sıkça Sorulan Sorular (SSS) & Bilgi Bankası | Samer Allaham',
+    description: 'E-ticaret web tasarım, Shopify, İKAS, hız optimizasyonu, stok entegrasyonu ve yapay zeka çözümleri hakkında merak edilen sorular ve cevapları.',
+    keywords: 'e-ticaret sss, shopify sıkça sorulan sorular, ikas rehber, e-ticaret bilgi bankası',
+    canonical: 'https://www.samer.life/sss',
+    lang: 'tr',
+    content: `<h1>Sıkça Sorulan Sorular & E-Ticaret Bilgi Bankası</h1><p>E-ticaret mağazanızın teknik altyapısı, dönüşüm optimizasyonu ve entegrasyonlar hakkında aradığınız tüm yanıtlar.</p>`
+  },
+  'faq/shopify-donusum-orani-nasil-artirilir': {
+    title: 'Shopify Mağazalarında Dönüşüm Oranı (CR) Nasıl Artırılır? | Samer',
+    description: 'Shopify dönüşüm oranını artırmak için mobil sayfa hızını optimize etme, tek sayfalı ödeme (one-page checkout) ve güven unsurları rehberi.',
+    canonical: 'https://www.samer.life/faq/shopify-donusum-orani-nasil-artirilir',
+    lang: 'tr',
+    content: `<h1>Shopify Mağazalarında Dönüşüm Oranı (CR) Nasıl Artırılır?</h1><p>1. Mobil Hız Optimizasyonu, 2. Tek Sayfalı Ödeme (One-Page Checkout), 3. Güven Unsurları ve Şeffaflık.</p>`
+  },
+  'faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi': {
+    title: 'İKAS mı Shopify mı? Türkiye E-Ticaret Pazarında SEO & Hız — Samer',
+    description: 'Türkiye pazarında İKAS vs Shopify karşılaştırması. Sunucu hızı, yerel ödemeler ve teknik SEO avantajları analizi.',
+    canonical: 'https://www.samer.life/faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi',
+    lang: 'tr',
+    content: `<h1>İKAS mı Shopify mı? SEO ve Hız Karşılaştırması</h1><p>Türkiye içi yerel ödemeler ve PageSpeed avantajıyla İKAS, küresel ekosistem ve eklentilerle Shopify öne çıkar.</p>`
+  },
+  'faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi': {
+    title: 'E-Ticaret Ürün Detay Sayfası (PDP) UX Tasarımı ve Otomasyonu | Samer',
+    description: 'Dönüşüm odaklı ürün detay sayfası tasarımı, 360° görseller, stok otomasyonu ve yapay zeka canlı destek rehberi.',
+    canonical: 'https://www.samer.life/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi',
+    lang: 'tr',
+    content: `<h1>E-Ticaret Ürün Detay Sayfası (PDP) UX Tasarımı ve Otomasyonu</h1><p>Görsel hiyerarşi, stok uyarısı otomasyonu ve mobil uyumlu CTA yerleşimi ile dönüşüm artırma yöntemleri.</p>`
+  },
+  'faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir': {
+    title: 'E-Ticarette Yapay Zeka Chatbot Entegrasyonu Satışları Nasıl Artırır? | Samer',
+    description: 'GPT tabanlı yapay zeka chatbot entegrasyonu ile 7/24 otomatik ürün tavsiyeleri, kargo takibi ve müşteri desteği rehberi.',
+    canonical: 'https://www.samer.life/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir',
+    lang: 'tr',
+    content: `<h1>E-Ticarette Yapay Zeka Chatbot Entegrasyonu</h1><p>Müşteri hizmetleri yükünü %60 azaltan ve gece satışlarını %20 artıran akıllı chatbot sistemleri.</p>`
+  },
+  'sss/shopify-donusum-orani-nasil-artirilir': {
+    title: 'Shopify Mağazalarında Dönüşüm Oranı (CR) Nasıl Artırılır? | Samer',
+    description: 'Shopify dönüşüm oranını artırmak için mobil sayfa hızını optimize etme, tek sayfalı ödeme (one-page checkout) ve güven unsurları rehberi.',
+    canonical: 'https://www.samer.life/sss/shopify-donusum-orani-nasil-artirilir',
+    lang: 'tr',
+    content: `<h1>Shopify Mağazalarında Dönüşüm Oranı (CR) Nasıl Artırılır?</h1><p>1. Mobil Hız Optimizasyonu, 2. Tek Sayfalı Ödeme (One-Page Checkout), 3. Güven Unsurları ve Şeffaflık.</p>`
+  },
+  'sss/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi': {
+    title: 'İKAS mı Shopify mı? Türkiye E-Ticaret Pazarında SEO & Hız — Samer',
+    description: 'Türkiye pazarında İKAS vs Shopify karşılaştırması. Sunucu hızı, yerel ödemeler ve teknik SEO avantajları analizi.',
+    canonical: 'https://www.samer.life/sss/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi',
+    lang: 'tr',
+    content: `<h1>İKAS mı Shopify mı? SEO ve Hız Karşılaştırması</h1><p>Türkiye içi yerel ödemeler ve PageSpeed avantajıyla İKAS, küresel ekosistem ve eklentilerle Shopify öne çıkar.</p>`
+  },
+  'sss/urun-detay-sayfasi-ux-ve-otomasyon-rehberi': {
+    title: 'E-Ticaret Ürün Detay Sayfası (PDP) UX Tasarımı ve Otomasyonu | Samer',
+    description: 'Dönüşüm odaklı ürün detay sayfası tasarımı, 360° görseller, stok otomasyonu ve yapay zeka canlı destek rehberi.',
+    canonical: 'https://www.samer.life/sss/urun-detay-sayfasi-ux-ve-otomasyon-rehberi',
+    lang: 'tr',
+    content: `<h1>E-Ticaret Ürün Detay Sayfası (PDP) UX Tasarımı ve Otomasyonu</h1><p>Görsel hiyerarşi, stok uyarısı otomasyonu ve mobil uyumlu CTA yerleşimi ile dönüşüm artırma yöntemleri.</p>`
+  },
+  'sss/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir': {
+    title: 'E-Ticarette Yapay Zeka Chatbot Entegrasyonu Satışları Nasıl Artırır? | Samer',
+    description: 'GPT tabanlı yapay zeka chatbot entegrasyonu ile 7/24 otomatik ürün tavsiyeleri, kargo takibi ve müşteri desteği rehberi.',
+    canonical: 'https://www.samer.life/sss/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir',
+    lang: 'tr',
+    content: `<h1>E-Ticarette Yapay Zeka Chatbot Entegrasyonu</h1><p>Müşteri hizmetleri yükünü %60 azaltan ve gece satışlarını %20 artıran akıllı chatbot sistemleri.</p>`
+  },
 
   // ==========================================
   // ENGLISH PAGES (Prefix /en)
@@ -287,6 +377,66 @@ const pages = {
     lang: 'en',
     content: `<h1>Get in Touch</h1><p>Request a quote or get a free audit for your current store setup.</p>`
   },
+  'en/web-development': {
+    title: 'Web Development Services | React & Next.js Expert — Samer',
+    description: 'Custom React and Next.js web development services. Ultra-fast, responsive, and SEO-friendly corporate web solutions.',
+    keywords: 'web development, react developer, next.js expert, custom web software',
+    canonical: 'https://www.samer.life/en/web-development',
+    lang: 'en',
+    content: `<h1>Web Development Services</h1><p>Engineered React and Next.js custom applications designed for maximum performance and conversion.</p>`
+  },
+  'en/custom-software': {
+    title: 'Custom Software Development Istanbul | Full-Stack — Samer',
+    description: 'Custom web application and API development using React, Next.js, and Node.js. Istanbul-based freelance full-stack developer.',
+    keywords: 'custom software development, full stack developer istanbul, react freelance, api integration',
+    canonical: 'https://www.samer.life/en/custom-software',
+    lang: 'en',
+    content: `<h1>Custom Software Development</h1><p>Tailor-made web solutions and API middleware connecting retail platforms with ERPs.</p>`
+  },
+  'en/ai-solutions': {
+    title: 'AI Solutions & Chatbot Integration — Samer Allaham',
+    description: 'Custom AI solutions for e-commerce. GPT-based chatbot integration, automated product content generation, and smart workflows.',
+    keywords: 'ai solutions, ecommerce chatbot integration, gpt chatbot, ai product content',
+    canonical: 'https://www.samer.life/en/ai-solutions',
+    lang: 'en',
+    content: `<h1>AI Solutions & Automation</h1><p>Implement AI-driven chatbots and automated workflows to increase sales and customer satisfaction 24/7.</p>`
+  },
+  'en/faq': {
+    title: 'Frequently Asked Questions (FAQ) & Knowledge Base | Samer Allaham',
+    description: 'Get answers to common questions regarding Shopify setup, İKAS speed optimization, custom API stock sync, and AI integrations.',
+    keywords: 'ecommerce faq, shopify faq, ikas guide, ecommerce knowledge base',
+    canonical: 'https://www.samer.life/en/faq',
+    lang: 'en',
+    content: `<h1>Frequently Asked Questions & E-Commerce Knowledge Base</h1><p>Everything you need to know about scaling Shopify and İKAS stores, technical SEO, and automation.</p>`
+  },
+  'en/faq/shopify-donusum-orani-nasil-artirilir': {
+    title: 'How to Increase Conversion Rate in Shopify Stores | Samer',
+    description: 'Learn how to boost Shopify conversion rate through mobile speed optimization, one-page checkout, and trust badges.',
+    canonical: 'https://www.samer.life/en/faq/shopify-donusum-orani-nasil-artirilir',
+    lang: 'en',
+    content: `<h1>How to Increase Conversion Rate in Shopify Stores</h1><p>1. Mobile Speed Optimization, 2. One-Page Checkout Setup, 3. Trust & Transparency Badges.</p>`
+  },
+  'en/faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi': {
+    title: 'İKAS vs Shopify: Which is Better for SEO & Speed? | Samer',
+    description: 'Detailed comparison between İKAS and Shopify for server response speeds, local payment setups, and technical SEO performance.',
+    canonical: 'https://www.samer.life/en/faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi',
+    lang: 'en',
+    content: `<h1>İKAS vs Shopify: SEO & Speed Comparison</h1><p>İKAS excels in Turkish local server speed and payment gateways; Shopify leads in global app integrations.</p>`
+  },
+  'en/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi': {
+    title: 'Product Detail Page (PDP) UX Design & Automation Guide | Samer',
+    description: 'Optimize product detail pages for higher checkout conversion using high-res visuals, stock automation alerts, and AI chat.',
+    canonical: 'https://www.samer.life/en/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi',
+    lang: 'en',
+    content: `<h1>Product Detail Page (PDP) UX Design & Automation</h1><p>Visual hierarchy, low-stock alerts, and responsive sticky CTAs to maximize average order value.</p>`
+  },
+  'en/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir': {
+    title: 'AI Chatbot Integration for E-Commerce: Boost Sales | Samer',
+    description: 'How GPT-powered chatbot integration reduces customer support workload by 60% and increases night sales by 20%.',
+    canonical: 'https://www.samer.life/en/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir',
+    lang: 'en',
+    content: `<h1>AI Chatbot Integration for E-Commerce</h1><p>Automated 24/7 product recommendations, order tracking, and instant customer query resolution.</p>`
+  },
 
   // ==========================================
   // ARABIC PAGES (Prefix /ar)
@@ -396,6 +546,66 @@ const pages = {
     canonical: 'https://www.samer.life/ar/contact',
     lang: 'ar',
     content: `<h1>تواصل معنا اليوم</h1><p>اطرح أسئلتك أو اطلب تحليل أداء مجاني لمتجرك الحالي للبدء في خطة التطوير.</p>`
+  },
+  'ar/web-development': {
+    title: 'تطوير وتصميم المواقع الإلكترونية | خبير رياكت ونيكسست — سامر',
+    description: 'خدمات تطوير مواقع الويب بالرياض واسطنبول باستخدام React & Next.js. تطبيقات ويب فائقة السرعة ومتوافقة مع السيو.',
+    keywords: 'تطوير مواقع, مبرمج رياكت, خبير next.js, تصميم مواقع شركات',
+    canonical: 'https://www.samer.life/ar/web-development',
+    lang: 'ar',
+    content: `<h1>تطوير وتصميم المواقع الإلكترونية</h1><p>تطوير تطبيقات ويب حديثة فائقة السرعة والأمان مصممة خصيصاً لنمو عملك تجارياً.</p>`
+  },
+  'ar/custom-software': {
+    title: 'برمجة البرمجيات الخاصة والربط البرمجي APIs | سامر اللحام',
+    description: 'برمجة وتطوير برمجيات خاصة وأنظمة ربط API بين المتاجر الإلكترونية وبرامج المحاسبة والمستودعات.',
+    keywords: 'برمجة برمجيات خاصة, مطور ويب كامل, ربط api, مزامنة بيانات',
+    canonical: 'https://www.samer.life/ar/custom-software',
+    lang: 'ar',
+    content: `<h1>برمجة البرمجيات الخاصة والـ API</h1><p>بناء واجهات برمجية مخصصة وحلول ربط متكاملة تلبي احتياجات شركتك الفريدة.</p>`
+  },
+  'ar/ai-solutions': {
+    title: 'حلول الذكاء الاصطناعي ودمج الشات بوت | سامر اللحام',
+    description: 'دمج وتطوير حلول الذكاء الاصطناعي للمتاجر والشركات. شات بوت ذكي، توليد محتوى المنتجات، وأتمتة خدمة العملاء.',
+    keywords: 'حلول الذكاء الاصطناعي, شات بوت للمتاجر, شات بوت GPT, محتوى ذكي',
+    canonical: 'https://www.samer.life/ar/ai-solutions',
+    lang: 'ar',
+    content: `<h1>حلول الذكاء الاصطناعي والأتمتة</h1><p>أتمتة خدمة العملاء ورفع التحويلات عبر أنظمة الذكاء الاصطناعي التفاعلية.</p>`
+  },
+  'ar/faq': {
+    title: 'الأسئلة الشائعة وتصميم المتاجر | سامر اللحام',
+    description: 'إجابات شاملة على الأسئلة الأكثر تداولاً حول تصميم متاجر شوبيفاي وإيكاس، تحسين السرعة، وأتمتة المخزون.',
+    keywords: 'الاسئلة الشائعة شوبيفاي, اسئلة ايكاس, دليل التجارة الالكترونية',
+    canonical: 'https://www.samer.life/ar/faq',
+    lang: 'ar',
+    content: `<h1>الأسئلة الشائعة وقاعدة المعرفة</h1><p>كل ما تحتاج معرفته حول تحسين أداء متجرك وزيادة التحويلات وأتمتة العمليات.</p>`
+  },
+  'ar/faq/shopify-donusum-orani-nasil-artirilir': {
+    title: 'كيفية زيادة معدل التحويل في متاجر شوبيفاي | سامر اللحام',
+    description: 'دليل تحسين معدل التحويل في شوبيفاي عبر تسريع الجوال، صفحة الدفع الموحدة، وشارات الأمان.',
+    canonical: 'https://www.samer.life/ar/faq/shopify-donusum-orani-nasil-artirilir',
+    lang: 'ar',
+    content: `<h1>كيفية زيادة معدل التحويل في متاجر شوبيفاي</h1><p>1. تحسين سرعة الجوال، 2. صفحة دفع موحدة (One-Page Checkout)، 3. إضافة علامات الثقة والأمان.</p>`
+  },
+  'ar/faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi': {
+    title: 'إيكاس أم شوبيفاي؟ مقارنة السرعة والسيو للتجارة | سامر',
+    description: 'مقارنة شاملة بين منصة إيكاس وشوبيفاي من حيث سرعة الاستجابة، بوابات الدفع المحلية، وأداء السيو.',
+    canonical: 'https://www.samer.life/ar/faq/ikas-mi-shopify-mi-seo-icin-hangisi-daha-iyi',
+    lang: 'ar',
+    content: `<h1>إيكاس أم شوبيفاي؟ مقارنة السرعة والسيو</h1><p>تتميز إيكاس بالسرعة العالية وبوابات الدفع المحلية؛ بينما تتميز شوبيفاي بالتطبيقات والتوسع العالمي.</p>`
+  },
+  'ar/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi': {
+    title: 'دليل تصميم وأتمتة صفحة تفاصيل المنتج | سامر اللحام',
+    description: 'تحسين تصميم صفحة المنتج لزيادة المبيعات عبر صور فائقة الجودة، تنبيهات المخزون التلقائية، والشات بوت.',
+    canonical: 'https://www.samer.life/ar/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi',
+    lang: 'ar',
+    content: `<h1>دليل تصميم وأتمتة صفحة تفاصيل المنتج</h1><p>ترتيب العناصر البصرية، تنبيهات قلة المخزون، وأزرار الشراء الثابتة لرفع متوسط قيمة السلة.</p>`
+  },
+  'ar/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir': {
+    title: 'دمج شات بوت الذكاء الاصطناعي للمتاجر | سامر اللحام',
+    description: 'كيف يقلل شات بوت GPT جهد خدمة العملاء بنسبة 60% ويزيد مبيعات الفترة الليلية بنسبة 20%.',
+    canonical: 'https://www.samer.life/ar/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir',
+    lang: 'ar',
+    content: `<h1>دمج شات بوت الذكاء الاصطناعي للمتاجر</h1><p>ترشيح تلقائي للمنتجات، تتبع الشحنات الفوري، وإجابة استفسارات العملاء على مدار 24 ساعة.</p>`
   }
 };
 
@@ -509,173 +719,212 @@ const blogDetails = {
 };
 
 // Build final flat routes configurations map
-const allPages = {
-  ...pages
-};
-
-// Programmatically register blog posts in 3 languages
-blogPostsList.forEach(slug => {
-  // Turkish blog path: /blog/slug
-  if (blogDetails.tr[slug]) {
-    allPages[`blog/${slug}`] = {
-      ...blogDetails.tr[slug],
-      canonical: `https://www.samer.life/blog/${slug}`,
-      lang: 'tr'
-    };
-  }
-  
-  // English blog path: /en/blog/slug
-  if (blogDetails.en[slug]) {
-    allPages[`en/blog/${slug}`] = {
-      ...blogDetails.en[slug],
-      canonical: `https://www.samer.life/en/blog/${slug}`,
-      lang: 'en'
-    };
-  }
-  
-  // Arabic blog path: /ar/blog/slug
-  if (blogDetails.ar[slug]) {
-    allPages[`ar/blog/${slug}`] = {
-      ...blogDetails.ar[slug],
-      canonical: `https://www.samer.life/ar/blog/${slug}`,
-      lang: 'ar'
-    };
-  }
-});
-
-console.log(`Starting prerendering for ${Object.keys(allPages).length} routes...`);
-
-// Helper to replace tag block (like <title> or <meta name="description">)
-function replaceMetaTag(html, name, content) {
-  const metaRegex = new RegExp(`<meta\\s+name="${name}"\\s+content="[^"]*"\\s*\\/?>`, 'i');
-  if (metaRegex.test(html)) {
-    return html.replace(metaRegex, `<meta name="${name}" content="${content}" />`);
-  }
-  const propRegex = new RegExp(`<meta\\s+property="og:${name}"\\s+content="[^"]*"\\s*\\/?>`, 'i');
-  if (propRegex.test(html)) {
-    return html.replace(propRegex, `<meta property="og:${name}" content="${content}" />`);
-  }
-  return html;
-}
-
-// Helper to resolve localized pathname prefix
-function getLangPrefix(routePath) {
-  if (routePath.startsWith('en/') || routePath === 'en') return 'en';
-  if (routePath.startsWith('ar/') || routePath === 'ar') return 'ar';
-  return 'tr';
-}
-
-const sitemapUrls = [];
-
-Object.entries(allPages).forEach(([route, data]) => {
-  let pageHtml = template;
-  const pageLang = data.lang || getLangPrefix(route);
-  const pageDir = pageLang === 'ar' ? 'rtl' : 'ltr';
-
-  // 1. Force correct html language and direction attributes
-  pageHtml = pageHtml.replace(/<html[^>]*>/i, `<html lang="${pageLang}" dir="${pageDir}">`);
-
-  // 2. Replace title tags
-  pageHtml = pageHtml.replace(/<title>.*?<\/title>/gi, `<title>${data.title}</title>`);
-  pageHtml = pageHtml.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/gi, `<meta property="og:title" content="${data.title}" />`);
-  pageHtml = pageHtml.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:title" content="${data.title}" />`);
-
-  // 3. Replace description tags
-  pageHtml = replaceMetaTag(pageHtml, 'description', data.description);
-  pageHtml = pageHtml.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/gi, `<meta property="og:description" content="${data.description}" />`);
-  pageHtml = pageHtml.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:description" content="${data.description}" />`);
-
-  // 4. Replace keywords if specified
-  if (data.keywords) {
-    pageHtml = replaceMetaTag(pageHtml, 'keywords', data.keywords);
-  }
-
-  // 5. Replace canonical and Open Graph URL links
-  pageHtml = pageHtml.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/gi, `<link rel="canonical" href="${data.canonical}" />`);
-  pageHtml = pageHtml.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/gi, `<meta property="og:url" content="${data.canonical}" />`);
-
-  // Calculate matching dynamic Hreflang URLs
-  const relativePath = route === '' ? '/' : `/${route}`;
-  // We need clean mapping for navigation hreflangs
-  const trRoute = route.startsWith('en/') ? route.replace('en/', '') : (route.startsWith('ar/') ? route.replace('ar/', '') : route);
-  
-  // Custom lookup inside script matching the navigation map rules
-  const lookupMap = {
-    '/': { tr: '/', en: '/en', ar: '/ar' },
-    '/services': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
-    '/hizmetler': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
-    '/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
-    '/web-tasarim': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
-    '/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
-    '/e-ticaret-web-tasarim': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
-    '/ecommerce-setup': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
-    '/shopify-setup-turkey': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
-    '/eticaret-site-kurulumu': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
-    '/ecommerce-optimization': { tr: '/eticaret-optimizasyon', en: '/en/ecommerce-optimization', ar: '/ar/ecommerce-optimization' },
-    '/eticaret-optimizasyon': { tr: '/eticaret-optimizasyon', en: '/en/ecommerce-optimization', ar: '/ar/ecommerce-optimization' },
-    '/product-visuals-content': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
-    '/product-content-ai': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
-    '/urun-gorsel-ve-icerik': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
-    '/inventory-stock-automation': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
-    '/stock-inventory-system': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
-    '/stok-ve-depo-sistemi': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
-    '/monthly-management': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
-    '/monthly-ecommerce-management': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
-    '/aylik-yonetim': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
-    '/case-studies': { tr: '/basari-hikayeleri', en: '/en/case-studies', ar: '/ar/case-studies' },
-    '/basari-hikayeleri': { tr: '/basari-hikayeleri', en: '/en/case-studies', ar: '/ar/case-studies' },
-    '/blog': { tr: '/blog', en: '/en/blog', ar: '/ar/blog' },
-    '/about': { tr: '/hakkimda', en: '/en/about', ar: '/ar/about' },
-    '/hakkimda': { tr: '/hakkimda', en: '/en/about', ar: '/ar/about' },
-    '/contact': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
-    '/iletisim': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' }
+async function main() {
+  const allPages = {
+    ...pages
   };
 
-  let cleanPath = relativePath.endsWith('/') && relativePath.length > 1 ? relativePath.slice(0, -1) : relativePath;
-  
-  // Normalize language prefix to look up translations base path (e.g. /ar/services -> /services)
-  let lookupPath = cleanPath;
-  if (lookupPath.startsWith('/en/')) lookupPath = lookupPath.replace('/en/', '/');
-  else if (lookupPath.startsWith('/ar/')) lookupPath = lookupPath.replace('/ar/', '/');
-  else if (lookupPath === '/en' || lookupPath === '/ar') lookupPath = '/';
+  // 1. Fetch dynamic blog posts from Supabase database if environment variables exist
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  let trUrlSuffix = cleanPath;
-  let enUrlSuffix = cleanPath;
-  let arUrlSuffix = cleanPath;
-
-  if (lookupMap[lookupPath]) {
-    trUrlSuffix = lookupMap[lookupPath].tr;
-    enUrlSuffix = lookupMap[lookupPath].en;
-    arUrlSuffix = lookupMap[lookupPath].ar;
-  } else if (cleanPath.includes('/blog/')) {
-    const slug = cleanPath.split('/blog/')[1];
-    trUrlSuffix = `/blog/${slug}`;
-    enUrlSuffix = `/en/blog/${slug}`;
-    arUrlSuffix = `/ar/blog/${slug}`;
-  } else {
-    // Standard prefixes stripping fallback
-    let stripped = cleanPath;
-    if (stripped.startsWith('/en/')) stripped = stripped.replace('/en/', '/');
-    else if (stripped.startsWith('/ar/')) stripped = stripped.replace('/ar/', '/');
-    else if (stripped === '/en' || stripped === '/ar') stripped = '/';
-    
-    trUrlSuffix = stripped;
-    enUrlSuffix = stripped === '/' ? '/en' : `/en${stripped}`;
-    arUrlSuffix = stripped === '/' ? '/ar' : `/ar${stripped}`;
+  let dbPosts = [];
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      console.log('Connecting to Supabase to fetch dynamic blog posts...');
+      const supabase = createClient(supabaseUrl, supabaseAnonKey);
+      const { data, error } = await supabase.from('blog_posts').select('*');
+      if (!error && Array.isArray(data) && data.length > 0) {
+        dbPosts = data;
+        console.log(`✓ Successfully retrieved ${dbPosts.length} dynamic blog posts from Supabase!`);
+      } else if (error) {
+        console.warn(`⚠ Supabase blog_posts table query warning: ${error.message}`);
+      }
+    } catch (e) {
+      console.warn(`⚠ Supabase connection exception: ${e.message}`);
+    }
   }
 
-  const trUrl = `https://www.samer.life${trUrlSuffix}`;
-  const enUrl = `https://www.samer.life${enUrlSuffix}`;
-  const arUrl = `https://www.samer.life${arUrlSuffix}`;
+  if (dbPosts.length > 0) {
+    dbPosts.forEach((post) => {
+      const slug = post.slug;
+      if (!slug) return;
+      allPages[`blog/${slug}`] = {
+        title: post.seo_title_tr || post.title_tr || post.title || 'Blog | Samer Allaham',
+        description: post.seo_description_tr || post.summary_tr || post.summary || '',
+        canonical: `https://www.samer.life/blog/${slug}`,
+        lang: 'tr',
+        content: `<h1>${post.title_tr || post.title}</h1>${post.content_tr || post.content || ''}`
+      };
+      allPages[`en/blog/${slug}`] = {
+        title: post.seo_title_en || post.title_en || post.title_tr || post.title || 'Blog | Samer Allaham',
+        description: post.seo_description_en || post.summary_en || post.summary_tr || post.summary || '',
+        canonical: `https://www.samer.life/en/blog/${slug}`,
+        lang: 'en',
+        content: `<h1>${post.title_en || post.title_tr || post.title}</h1>${post.content_en || post.content_tr || post.content || ''}`
+      };
+      allPages[`ar/blog/${slug}`] = {
+        title: post.seo_title_ar || post.title_ar || post.title_tr || post.title || 'مدونة | سامر اللحام',
+        description: post.seo_description_ar || post.summary_ar || post.summary_tr || post.summary || '',
+        canonical: `https://www.samer.life/ar/blog/${slug}`,
+        lang: 'ar',
+        content: `<h1>${post.title_ar || post.title_tr || post.title}</h1>${post.content_ar || post.content_tr || post.content || ''}`
+      };
+    });
+  } else {
+    console.log('ℹ Using local blog details fallback list.');
+    blogPostsList.forEach(slug => {
+      if (blogDetails.tr[slug]) {
+        allPages[`blog/${slug}`] = {
+          ...blogDetails.tr[slug],
+          canonical: `https://www.samer.life/blog/${slug}`,
+          lang: 'tr'
+        };
+      }
+      if (blogDetails.en[slug]) {
+        allPages[`en/blog/${slug}`] = {
+          ...blogDetails.en[slug],
+          canonical: `https://www.samer.life/en/blog/${slug}`,
+          lang: 'en'
+        };
+      }
+      if (blogDetails.ar[slug]) {
+        allPages[`ar/blog/${slug}`] = {
+          ...blogDetails.ar[slug],
+          canonical: `https://www.samer.life/ar/blog/${slug}`,
+          lang: 'ar'
+        };
+      }
+    });
+  }
 
-  const hreflangTags = `
+  console.log(`Starting prerendering for ${Object.keys(allPages).length} total routes...`);
+
+  // Helper to replace tag block (like <title> or <meta name="description">)
+  function replaceMetaTag(html, name, content) {
+    const metaRegex = new RegExp(`<meta\\s+name="${name}"\\s+content="[^"]*"\\s*\\/?>`, 'i');
+    if (metaRegex.test(html)) {
+      return html.replace(metaRegex, `<meta name="${name}" content="${content}" />`);
+    }
+    const propRegex = new RegExp(`<meta\\s+property="og:${name}"\\s+content="[^"]*"\\s*\\/?>`, 'i');
+    if (propRegex.test(html)) {
+      return html.replace(propRegex, `<meta property="og:${name}" content="${content}" />`);
+    }
+    return html;
+  }
+
+  // Helper to resolve localized pathname prefix
+  function getLangPrefix(routePath) {
+    if (routePath.startsWith('en/') || routePath === 'en') return 'en';
+    if (routePath.startsWith('ar/') || routePath === 'ar') return 'ar';
+    return 'tr';
+  }
+
+  const sitemapUrls = [];
+
+  Object.entries(allPages).forEach(([route, data]) => {
+    let pageHtml = template;
+    const pageLang = data.lang || getLangPrefix(route);
+    const pageDir = pageLang === 'ar' ? 'rtl' : 'ltr';
+
+    pageHtml = pageHtml.replace(/<html[^>]*>/i, `<html lang="${pageLang}" dir="${pageDir}">`);
+    pageHtml = pageHtml.replace(/<title>.*?<\/title>/gi, `<title>${data.title}</title>`);
+    pageHtml = pageHtml.replace(/<meta property="og:title" content="[^"]*"\s*\/?>/gi, `<meta property="og:title" content="${data.title}" />`);
+    pageHtml = pageHtml.replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:title" content="${data.title}" />`);
+
+    pageHtml = replaceMetaTag(pageHtml, 'description', data.description);
+    pageHtml = pageHtml.replace(/<meta property="og:description" content="[^"]*"\s*\/?>/gi, `<meta property="og:description" content="${data.description}" />`);
+    pageHtml = pageHtml.replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/gi, `<meta name="twitter:description" content="${data.description}" />`);
+
+    if (data.keywords) {
+      pageHtml = replaceMetaTag(pageHtml, 'keywords', data.keywords);
+    }
+
+    pageHtml = pageHtml.replace(/<link rel="canonical" href="[^"]*"\s*\/?>/gi, `<link rel="canonical" href="${data.canonical}" />`);
+    pageHtml = pageHtml.replace(/<meta property="og:url" content="[^"]*"\s*\/?>/gi, `<meta property="og:url" content="${data.canonical}" />`);
+
+    const relativePath = route === '' ? '/' : `/${route}`;
+    let cleanPath = relativePath.endsWith('/') && relativePath.length > 1 ? relativePath.slice(0, -1) : relativePath;
+
+    let trUrlSuffix = cleanPath;
+    let enUrlSuffix = cleanPath;
+    let arUrlSuffix = cleanPath;
+
+    let lookupPath = cleanPath;
+    if (lookupPath.startsWith('/en/')) lookupPath = lookupPath.replace('/en/', '/');
+    else if (lookupPath.startsWith('/ar/')) lookupPath = lookupPath.replace('/ar/', '/');
+    else if (lookupPath === '/en' || lookupPath === '/ar') lookupPath = '/';
+
+    const lookupMap = {
+      '/': { tr: '/', en: '/en', ar: '/ar' },
+      '/services': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
+      '/hizmetler': { tr: '/hizmetler', en: '/en/services', ar: '/ar/services' },
+      '/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+      '/web-tasarim': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
+      '/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+      '/e-ticaret-web-tasarim': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
+      '/ecommerce-setup': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
+      '/shopify-setup-turkey': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
+      '/eticaret-site-kurulumu': { tr: '/eticaret-site-kurulumu', en: '/en/ecommerce-setup', ar: '/ar/shopify-setup-turkey' },
+      '/ecommerce-optimization': { tr: '/eticaret-optimizasyon', en: '/en/ecommerce-optimization', ar: '/ar/ecommerce-optimization' },
+      '/eticaret-optimizasyon': { tr: '/eticaret-optimizasyon', en: '/en/ecommerce-optimization', ar: '/ar/ecommerce-optimization' },
+      '/product-visuals-content': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
+      '/product-content-ai': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
+      '/urun-gorsel-ve-icerik': { tr: '/urun-gorsel-ve-icerik', en: '/en/product-visuals-content', ar: '/ar/product-content-ai' },
+      '/inventory-stock-automation': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
+      '/stock-inventory-system': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
+      '/stok-ve-depo-sistemi': { tr: '/stok-ve-depo-sistemi', en: '/en/inventory-stock-automation', ar: '/ar/stock-inventory-system' },
+      '/monthly-management': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
+      '/monthly-ecommerce-management': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
+      '/aylik-yonetim': { tr: '/aylik-yonetim', en: '/en/monthly-management', ar: '/ar/monthly-ecommerce-management' },
+      '/case-studies': { tr: '/basari-hikayeleri', en: '/en/case-studies', ar: '/ar/case-studies' },
+      '/basari-hikayeleri': { tr: '/basari-hikayeleri', en: '/en/case-studies', ar: '/ar/case-studies' },
+      '/blog': { tr: '/blog', en: '/en/blog', ar: '/ar/blog' },
+      '/about': { tr: '/hakkimda', en: '/en/about', ar: '/ar/about' },
+      '/hakkimda': { tr: '/hakkimda', en: '/en/about', ar: '/ar/about' },
+      '/contact': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
+      '/iletisim': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
+      '/web-sitesi-gelistirme': { tr: '/web-sitesi-gelistirme', en: '/en/web-development', ar: '/ar/web-development' },
+      '/web-development': { tr: '/web-sitesi-gelistirme', en: '/en/web-development', ar: '/ar/web-development' },
+      '/ozel-yazilim-gelistirme': { tr: '/ozel-yazilim-gelistirme', en: '/en/custom-software', ar: '/ar/custom-software' },
+      '/custom-software': { tr: '/ozel-yazilim-gelistirme', en: '/en/custom-software', ar: '/ar/custom-software' },
+      '/yapay-zeka-cozumleri': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
+      '/ai-solutions': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
+      '/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
+      '/sss': { tr: '/sss', en: '/en/faq', ar: '/ar/faq' }
+    };
+
+    if (lookupMap[lookupPath]) {
+      trUrlSuffix = lookupMap[lookupPath].tr;
+      enUrlSuffix = lookupMap[lookupPath].en;
+      arUrlSuffix = lookupMap[lookupPath].ar;
+    } else if (cleanPath.includes('/blog/')) {
+      const slug = cleanPath.split('/blog/')[1];
+      trUrlSuffix = `/blog/${slug}`;
+      enUrlSuffix = `/en/blog/${slug}`;
+      arUrlSuffix = `/ar/blog/${slug}`;
+    } else {
+      let stripped = cleanPath;
+      if (stripped.startsWith('/en/')) stripped = stripped.replace('/en/', '/');
+      else if (stripped.startsWith('/ar/')) stripped = stripped.replace('/ar/', '/');
+      else if (stripped === '/en' || stripped === '/ar') stripped = '/';
+      
+      trUrlSuffix = stripped;
+      enUrlSuffix = stripped === '/' ? '/en' : `/en${stripped}`;
+      arUrlSuffix = stripped === '/' ? '/ar' : `/ar${stripped}`;
+    }
+
+    const trUrl = `https://www.samer.life${trUrlSuffix}`;
+    const enUrl = `https://www.samer.life${enUrlSuffix}`;
+    const arUrl = `https://www.samer.life${arUrlSuffix}`;
+
+    const hreflangTags = `
   <link rel="alternate" hreflang="tr" href="${trUrl}" />
   <link rel="alternate" hreflang="en" href="${enUrl}" />
   <link rel="alternate" hreflang="ar" href="${arUrl}" />
   <link rel="alternate" hreflang="x-default" href="${trUrl}" />`;
 
-  // Collect for Sitemap
-  sitemapUrls.push(`  <url>
+    sitemapUrls.push(`  <url>
     <loc>https://www.samer.life${relativePath}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${route.includes('blog/') ? 'monthly' : 'weekly'}</changefreq>
@@ -686,45 +935,53 @@ Object.entries(allPages).forEach(([route, data]) => {
     <xhtml:link rel="alternate" hreflang="x-default" href="${trUrl}" />
   </url>`);
 
-  // Inject hreflangs right after the canonical link
-  const canonicalRegex = /<link rel="canonical" href="[^"]*"\s*\/?>/i;
-  pageHtml = pageHtml.replace(canonicalRegex, `$&${hreflangTags}`);
+    const canonicalRegex = /<link rel="canonical" href="[^"]*"\s*\/?>/i;
+    pageHtml = pageHtml.replace(canonicalRegex, `$&${hreflangTags}`);
 
-  // 6. Replace the generic <noscript> block with page-specific rich HTML content
-  const noscriptBlockRegex = /<noscript>\s*<div style="font-family:sans-serif;[\s\S]*?<\/noscript>/i;
-  const newNoscriptBlock = `<noscript>
+    const rootDivRegex = /<div id="root"><\/div>/i;
+    const prerenderedRootHtml = `<div id="root">
+    <div class="prerender-content" style="max-width:1200px;margin:0 auto;padding:2rem 1rem;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif">
+      ${data.content}
+    </div>
+  </div>`;
+    if (rootDivRegex.test(pageHtml)) {
+      pageHtml = pageHtml.replace(rootDivRegex, prerenderedRootHtml);
+    }
+
+    const noscriptFallback = `<noscript>
     <div style="font-family:sans-serif;max-width:900px;margin:auto;padding:2rem">
       ${data.content}
     </div>
-  </noscript>`;
-  pageHtml = pageHtml.replace(noscriptBlockRegex, newNoscriptBlock);
+  </noscript>\n`;
+    pageHtml = pageHtml.replace('<div id="root">', `${noscriptFallback}<div id="root">`);
 
-  // 7. Write the page to disk
-  if (route === '') {
-    // Root index.html (Turkish Home page)
-    fs.writeFileSync(TEMPLATE_PATH, pageHtml, 'utf8');
-    console.log('✓ Prerendered root page (dist/index.html)');
-  } else {
-    // Subpages go to dist/[route]/index.html
-    const routeDir = path.join(BUILD_DIR, route);
-    if (!fs.existsSync(routeDir)) {
-      fs.mkdirSync(routeDir, { recursive: true });
+    if (route === '') {
+      fs.writeFileSync(TEMPLATE_PATH, pageHtml, 'utf8');
+      console.log('✓ Prerendered root page (dist/index.html)');
+    } else {
+      const routeDir = path.join(BUILD_DIR, route);
+      if (!fs.existsSync(routeDir)) {
+        fs.mkdirSync(routeDir, { recursive: true });
+      }
+      fs.writeFileSync(path.join(routeDir, 'index.html'), pageHtml, 'utf8');
+      console.log(`✓ Prerendered route: /${route} (dist/${route}/index.html)`);
     }
-    fs.writeFileSync(path.join(routeDir, 'index.html'), pageHtml, 'utf8');
-    console.log(`✓ Prerendered route: /${route} (dist/${route}/index.html)`);
-  }
-});
+  });
 
-// Create 404.html as a copy of the main template for hosting fallback handling
-fs.copyFileSync(TEMPLATE_PATH, path.join(BUILD_DIR, '404.html'));
-console.log('✓ Generated dist/404.html from root template');
+  fs.copyFileSync(TEMPLATE_PATH, path.join(BUILD_DIR, '404.html'));
+  console.log('✓ Generated dist/404.html from root template');
 
-// Generate and save dist/sitemap.xml dynamically with all 44 routes and their respective hreflangs
-const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${sitemapUrls.join('\n')}
 </urlset>`;
-fs.writeFileSync(path.join(BUILD_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
-console.log('✓ Dynamically generated dist/sitemap.xml with 44 localized URLs!');
-console.log('Prerendering completed successfully!');
+  fs.writeFileSync(path.join(BUILD_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
+  console.log(`✓ Dynamically generated dist/sitemap.xml with ${sitemapUrls.length} localized URLs!`);
+  console.log('Prerendering completed successfully!');
+}
+
+main().catch((err) => {
+  console.error('Prerendering failed:', err);
+  process.exit(1);
+});
