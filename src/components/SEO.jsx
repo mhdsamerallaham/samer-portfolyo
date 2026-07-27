@@ -500,7 +500,7 @@ export default function SEO({
 
   // Canonical URL always points strictly to pathname (stripping query parameters)
   const canonicalUrl = `https://www.samer.life${pathname}`;
-  const pageTitle = `${finalTitle} | Samer`;
+  const pageTitle = finalTitle.includes('Samer') ? finalTitle : `${finalTitle} | Samer`;
 
   // Alternate Multilingual URLs (hreflang)
   const trUrl = `https://www.samer.life${getLanguageUrl(pathname, 'tr')}`;
@@ -538,7 +538,6 @@ export default function SEO({
       {/* Titles & Meta */}
       <title>{pageTitle}</title>
       <meta name="description" content={finalDesc} />
-      {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       <meta name="author" content="Samer Allaham" />
 
       {/* Canonical Link (Parametresiz Temiz URL) */}

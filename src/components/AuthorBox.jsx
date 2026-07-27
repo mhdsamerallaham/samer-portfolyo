@@ -5,7 +5,7 @@ export default function AuthorBox() {
     <div className="p-5 sm:p-6 rounded-2xl bg-[#161a20] border border-gray-800/80 flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-8">
       <img
         src="/avatar.jpeg"
-        alt="Samer Allaham"
+        alt="Samer Allaham - E-Ticaret ve Web Geliştirme Uzmanı"
         className="w-16 h-16 rounded-full border-2 border-[#ff6b6b] object-cover flex-shrink-0 shadow-lg shadow-[#ff6b6b]/10"
       />
       <div className="space-y-1.5 flex-grow">

@@ -56,7 +56,7 @@ export default function FAQDetail() {
       <div className="min-h-screen bg-[#0d0f12] text-white pt-32 pb-20 px-4 text-center">
         <div className="max-w-md mx-auto bg-[#161a20] border border-gray-800 rounded-2xl p-8">
           <HelpCircle className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-          <h1 className="text-xl font-bold mb-2">Soru Bulunamadı</h1>
+          <h2 className="text-xl font-bold mb-2">Soru Bulunamadı</h2>
           <p className="text-gray-400 text-sm mb-6">Aradığınız soru kaldırılmış veya adresi değişmiş olabilir.</p>
           <Link
             to={getLocalizedPath('/faq', i18n.language)}

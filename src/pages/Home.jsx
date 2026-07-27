@@ -96,7 +96,7 @@ export default function Home() {
               <div className="w-56 h-56 sm:w-60 sm:h-60 lg:w-60 lg:h-60 xl:w-68 xl:h-68 rounded-full overflow-hidden border-4 border-[#131b2e] bg-[#131b2e] shadow-2xl relative">
                 <img
                   src="/avatar.webp"
-                  alt="Samer Allaham"
+                  alt="Samer Allaham - E-Ticaret Web Tasarım ve Geliştirme Uzmanı"
                   width="240"
                   height="240"
                   fetchpriority="high"
