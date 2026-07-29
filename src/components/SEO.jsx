@@ -347,7 +347,15 @@ const personProfessionalServiceSchema = {
     addressLocality: 'İstanbul',
     addressCountry: 'TR',
   },
-  sameAs: ['https://github.com/mhdsamerallaham'],
+  sameAs: [
+    'https://github.com/mhdsamerallaham',
+    'https://www.linkedin.com/in/samer-allaham-18a784162/',
+    'https://contra.com/samer_allaham_s51lxcvv',
+    'https://www.fiverr.com/s/akQab8g',
+    'https://www.upwork.com/freelancers/~010348fd03fde0f41b',
+    'https://www.quora.com/profile/Samer-Allaham-4',
+    'https://hashnode.com/@samerallaham'
+  ],
   knowsLanguage: ['tr', 'ar', 'en'],
   areaServed: ['TR', 'SY', 'EG'],
 };

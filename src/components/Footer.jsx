@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowDownRight, Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { ArrowDownRight, Github, Linkedin, Mail, MapPin, ExternalLink } from 'lucide-react';
 import { getLocalizedPath } from '../utils/navigation';
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
 
       <div className="max-w-[1440px] mx-auto w-full px-6 md:px-12 relative z-10">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/5 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/5 text-left">
           
           {/* Logo & Identity */}
           <div className="flex flex-col gap-6">
@@ -77,6 +77,43 @@ export default function Footer() {
               <li><Link to={getLocalizedPath('/urun-gorsel-ve-icerik', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.urun-gorsel.title')}</Link></li>
               <li><Link to={getLocalizedPath('/stok-ve-depo-sistemi', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.stok-depo.title')}</Link></li>
               <li><Link to={getLocalizedPath('/aylik-yonetim', i18n.language)} className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors">{t('services.items.aylik-yonetim.title')}</Link></li>
+            </ul>
+          </div>
+
+          {/* Global Profiles & Freelance Platforms */}
+          <div className="flex flex-col gap-4">
+            <span className="mono text-[9px] font-black text-neutral-400 tracking-[0.2em] uppercase">PROFİLLER</span>
+            <ul className="flex flex-col gap-2.5">
+              <li>
+                <a href="https://www.upwork.com/freelancers/~010348fd03fde0f41b?mp_source=share" target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors inline-flex items-center gap-1.5 group">
+                  <span>Upwork Profile</span>
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.fiverr.com/s/akQab8g" target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors inline-flex items-center gap-1.5 group">
+                  <span>Fiverr Profile</span>
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
+              <li>
+                <a href="https://contra.com/samer_allaham_s51lxcvv?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=samer_allaham_s51lxcvv" target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors inline-flex items-center gap-1.5 group">
+                  <span>Contra Portfolio</span>
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
+              <li>
+                <a href="https://hashnode.com/@samerallaham" target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors inline-flex items-center gap-1.5 group">
+                  <span>Hashnode Tech</span>
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.quora.com/profile/Samer-Allaham-4" target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-[#ff6b6b] text-xs font-semibold transition-colors inline-flex items-center gap-1.5 group">
+                  <span>Quora Profile</span>
+                  <ExternalLink size={11} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
             </ul>
           </div>
 
