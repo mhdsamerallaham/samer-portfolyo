@@ -1,9 +1,9 @@
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
-const createProviderManager = require("../lib/createProviderManager");
-const QualityEngine = require("../lib/modules/quality/QualityEngine");
-const EntityEngine = require("../lib/modules/entities/EntityEngine");
-const ExpertInterviewEngine = require("../lib/modules/expert/ExpertInterviewEngine");
+const createProviderManager = require("../_lib/createProviderManager");
+const QualityEngine = require("../_lib/modules/quality/QualityEngine");
+const EntityEngine = require("../_lib/modules/entities/EntityEngine");
+const ExpertInterviewEngine = require("../_lib/modules/expert/ExpertInterviewEngine");
 
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
