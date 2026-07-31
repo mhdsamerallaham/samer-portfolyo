@@ -22,11 +22,25 @@ const routeSEOMap = {
       'web tasarım hizmetleri, e ticaret web tasarım, websitesi kurulumu, shopify hizmetleri, ikas kurulum, e-ticaret optimizasyon',
   },
   '/web-tasarim': {
-    title: 'Profesyonel Web Tasarım | Modern Websitesi Geliştirme — Samer',
+    title: 'Web Tasarım & Kurumsal Web Sitesi Yaptırma | Samer Allaham',
     description:
-      'React & Next.js ile modern, hızlı ve SEO uyumlu web tasarım hizmetleri. Kurumsal websitesi, portfolyo ve e-ticaret web tasarımı. İstanbul merkezli uzman.',
+      'Profesyonel web tasarım ve modern web sitesi geliştirme hizmetleri. React & Next.js ile hızlı, SEO uyumlu, mobil odaklı kurumsal web sitesi tasarımı.',
     keywords:
-      'web tasarım, web tasarım istanbul, profesyonel web tasarım, websitesi tasarımı, kurumsal web tasarım, modern web tasarım',
+      'web tasarım, web tasarım istanbul, profesyonel web tasarım, web sitesi yaptırma, kurumsal web tasarım, modern web tasarım, fatih web tasarım',
+  },
+  '/istanbul-web-tasarim': {
+    title: 'İstanbul Web Tasarım Ajansı & Uzmanı | Samer Allaham',
+    description:
+      'İstanbul profesyonel web tasarım ve e-ticaret çözümleri. Hızlı, mobil uyumlu ve SEO odaklı özel web sitesi tasarımı ve geliştirme hizmeti.',
+    keywords:
+      'istanbul web tasarım, istanbul web tasarım ajansı, istanbul web sitesi yapan şirketler, profesyonel web tasarım istanbul, freelance web tasarımcı istanbul',
+  },
+  '/fatih-web-tasarim': {
+    title: 'Fatih Web Tasarım & E-Ticaret Kurulumu | Samer Allaham',
+    description:
+      'İstanbul Fatih bölgesinde profesyonel web tasarım, e-ticaret ve yazılım çözümleri. İşletmenizi dijitale taşıyan modern web sitesi projeleri.',
+    keywords:
+      'fatih web tasarım, fatih web tasarım ajansı, istanbul fatih web tasarımcı, fatih e-ticaret kurulumu, fatih web sitesi yapanlar',
   },
   '/e-ticaret-web-tasarim': {
     title: 'E-Ticaret Web Tasarım | Profesyonel Online Mağaza Kurulumu — Samer',

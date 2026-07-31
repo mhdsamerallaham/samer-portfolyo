@@ -357,6 +357,105 @@
                         "a": "Geliştirdiğimiz otomasyonlar sayesinde, girdiğiniz ham ürün başlıklarını veya konuları analiz eden AI modelleri, saniyeler içinde SEO uyumlu makale veya ürün açıklamaları üreterek sitenize otomatik yükler."
                     }
                 ]
+            },
+            "web-tasarim": {
+                "title": "Web Tasarım & Kurumsal Web Sitesi Yaptırma",
+                "price": "25.000 TL – 55.000 TL",
+                "badge": "Modern & SEO Odaklı",
+                "desc": "React & Next.js altyapısıyla hızlı, mobil uyumlu, Google arama motoru (SEO) ve yapay zeka (AI) uyumlu profesyonel web tasarım hizmeti.",
+                "features": [
+                    "React & Next.js ile ultra hızlı açılan web tasarımı (Core Web Vitals 95+)",
+                    "Mobil odaklı (Mobile-First) %100 responsive ve estetik arayüz (UI/UX)",
+                    "Google SEO ve ChatGPT / Perplexity gibi AI arama motorları uyumlu semantik yapı",
+                    "Kullanımı kolay Türkçe admin paneli ve içerik yönetim sistemi (CMS)",
+                    "Çoklu dil desteği, kurumsal e-posta, SSL güvenlik sertifikası ve CDN entegrasyonu"
+                ],
+                "ai_desc": {
+                    "definition": "Kurumsal firmaların ve profesyonellerin dijital prestijini artırmak için React ve Next.js teknolojileriyle sıfırdan tasarlanan profesyonel web tasarım hizmeti.",
+                    "for_whom": "Arama motorlarında üst sıralara çıkmak, Google'dan düzenli müşteri kazanmak ve markasını profesyonelce temsil etmek isteyen tüm işletmeler için.",
+                    "how_works": "1. İhtiyaç ve rakip analizi, 2. Modern UI/UX tasarımları, 3. Next.js ile kodlama ve performans testi, 4. İçerik ve SEO optimizasyonu, 5. Anahtar teslim yayına alma.",
+                    "example": "Bir danışmanlık firması için hızlı, mobil uyumlu, randevu sistemli ve SEO performanslı kurumsal web sitesi tasarlanması."
+                },
+                "faqs": [
+                    {
+                        "q": "Web tasarım süreci ne kadar sürer?",
+                        "a": "Profesyonel bir kurumsal web tasarım projesi, tasarım onayından itibaren ortalama 5 ile 10 iş günü içinde tamamlanarak anahtar teslim teslim edilir."
+                    },
+                    {
+                        "q": "Web tasarımı fiyatları neye göre belirlenir?",
+                        "a": "Web tasarım fiyatları; sayfa sayısı, özel fonksiyonlar, dil seçenekleri ve özel animasyon taleplerine göre 25.000 TL ile 55.000 TL arasında değişmektedir."
+                    },
+                    {
+                        "q": "Web sitem Google ve mobil cihazlara uyumlu olacak mı?",
+                        "a": "Evet, tüm web tasarımlarımız %100 mobil uyumlu (responsive) ve Google'ın Core Web Vitals performans kriterlerine tam uyumlu olarak kodlanır."
+                    }
+                ]
+            },
+            "istanbul-web-tasarim": {
+                "title": "İstanbul Web Tasarım Ajansı & Uzmanı",
+                "price": "25.000 TL – 60.000 TL",
+                "badge": "İstanbul Merkezli",
+                "desc": "İstanbul'daki kurumsal şirketler, e-ticaret markaları ve KOBİ'ler için dönüşüm odaklı, yüksek performanslı ve SEO uyumlu web tasarım çözümleri.",
+                "features": [
+                    "İstanbul genelindeki kurumsal firmalara özel profesyonel web tasarım",
+                    "Yerel SEO (Local SEO) optimizasyonu ve Google Haritalar (Maps) entegrasyonu",
+                    "Shopify, İKAS ve özel Next.js kodlama ile e-ticaret ve tanıtım siteleri",
+                    "Yüksek dönüşüm odaklı kullanıcı deneyimi (UX) ve hızlı mobil görünüm",
+                    "İstanbul içinde yüz yüze toplantı imkanı ve 7/24 kesintisiz teknik destek"
+                ],
+                "ai_desc": {
+                    "definition": "İstanbul merkezli işletmelerin dijital pazarda öne çıkmasını sağlayan yerel SEO destekli ve yüksek dönüşüm hedefli profesyonel web tasarım hizmetidir.",
+                    "for_whom": "İstanbul'da faaliyet gösteren, bölgesel aramalarda üst sırada yer almak ve kurumsal imajını güçlendirmek isteyen şirketler için.",
+                    "how_works": "1. İstanbul pazarı ve rakip analizi, 2. Yerel SEO odaklı içerik mimarisi, 3. Özel web tasarımı geliştirme, 4. Google Benim İşletmem ve Harita entegrasyonu.",
+                    "example": "İstanbul merkezli bir lojistik markasının tüm hizmetlerini tanıtan multi-language destekli ve yerel SEO odaklı web sitesinin tasarlanması."
+                },
+                "faqs": [
+                    {
+                        "q": "İstanbul web tasarım projesi için yüz yüze görüşebilir miyiz?",
+                        "a": "Evet, İstanbul içindeki işletmenizi ziyaret ederek veya Levent/Fatih lokasyonlarımızda projenizin detaylarını yüz yüze planlayabiliriz."
+                    },
+                    {
+                        "q": "Yerel SEO (Local SEO) çalışması web tasarımına dahil mi?",
+                        "a": "Evet, İstanbul aramalarında ('web tasarım İstanbul', 'e-ticaret uzmanı İstanbul') görünür olmanız için Google Harita kaydı ve yerel arama etiketleri tasarıma dahildir."
+                    },
+                    {
+                        "q": "İstanbul'da hangi sektörlere web tasarım hizmeti veriyorsunuz?",
+                        "a": "E-ticaret, tekstil, sağlık, hukuk, turizm, lojistik, gayrimenkul ve inşaat sektörleri başta olmak üzere İstanbul'daki tüm sektörlere hizmet sunuyoruz."
+                    }
+                ]
+            },
+            "fatih-web-tasarim": {
+                "title": "Fatih Web Tasarım & E-Ticaret Kurulumu",
+                "price": "20.000 TL – 50.000 TL",
+                "badge": "Fatih & Tarihi Yarımada",
+                "desc": "Fatih, Laleli, Aksaray ve Eminönü bölgesindeki esnaf, toptancı ve ihracatçı firmalar için özel web tasarım ve e-ticaret yazılım çözümleri.",
+                "features": [
+                    "Fatih ve Tarihi Yarımada bölgesindeki toptancı ve işletmelere özel web tasarım",
+                    "İhracat odaklı çok dilli (Türkçe, Arapça, İngilizce) web siteleri ve katalog tasarımı",
+                    "Toptan (B2B) ve perakende (B2C) e-ticaret altyapı kurulumları (Shopify & İKAS)",
+                    "Pazaryeri entegrasyonları (Trendyol, Hepsiburada, Amazon TR) ve stok takibi",
+                    "Hızlı teslimat (3-7 gün), bütçe dostu paketler ve birebir teknik rehberlik"
+                ],
+                "ai_desc": {
+                    "definition": "Fatih bölgesindeki toptancı, tekstilci ve ticaret erbabının yerel ve uluslararası pazara açılmasını sağlayan çok dilli web tasarım ve e-ticaret altyapı paketidir.",
+                    "for_whom": "Fatih, Laleli ve Aksaray bölgesindeki esnaflar, ihracatçılar ve B2B toptan satış yapan firmalar için.",
+                    "how_works": "1. Mağaza / firma ihtiyaç tespiti, 2. Çok dilli (TR/AR/EN) web tasarımı hazırlanması, 3. Ürün ve katalog verilerinin yüklenmesi, 4. Yayına alma ve eğitim.",
+                    "example": "Laleli'deki bir tekstil toptancısı için Arapça ve İngilizce ürün kataloğu içeren B2B e-ticaret web sitesi kurulması."
+                },
+                "faqs": [
+                    {
+                        "q": "Fatih bölgesindeki toptancı ve esnaflara özel web sitesi yapıyor musunuz?",
+                        "a": "Evet, Fatih, Laleli, Aksaray ve Eminönü bölgesindeki toptancı ve ihracatçı firmalar için ürün kataloglu, B2B ve B2C e-ticaret siteleri tasarlıyoruz."
+                    },
+                    {
+                        "q": "Arapça ve İngilizce dil desteği olan web siteleri tasarlıyor musunuz?",
+                        "a": "Evet, Fatih bölgesinin uluslararası ticaret yapısına uygun şekilde Türkçe, Arapça ve İngilizce tam uyumlu web siteleri kuruyoruz."
+                    },
+                    {
+                        "q": "Fatih web tasarım projesi ne kadar sürede teslim edilir?",
+                        "a": "Fatih bölgesindeki web tasarım ve e-ticaret projeleri 3 ile 7 iş günü içinde yayına alınarak teslim edilmektedir."
+                    }
+                ]
             }
         }
     },

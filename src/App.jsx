@@ -117,6 +117,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/hizmetler" element={<ServicesOverview />} />
             <Route path="/web-tasarim" element={<ServiceDetail />} />
+            <Route path="/istanbul-web-tasarim" element={<ServiceDetail />} />
+            <Route path="/fatih-web-tasarim" element={<ServiceDetail />} />
             <Route path="/e-ticaret-web-tasarim" element={<ServiceDetail />} />
             <Route path="/eticaret-site-kurulumu" element={<ServiceDetail />} />
             <Route path="/eticaret-optimizasyon" element={<ServiceDetail />} />
@@ -140,6 +142,8 @@ function App() {
             <Route path="/en" element={<Home />} />
             <Route path="/en/services" element={<ServicesOverview />} />
             <Route path="/en/web-design" element={<ServiceDetail />} />
+            <Route path="/en/istanbul-web-design" element={<ServiceDetail />} />
+            <Route path="/en/fatih-web-design" element={<ServiceDetail />} />
             <Route path="/en/ecommerce-web-design" element={<ServiceDetail />} />
             <Route path="/en/ecommerce-setup" element={<ServiceDetail />} />
             <Route path="/en/ecommerce-optimization" element={<ServiceDetail />} />
@@ -161,6 +165,8 @@ function App() {
             <Route path="/ar" element={<Home />} />
             <Route path="/ar/services" element={<ServicesOverview />} />
             <Route path="/ar/web-design" element={<ServiceDetail />} />
+            <Route path="/ar/istanbul-web-design" element={<ServiceDetail />} />
+            <Route path="/ar/fatih-web-design" element={<ServiceDetail />} />
             <Route path="/ar/ecommerce-web-design" element={<ServiceDetail />} />
             <Route path="/ar/shopify-setup-turkey" element={<ServiceDetail />} />
             <Route path="/ar/ecommerce-optimization" element={<ServiceDetail />} />

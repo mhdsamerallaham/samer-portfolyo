@@ -8,7 +8,9 @@ import ServiceCard from '../components/ServiceCard';
 
 const routeToKeyMap = {
   // Turkish
-  '/web-tasarim': 'web-gelistirme',
+  '/web-tasarim': 'web-tasarim',
+  '/istanbul-web-tasarim': 'istanbul-web-tasarim',
+  '/fatih-web-tasarim': 'fatih-web-tasarim',
   '/e-ticaret-web-tasarim': 'site-kurulumu',
   '/eticaret-site-kurulumu': 'site-kurulumu',
   '/eticaret-optimizasyon': 'optimizasyon',
@@ -20,7 +22,9 @@ const routeToKeyMap = {
   '/yapay-zeka-cozumleri': 'yapay-zeka',
 
   // English
-  '/en/web-design': 'web-gelistirme',
+  '/en/web-design': 'web-tasarim',
+  '/en/istanbul-web-design': 'istanbul-web-tasarim',
+  '/en/fatih-web-design': 'fatih-web-tasarim',
   '/en/ecommerce-web-design': 'site-kurulumu',
   '/en/ecommerce-setup': 'site-kurulumu',
   '/en/ecommerce-optimization': 'optimizasyon',
@@ -32,7 +36,9 @@ const routeToKeyMap = {
   '/en/ai-solutions': 'yapay-zeka',
 
   // Arabic
-  '/ar/web-design': 'web-gelistirme',
+  '/ar/web-design': 'web-tasarim',
+  '/ar/istanbul-web-design': 'istanbul-web-tasarim',
+  '/ar/fatih-web-design': 'fatih-web-tasarim',
   '/ar/ecommerce-web-design': 'site-kurulumu',
   '/ar/shopify-setup-turkey': 'site-kurulumu',
   '/ar/ecommerce-optimization': 'optimizasyon',

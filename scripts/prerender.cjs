@@ -46,14 +46,54 @@ const pages = {
     `
   },
   'web-tasarim': {
-    title: 'Profesyonel Web Tasarım | Modern Websitesi Geliştirme — Samer',
-    description: 'React & Next.js ile modern, hızlı ve SEO uyumlu web tasarım hizmetleri. Kurumsal websitesi, portfolyo ve e-ticaret web tasarımı.',
-    keywords: 'web tasarım, web tasarım istanbul, profesyonel web tasarım, websitesi tasarımı, kurumsal web tasarım, modern web tasarım',
+    title: 'Web Tasarım & Kurumsal Web Sitesi Yaptırma | Samer Allaham',
+    description: 'Profesyonel web tasarım ve modern web sitesi geliştirme hizmetleri. React & Next.js ile hızlı, SEO uyumlu, mobil odaklı kurumsal web sitesi tasarımı.',
+    keywords: 'web tasarım, web tasarım istanbul, profesyonel web tasarım, web sitesi yaptırma, kurumsal web tasarım, modern web tasarım, fatih web tasarım',
     canonical: 'https://www.samer.life/web-tasarim',
     lang: 'tr',
     content: `
-      <h1>Profesyonel Web Tasarım Hizmetleri | Samer Allaham</h1>
-      <p>React ve Next.js altyapıları ile modern, hızlı ve SEO uyumlu web tasarım ve websitesi geliştirme hizmetleri. İşletmenizin dijital varlığını güçlendirecek özel web çözümleri.</p>
+      <h1>Web Tasarım & Kurumsal Web Sitesi Yaptırma | Samer Allaham</h1>
+      <p>React ve Next.js altyapıları ile modern, ultra hızlı ve SEO uyumlu profesyonel web tasarım hizmetleri. İşletmenizin dijital prestijini artıracak özel web sitesi çözümleri.</p>
+      <h2>Web Tasarım Hizmet Kapsamı</h2>
+      <ul>
+        <li><strong>React & Next.js Teknolojisi:</strong> Saniyeler içinde açılan ultra hızlı ve güvenli web siteleri.</li>
+        <li><strong>Mobil Odaklı (Mobile-First) Tasarım:</strong> Tüm telefon ve tabletlerde kusursuz çalışan esnek arayüz.</li>
+        <li><strong>Google & AI SEO Uyumlu:</strong> Arama motorlarında ve ChatGPT / Perplexity gibi AI sistemlerinde öne çıkan semantik kod yapısı.</li>
+      </ul>
+    `
+  },
+  'istanbul-web-tasarim': {
+    title: 'İstanbul Web Tasarım Ajansı & Uzmanı | Samer Allaham',
+    description: 'İstanbul profesyonel web tasarım ve e-ticaret çözümleri. Hızlı, mobil uyumlu ve SEO odaklı özel web sitesi tasarımı ve geliştirme hizmeti.',
+    keywords: 'istanbul web tasarım, istanbul web tasarım ajansı, istanbul web sitesi yapan şirketler, profesyonel web tasarım istanbul, freelance web tasarımcı istanbul',
+    canonical: 'https://www.samer.life/istanbul-web-tasarim',
+    lang: 'tr',
+    content: `
+      <h1>İstanbul Web Tasarım Ajansı & Uzmanı | Samer Allaham</h1>
+      <p>İstanbul genelindeki kurumsal şirketler, e-ticaret markaları ve KOBİ'ler için dönüşüm odaklı, yüksek performanslı ve SEO uyumlu web tasarım çözümleri.</p>
+      <h2>İstanbul Web Tasarım Çözümleri</h2>
+      <ul>
+        <li><strong>Yerel SEO & Google Haritalar:</strong> İstanbul aramalarında ("web tasarım İstanbul") ilk sayfa sıralaması.</li>
+        <li><strong>Kurumsal & E-Ticaret Siteleri:</strong> Shopify, İKAS ve özel kodlama ile yüksek dönüşümlü mağaza ve şirket siteleri.</li>
+        <li><strong>Yüz Yüze Görüşme & Destek:</strong> İstanbul içi projenizin detaylarını yüz yüze veya online planlama imkanı.</li>
+      </ul>
+    `
+  },
+  'fatih-web-tasarim': {
+    title: 'Fatih Web Tasarım & E-Ticaret Kurulumu | Samer Allaham',
+    description: 'İstanbul Fatih bölgesinde profesyonel web tasarım, e-ticaret ve yazılım çözümleri. İşletmenizi dijitale taşıyan modern web sitesi projeleri.',
+    keywords: 'fatih web tasarım, fatih web tasarım ajansı, istanbul fatih web tasarımcı, fatih e-ticaret kurulumu, fatih web sitesi yapanlar',
+    canonical: 'https://www.samer.life/fatih-web-tasarim',
+    lang: 'tr',
+    content: `
+      <h1>Fatih Web Tasarım & E-Ticaret Kurulumu | Samer Allaham</h1>
+      <p>Fatih, Laleli, Aksaray ve Eminönü bölgesindeki esnaf, toptancı ve ihracatçı firmalar için özel web tasarım ve e-ticaret yazılım çözümleri.</p>
+      <h2>Fatih & Tarihi Yarımada Web Hizmetleri</h2>
+      <ul>
+        <li><strong>Toptan (B2B) & Perakende (B2C) Siteleri:</strong> İhracat odaklı çok dilli (Türkçe, Arapça, İngilizce) ürün katalogları ve e-ticaret kurulumları.</li>
+        <li><strong>Pazaryeri Entegrasyonu:</strong> Trendyol, Hepsiburada ve Amazon TR stok senkronizasyonu.</li>
+        <li><strong>Hızlı Teslimat & Birebir Destek:</strong> 3-7 iş gününde anahtar teslim teslimat.</li>
+      </ul>
     `
   },
   'e-ticaret-web-tasarim': {

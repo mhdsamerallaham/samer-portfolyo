@@ -12,6 +12,14 @@ export const pageLanguageMap = {
   '/en/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
   '/ar/web-design': { tr: '/web-tasarim', en: '/en/web-design', ar: '/ar/web-design' },
 
+  '/istanbul-web-tasarim': { tr: '/istanbul-web-tasarim', en: '/en/istanbul-web-design', ar: '/ar/istanbul-web-design' },
+  '/en/istanbul-web-design': { tr: '/istanbul-web-tasarim', en: '/en/istanbul-web-design', ar: '/ar/istanbul-web-design' },
+  '/ar/istanbul-web-design': { tr: '/istanbul-web-tasarim', en: '/en/istanbul-web-design', ar: '/ar/istanbul-web-design' },
+
+  '/fatih-web-tasarim': { tr: '/fatih-web-tasarim', en: '/en/fatih-web-design', ar: '/ar/fatih-web-design' },
+  '/en/fatih-web-design': { tr: '/fatih-web-tasarim', en: '/en/fatih-web-design', ar: '/ar/fatih-web-design' },
+  '/ar/fatih-web-design': { tr: '/fatih-web-tasarim', en: '/en/fatih-web-design', ar: '/ar/fatih-web-design' },
+
   '/e-ticaret-web-tasarim': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
   '/en/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
   '/ar/ecommerce-web-design': { tr: '/e-ticaret-web-tasarim', en: '/en/ecommerce-web-design', ar: '/ar/ecommerce-web-design' },
