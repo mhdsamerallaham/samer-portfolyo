@@ -11,64 +11,46 @@ module.exports = async (req, res) => {
   const domain = "https://www.samer.life";
   const today = new Date().toISOString().split("T")[0];
 
-  // Static routes map
+  // Route language mapping for alternate hreflang tags
+  const routeMap = {
+    "": { tr: "", en: "en", ar: "ar" },
+    "hizmetler": { tr: "hizmetler", en: "en/services", ar: "ar/services" },
+    "web-tasarim": { tr: "web-tasarim", en: "en/web-design", ar: "ar/web-design" },
+    "istanbul-web-tasarim": { tr: "istanbul-web-tasarim", en: "en/istanbul-web-design", ar: "ar/istanbul-web-design" },
+    "fatih-web-tasarim": { tr: "fatih-web-tasarim", en: "en/fatih-web-design", ar: "ar/fatih-web-design" },
+    "e-ticaret-web-tasarim": { tr: "e-ticaret-web-tasarim", en: "en/ecommerce-web-design", ar: "ar/ecommerce-web-design" },
+    "eticaret-site-kurulumu": { tr: "eticaret-site-kurulumu", en: "en/ecommerce-setup", ar: "ar/shopify-setup-turkey" },
+    "eticaret-optimizasyon": { tr: "eticaret-optimizasyon", en: "en/ecommerce-optimization", ar: "ar/ecommerce-optimization" },
+    "urun-gorsel-ve-icerik": { tr: "urun-gorsel-ve-icerik", en: "en/product-visuals-content", ar: "ar/product-content-ai" },
+    "stok-ve-depo-sistemi": { tr: "stok-ve-depo-sistemi", en: "en/inventory-stock-automation", ar: "ar/stock-inventory-system" },
+    "aylik-yonetim": { tr: "aylik-yonetim", en: "en/monthly-management", ar: "ar/monthly-ecommerce-management" },
+    "web-sitesi-gelistirme": { tr: "web-sitesi-gelistirme", en: "en/web-development", ar: "ar/web-development" },
+    "ozel-yazilim-gelistirme": { tr: "ozel-yazilim-gelistirme", en: "en/custom-software", ar: "ar/custom-software" },
+    "yapay-zeka-cozumleri": { tr: "yapay-zeka-cozumleri", en: "en/ai-solutions", ar: "ar/ai-solutions" },
+    "basari-hikayeleri": { tr: "basari-hikayeleri", en: "en/case-studies", ar: "ar/case-studies" },
+    "blog": { tr: "blog", en: "en/blog", ar: "ar/blog" },
+    "faq": { tr: "faq", en: "en/faq", ar: "ar/faq" },
+    "sss": { tr: "sss", en: "en/faq", ar: "ar/faq" },
+    "hakkimda": { tr: "hakkimda", en: "en/about", ar: "ar/about" },
+    "iletisim": { tr: "iletisim", en: "en/contact", ar: "ar/contact" }
+  };
+
   const staticRoutes = [
-    "",
-    "hizmetler",
-    "web-tasarim",
-    "istanbul-web-tasarim",
-    "fatih-web-tasarim",
-    "e-ticaret-web-tasarim",
-    "eticaret-site-kurulumu",
-    "eticaret-optimizasyon",
-    "urun-gorsel-ve-icerik",
-    "stok-ve-depo-sistemi",
-    "aylik-yonetim",
-    "web-sitesi-gelistirme",
-    "ozel-yazilim-gelistirme",
-    "yapay-zeka-cozumleri",
-    "basari-hikayeleri",
-    "blog",
-    "faq",
-    "sss",
-    "hakkimda",
-    "iletisim",
-    "en",
-    "en/services",
-    "en/web-design",
-    "en/istanbul-web-design",
-    "en/fatih-web-design",
-    "en/ecommerce-web-design",
-    "en/ecommerce-setup",
-    "en/ecommerce-optimization",
-    "en/product-visuals-content",
-    "en/inventory-stock-automation",
-    "en/monthly-management",
-    "en/web-development",
-    "en/custom-software",
-    "en/ai-solutions",
-    "en/case-studies",
-    "en/blog",
-    "en/faq",
-    "en/about",
-    "en/contact",
-    "ar",
-    "ar/services",
-    "ar/web-design",
-    "ar/ecommerce-web-design",
-    "ar/shopify-setup-turkey",
-    "ar/ecommerce-optimization",
-    "ar/product-content-ai",
-    "ar/stock-inventory-system",
-    "ar/monthly-ecommerce-management",
-    "ar/web-development",
-    "ar/custom-software",
-    "ar/ai-solutions",
-    "ar/case-studies",
-    "ar/blog",
-    "ar/faq",
-    "ar/about",
-    "ar/contact"
+    "", "hizmetler", "web-tasarim", "istanbul-web-tasarim", "fatih-web-tasarim",
+    "e-ticaret-web-tasarim", "eticaret-site-kurulumu", "eticaret-optimizasyon",
+    "urun-gorsel-ve-icerik", "stok-ve-depo-sistemi", "aylik-yonetim",
+    "web-sitesi-gelistirme", "ozel-yazilim-gelistirme", "yapay-zeka-cozumleri",
+    "basari-hikayeleri", "blog", "faq", "sss", "hakkimda", "iletisim",
+    "en", "en/services", "en/web-design", "en/istanbul-web-design", "en/fatih-web-design",
+    "en/ecommerce-web-design", "en/ecommerce-setup", "en/ecommerce-optimization",
+    "en/product-visuals-content", "en/inventory-stock-automation", "en/monthly-management",
+    "en/web-development", "en/custom-software", "en/ai-solutions", "en/case-studies",
+    "en/blog", "en/faq", "en/about", "en/contact",
+    "ar", "ar/services", "ar/web-design", "ar/istanbul-web-design", "ar/fatih-web-design",
+    "ar/ecommerce-web-design", "ar/shopify-setup-turkey", "ar/ecommerce-optimization",
+    "ar/product-content-ai", "ar/stock-inventory-system", "ar/monthly-ecommerce-management",
+    "ar/web-development", "ar/custom-software", "ar/ai-solutions", "ar/case-studies",
+    "ar/blog", "ar/faq", "ar/about", "ar/contact"
   ];
 
   let blogSlugs = [
@@ -105,41 +87,58 @@ module.exports = async (req, res) => {
 
   const sitemapUrls = [];
 
-  // 1. Add static routes
+  // Helper to build URL with xhtml:link hreflang tags
+  const buildUrlXml = (loc, trPath, enPath, arPath, priority = "0.7", changefreq = "monthly") => {
+    const trUrl = trPath === "" ? domain : `${domain}/${trPath}`;
+    const enUrl = enPath === "" ? domain : `${domain}/${enPath}`;
+    const arUrl = arPath === "" ? domain : `${domain}/${arPath}`;
+
+    return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="${trUrl}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="${arUrl}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${trUrl}" />
+  </url>`;
+  };
+
+  // 1. Add static routes with hreflang tags
   staticRoutes.forEach(route => {
     const loc = route === "" ? domain : `${domain}/${route}`;
     const priority = route === "" ? "1.0" : "0.85";
-    sitemapUrls.push(`  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${priority}</priority>
-  </url>`);
+    let lookupKey = route;
+    if (lookupKey.startsWith("en/")) lookupKey = lookupKey.replace("en/", "");
+    else if (lookupKey.startsWith("ar/")) lookupKey = lookupKey.replace("ar/", "");
+    else if (lookupKey === "en" || lookupKey === "ar") lookupKey = "";
+
+    const mapping = routeMap[lookupKey] || { tr: route, en: `en/${route}`, ar: `ar/${route}` };
+    sitemapUrls.push(buildUrlXml(loc, mapping.tr, mapping.en, mapping.ar, priority, "weekly"));
   });
 
-  // 2. Add blog routes in TR, EN, AR
+  // 2. Add blog routes in TR, EN, AR with hreflang tags
   blogSlugs.forEach(slug => {
-    ["blog", "en/blog", "ar/blog"].forEach(prefix => {
-      const loc = `${domain}/${prefix}/${slug}`;
-      sitemapUrls.push(`  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`);
+    const trPath = `blog/${slug}`;
+    const enPath = `en/blog/${slug}`;
+    const arPath = `ar/blog/${slug}`;
+
+    [trPath, enPath, arPath].forEach(path => {
+      const loc = `${domain}/${path}`;
+      sitemapUrls.push(buildUrlXml(loc, trPath, enPath, arPath, "0.7", "monthly"));
     });
   });
 
-  // 3. Add FAQ routes in TR, EN, AR
+  // 3. Add FAQ routes in TR, EN, AR with hreflang tags
   faqSlugs.forEach(slug => {
-    ["faq", "sss", "en/faq", "ar/faq"].forEach(prefix => {
-      const loc = `${domain}/${prefix}/${slug}`;
-      sitemapUrls.push(`  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`);
+    const trPath = `faq/${slug}`;
+    const enPath = `en/faq/${slug}`;
+    const arPath = `ar/faq/${slug}`;
+
+    [`faq/${slug}`, `sss/${slug}`, `en/faq/${slug}`, `ar/faq/${slug}`].forEach(path => {
+      const loc = `${domain}/${path}`;
+      sitemapUrls.push(buildUrlXml(loc, trPath, enPath, arPath, "0.7", "monthly"));
     });
   });
 
