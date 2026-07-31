@@ -2,15 +2,15 @@ const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
 const createProviderManager = require("../lib/createProviderManager");
-const TopicDiscoveryEngine = require("../modules/discovery/TopicDiscoveryEngine");
-const IntentClassifierEngine = require("../modules/intent/IntentClassifierEngine");
-const ResearchEngine = require("../modules/research/ResearchEngine");
-const ExpertInterviewEngine = require("../modules/expert/ExpertInterviewEngine");
-const EntityEngine = require("../modules/entities/EntityEngine");
-const KnowledgeEngine = require("../modules/knowledge/KnowledgeEngine");
-const MemoryEngine = require("../modules/knowledge/MemoryEngine");
-const QualityEngine = require("../modules/quality/QualityEngine");
-const SemanticLinkingEngine = require("../modules/semantic-linking/SemanticLinkingEngine");
+const TopicDiscoveryEngine = require("../lib/modules/discovery/TopicDiscoveryEngine");
+const IntentClassifierEngine = require("../lib/modules/intent/IntentClassifierEngine");
+const ResearchEngine = require("../lib/modules/research/ResearchEngine");
+const ExpertInterviewEngine = require("../lib/modules/expert/ExpertInterviewEngine");
+const EntityEngine = require("../lib/modules/entities/EntityEngine");
+const KnowledgeEngine = require("../lib/modules/knowledge/KnowledgeEngine");
+const MemoryEngine = require("../lib/modules/knowledge/MemoryEngine");
+const QualityEngine = require("../lib/modules/quality/QualityEngine");
+const SemanticLinkingEngine = require("../lib/modules/semantic-linking/SemanticLinkingEngine");
 
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
