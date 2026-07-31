@@ -1,30 +1,51 @@
 const OpenAICompatibleProvider = require("../OpenAICompatibleProvider");
 
 /**
- * HuggingFace Router Providers — Öncelik 3, 4, 5
+ * HuggingFace Router Providers
  *
  * HuggingFace Router, farklı backend sağlayıcılar üzerinden
  * güçlü açık kaynak modellere erişim sağlar.
  * Base URL: https://router.huggingface.co/v1
  *
+ * Aktif modeller ve providerlar (Temmuz 2026).
+ *
  * Env: HF_TOKEN
  */
 const HF_MODELS = [
+  // ── Groq backend ───────────────────────────────────────────
   {
     model: "meta-llama/Llama-3.3-70B-Instruct:groq",
-    label: "HuggingFace Router (Llama-3.3-70B via Groq)",
+    label: "HF Router (Llama-3.3-70B via Groq)",
   },
+  // ── Together AI backend ────────────────────────────────────
   {
-    model: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B:novita",
-    label: "HuggingFace Router (DeepSeek-R1-32B via Novita)",
+    model: "meta-llama/Llama-3.3-70B-Instruct:together",
+    label: "HF Router (Llama-3.3-70B via Together)",
   },
+  // ── Cerebras backend ───────────────────────────────────────
+  {
+    model: "meta-llama/Llama-3.3-70B-Instruct:cerebras",
+    label: "HF Router (Llama-3.3-70B via Cerebras)",
+  },
+  // ── SambaNova backend ──────────────────────────────────────
+  {
+    model: "meta-llama/Llama-3.3-70B-Instruct:sambanova",
+    label: "HF Router (Llama-3.3-70B via SambaNova)",
+  },
+  // ── Fireworks AI backend ───────────────────────────────────
+  {
+    model: "Qwen/Qwen2.5-Coder-32B-Instruct:fireworks-ai",
+    label: "HF Router (Qwen2.5-Coder-32B via Fireworks)",
+  },
+  // ── Nscale backend ─────────────────────────────────────────
   {
     model: "Qwen/Qwen2.5-Coder-32B-Instruct:nscale",
-    label: "HuggingFace Router (Qwen2.5-Coder-32B via Nscale)",
+    label: "HF Router (Qwen2.5-Coder-32B via Nscale)",
   },
+  // ── DeepInfra backend ──────────────────────────────────────
   {
-    model: "mistralai/Mistral-7B-Instruct-v0.3:featherless",
-    label: "HuggingFace Router (Mistral-7B via Featherless)",
+    model: "meta-llama/Llama-3.3-70B-Instruct:deepinfra",
+    label: "HF Router (Llama-3.3-70B via DeepInfra)",
   },
 ];
 
