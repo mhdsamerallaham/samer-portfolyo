@@ -116,42 +116,42 @@
                 ]
             },
             "urun-gorsel": {
-                "title": "Ürün Görsel ve İçerik Servisi",
-                "price": "Ürün başına 50 TL – 150 TL",
-                "badge": "Yapay Zeka Destekli",
-                "desc": "Ürünlerinizin profesyonel görünmesi ve Google'da kolayca bulunması için AI destekli içerik üretimi.",
+                "title": "Ürün Görsel, Video ve İçerik Servisi",
+                "price": "500 TL – 1.250 TL",
+                "badge": "Video & Yapay Zeka Destekli",
+                "desc": "Video ve webe uygun çekici görsel, yüksek çözünürlüklü model/ürün prodüksiyonu ve SEO odaklı içerik hizmeti.",
                 "features": [
-                    "Yapay zeka destekli yüksek çözünürlüklü ürün görselleri",
-                    "Görsellerden arka plan temizleme ve stüdyo ortamı oluşturma",
-                    "SEO uyumlu, ikna edici ve özgün ürün açıklamaları yazımı",
-                    "Google Merchant Center uyumlu görsel ve veri optimizasyonu"
+                    "Web ve e-ticaret sitelerine özel çekici, yüksek çözünürlüklü görsel & model prodüksiyonu",
+                    "Sosyal medya ve web vitrinleri için dinamik ürün & konsept tanıtım videoları",
+                    "Yapay zeka destekli model giydirme, kumaş & mücevher detay kopyalama",
+                    "Google, ChatGPT & Perplexity uyumlu SEO odaklı ikna edici ürün açıklamaları"
                 ],
                 "ai_desc": {
-                    "definition": "Ürünlerinizin görsel kalitesini AI ile artırırken, Google ve yapay zeka arama motorlarının seveceği zengin açıklamalar hazırlama servisidir.",
-                    "for_whom": "Çok sayıda ürünü olan ve stüdyo fotoğrafçılığı maliyetlerini düşürmek isteyen e-ticaret satıcıları için.",
-                    "how_works": "1. Ürün fotoğraflarının ham hallerinin alınması, 2. AI motorları ile arka plan değiştirme ve iyileştirme, 3. SEO anahtar kelimeleriyle ürün açıklaması yazımı.",
-                    "example": "100 adet takı ürünü için stüdyo kalitesinde yapay zeka arka plan görseli hazırlanması ve arama hacmi yüksek kelimelerle açıklamalarının yazılması."
+                    "definition": "Ürünlerinizi web ve video formatında en çekici şekilde sunmanızı sağlayan; yüksek kaliteli görseller, tanıtım videoları ve SEO/AI odaklı zengin içerik üretim servisidir.",
+                    "for_whom": "Sosyal medya ve e-ticaret platformlarında ürünlerini dinamik video ve çekici görsellerle öne çıkarmak, dönüşüm oranlarını artırmak isteyen markalar için.",
+                    "how_works": "1. Ürün ham görsel & materyallerinin analizi\n2. Yapay zeka ile stüdyo/model prodüksiyonu ve web uyumlu görsel hazırlığı\n3. Dinamik tanıtım & Reels videolarının kurgulanması\n4. SEO & AI arama motorları için optimize içerik yazımı",
+                    "example": "Bir tekstil ve mücevher markası için 2K çözünürlükte kumaş/detay görselleri, sosyal medya & web için promo video kurguları ve SEO uyumlu açıklama metinlerinin hazırlanması."
                 },
                 "faqs": [
                     {
-                        "q": "Yapay zeka ile ürün fotoğrafı nasıl hazırlanır?",
-                        "a": "Ürünün farklı açılardan çekilen ham fotoğrafları AI modelleri ile işlenerek stüdyo kalitesinde konsept arka planlara yerleştirilir, ışık ve gölgeler gerçekçi şekilde düzenlenir."
+                        "q": "Video ve görsel içerik üretimi paketine neler dahildir?",
+                        "a": "Paket kapsamında web sitenize ve sosyal medyaya uygun yüksek çözünürlüklü ürün/model görselleri, kısa tanıtım videoları ve SEO uyumlu ürün açıklama içerikleri sunulmaktadır."
                     },
                     {
-                        "q": "SEO uyumlu ürün açıklaması neden önemlidir?",
-                        "a": "SEO uyumlu açıklamalar Google'da üst sıralarda yer almanızı sağlar. Aynı zamanda modern yapay zeka asistanları (ChatGPT, Perplexity vb.) ürünü tanıyarak kullanıcılara önerebilir."
+                        "q": "500 TL – 1.250 TL fiyat aralığı neye göre belirlenir?",
+                        "a": "İçeriğin detayına (sadece görsel, video eklentisi, konsept zorluğu veya ürün adedine) göre 500 TL ile 1.250 TL arasında uygun bütçeli paketlendirme yapılır."
                     },
                     {
-                        "q": "Ürün başına ücretlendirme nedir?",
-                        "a": "Ürün görseli ve içerik servisi ürün başına 50 TL ile 150 TL arasında değişmektedir. Toplu ürün işlemlerinde özel indirimli paketler sunulmaktadır."
+                        "q": "Videolar hangi platformlara uygundur?",
+                        "a": "Üretilen videolar web sitesi banner'ları, e-ticaret ürün detay sayfaları, Instagram Reels, TikTok ve YouTube Shorts formatlarına özel dikey/yatay çözünürlüklerde hazırlanır."
                     },
                     {
-                        "q": "Google Merchant Center için ürün beslemesi hazırlıyor musunuz?",
-                        "a": "Evet, Google Shopping reklamlarınız için optimize edilmiş ürün beslemeleri (feed) hazırlayarak Merchant Center altyapısına entegre ediyoruz."
+                        "q": "Yapay zeka ile model ve kumaş detayları nasıl işleniyor?",
+                        "a": "Gelişmiş AI modelleri ile ürünlerinizin kumaş dokusu, dikiş detayları veya takı/mücevher parıltıları korunarak gerçekçi model üzerinde prodüksiyon gerçekleştirilir."
                     },
                     {
-                        "q": "Kaç adet ürünü aynı anda işleyebilirsiniz?",
-                        "a": "Otomasyon altyapılarımız sayesinde günde 100 ile 500 ürün arasında değişen hacimleri toplu olarak hızlıca işleyebiliyoruz."
+                        "q": "İçerikler SEO ve AI arama motorlarına uygun mu?",
+                        "a": "Evet, hazırlanan tüm ürün metinleri Google Merchant, Google Arama ve ChatGPT/Perplexity gibi AI asistanlarının doğrudan önerebileceği formatta optimize edilir."
                     }
                 ]
             },

@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Award, ArrowUpRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQ from '../components/FAQ';
 import ServiceCard from '../components/ServiceCard';
+import SampleWorksGallery from '../components/SampleWorksGallery';
 
 const routeToKeyMap = {
   // Turkish
@@ -187,6 +188,9 @@ export default function ServiceDetail() {
 
           </div>
         )}
+
+        {/* Sample Works Interactive Gallery (for urun-gorsel and applicable services) */}
+        {serviceKey === 'urun-gorsel' && <SampleWorksGallery />}
 
         {/* Dynamic Service FAQ Accordion */}
         <div className="border-t border-white/5 pt-20 mb-20 text-center">

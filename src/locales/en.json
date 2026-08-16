@@ -116,42 +116,42 @@
                 ]
             },
             "urun-gorsel": {
-                "title": "Product & Image Services",
-                "price": "50 – 150 TL per product",
-                "badge": "AI Enhanced",
-                "desc": "AI-enhanced product visuals and SEO-friendly copy to help your catalog stand out.",
+                "title": "Product Video, Visuals & Web Content",
+                "price": "500 – 1,250 TL",
+                "badge": "Video & AI Powered",
+                "desc": "High-converting product & model visuals, dynamic promo videos, and SEO-optimized web content tailored for modern e-commerce.",
                 "features": [
-                    "AI-enhanced high-resolution product photography rendering",
-                    "Clean studio background removal and shadow adjustments",
-                    "SEO-optimized, persuasive product descriptions",
-                    "Google Merchant Center compliant catalog feed optimization"
+                    "High-resolution attractive product & model visual production for web & e-commerce",
+                    "Dynamic product & concept showcase videos for social media and web storefronts",
+                    "AI-powered digital model dressing, fabric & jewelry texture replication",
+                    "SEO & AI-optimized persuasive product copy (Google, ChatGPT, Perplexity)"
                 ],
                 "ai_desc": {
-                    "definition": "Visual and copywriting enhancement package using custom AI tools to boost product catalog quality and search discoverability.",
-                    "for_whom": "E-commerce retailers with large catalogs wanting studio-quality images and unique descriptions at a fraction of standard photo costs.",
-                    "how_works": "1. Sourcing raw product images, 2. AI model backdrop rendering, 3. Keyword-optimized copywriting.",
-                    "example": "Generating studio-quality AI backdrops and keyword-rich copy for a jewelry brand's collection of 100 products."
+                    "definition": "A complete media production package delivering web-ready visuals, engaging promo videos, and SEO/AI-rich content for maximum conversion.",
+                    "for_whom": "E-commerce brands and retailers looking to boost conversions with dynamic product videos, attractive model visuals, and high-ranking product copy.",
+                    "how_works": "1. Raw product asset intake\n2. AI model & studio rendering for web visuals\n3. Dynamic promo video editing for web & social\n4. SEO & AI copy optimization",
+                    "example": "Producing 2K fabric & jewelry detail renders, promotional video clips for web/social, and keyword-rich product descriptions for fashion brands."
                 },
                 "faqs": [
                     {
-                        "q": "How are product photos prepared using AI?",
-                        "a": "We process raw mobile photos using generative AI models to place products in studio-quality background scenes with realistic lighting and shadows, eliminating expensive shoot costs."
+                        "q": "What is included in the video & visual content production package?",
+                        "a": "The package includes high-resolution product/model photos for web and social media, dynamic promotional videos, and SEO-optimized product copy."
                     },
                     {
-                        "q": "Why is an SEO-optimized product description important?",
-                        "a": "SEO descriptions rank you higher on Google. Moreover, modern AI assistants (like ChatGPT or Gemini) scan these texts to recommend products to users."
+                        "q": "How is the 500 – 1,250 TL price range determined?",
+                        "a": "Pricing depends on content depth—whether it includes video editing, concept complexity, or catalog size, ranging between 500 TL and 1,250 TL per concept package."
                     },
                     {
-                        "q": "What is the pricing per product?",
-                        "a": "The AI visual and SEO text package ranges between 50 TL and 150 TL per product. We offer discounted packages for bulk uploads."
+                        "q": "Which platforms are the videos formatted for?",
+                        "a": "Videos are delivered in tailored vertical/horizontal ratios for web hero banners, e-commerce product pages, Instagram Reels, TikTok, and YouTube Shorts."
                     },
                     {
-                        "q": "Do you prepare product feeds for Google Merchant Center?",
-                        "a": "Yes, we generate optimized XML feeds for Google Shopping Ads and integrate them into your Merchant Center account."
+                        "q": "How are AI model and fabric details rendered?",
+                        "a": "We use generative AI pipelines that preserve fabric textures, stitching, and jewelry shine while rendering photorealistic model poses."
                     },
                     {
-                        "q": "How many products can you process at once?",
-                        "a": "Our automated pipelines can handle bulk updates between 100 and 500 products per day."
+                        "q": "Is the content optimized for Search Engines and AI Search?",
+                        "a": "Yes, all copy is formatted for top Google search rankings, Google Merchant feeds, and direct recommendations by AI assistants like ChatGPT & Perplexity."
                     }
                 ]
             },
