@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Play, Image as ImageIcon, Video as VideoIcon, X, Tag, Sparkles, Film, Maximize2 } from 'lucide-react';
+import { Play, Image as ImageIcon, X, Tag, Sparkles, Film, Maximize2, ChevronDown } from 'lucide-react';
 
 export default function SampleWorksGallery() {
   const { i18n } = useTranslation();
@@ -9,6 +9,8 @@ export default function SampleWorksGallery() {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedTag, setSelectedTag] = useState(null);
   const [lightboxMedia, setLightboxMedia] = useState(null);
+  const [hoveredVideoId, setHoveredVideoId] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6); // Paginate to load initial 6 items lightning fast
 
   const sampleWorks = [
     // Videos
@@ -16,6 +18,7 @@ export default function SampleWorksGallery() {
       id: 'v1',
       type: 'video',
       src: '/ornek-calismalar/videos/sample-video-1.mov',
+      poster: '/ornek-calismalar/thumbnails/sample-image-1.jpeg',
       title: lang === 'tr' ? 'Dinamik Ürün & Model Tanıtım Videosu' : lang === 'ar' ? 'فيديو ترويجي ديناميكي للمنتج والنموذج' : 'Dynamic Product & Model Promo Video',
       category: 'video',
       tags: lang === 'tr' ? ['#VideoReels', '#SosyalMedya', '#DinamikÇekim', '#E-Ticaret'] : lang === 'ar' ? ['#فيديو', '#سوشيال_ميديا', '#تجارة_إلكترونية'] : ['#VideoReels', '#SocialMedia', '#Dynamic', '#Ecommerce']
@@ -24,6 +27,7 @@ export default function SampleWorksGallery() {
       id: 'v2',
       type: 'video',
       src: '/ornek-calismalar/videos/sample-video-2.mov',
+      poster: '/ornek-calismalar/thumbnails/sample-image-2.jpeg',
       title: lang === 'tr' ? 'E-Ticaret Web Uyumlu Ürün Videosu' : lang === 'ar' ? 'فيديو منتج متوافق مع مواقع الويب' : 'Web & Ecommerce Showcase Video',
       category: 'video',
       tags: lang === 'tr' ? ['#WebVideo', '#E-Ticaret', '#Showcase', '#ÜrünTanıtımı'] : lang === 'ar' ? ['#فيديو_ويب', '#عرض_منتج', '#تسوق'] : ['#WebVideo', '#Showcase', '#ProductPromo', '#Ecommerce']
@@ -32,6 +36,7 @@ export default function SampleWorksGallery() {
       id: 'v3',
       type: 'video',
       src: '/ornek-calismalar/videos/sample-video-3.mp4',
+      poster: '/ornek-calismalar/thumbnails/sample-image-3.jpeg',
       title: lang === 'tr' ? 'Çekici Kampanya & Promo Video İçeriği' : lang === 'ar' ? 'محتوى فيديو ترويجي للحملات الإعلانية' : 'High-Converting Promo Campaign Video',
       category: 'video',
       tags: lang === 'tr' ? ['#PromoVideo', '#Kampanya', '#Reels', '#MobilUyumlu'] : lang === 'ar' ? ['#برومو', '#حملة_إعلانية', '#ريلز'] : ['#PromoVideo', '#Campaign', '#Reels', '#MobileReady']
@@ -40,7 +45,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i1',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-1.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-1.jpeg',
+      full: '/ornek-calismalar/images/sample-image-1.jpeg',
       title: lang === 'tr' ? 'Editorial Moda Poz Prodüksiyonu' : lang === 'ar' ? 'إنتاج وضعيات أزياء احترافية' : 'Editorial Fashion Pose Production',
       category: 'fashion',
       tags: lang === 'tr' ? ['#Moda', '#Editorial', '#ModelÇekimi', '#AIProdüksiyon'] : lang === 'ar' ? ['#أزياء', '#افتراضي', '#تصوير_نموذج'] : ['#Fashion', '#Editorial', '#ModelShoot', '#AIProduction']
@@ -48,7 +54,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i2',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-2.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-2.jpeg',
+      full: '/ornek-calismalar/images/sample-image-2.jpeg',
       title: lang === 'tr' ? 'Konsept Moda & Stil Görseli' : lang === 'ar' ? 'صورة مفاهيمية للأزياء والنمط' : 'Conceptual Fashion & Style Visual',
       category: 'fashion',
       tags: lang === 'tr' ? ['#Moda', '#Style', '#StüdyoÇekimi', '#E-Ticaret'] : lang === 'ar' ? ['#نمط', '#استوديو', '#تجارة_إلكترونية'] : ['#Fashion', '#Style', '#StudioShoot', '#Ecommerce']
@@ -56,7 +63,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i3',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-3.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-3.jpeg',
+      full: '/ornek-calismalar/images/sample-image-3.jpeg',
       title: lang === 'tr' ? 'Model Teaser & Web Banner Görseli' : lang === 'ar' ? 'صورة ترويجية وبانر ويب للنموذج' : 'Model Teaser & Web Banner Visual',
       category: 'fashion',
       tags: lang === 'tr' ? ['#ModelTeaser', '#Banner', '#SosyalMedya', '#YapayZeka'] : lang === 'ar' ? ['#بانر', '#سوشيال_ميديا', '#ذكاء_اصطناعي'] : ['#ModelTeaser', '#Banner', '#SocialMedia', '#AIVisuals']
@@ -64,7 +72,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i4',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-4.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-4.jpeg',
+      full: '/ornek-calismalar/images/sample-image-4.jpeg',
       title: lang === 'tr' ? 'Moda & İkonik Model Çekimi' : lang === 'ar' ? 'تصوير أزياء ونماذج أيقونية' : 'Fashion & Iconic Model Shoot',
       category: 'fashion',
       tags: lang === 'tr' ? ['#FashionModel', '#Iconic', '#Trend', '#WebVisual'] : lang === 'ar' ? ['#نموذج_أزياء', '#أيقوني', '#تريند'] : ['#FashionModel', '#Iconic', '#Trend', '#WebVisual']
@@ -72,7 +81,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i5',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-5.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-5.jpeg',
+      full: '/ornek-calismalar/images/sample-image-5.jpeg',
       title: lang === 'tr' ? 'Dijital Model & Poz Variyasyonları' : lang === 'ar' ? 'تنويعات وضعيات النماذج الرقمية' : 'Digital Model & Pose Variations',
       category: 'fashion',
       tags: lang === 'tr' ? ['#DigitalModel', '#PoseGen', '#Katalog', '#Moda'] : lang === 'ar' ? ['#نموذج_رقمي', '#كتالوج', '#أزياء'] : ['#DigitalModel', '#PoseGen', '#Catalog', '#Fashion']
@@ -80,7 +90,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i6',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-6.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-6.jpeg',
+      full: '/ornek-calismalar/images/sample-image-6.jpeg',
       title: lang === 'tr' ? 'Stüdyo Işık & Model Konsepti' : lang === 'ar' ? 'إضاءة استوديو ومفهوم نموذج راقٍ' : 'Studio Lighting & Model Concept',
       category: 'fashion',
       tags: lang === 'tr' ? ['#StudioLighting', '#Model', '#LüksKoleksiyon', '#AI'] : lang === 'ar' ? ['#إضاءة_استوديو', '#فخامة', '#ذكاء_اصطناعي'] : ['#StudioLighting', '#Model', '#Luxury', '#AIVisuals']
@@ -88,7 +99,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i7',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-7.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-7.jpeg',
+      full: '/ornek-calismalar/images/sample-image-7.jpeg',
       title: lang === 'tr' ? 'Premium Moda & Model Prodüksiyonu' : lang === 'ar' ? 'إنتاج أزياء ونماذج بريميوم' : 'Premium Fashion & Model Production',
       category: 'fashion',
       tags: lang === 'tr' ? ['#PremiumFashion', '#2KQuality', '#HighEnd', '#E-Ticaret'] : lang === 'ar' ? ['#بريميوم', '#جودة_عالية', '#تجارة_إلكترونية'] : ['#PremiumFashion', '#2KQuality', '#HighEnd', '#Ecommerce']
@@ -96,7 +108,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i8',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-8.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-8.jpeg',
+      full: '/ornek-calismalar/images/sample-image-8.jpeg',
       title: lang === 'tr' ? 'Mücevher & Pırlanta Model Çekimi' : lang === 'ar' ? 'تصوير مجوهرات وألماس مع نموذج' : 'Jewelry & Diamond Model Shot',
       category: 'jewelry',
       tags: lang === 'tr' ? ['#Mücevher', '#Diamond', '#LüksGörsel', '#TakıDetay'] : lang === 'ar' ? ['#مجوهرات', '#ألماس', '#فخامة', '#تفاصيل'] : ['#Jewelry', '#Diamond', '#LuxuryVisual', '#Accessories']
@@ -104,7 +117,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i9',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-9.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-9.jpeg',
+      full: '/ornek-calismalar/images/sample-image-9.jpeg',
       title: lang === 'tr' ? 'Ultra High-Res Moda Prodüksiyonu' : lang === 'ar' ? 'إنتاج أزياء فائق الدقة' : 'Ultra High-Res Fashion Production',
       category: 'fashion',
       tags: lang === 'tr' ? ['#UltraHD', '#HighFashion', '#Lookbook', '#Model'] : lang === 'ar' ? ['#دقة_فائقة', '#لوك_بوك', '#نموذج'] : ['#UltraHD', '#HighFashion', '#Lookbook', '#Model']
@@ -112,7 +126,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i10',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-10.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-10.jpeg',
+      full: '/ornek-calismalar/images/sample-image-10.jpeg',
       title: lang === 'tr' ? 'Kıyafet & Doku Detay Kopyalama' : lang === 'ar' ? 'نسخ تفاصيل وأنسجة الملابس' : 'Garment & Texture Detail Replication',
       category: 'garment',
       tags: lang === 'tr' ? ['#KıyafetDetay', '#Tekstil', '#TextureReplication', '#Doku'] : lang === 'ar' ? ['#تفاصيل_ملابس', '#نسيج', '#تكستشر'] : ['#GarmentDetails', '#Textile', '#TextureReplication', '#Texture']
@@ -120,7 +135,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i11',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-11.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-11.jpeg',
+      full: '/ornek-calismalar/images/sample-image-11.jpeg',
       title: lang === 'tr' ? 'Garment & Kumaş Hassas Detayları' : lang === 'ar' ? 'تفاصيل الأقمشة والملابس الدقيقة' : 'Garment & Fabric Precision Details',
       category: 'garment',
       tags: lang === 'tr' ? ['#GarmentDetails', '#KumaşDoku', '#Tekstil', '#E-Ticaret'] : lang === 'ar' ? ['#أقمشة', '#نسيج', '#تجارة_إلكترونية'] : ['#GarmentDetails', '#FabricTexture', '#Textile', '#Ecommerce']
@@ -128,7 +144,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i12',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-12.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-12.jpeg',
+      full: '/ornek-calismalar/images/sample-image-12.jpeg',
       title: lang === 'tr' ? 'Gerçekçi Kumaş & Renk Uyum Çalışması' : lang === 'ar' ? 'تنسيق ألوان وأنسجة الأقمشة الواقعية' : 'Realistic Fabric & Color Match Study',
       category: 'garment',
       tags: lang === 'tr' ? ['#KumaşUyum', '#Renkİşleme', '#DetailRendering', '#Tekstil'] : lang === 'ar' ? ['#تنسيق_ألوان', '#دقة_تفاصيل', '#نسيج'] : ['#FabricMatch', '#ColorGrading', '#DetailRendering', '#Textile']
@@ -136,7 +153,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i13',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-13.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-13.jpeg',
+      full: '/ornek-calismalar/images/sample-image-13.jpeg',
       title: lang === 'tr' ? 'Model Üzerinde Doku & Poz Entegrasyonu' : lang === 'ar' ? 'دمج الأنسجة والوضعيات على النموذج' : 'Model Texture & Pose Integration',
       category: 'fashion',
       tags: lang === 'tr' ? ['#PoseIntegration', '#ModelGiydirme', '#Moda', '#AIStüdyo'] : lang === 'ar' ? ['#إلباس_افتراضي', '#أزياء', '#ذكاء_اصطناعي'] : ['#PoseIntegration', '#VirtualDressing', '#Fashion', '#AIStudio']
@@ -144,7 +162,8 @@ export default function SampleWorksGallery() {
     {
       id: 'i14',
       type: 'image',
-      src: '/ornek-calismalar/images/sample-image-14.jpeg',
+      thumb: '/ornek-calismalar/thumbnails/sample-image-14.jpeg',
+      full: '/ornek-calismalar/images/sample-image-14.jpeg',
       title: lang === 'tr' ? '2K Çözünürlükte Kumaş & Model Detayı' : lang === 'ar' ? 'تفاصيل النموذج والأقشة بدقة 2K' : '2K Resolution Fabric & Model Details',
       category: 'garment',
       tags: lang === 'tr' ? ['#2KDetail', '#KumaşHassasiyeti', '#ModaLookbook', '#WebGörsel'] : lang === 'ar' ? ['#دقة_2k', '#لوك_بوك', '#صورة_ويب'] : ['#2KDetail', '#FabricPrecision', '#FashionLookbook', '#WebVisual']
@@ -167,6 +186,8 @@ export default function SampleWorksGallery() {
 
     return matchesTab && matchesTag;
   });
+
+  const visibleWorks = filteredWorks.slice(0, visibleCount);
 
   const categories = [
     { id: 'all', label: lang === 'tr' ? 'Tüm Çalışmalar' : lang === 'ar' ? 'جميع الأعمال' : 'All Works' },
@@ -206,6 +227,7 @@ export default function SampleWorksGallery() {
             onClick={() => {
               setActiveTab(cat.id);
               setSelectedTag(null);
+              setVisibleCount(6);
             }}
             className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all duration-300 flex items-center gap-2 ${
               activeTab === cat.id
@@ -226,7 +248,10 @@ export default function SampleWorksGallery() {
         </span>
         {selectedTag && (
           <button
-            onClick={() => setSelectedTag(null)}
+            onClick={() => {
+              setSelectedTag(null);
+              setVisibleCount(6);
+            }}
             className="px-2.5 py-1 bg-[#ff6b6b]/20 border border-[#ff6b6b]/40 rounded-lg text-xs font-bold text-[#ff6b6b] flex items-center gap-1 hover:bg-[#ff6b6b]/30 transition-colors flex-shrink-0"
           >
             <span>{selectedTag}</span>
@@ -236,7 +261,10 @@ export default function SampleWorksGallery() {
         {allTags.map((tag, idx) => (
           <button
             key={idx}
-            onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+            onClick={() => {
+              setSelectedTag(selectedTag === tag ? null : tag);
+              setVisibleCount(6);
+            }}
             className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex-shrink-0 ${
               selectedTag === tag
                 ? 'bg-[#ff6b6b] text-white font-bold'
@@ -250,30 +278,39 @@ export default function SampleWorksGallery() {
 
       {/* Gallery Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredWorks.map((item) => (
+        {visibleWorks.map((item) => (
           <div
             key={item.id}
             onClick={() => setLightboxMedia(item)}
+            onMouseEnter={() => item.type === 'video' && setHoveredVideoId(item.id)}
+            onMouseLeave={() => item.type === 'video' && setHoveredVideoId(null)}
             className="group relative bg-[#131b2e] border border-white/5 hover:border-[#ff6b6b]/40 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(255,107,107,0.12)] flex flex-col justify-between"
           >
             {/* Media Container */}
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40">
               {item.type === 'video' ? (
                 <div className="w-full h-full relative">
-                  <video
-                    src={item.src}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.pause();
-                      e.currentTarget.currentTime = 0;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  {hoveredVideoId === item.id ? (
+                    <video
+                      src={item.src}
+                      poster={item.poster}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="none"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={item.poster}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
                     <div className="w-12 h-12 rounded-full bg-[#ff6b6b]/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <Play size={20} className="fill-white ml-0.5" />
                     </div>
@@ -282,9 +319,10 @@ export default function SampleWorksGallery() {
               ) : (
                 <div className="w-full h-full relative">
                   <img
-                    src={item.src}
+                    src={item.thumb}
                     alt={item.title}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -295,7 +333,7 @@ export default function SampleWorksGallery() {
               )}
 
               {/* Type Badge */}
-              <div className="absolute top-3 left-3">
+              <div className="absolute top-3 left-3 pointer-events-none">
                 <span className="px-2.5 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-full mono text-[9px] font-black text-white uppercase tracking-wider flex items-center gap-1">
                   {item.type === 'video' ? (
                     <>
@@ -326,6 +364,7 @@ export default function SampleWorksGallery() {
                     onClick={(e) => {
                       e.stopPropagation();
                       setSelectedTag(tag);
+                      setVisibleCount(6);
                     }}
                     className="px-2 py-0.5 bg-white/5 border border-white/10 hover:border-[#ff6b6b]/30 rounded-md text-[10px] font-semibold text-neutral-300 hover:text-[#ff6b6b] transition-colors"
                   >
@@ -337,6 +376,19 @@ export default function SampleWorksGallery() {
           </div>
         ))}
       </div>
+
+      {/* Show More Button */}
+      {visibleCount < filteredWorks.length && (
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setVisibleCount(prev => prev + 6)}
+            className="px-8 py-3.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b] hover:border-[#ff6b6b] text-white rounded-2xl mono text-xs font-black tracking-widest uppercase transition-all duration-300 flex items-center gap-2 shadow-lg"
+          >
+            {lang === 'tr' ? 'DAHA FAZLA ÖRNEK GÖSTER' : lang === 'ar' ? 'عرض المزيد من النماذج' : 'LOAD MORE SAMPLES'}
+            <ChevronDown size={16} />
+          </button>
+        </div>
+      )}
 
       {/* Lightbox Modal */}
       {lightboxMedia && (
@@ -361,6 +413,7 @@ export default function SampleWorksGallery() {
               {lightboxMedia.type === 'video' ? (
                 <video
                   src={lightboxMedia.src}
+                  poster={lightboxMedia.poster}
                   controls
                   autoPlay
                   playsInline
@@ -368,7 +421,7 @@ export default function SampleWorksGallery() {
                 />
               ) : (
                 <img
-                  src={lightboxMedia.src}
+                  src={lightboxMedia.full}
                   alt={lightboxMedia.title}
                   className="max-h-[70vh] w-full object-contain rounded-xl"
                 />
