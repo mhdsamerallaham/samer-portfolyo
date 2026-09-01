@@ -141,14 +141,9 @@ export default function FAQ() {
   return (
     <>
       <SEO 
-        title="E-Ticaret & Yazılım Çözümleri SSS | GEO & AEO Bilgi Bankası"
-        description="Shopify, İKAS, e-ticaret dönüşüm optimizasyonu, UX ve yapay zeka otomasyonları hakkında yapay zeka ve arama motorları için hazırlanmış rehberler."
-      />
-
-      {/* Inject Structured FAQPage JSON-LD Schema for ChatGPT, Gemini, Perplexity & Google */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        title="E-Ticaret SSS | Shopify, İKAS ve Web Tasarım Soruları — Samer"
+        description="Shopify ve İKAS e-ticaret kurulumu, web tasarım fiyatları ve dönüşüm optimizasyonu hakkında sık sorulan sorular ve uzman yanıtları."
+        faqItems={faqs.slice(0, 10).map(f => ({ q: f.question, a: f.short_answer || '' }))}
       />
 
       <div className="min-h-screen bg-[#0d0f12] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8">

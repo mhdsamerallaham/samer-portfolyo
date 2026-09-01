@@ -15,11 +15,9 @@ export default function Home() {
 
   return (
     <div className="text-white min-h-screen">
-      {/* SEO Configuration */}
+      {/* SEO Configuration — title/description routeSEOMap'ten otomatik alınır */}
       <SEO
-        title={t('hero.badge')}
-        description={t('hero.subheadline')}
-        keywords="shopify site kurma, ikas e ticaret sitesi, e ticaret danışmanlığı, ürün fotoğraf düzenleme, e-ticaret optimizasyon, stok entegrasyonu"
+        keywords="shopify site kurma, ikas e ticaret sitesi kurulumu, e-ticaret web tasarım, dönüşüm optimizasyonu, stok entegrasyonu, web tasarım istanbul"
       />
 
       {/* 1. HERO SECTION */}

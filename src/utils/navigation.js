@@ -58,7 +58,26 @@ export const pageLanguageMap = {
 
   '/iletisim': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
   '/en/contact': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
-  '/ar/contact': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' }
+  '/ar/contact': { tr: '/iletisim', en: '/en/contact', ar: '/ar/contact' },
+
+  '/web-sitesi-gelistirme': { tr: '/web-sitesi-gelistirme', en: '/en/web-development', ar: '/ar/web-development' },
+  '/en/web-development': { tr: '/web-sitesi-gelistirme', en: '/en/web-development', ar: '/ar/web-development' },
+  '/ar/web-development': { tr: '/web-sitesi-gelistirme', en: '/en/web-development', ar: '/ar/web-development' },
+
+  '/ozel-yazilim-gelistirme': { tr: '/ozel-yazilim-gelistirme', en: '/en/custom-software', ar: '/ar/custom-software' },
+  '/en/custom-software': { tr: '/ozel-yazilim-gelistirme', en: '/en/custom-software', ar: '/ar/custom-software' },
+  '/ar/custom-software': { tr: '/ozel-yazilim-gelistirme', en: '/en/custom-software', ar: '/ar/custom-software' },
+
+  '/yapay-zeka-cozumleri': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
+  '/en/ai-solutions': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
+  '/ar/ai-solutions': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
+
+  // /faq canonical — /sss 301 ile /faq'a yönlendiriliyor (vercel.json)
+  '/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
+  '/en/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
+  '/ar/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
+  // /sss → canonical /faq'a işaret et
+  '/sss': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' }
 };
 
 /**

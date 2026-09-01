@@ -11,6 +11,38 @@
       "schedule": "0 10 * * *"
     }
   ],
+  "redirects": [
+    {
+      "source": "/sss/:slug*",
+      "destination": "/faq/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/sss",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/ar/sss/:slug*",
+      "destination": "/ar/faq/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/en/sss/:slug*",
+      "destination": "/en/faq/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-3029",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-ux-tasarimi-ve-otomasyonu-3278",
+      "permanent": true
+    },
+    {
+      "source": "/faq/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-3029",
+      "destination": "/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi",
+      "permanent": true
+    }
+  ],
   "routes": [
     { "src": "/sitemap.xml", "dest": "/api/sitemap" },
     { "handle": "filesystem" },

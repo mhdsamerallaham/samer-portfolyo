@@ -7,12 +7,13 @@ import { getLanguageUrl } from '../utils/navigation';
 // Per-route SEO configuration map
 // ─────────────────────────────────────────────────
 const routeSEOMap = {
+  // ── TURKISH ROUTES ──────────────────────────────────
   '/': {
-    title: 'E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer',
+    title: 'Shopify & İKAS E-Ticaret Uzmanı | Web Tasarım & Online Mağaza Kurulumu — Samer',
     description:
-      'Profesyonel e-ticaret web tasarım ve kurulum hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağazanızı kurun. İstanbul e-ticaret uzmanı — Samer.',
+      'Shopify ve İKAS ile profesyonel e-ticaret web sitesi kurulumu, dönüşüm optimizasyonu ve online mağaza yönetimi. İstanbul merkezli, Türkiye geneline hizmet. Ücretsiz analiz için iletişime geçin.',
     keywords:
-      'e ticaret web tasarım, web tasarım, websitesi, e-ticaret sitesi kurulumu, shopify kurulumu türkiye, ikas e-ticaret, web tasarım istanbul, profesyonel web tasarım, websitesi yaptırmak',
+      'e ticaret web tasarım, shopify site kurulumu, ikas e-ticaret sitesi, web tasarım istanbul, e-ticaret sitesi kurulumu, shopify kurulumu türkiye, ikas uzmanı, profesyonel web tasarım, online mağaza kurulumu',
   },
   '/hizmetler': {
     title: 'Web Tasarım & E-Ticaret Websitesi Hizmetleri',
@@ -133,6 +134,262 @@ const routeSEOMap = {
     keywords:
       'e-ticaret danışmanlık iletişim, shopify kurulum fiyat, ikas e-ticaret teklif, ücretsiz analiz',
   },
+
+  // ── ENGLISH ROUTES ──────────────────────────────────
+  '/en': {
+    title: 'Shopify & İKAS E-Commerce Expert | Web Design & Store Setup Turkey — Samer',
+    description:
+      'Professional Shopify & İKAS e-commerce store setup, conversion optimization, and web design in Turkey. Istanbul-based specialist serving global brands. Get a free analysis.',
+    keywords:
+      'shopify expert turkey, ikas ecommerce setup, ecommerce web design istanbul, shopify store setup turkey, web design expert istanbul',
+  },
+  '/en/services': {
+    title: 'E-Commerce & Web Design Services Turkey | Shopify & İKAS — Samer',
+    description:
+      'Professional e-commerce setup, conversion rate optimization, inventory automation, and web design services. Shopify & İKAS specialist in Istanbul.',
+    keywords:
+      'shopify services turkey, ecommerce web design services, ikas setup, conversion optimization, web design services istanbul',
+  },
+  '/en/web-design': {
+    title: 'Web Design & Corporate Website Development Turkey | Samer Allaham',
+    description:
+      'Professional web design and modern website development services. Fast, SEO-friendly, mobile-first corporate and e-commerce websites with React & Next.js.',
+    keywords:
+      'web design turkey, web design istanbul, professional web design, corporate website development, react web design',
+  },
+  '/en/istanbul-web-design': {
+    title: 'Istanbul Web Design Agency & Expert | Samer Allaham',
+    description:
+      'Professional web design and e-commerce solutions in Istanbul. Fast, mobile-friendly, and SEO-focused custom website design and development.',
+    keywords:
+      'istanbul web design, istanbul web design agency, professional web design istanbul, freelance web designer istanbul',
+  },
+  '/en/fatih-web-design': {
+    title: 'Fatih Istanbul Web Design & E-Commerce Setup | Samer Allaham',
+    description:
+      'Professional web design and e-commerce software solutions in the Fatih district of Istanbul. Modern websites for wholesalers, exporters, and local businesses.',
+    keywords:
+      'fatih istanbul web design, istanbul web design fatih, ecommerce setup fatih istanbul',
+  },
+  '/en/ecommerce-web-design': {
+    title: 'E-Commerce Web Design | Shopify & İKAS Online Store — Samer',
+    description:
+      'E-commerce web design services on Shopify & İKAS. Sales-driven, mobile-optimized, and SEO-friendly online store design and setup.',
+    keywords:
+      'ecommerce web design, shopify web design, ikas web design, online store design turkey',
+  },
+  '/en/ecommerce-setup': {
+    title: 'E-Commerce Store Setup Istanbul | Shopify & İKAS Expert — Samer',
+    description:
+      'Professional e-commerce store setup in Istanbul. Launch on Shopify or İKAS in 3-7 days. Contact for pricing.',
+    keywords:
+      'shopify setup istanbul, ikas ecommerce setup, ecommerce store launch, shopify design turkey',
+  },
+  '/en/ecommerce-optimization': {
+    title: 'E-Commerce Optimization | Conversion Rate & Sales Growth — Samer',
+    description:
+      'Boost your e-commerce store conversion rate. A/B testing, speed optimization, and UX improvements to grow your sales.',
+    keywords:
+      'ecommerce optimization, conversion rate optimization, shopify speed optimization, core web vitals, ecommerce seo',
+  },
+  '/en/product-visuals-content': {
+    title: 'Product Visuals & AI Content Generation | E-Commerce — Samer',
+    description:
+      'Professional product photography and SEO-optimized content creation. Converting visuals and descriptions for your e-commerce store.',
+    keywords:
+      'product photo editing, ai product visuals, product description writing, ecommerce content, seo product description',
+  },
+  '/en/inventory-stock-automation': {
+    title: 'Inventory & Stock Management System | Automation — Samer',
+    description:
+      'Automate stock tracking and warehouse management. Custom software solutions to eliminate manual errors across all your channels.',
+    keywords:
+      'inventory management system, shopify ikas integration, trendyol stock sync, warehouse automation, erp integration',
+  },
+  '/en/monthly-management': {
+    title: 'Monthly E-Commerce Management | Store Retainer — Samer',
+    description:
+      'Monthly e-commerce store management: product updates, campaign management, technical maintenance, and SEO reporting.',
+    keywords:
+      'monthly ecommerce management, shopify maintenance, ikas management, ecommerce consulting monthly',
+  },
+  '/en/web-development': {
+    title: 'Shopify & E-Commerce Web Development | React Expert Turkey — Samer',
+    description:
+      'Custom e-commerce web development with React & Next.js. Fast, SEO-optimized, and conversion-focused online store and corporate website development in Turkey.',
+    keywords:
+      'ecommerce web development turkey, react developer turkey, next.js ecommerce, custom web development istanbul, shopify developer react',
+  },
+  '/en/custom-software': {
+    title: 'Custom E-Commerce Software Development Istanbul | Full-Stack — Samer',
+    description:
+      'Custom web applications and API integrations for e-commerce. Istanbul-based freelance full-stack developer specializing in Shopify, İKAS, and marketplace automation.',
+    keywords:
+      'custom software development istanbul, full stack developer istanbul, ecommerce api development, shopify custom development',
+  },
+  '/en/ai-solutions': {
+    title: 'AI Solutions for E-Commerce | Chatbot & Automation — Samer',
+    description:
+      'AI-powered e-commerce solutions: GPT chatbot integration, automated product content generation, and smart inventory workflows.',
+    keywords:
+      'ai ecommerce solutions, chatbot integration, gpt chatbot ecommerce, ai product content, ecommerce automation',
+  },
+  '/en/case-studies': {
+    title: 'E-Commerce Success Stories & Case Studies | Samer Allaham',
+    description:
+      'Real client success: AIO Coffee 35% conversion rate increase, fashion boutique speed score from 45 to 98. E-commerce conversion case studies.',
+    keywords:
+      'ecommerce case studies, shopify case study, conversion rate improvement example, ecommerce results',
+  },
+  '/en/blog': {
+    title: 'E-Commerce Blog & Guides | Shopify, İKAS & CRO — Samer',
+    description:
+      'Practical guides on e-commerce, Shopify, İKAS, conversion optimization, and sales growth. Samer Allaham\'s e-commerce blog.',
+    keywords:
+      'ecommerce blog, shopify guide, ikas guide, ecommerce sales growth, cart abandonment, conversion rate',
+  },
+  '/en/about': {
+    title: 'About — Samer Allaham | E-Commerce Expert',
+    description:
+      'Istanbul-based e-commerce growth specialist Samer Allaham. Expert software developer in Shopify and İKAS platforms.',
+    keywords:
+      'samer allaham about, ecommerce expert turkey, shopify developer turkey, ikas specialist',
+  },
+  '/en/contact': {
+    title: 'Contact — Free E-Commerce Analysis | Samer Allaham',
+    description:
+      'Get a free analysis for your Shopify or İKAS e-commerce project. Contact Samer Allaham via WhatsApp or form.',
+    keywords:
+      'ecommerce consulting contact, shopify setup pricing, ikas ecommerce quote, free analysis',
+  },
+  '/en/faq': {
+    title: 'E-Commerce FAQ | Shopify, İKAS & Web Design Questions — Samer',
+    description:
+      'Frequently asked questions about Shopify and İKAS e-commerce setup, web design pricing, and conversion optimization. Expert answers.',
+    keywords:
+      'ecommerce faq, shopify faq, ikas questions, web design faq, ecommerce knowledge base',
+  },
+
+  // ── ARABIC ROUTES ──────────────────────────────────
+  '/ar': {
+    title: 'خبير متاجر شوبيفاي وإيكاس في تركيا | تصميم متاجر احترافية — سامر',
+    description:
+      'إنشاء متاجر شوبيفاي وإيكاس الاحترافية في تركيا. تحسين معدل التحويل وتصميم المتاجر الإلكترونية. متخصص في إسطنبول يخدم الشركات العربية.',
+    keywords:
+      'تصميم متجر شوبيفاي تركيا, خبير إيكاس, برمجة متجر الكتروني, تصميم مواقع تجارة إلكترونية, سامر اللحام',
+  },
+  '/ar/services': {
+    title: 'خدمات التجارة الإلكترونية وتصميم المواقع | سامر اللحام',
+    description:
+      'خدمات احترافية لإنشاء المتاجر الإلكترونية وتحسين معدل التحويل وأتمتة المخزون وتصميم المواقع.',
+    keywords:
+      'خدمات شوبيفاي, تصميم متجر الكتروني, إيكاس, تحسين التحويل, تصميم مواقع إسطنبول',
+  },
+  '/ar/web-design': {
+    title: 'تصميم مواقع ويب احترافية في تركيا | سامر اللحام',
+    description:
+      'خدمات تصميم مواقع ويب احترافية وتطوير مواقع شركات. مواقع سريعة ومتوافقة مع SEO وملائمة للهاتف.',
+    keywords:
+      'تصميم مواقع تركيا, تصميم مواقع إسطنبول, تصميم مواقع احترافي, تطوير مواقع',
+  },
+  '/ar/ecommerce-web-design': {
+    title: 'تصميم مواقع التجارة الإلكترونية | شوبيفاي وإيكاس — سامر',
+    description:
+      'خدمات تصميم مواقع التجارة الإلكترونية على شوبيفاي وإيكاس. متاجر إلكترونية مُحسَّنة لزيادة المبيعات.',
+    keywords:
+      'تصميم موقع تجارة إلكترونية, تصميم متجر شوبيفاي, تصميم متجر إيكاس, إنشاء متجر إلكتروني',
+  },
+  '/ar/shopify-setup-turkey': {
+    title: 'إنشاء متجر شوبيفاي في تركيا | خبير إيكاس — سامر اللحام',
+    description:
+      'إنشاء متجر شوبيفاي أو إيكاس احترافي في تركيا خلال 3-7 أيام. تواصل معنا للحصول على السعر.',
+    keywords:
+      'إنشاء متجر شوبيفاي تركيا, خبير إيكاس تركيا, إنشاء متجر الكتروني, تصميم شوبيفاي',
+  },
+  '/ar/ecommerce-optimization': {
+    title: 'تحسين التجارة الإلكترونية | معدل التحويل والمبيعات — سامر',
+    description:
+      'زيادة معدل تحويل متجرك الإلكتروني. اختبار A/B وتحسين السرعة وتحسين تجربة المستخدم لتنمية مبيعاتك.',
+    keywords:
+      'تحسين التجارة الإلكترونية, تحسين معدل التحويل, تحسين سرعة شوبيفاي, Core Web Vitals',
+  },
+  '/ar/product-content-ai': {
+    title: 'صور المنتجات والمحتوى بالذكاء الاصطناعي | التجارة الإلكترونية — سامر',
+    description:
+      'تصوير منتجات احترافي وإنشاء محتوى متوافق مع SEO. صور وأوصاف تحويلية لمتجرك الإلكتروني.',
+    keywords:
+      'تحرير صور المنتجات, صور المنتجات بالذكاء الاصطناعي, كتابة أوصاف المنتجات, محتوى التجارة الإلكترونية',
+  },
+  '/ar/stock-inventory-system': {
+    title: 'نظام إدارة المخزون والمستودعات | الأتمتة — سامر',
+    description:
+      'أتمتة تتبع المخزون وإدارة المستودع. حلول برمجية مخصصة للتخلص من الأخطاء اليدوية.',
+    keywords:
+      'نظام إدارة المخزون, ربط شوبيفاي إيكاس, مزامنة المخزون, أتمتة المستودع',
+  },
+  '/ar/monthly-ecommerce-management': {
+    title: 'إدارة التجارة الإلكترونية الشهرية — سامر اللحام',
+    description:
+      'إدارة متجرك الإلكتروني شهرياً: تحديثات المنتجات وإدارة الحملات والصيانة التقنية وتقارير SEO.',
+    keywords:
+      'إدارة التجارة الإلكترونية الشهرية, صيانة شوبيفاي, إدارة إيكاس, استشارات التجارة الإلكترونية',
+  },
+  '/ar/web-development': {
+    title: 'تطوير مواقع ويب للتجارة الإلكترونية | React و Next.js — سامر',
+    description:
+      'تطوير مواقع تجارة إلكترونية مخصصة بـ React و Next.js. مواقع سريعة ومُحسَّنة لمحركات البحث ومتوافقة مع الهاتف.',
+    keywords:
+      'تطوير مواقع تجارة إلكترونية, مطور React تركيا, تطوير Next.js, تطوير مواقع مخصصة إسطنبول',
+  },
+  '/ar/custom-software': {
+    title: 'تطوير برمجيات مخصصة لإسطنبول | Full-Stack — سامر',
+    description:
+      'تطبيقات ويب مخصصة وتكاملات API للتجارة الإلكترونية. مطور Full-Stack مستقل متخصص في شوبيفاي وإيكاس.',
+    keywords:
+      'تطوير برمجيات مخصصة إسطنبول, مطور Full-Stack إسطنبول, تطوير API تجارة إلكترونية',
+  },
+  '/ar/ai-solutions': {
+    title: 'حلول الذكاء الاصطناعي للتجارة الإلكترونية | تكامل الشات بوت — سامر',
+    description:
+      'حلول ذكاء اصطناعي للتجارة الإلكترونية. تكامل شات بوت GPT وإنشاء محتوى المنتجات تلقائياً.',
+    keywords:
+      'حلول الذكاء الاصطناعي, تكامل شات بوت, شات بوت GPT, محتوى المنتجات بالذكاء الاصطناعي',
+  },
+  '/ar/case-studies': {
+    title: 'قصص نجاح التجارة الإلكترونية | سامر اللحام',
+    description:
+      'قصص نجاح حقيقية: زيادة معدل التحويل بنسبة 35% لـ AIO Coffee. أمثلة على نتائج تحسين التجارة الإلكترونية.',
+    keywords:
+      'قصص نجاح التجارة الإلكترونية, دراسة حالة شوبيفاي, تحسين معدل التحويل',
+  },
+  '/ar/blog': {
+    title: 'مدونة التجارة الإلكترونية والأدلة الإرشادية | سامر اللحام',
+    description:
+      'أدلة عملية حول التجارة الإلكترونية وشوبيفاي وإيكاس وتحسين التحويل وزيادة المبيعات.',
+    keywords:
+      'مدونة التجارة الإلكترونية, دليل شوبيفاي, دليل إيكاس, زيادة مبيعات التجارة الإلكترونية',
+  },
+  '/ar/about': {
+    title: 'حول سامر اللحام | خبير التجارة الإلكترونية',
+    description:
+      'سامر اللحام خبير نمو التجارة الإلكترونية مقيم في تركيا. متخصص في شوبيفاي وإيكاس.',
+    keywords:
+      'سامر اللحام, خبير تجارة إلكترونية تركيا, مطور شوبيفاي تركيا, متخصص إيكاس',
+  },
+  '/ar/contact': {
+    title: 'تواصل معنا — تحليل مجاني للتجارة الإلكترونية | سامر اللحام',
+    description:
+      'احصل على تحليل مجاني لمشروع شوبيفاي أو إيكاس. تواصل مع سامر اللحام عبر واتساب أو النموذج.',
+    keywords:
+      'تواصل استشارات تجارة إلكترونية, سعر إنشاء متجر شوبيفاي, عرض إيكاس, تحليل مجاني',
+  },
+  '/ar/faq': {
+    title: 'أسئلة شائعة | شوبيفاي وإيكاس وتصميم المواقع — سامر',
+    description:
+      'أسئلة وأجوبة حول إنشاء متاجر شوبيفاي وإيكاس وأسعار تصميم المواقع وتحسين التحويل.',
+    keywords:
+      'أسئلة شائعة تجارة إلكترونية, أسئلة شوبيفاي, أسئلة إيكاس, قاعدة معرفة التجارة الإلكترونية',
+  },
 };
 
 // ─────────────────────────────────────────────────
@@ -233,8 +490,8 @@ const serviceFAQs = {
       a: 'Özel web uygulaması ve yazılım projeleri kapsamına göre 2–8 hafta arasında geliştirilerek test ortamında ve canlı sunucuda yayına alınır.',
     },
     {
-      q: 'Mobil uygulama entegrasyonu ve API geliştiriyor musunuz?',
-      a: 'Evet, Node.js ve REST/GraphQL API mimarileri ile yüksek performanslı, güvenli backend servisleri ve mobil entegrasyonlar geliştiriyoruz.',
+      q: 'E-Ticaret API entegrasyonu ve özel web uygulaması geliştiriyor musunuz?',
+      a: 'Evet, Node.js ve REST/GraphQL API mimarileri ile Shopify, İKAS ve pazaryeri platformları için yüksek performanslı, güvenli e-ticaret backend servisleri ve web uygulamaları geliştiriyoruz.',
     },
     {
       q: 'Proje sonrası kaynak kodları ve mülkiyet teslim ediliyor mu?',
@@ -419,18 +676,19 @@ function buildServiceSchema(svc, url) {
 }
 
 // ─────────────────────────────────────────────────
-// Build Article JSON-LD (blog posts)
+// Build BlogPosting JSON-LD (blog posts)
 // ─────────────────────────────────────────────────
 function buildArticleSchema({ title, description, slug, date }) {
+  const pubDate = date || '2026-07-10';
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     '@id': `https://www.samer.life/blog/${slug}#article`,
     headline: title,
     description: description,
     url: `https://www.samer.life/blog/${slug}`,
-    datePublished: date || '2026-07-10',
-    dateModified: date || '2026-07-10',
+    datePublished: pubDate,
+    dateModified: pubDate,
     author: {
       '@type': 'Person',
       '@id': 'https://www.samer.life/#person',
@@ -438,19 +696,97 @@ function buildArticleSchema({ title, description, slug, date }) {
       url: 'https://www.samer.life/hakkimda',
     },
     publisher: {
-      '@type': 'Person',
-      name: 'Samer Allaham',
+      '@type': 'Organization',
+      name: 'Samer Allaham | E-Ticaret Uzmanı',
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.samer.life/avatar.jpeg',
+        width: 200,
+        height: 200,
       },
     },
-    image: 'https://www.samer.life/avatar.jpeg',
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://www.samer.life/avatar.jpeg',
+      width: 1200,
+      height: 630,
+    },
     inLanguage: 'tr',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://www.samer.life/blog/${slug}`,
     },
+  };
+}
+
+// ─────────────────────────────────────────────────
+// Build WebSite JSON-LD (homepage only)
+// ─────────────────────────────────────────────────
+function buildWebSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://www.samer.life/#website',
+    url: 'https://www.samer.life/',
+    name: 'Samer Allaham | E-Ticaret & Web Geliştirme Uzmanı',
+    description: 'Shopify ve İKAS ile e-ticaret web tasarım, site kurulumu, dönüşüm optimizasyonu ve stok otomasyon hizmetleri.',
+    inLanguage: ['tr', 'en', 'ar'],
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.samer.life/blog?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+// ─────────────────────────────────────────────────
+// Build LocalBusiness JSON-LD
+// ─────────────────────────────────────────────────
+function buildLocalBusinessSchema(pathname) {
+  const isLocal = ['/fatih-web-tasarim', '/istanbul-web-tasarim', '/en/fatih-web-design', '/en/istanbul-web-design', '/ar/istanbul-web-design', '/ar/fatih-web-design'].includes(pathname);
+  const streetAddress = pathname.includes('fatih') ? 'Fatih' : 'İstanbul';
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': 'https://www.samer.life/#local-business',
+    name: 'Samer Allaham | E-Ticaret & Web Tasarım',
+    url: 'https://www.samer.life/',
+    telephone: '+905394611684',
+    email: 'SAMERALLAHAM3@GMAIL.COM',
+    logo: 'https://www.samer.life/avatar.jpeg',
+    image: 'https://www.samer.life/avatar.jpeg',
+    priceRange: '₺₺₺',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: streetAddress,
+      addressLocality: 'İstanbul',
+      addressRegion: 'İstanbul',
+      postalCode: '34000',
+      addressCountry: 'TR',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 41.0186,
+      longitude: 28.9404,
+    },
+    areaServed: isLocal
+      ? [{ '@type': 'City', name: 'İstanbul' }, { '@type': 'Country', name: 'Turkey' }]
+      : [{ '@type': 'Country', name: 'Turkey' }],
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    hasMap: 'https://share.google/IrAWdrTQOMekMNmwh',
+    sameAs: [
+      'https://github.com/mhdsamerallaham',
+      'https://www.linkedin.com/in/samer-allaham-18a784162/',
+      'https://share.google/IrAWdrTQOMekMNmwh',
+    ],
   };
 }
 
@@ -535,21 +871,27 @@ export default function SEO({
   // 1. Global Person + ProfessionalService Schema
   schemas.push(personProfessionalServiceSchema);
 
-  // 2. FAQ schema for service pages
+  // 2. WebSite + LocalBusiness Schema on homepage & local pages
+  const isHomepage = pathname === '/' || pathname === '/en' || pathname === '/ar';
+  const isLocalPage = ['/fatih-web-tasarim', '/istanbul-web-tasarim', '/en/fatih-web-design', '/en/istanbul-web-design'].includes(pathname);
+  if (isHomepage) schemas.push(buildWebSiteSchema());
+  if (isHomepage || isLocalPage) schemas.push(buildLocalBusinessSchema(pathname));
+
+  // 3. FAQ schema for service pages
   const faqs = faqItems || serviceFAQs[pathname];
   if (faqs) schemas.push(buildFAQSchema(faqs));
 
-  // 3. Service schema for service pages
+  // 4. Service schema for service pages
   const svc = serviceSchemas[pathname];
   if (svc) schemas.push(buildServiceSchema(svc, pathname));
 
-  // 4. Article schema for blog posts
+  // 5. Article schema for blog posts
   if (article) schemas.push(buildArticleSchema(article));
 
-  // 5. Breadcrumb for all pages
-  if (pathname !== '/') schemas.push(buildBreadcrumbSchema(pathname));
+  // 6. Breadcrumb for all pages except homepage
+  if (pathname !== '/' && pathname !== '/en' && pathname !== '/ar') schemas.push(buildBreadcrumbSchema(pathname));
 
-  // 6. Custom schema override/addition
+  // 7. Custom schema override/addition
   if (schema) schemas.push(schema);
 
   return (
