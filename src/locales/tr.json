@@ -456,46 +456,121 @@
                         "a": "Fatih bölgesindeki web tasarım ve e-ticaret projeleri 3 ile 7 iş günü içinde yayına alınarak teslim edilmektedir."
                     }
                 ]
+            },
+            "geo-optimizasyon": {
+                "title": "GEO & Yapay Zeka Arama Motoru Optimizasyonu",
+                "price": "₺18.000 / $500 Başlangıç",
+                "badge": "2026 AI Search Standardı",
+                "desc": "Yapay Zeka Arama Motorlarında (Gemini, ChatGPT, Perplexity, SearchGPT) Markanızı Öne Çıkarın. Nöral varlık optimizasyonu ve AI atıf stratejileri.",
+                "features": [
+                    "Nöral & Entity (Varlık Otoritesi) Kapsamlı Denetimi",
+                    "Schema.org & Deep Knowledge Graph Mimarisi Kurulumu",
+                    "AI Citation-Ready İçerik Dönüşümü ve llms.txt Entegrasyonu",
+                    "Multi-Engine Marka Takibi (Gemini, ChatGPT, Perplexity, SearchGPT)"
+                ],
+                "pricing_tiers": [
+                    {
+                        "name": "One-Time AI Setup",
+                        "price": "₺18.000 / $500",
+                        "billing": "Tek Seferlik Kurulum",
+                        "desc": "Markanızın yapay zeka arama motorları için sıfırdan taranabilir, anlaşılır ve önerilebilir hale getirilmesi.",
+                        "features": [
+                            "Kapsamlı Nöral & Entity Otorite Denetimi",
+                            "Derin Schema.org JSON-LD Knowledge Graph Mimarisi",
+                            "Kök Dizin llms.txt ve AI Crawler İzinleri",
+                            "5 Ana Sayfanın AI Citation-Ready Hale Getirilmesi",
+                            "Google AI Overviews & Perplexity İndeksleme Testi"
+                        ]
+                    },
+                    {
+                        "name": "Ongoing GEO Retainer",
+                        "price": "₺14.000 / $400 / ay",
+                        "billing": "Aylık Düzenli Yönetim",
+                        "desc": "Yapay zeka modellerinin her güncellemesinde markanızın lider yanıt kaynağı olarak kalmasını sağlayan sürekli yönetim.",
+                        "features": [
+                            "Aylık Multi-Engine Görünürlük ve Atıf Raporlaması",
+                            "Yeni Ürün & Hizmetler İçin AI Varlık Genişletme",
+                            "Perplexity & SearchGPT Sıralama ve Atıf Takibi",
+                            "Haftalık Bilgi Grafiği & Schema İyileştirmeleri",
+                            "Doğrudan Yapay Zeka Danışmanlığı & Öncelikli Destek"
+                        ]
+                    }
+                ],
+                "ai_desc": {
+                    "definition": "Generative Engine Optimization (GEO); web sitenizin ve markanızın ChatGPT, Google Gemini, Perplexity ve SearchGPT gibi üretken yapay zeka motorları tarafından taranmasını, derinlemesine anlaşılmasını ve kullanıcı sorgularına doğrudan birincil güvenilir kaynak olarak sunulmasını sağlayan yeni nesil arama motoru optimizasyonudur.",
+                    "for_whom": "Klasik SEO'nun ötesine geçerek yapay zeka arama motorlarında rakiplerinin önüne geçmek, markasını doğrudan AI yanıtlarında birincil kaynak göstertmek ve yüksek alım niyetli müşterilere ulaşmak isteyen tüm e-ticaret ve kurumsal markalar için.",
+                    "how_works": "1. Mevcut AI görünürlüğü ve varlık (Entity) denetimi, 2. Derin Schema.org Knowledge Graph ve llms.txt yapılandırması, 3. İçeriklerin semantik ve atıf yapılabilir bloklara dönüştürülmesi, 4. Multi-engine test ve doğrulama, 5. Sürekli AI atıf takibi ve raporlama.",
+                    "example": "Bir e-ticaret markasının Gemini ve Perplexity'de 'İstanbul'un en iyi e-ticaret uzmanı kim?' veya 'En güvenilir web tasarım ajansı' sorgularında birincil kaynak ve bağlantı olarak önerilmesi."
+                },
+                "faqs": [
+                    {
+                        "q": "GEO (Generative Engine Optimization) nedir ve klasik SEO'dan farkı nedir?",
+                        "a": "Klasik SEO Google'ın mavi link listesinde üst sıralara çıkmayı hedeflerken, GEO (Generative Engine Optimization) ChatGPT, Perplexity ve Gemini gibi yapay zeka motorlarının ürettiği özet yanıtlarda doğrudan kaynak (citation) ve tavsiye edilen marka olarak yer almanızı sağlar."
+                    },
+                    {
+                        "q": "Yapay zeka motorları sitemi nasıl referans olarak gösterir?",
+                        "a": "AI modelleri derin yapılandırılmış veri (Schema.org), tutarlı varlık (Entity) sinyalleri, llms.txt ve net, istatistiki/doğrulanabilir veri tabloları içeren siteleri birincil güvenilir kaynak olarak seçer."
+                    },
+                    {
+                        "q": "GEO çalışması e-ticaret satışlarımı nasıl artırır?",
+                        "a": "Yapay zeka asistanlarından alışveriş tavsiyesi alan tüketiciler çok yüksek satın alma niyetine sahiptir. AI doğrudan sitenizi önerdiğinde dönüşüm oranları klasik reklamlara göre 3-4 kat daha yüksek gerçekleşir."
+                    },
+                    {
+                        "q": "GEO paketlerinizin kapsamı ve fiyatları nasıldır?",
+                        "a": "Tek seferlik temel kurulum paketimiz ₺18.000 ($500)'dan başlar. Sürekli multi-engine takip ve optimizasyon sağlayan retainer paketimiz ise aylık ₺14.000 ($400)'dır."
+                    }
+                ]
             }
         }
     },
     "case_studies": {
-        "title": "Başarı Hikayeleri & Sonuçlar",
-        "subtitle": "Geliştirdiğim sistemlerin markaların satışlarına ve iş süreçlerine etkisi.",
-        "results": "Alınan Sonuçlar",
+        "tag": "SOMUT METRİKLER",
+        "title": "Başarı Hikayeleri & Gerçek Sonuçlar",
+        "subtitle": "Birlikte çalıştığımız e-ticaret mağazalarında elde ettiğimiz kanıtlanmış büyüme ve teknik performans verileri.",
+        "results": "Başarılı Çıktı",
+        "view_all": "Tüm Vaka Analizlerini İncele",
         "items": [
             {
-                "client": "AIO Coffee (Kahve E-Ticaret Markası)",
-                "metric": "+35% Dönüşüm Oranı Artışı",
-                "desc": "Shopify üzerinde çalışan kahve markasının sepet terki oranları azaltıldı, mobil sayfa yüklenme hızı en üst düzeye çıkarıldı.",
+                "client": "AIO Coffee (Shopify Kahve E-Ticaret)",
+                "project": "Shopify Hız & Checkout CRO",
+                "metric": "+%35 DÖNÜŞÜM ORANI",
+                "desc": "Shopify üzerinde çalışan AIO Coffee kahve markasının sepet terki oranları azaltıldı, mobil sayfa yüklenme hızı en üst düzeye çıkarıldı.",
                 "problem": "Mobil kullanıcıların sepeti terk etme oranı %82 seviyesindeydi. Sitenin açılış süresi 3.8 saniyeydi.",
                 "solution": "Özel tek sayfalık ödeme adımları (one-page checkout) tasarlandı ve sitenin JavaScript yükleri optimize edildi.",
                 "process": "Hotjar analizleriyle sepet tıkanma noktaları tespit edildi, gereksiz uygulamaların kalıntı kodları silindi ve LCP metrikleri düzeltildi.",
                 "results": "Dönüşüm oranı (CR) %35 artırıldı, sayfa hızı 1.4 saniyeye düşürüldü (Veri: Temmuz 2025).",
-                "linkText": "aio.coffee",
-                "linkUrl": "https://aio.coffee"
+                "linkText": "aiocoffee.com/tr",
+                "linkUrl": "https://www.aiocoffee.com/tr",
+                "tags": ["Shopify", "CRO", "Hız"],
+                "author": "Ahmet Y., AIO Coffee CEO"
             },
             {
-                "client": "Moda Butiği (Giyim Girişimi)",
-                "metric": "1.1s Mobil Yüklenme & 98 SEO Skoru",
-                "desc": "Wordpress altyapısından İKAS platformuna geçiş yapılarak sunucu maliyetleri düşürüldü, organik Google sıralamaları hızla yükseltildi.",
-                "problem": "WooCommerce altyapısındaki yavaşlık ve sunucu kesintileri nedeniyle marka Google sıralamalarını kaybediyordu.",
-                "solution": "Web sitesi tamamen İKAS bulut altyapısına taşındı ve resim optimizasyonları yapıldı.",
-                "process": "Tüm ürün verileri ve SEO URL yapıları korunarak İKAS'a taşındı. 301 yönlendirmeleri yapıldı ve özel bir mobil arayüz kuruldu.",
-                "results": "Sitenin mobil açılış süresi 1.1 saniyeye indirildi. Google Lighthouse SEO skoru 98'e ulaştı (Veri: Ekim 2025).",
-                "linkText": "modabutigi.com",
-                "linkUrl": "https://modabutigi.com"
+                "client": "Nourla (E-Ticaret & Marka Mağazası)",
+                "project": "Modern Web Mimarisi & SEO",
+                "metric": "1.1s MOBİL HIZ & 98 SEO",
+                "desc": "Nourla markası için modern, hızlı ve satış odaklı e-ticaret altyapısı kurularak Google arama görünürlüğü en üst düzeye taşındı.",
+                "problem": "Yavaş yüklenen eski altyapı ve yetersiz mobil deneyim nedeniyle ziyaretçiler satın alma aşamasına geçmeden sayfayı terk ediyordu.",
+                "solution": "React ve modern headless mimariyle ultra hızlı, mobil öncelikli (mobile-first) e-ticaret mağazası yayına alındı.",
+                "process": "Katalog mimarisi yeniden kurgulandı, WebP görsel pipeline ve Schema.org JSON-LD yapısal verileri entegre edildi.",
+                "results": "Mobil yüklenme hızı 1.1 saniyeye indirildi. Google Lighthouse SEO skoru 98'e ulaştı (Veri: Ekim 2025).",
+                "linkText": "nourla.com.tr/tr",
+                "linkUrl": "https://www.nourla.com.tr/tr",
+                "tags": ["E-Ticaret", "React", "SEO"],
+                "author": "Nourla Marka Yönetimi"
             },
             {
-                "client": "Çok Kanallı Perakende Satıcısı",
-                "metric": "%90 Manuel Stok Hatalarında Azalma",
-                "desc": "Shopify, İKAS, Trendyol, Hepsiburada ve ERP arasında çift yönlü anlık API entegrasyonu kurularak operasyonel hatalar sıfırlandı.",
-                "problem": "Farklı pazaryerlerinde ve kendi sitesinde aynı anda satış yapan firma, manuel stok güncellemelerinden dolayı olmayan ürünü satma (overselling) cezası alıyordu.",
-                "solution": "Node.js tabanlı özel bir stok ve sipariş senkronizasyon API entegrasyonu yazıldı.",
-                "process": "Trendyol, Hepsiburada ve Shopify API'leri entegre edilerek, sipariş oluştuğu anda tüm kanallarda stok miktarını güncelleyen webhook altyapısı kuruldu.",
-                "results": "Olmayan ürünü satma cezaları tamamen sıfırlandı, manuel stok operasyon süresi günde 4 saatten sıfıra indi (Veri: Aralık 2025).",
-                "linkText": "Entegrasyon Detayı",
-                "linkUrl": "/stok-ve-depo-sistemi"
+                "client": "Taam Club (Çok Şubeli Sipariş Sistemi)",
+                "project": "Web App & Sipariş Otomasyonu",
+                "metric": "%0 HATA & TAM OTOMASYON",
+                "desc": "Taam Club için geliştirilen modern web uygulaması ile sipariş yönetimi, menü güncellemeleri ve operasyonel süreçler otomatikleştirildi.",
+                "problem": "Farklı kanallardan gelen siparişlerin ve menü değişikliklerinin manuel takibi yoğun operasyonel hatalara ve gecikmelere yol açıyordu.",
+                "solution": "Next.js ve Node.js altyapısında gerçek zamanlı sipariş ve menü yönetim platformu sıfırdan geliştirildi.",
+                "process": "Anlık bildirim altyapısı, dinamik menü yönetimi ve bulut tabanlı API mimarisi entegre edilerek kesintisiz sipariş akışı sağlandı.",
+                "results": "Manuel sipariş hataları tamamen sıfırlandı, şube operasyon hızı %75 arttı (Veri: Aralık 2025).",
+                "linkText": "taam-club.vercel.app",
+                "linkUrl": "https://taam-club.vercel.app/",
+                "tags": ["Next.js", "Web App", "API Entegrasyon"],
+                "author": "Taam Club Operasyon Direktörü"
             }
         ]
     },
@@ -569,6 +644,14 @@
         "read_more": "Okumaya Devam Et",
         "back_to_blog": "Bloğa Geri Dön",
         "articles": [
+            {
+                "id": "geo-nedir-rehberi",
+                "slug": "geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir",
+                "title": "GEO Nedir? Yapay Zeka Arama Motorlarında (Gemini, ChatGPT, Perplexity) Nasıl Öne Çıkılır?",
+                "date": "1 Ekim 2026",
+                "summary": "2026'da klasik SEO artık tek başına yeterli değil. Generative Engine Optimization (GEO) ile web sitenizi yapay zekanın doğrudan referans gösterdiği birincil otorite haline getirin.",
+                "content": "<p>Arama dünyası son yirmi yılın en köklü dönüşümünü yaşıyor. Kullanıcılar artık yalnızca Google'a girip anahtar kelimeler yazarak mavi link listelerine tıklamıyor; <strong>ChatGPT, Google Gemini, Perplexity ve SearchGPT</strong> gibi üretken yapay zeka (Generative AI) asistanlarına doğrudan doğal dille sorular soruyor ve sentezlenmiş yanıtlar alıyor. Bu yeni çağda, dijital dünyada var olmanın ve müşteri kazanmanın yolu <strong>GEO (Generative Engine Optimization - Üretken Motor Optimizasyonu)</strong> stratejilerinden geçiyor.</p><h3>Klasik SEO ile GEO Arasındaki Temel Farklar</h3><p>Geleneksel SEO, web sitelerini anahtar kelimelere göre optimize ederek Google SERP (Arama Sonuç Sayfası) listesinde ilk 10 link arasına sokmayı hedefler. Oysa GEO, sitenizin sunduğu bilgileri yapay zeka modellerinin 'anlayabileceği, doğrulayabileceği ve yanıt üretirken kaynak gösterebileceği' yapılandırılmış varlık bloklarına (Entity Blocks) dönüştürmeyi amaçlar.</p><table border=\"1\" style=\"width:100%;border-collapse:collapse;margin:1.5rem 0\"><thead><tr style=\"background:#f1f5f9\"><th>Kriter</th><th>Geleneksel SEO</th><th>Generative Engine Optimization (GEO)</th></tr></thead><tbody><tr><td><strong>Hedef Platform</strong></td><td>Google, Bing, Yandex</td><td>ChatGPT, Gemini, Perplexity, Claude, SearchGPT</td></tr><tr><td><strong>Çıktı Biçimi</strong></td><td>Tıklanabilir Mavi Link Sıralaması</td><td>Doğrudan Sentezlenmiş Yanıt & AI Atıfı (Citation)</td></tr><tr><td><strong>Odak Noktası</strong></td><td>Anahtar Kelime Hacmi & Backlink</td><td>Varlık Otoritesi (Entity), Bilgi Grafiği & Sayısal Veri</td></tr><tr><td><strong>Dönüşüm Oranı</strong></td><td>Orta (%1 - %3)</td><td>Çok Yüksek (AI Tavsiyesinde %8 - %15)</td></tr></tbody></table><h3>Yapay Zeka Motorları Web Sitelerini Nasıl Seçer ve Atıf Yapar?</h3><p>LLM tabanlı arama motorları, bir kullanıcı sorusuna cevap hazırlarken RAG (Retrieval-Augmented Generation) mekanizmasını kullanır. Bu süreçte yapay zeka şu 4 temel sinyale göre kaynak belirler:</p><ol><li><strong>Yapılandırılmış Veri Derinliği (Schema.org JSON-LD):</strong> AI botları salt HTML yerine JSON-LD ile işaretlenmiş Organization, Service, Product ve FAQPage verilerini öncelikli doğruluk kaynağı kabul eder.</li><li><strong>llms.txt Dosyası:</strong> Web sitenizin kök dizininde bulunan llms.txt, yapay zeka tarayıcılarına işletmenizin sunduğu hizmetleri en yalın ve yapılandırılmış dille anlatır.</li><li><strong>Doğrulanabilir Sayısal ve İstatistiki Veriler:</strong> LLM'ler genel-geçer ifadeler yerine 'sayfa hızını 1.1 saniyeye indirdi', '%35 dönüşüm artışı sağladı' gibi somut ve kanıtlanmış verileri doğrudan özetlerine dahil eder.</li><li><strong>Marka Varlık Tutarlılığı (Entity Consistency):</strong> Markanızın adı, kurucusu, hizmet alanları ve canlı referanslarının (örneğin AIO Coffee, Nourla, Taam Club) internet genelinde tutarlı şekilde birbirine bağlanmış olması gerekir.</li></ol><h3>GEO ile Öne Çıkmak İçin Uygulamanız Gereken 4 Teknik Strateji</h3><h4>1. Knowledge Graph (Bilgi Grafiği) Entegrasyonu</h4><p>Web sitenizin sadece sayfalarını değil, aralarındaki anlamsal ilişkileri de kodlayın. Örneğin bir e-ticaret uzmanının sunduğu hizmetleri, kullandığı teknolojileri (React, Shopify) ve geliştirdiği canlı referansları Schema knowsAbout ve workExample etiketleriyle birbirine bağlayın.</p><h4>2. AI Citation-Ready İçerik Mimarisi</h4><p>İçeriklerinizi uzun ve dolambaçlı paragraflar yerine, doğrudan sorulara yanıt veren Doğrudan Yanıt Blokları (Direct Answer Boxes) ve karşılaştırma tabloları halinde kurgulayın. Yapay zeka asistanları bu net yapıları kolayca alıntılayarak kullanıcıya aktarır.</p><h4>3. AI Crawler İzinlerini Eksiksiz Tanımlayın</h4><p>robots.txt dosyanızda GPTBot, PerplexityBot, ClaudeBot, Google-Extended ve Googleother gibi yapay zeka botlarına açık erişim verin. Engellenen botlar markanızı veri tabanına dahil edemez.</p><h4>4. Nöral & Varlık Otorite Denetimi Yaptırın</h4><p>Markanızın şu anda ChatGPT veya Gemini'ye sorulduğunda nasıl yanıtlandığını düzenli olarak test edin. Eğer AI markanızı tanımıyorsa veya rakiplerinizi öneriyorsa acilen profesyonel GEO çalışması başlatılmalıdır.</p><hr /><p>Markanızı yapay zeka arama motorlarında lider konuma taşımak ve AI yanıtlarında birincil kaynak olmak için <a href=\"/hizmetler/geo-yapay-zeka-optimizasyonu\"><strong>GEO & Yapay Zeka Optimizasyonu Hizmetimizi</strong></a> inceleyebilir veya ücretsiz AI görünürlük analizi için benimle iletişime geçebilirsiniz.</p>"
+            },
             {
                 "id": "shopify-vs-ikas",
                 "slug": "shopify-vs-ikas-turkiye-2026",

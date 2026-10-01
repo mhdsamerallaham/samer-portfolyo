@@ -10,11 +10,22 @@ const resources = {
     ar: { translation: ar }
 };
 
+// Detect language from URL path at init time (before React hydration)
+// so the first render is already in the correct language/direction.
+function detectInitialLanguage() {
+    if (typeof window !== 'undefined') {
+        const path = window.location.pathname;
+        if (path.startsWith('/en/') || path === '/en') return 'en';
+        if (path.startsWith('/ar/') || path === '/ar') return 'ar';
+    }
+    return 'tr';
+}
+
 i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'tr', // default language is Turkish
+        lng: detectInitialLanguage(),
         fallbackLng: 'tr',
         interpolation: {
             escapeValue: false

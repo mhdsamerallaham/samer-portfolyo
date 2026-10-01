@@ -198,19 +198,19 @@ export default function SampleWorksGallery() {
   ];
 
   return (
-    <section className="py-16 border-t border-white/5 my-12" id="ornek-calismalar">
+    <section className="py-16 border-t border-slate-200/80 my-12" id="ornek-calismalar">
       <div className="flex flex-col gap-4 mb-10 text-start">
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 rounded-full mono text-[10px] font-black text-[#ff6b6b] uppercase tracking-widest flex items-center gap-1.5">
-            <Sparkles size={12} />
+          <span className="px-3.5 py-1 bg-teal-50 border border-teal-200 rounded-full text-xs font-bold text-teal-800 uppercase tracking-wider flex items-center gap-1.5">
+            <Sparkles size={12} className="text-teal-600" />
             {lang === 'tr' ? 'CANLI ÖRNEK PORTFOLYO' : lang === 'ar' ? 'معرض الأعمال الحي' : 'LIVE SAMPLE PORTFOLIO'}
           </span>
         </div>
 
-        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
+        <h2 className="font-display text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
           {lang === 'tr' ? 'Örnek Çalışmalarımız' : lang === 'ar' ? 'نماذج من أعمالنا' : 'Sample Works & Showcase'}
         </h2>
-        <p className="text-neutral-400 text-sm md:text-base font-semibold max-w-2xl">
+        <p className="text-slate-600 text-sm md:text-base font-normal max-w-2xl">
           {lang === 'tr'
             ? 'Web siteleri ve e-ticaret için hazırladığımız çekici görseller, yüksek çözünürlüklü model çekimleri ve dinamik tanıtım videoları.'
             : lang === 'ar'
@@ -229,10 +229,10 @@ export default function SampleWorksGallery() {
               setSelectedTag(null);
               setVisibleCount(6);
             }}
-            className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all duration-300 flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
               activeTab === cat.id
-                ? 'bg-[#ff6b6b] text-white shadow-lg shadow-[#ff6b6b]/20 scale-105'
-                : 'bg-[#131b2e] border border-white/10 text-neutral-400 hover:text-white hover:border-white/20'
+                ? 'bg-teal-600 text-white shadow-sm scale-105'
+                : 'bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
             {cat.label}
@@ -242,8 +242,8 @@ export default function SampleWorksGallery() {
 
       {/* Tags Bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
-        <span className="mono text-[10px] font-black text-neutral-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
-          <Tag size={12} className="text-[#ff6b6b]" />
+        <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1 flex-shrink-0">
+          <Tag size={12} className="text-teal-600" />
           {lang === 'tr' ? 'FİLTRELE:' : lang === 'ar' ? 'تصفية:' : 'TAGS:'}
         </span>
         {selectedTag && (
@@ -252,7 +252,7 @@ export default function SampleWorksGallery() {
               setSelectedTag(null);
               setVisibleCount(6);
             }}
-            className="px-2.5 py-1 bg-[#ff6b6b]/20 border border-[#ff6b6b]/40 rounded-lg text-xs font-bold text-[#ff6b6b] flex items-center gap-1 hover:bg-[#ff6b6b]/30 transition-colors flex-shrink-0"
+            className="px-2.5 py-1 bg-teal-50 border border-teal-200 rounded-lg text-xs font-bold text-teal-800 flex items-center gap-1 hover:bg-teal-100 transition-colors flex-shrink-0 cursor-pointer"
           >
             <span>{selectedTag}</span>
             <X size={12} />
@@ -265,10 +265,10 @@ export default function SampleWorksGallery() {
               setSelectedTag(selectedTag === tag ? null : tag);
               setVisibleCount(6);
             }}
-            className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex-shrink-0 ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex-shrink-0 cursor-pointer ${
               selectedTag === tag
-                ? 'bg-[#ff6b6b] text-white font-bold'
-                : 'bg-white/5 border border-white/10 text-neutral-400 hover:text-neutral-200 hover:border-white/20'
+                ? 'bg-teal-600 text-white font-bold shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
             {tag}
@@ -284,10 +284,10 @@ export default function SampleWorksGallery() {
             onClick={() => setLightboxMedia(item)}
             onMouseEnter={() => item.type === 'video' && setHoveredVideoId(item.id)}
             onMouseLeave={() => item.type === 'video' && setHoveredVideoId(null)}
-            className="group relative bg-[#131b2e] border border-white/5 hover:border-[#ff6b6b]/40 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(255,107,107,0.12)] flex flex-col justify-between"
+            className="group relative bg-white border border-slate-200 hover:border-teal-400 rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between"
           >
             {/* Media Container */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/40">
+            <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
               {item.type === 'video' ? (
                 <div className="w-full h-full relative">
                   {hoveredVideoId === item.id ? (
@@ -311,7 +311,7 @@ export default function SampleWorksGallery() {
                     />
                   )}
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
-                    <div className="w-12 h-12 rounded-full bg-[#ff6b6b]/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <Play size={20} className="fill-white ml-0.5" />
                     </div>
                   </div>
@@ -325,7 +325,7 @@ export default function SampleWorksGallery() {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                   <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <Maximize2 size={14} />
                   </div>
@@ -337,12 +337,12 @@ export default function SampleWorksGallery() {
                 <span className="px-2.5 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-full mono text-[9px] font-black text-white uppercase tracking-wider flex items-center gap-1">
                   {item.type === 'video' ? (
                     <>
-                      <Film size={10} className="text-[#ff6b6b]" />
+                      <Film size={10} className="text-teal-400" />
                       VİDEO
                     </>
                   ) : (
                     <>
-                      <ImageIcon size={10} className="text-blue-400" />
+                      <ImageIcon size={10} className="text-teal-300" />
                       GÖRSEL
                     </>
                   )}
@@ -352,7 +352,7 @@ export default function SampleWorksGallery() {
 
             {/* Content Container */}
             <div className="p-5 flex flex-col gap-3 text-start">
-              <h3 className="text-base font-black text-white group-hover:text-[#ff6b6b] transition-colors leading-snug">
+              <h3 className="font-display text-base font-bold text-slate-900 group-hover:text-teal-700 transition-colors leading-snug">
                 {item.title}
               </h3>
 
@@ -366,7 +366,7 @@ export default function SampleWorksGallery() {
                       setSelectedTag(tag);
                       setVisibleCount(6);
                     }}
-                    className="px-2 py-0.5 bg-white/5 border border-white/10 hover:border-[#ff6b6b]/30 rounded-md text-[10px] font-semibold text-neutral-300 hover:text-[#ff6b6b] transition-colors"
+                    className="px-2.5 py-1 bg-slate-100 hover:bg-teal-50 border border-slate-200/60 rounded-lg text-[11px] font-semibold text-slate-600 hover:text-teal-700 transition-colors cursor-pointer"
                   >
                     {tag}
                   </span>
@@ -382,9 +382,9 @@ export default function SampleWorksGallery() {
         <div className="flex justify-center mt-12">
           <button
             onClick={() => setVisibleCount(prev => prev + 6)}
-            className="px-8 py-3.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b] hover:border-[#ff6b6b] text-white rounded-2xl mono text-xs font-black tracking-widest uppercase transition-all duration-300 flex items-center gap-2 shadow-lg"
+            className="px-8 py-3.5 bg-white border border-slate-200 hover:bg-teal-600 hover:border-teal-600 hover:text-white text-slate-800 rounded-2xl font-bold text-xs tracking-wide uppercase transition-all duration-300 flex items-center gap-2 shadow-xs cursor-pointer"
           >
-            {lang === 'tr' ? 'DAHA FAZLA ÖRNEK GÖSTER' : lang === 'ar' ? 'عرض المزيد من النماذج' : 'LOAD MORE SAMPLES'}
+            <span>{lang === 'tr' ? 'DAHA FAZLA ÖRNEK GÖSTER' : lang === 'ar' ? 'عرض المزيد من النماذج' : 'LOAD MORE SAMPLES'}</span>
             <ChevronDown size={16} />
           </button>
         </div>

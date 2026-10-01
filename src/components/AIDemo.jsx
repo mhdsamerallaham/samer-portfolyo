@@ -124,24 +124,23 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-[#131b2e] border border-white/5 rounded-3xl p-6 md:p-10 relative overflow-hidden text-left">
-      <div className="absolute top-0 left-0 w-32 h-32 bg-[#ff6b6b]/5 rounded-full blur-[50px] pointer-events-none" />
+    <div className="w-full max-w-4xl mx-auto bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 relative overflow-hidden text-left shadow-[0_12px_40px_-8px_rgba(15,23,42,0.06)]">
       
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-8 rounded-lg bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 flex items-center justify-center text-[#ff6b6b]">
-          <Sparkles size={16} />
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-9 h-9 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-center text-teal-600">
+          <Sparkles size={18} />
         </div>
-        <h3 className="text-xl md:text-2xl font-black text-white">{t('ai_generator.title')}</h3>
+        <h3 className="font-display text-xl sm:text-2xl font-extrabold text-slate-900">{t('ai_generator.title')}</h3>
       </div>
-      <p className="text-neutral-400 text-xs md:text-sm font-medium mb-8 leading-relaxed">
+      <p className="text-slate-600 text-sm font-normal mb-8 leading-relaxed">
         {t('ai_generator.subtitle')}
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Form Input */}
-        <form onSubmit={generateDescription} className="lg:col-span-5 flex flex-col gap-5">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="ai-name" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_name')}</label>
+        <form onSubmit={generateDescription} className="lg:col-span-5 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="ai-name" className="text-xs font-bold text-slate-700">{t('ai_generator.label_name')}</label>
             <input
               id="ai-name"
               type="text"
@@ -149,17 +148,17 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
               onChange={(e) => setName(e.target.value)}
               placeholder={t('ai_generator.placeholder_name')}
               required
-              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors"
+              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:border-teal-500 focus:bg-white transition-colors"
             />
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="ai-category" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_category')}</label>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="ai-category" className="text-xs font-bold text-slate-700">{t('ai_generator.label_category')}</label>
             <select
               id="ai-category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors"
+              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:border-teal-500 focus:bg-white transition-colors"
             >
               <option value="fashion">{t('ai_generator.categories.fashion')}</option>
               <option value="electronics">{t('ai_generator.categories.electronics')}</option>
@@ -169,80 +168,84 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
             </select>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="ai-features" className="mono text-[9px] font-black text-neutral-400 uppercase tracking-wider">{t('ai_generator.label_features')}</label>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="ai-features" className="text-xs font-bold text-slate-700">{t('ai_generator.label_features')}</label>
             <textarea
               id="ai-features"
               value={features}
               onChange={(e) => setFeatures(e.target.value)}
               placeholder={t('ai_generator.placeholder_features')}
               rows={3}
-              className="w-full px-4 py-3 bg-[#0b0f19] border border-white/5 rounded-xl text-xs md:text-sm text-white focus:outline-none focus:border-[#ff6b6b]/40 transition-colors resize-none"
+              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:border-teal-500 focus:bg-white transition-colors resize-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-[#ff6b6b] hover:bg-[#ff5252] disabled:bg-neutral-800 disabled:text-neutral-500 text-white rounded-xl mono text-[10px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full py-3 bg-teal-600 hover:bg-teal-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold rounded-xl text-xs sm:text-sm tracking-wide uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
           >
             {loading ? (
               <>
-                <RefreshCw size={14} className="animate-spin" />
-                {t('ai_generator.btn_generating')}
+                <RefreshCw size={15} className="animate-spin" />
+                <span>{t('ai_generator.btn_generating')}</span>
               </>
             ) : (
               <>
-                <Sparkles size={14} />
-                {t('ai_generator.btn_generate')}
+                <Sparkles size={15} />
+                <span>{t('ai_generator.btn_generate')}</span>
               </>
             )}
           </button>
         </form>
 
         {/* Console/Terminal Output */}
-        <div className="lg:col-span-7 bg-[#0b0f19] border border-white/5 rounded-2xl p-5 flex flex-col justify-between min-h-[300px] relative">
+        <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between min-h-[300px] relative text-slate-200 shadow-inner">
           
           {loading && (
-            <div className="absolute inset-0 bg-[#0b0f19]/80 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center gap-4 z-10">
-              <RefreshCw size={24} className="text-[#ff6b6b] animate-spin" />
-              <span className="mono text-[10px] text-neutral-400 font-bold uppercase tracking-wider animate-pulse">{stepText}</span>
+            <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center gap-3 z-10">
+              <RefreshCw size={24} className="text-teal-400 animate-spin" />
+              <span className="font-mono text-xs text-slate-300 font-bold uppercase tracking-wider animate-pulse">{stepText}</span>
             </div>
           )}
 
           <div className="w-full">
             {/* Window header */}
-            <div className="flex justify-between items-center pb-3 border-b border-white/5 mb-4">
+            <div className="flex justify-between items-center pb-3 border-b border-slate-800 mb-4">
               <div className="flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/20" />
-                <div className="w-2.5 h-2.5 rounded-full bg-[#ff6b6b]/20" />
+                <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-teal-500/80" />
               </div>
-              <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">AI_LOG_V2.0</span>
+              <span className="font-mono text-[10px] text-slate-400 font-bold tracking-widest">
+                AI_SEO_OUTPUT.MD
+              </span>
             </div>
 
-            {result ? (
-              <div className="text-left overflow-y-auto max-h-[220px] text-neutral-300 text-xs leading-relaxed whitespace-pre-wrap font-medium">
-                {result}
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <span className="mono text-[10px] text-neutral-600 font-black uppercase tracking-widest">
-                  &gt; WAİTİNG_FOR_İNPUT.EXE
+            {/* Generated Content Box */}
+            <div className="font-mono text-xs leading-relaxed text-slate-300 max-h-[220px] overflow-y-auto whitespace-pre-wrap">
+              {result ? (
+                result
+              ) : (
+                <span className="text-slate-500 italic">
+                  // {t('ai_generator.placeholder_console')}
                 </span>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
+          {/* Output Footer */}
           {result && (
-            <div className="flex justify-between items-center border-t border-white/5 pt-4 mt-4">
-              <span className="mono text-[8px] font-black text-neutral-400 uppercase tracking-widest">{t('ai_generator.output_title')}</span>
+            <div className="flex justify-between items-center pt-4 border-t border-slate-800 mt-4">
+              <span className="text-[11px] text-teal-400 font-semibold flex items-center gap-1">
+                ✓ %100 SEO & CRO Uyumlu
+              </span>
               <button
                 onClick={copyToClipboard}
-                className="px-3.5 py-1.5 bg-white/5 border border-white/10 hover:bg-[#ff6b6b]/10 hover:border-[#ff6b6b]/20 hover:text-[#ff6b6b] text-white rounded-lg mono text-[8px] font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
               >
-                {copied ? <Check size={10} className="text-[#ff6b6b]" /> : <Copy size={10} />}
-                {copied ? 'KOPYALANDI' : 'KOPYALA'}
+                {copied ? <Check size={13} className="text-teal-400" /> : <Copy size={13} />}
+                <span>{copied ? 'KOPYALANDI' : 'KOPYALA'}</span>
               </button>
             </div>
           )}
@@ -251,15 +254,15 @@ ${featureList.map(f => `- **${f}**: Doğal kaynaklardan elde edilen saf besin de
       </div>
 
       {/* Interactive CTA Banner */}
-      <div className="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-left">
-        <p className="text-neutral-400 text-xs leading-relaxed font-semibold max-w-xl">
+      <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-left">
+        <p className="text-slate-600 text-xs leading-relaxed font-medium max-w-xl">
           {t('ai_generator.cta')}
         </p>
         <Link
           to="/iletisim?service=urun-gorsel"
-          className="px-5 py-2.5 bg-[#ff6b6b]/10 border border-[#ff6b6b]/20 hover:bg-[#ff6b6b] hover:text-white text-[#ff6b6b] rounded-xl mono text-[9px] font-black tracking-widest uppercase transition-all whitespace-nowrap self-stretch md:self-auto text-center"
+          className="px-5 py-2.5 bg-orange-50 border border-orange-200 hover:bg-orange-500 hover:text-white text-orange-700 rounded-xl font-display text-xs font-bold tracking-wide uppercase transition-all whitespace-nowrap self-stretch md:self-auto text-center shadow-xs"
         >
-          {t('nav.cta').toUpperCase()}
+          {t('nav.cta')}
         </Link>
       </div>
 

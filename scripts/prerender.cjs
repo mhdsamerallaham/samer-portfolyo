@@ -307,6 +307,34 @@ const pages = {
     lang: 'tr',
     content: `<h1>E-Ticarette Yapay Zeka Chatbot Entegrasyonu</h1><p>Müşteri hizmetleri yükünü %60 azaltan ve gece satışlarını %20 artıran akıllı chatbot sistemleri.</p>`
   },
+  'hizmetler/geo-yapay-zeka-optimizasyonu': {
+    title: 'GEO & Yapay Zeka Arama Motoru Optimizasyonu | Samer Allaham',
+    description: 'Yapay zeka arama motorlarında (Gemini, ChatGPT, Perplexity, SearchGPT) markanızı öne çıkarın. Nöral varlık optimizasyonu ve AI atıf stratejileri.',
+    keywords: 'geo optimizasyonu, generative engine optimization, yapay zeka arama motoru optimizasyonu, chatgpt seo, perplexity seo, gemini seo, fatih web tasarım, samer allaham',
+    canonical: 'https://www.samer.life/hizmetler/geo-yapay-zeka-optimizasyonu',
+    lang: 'tr',
+    content: `
+      <h1>GEO & Yapay Zeka Arama Motoru Optimizasyonu (Gemini, ChatGPT, Perplexity)</h1>
+      <p>Yapay Zeka Arama Motorlarında (Gemini, ChatGPT, Perplexity, SearchGPT) markanızı öne çıkarın. Nöral varlık optimizasyonu, Schema.org Knowledge Graph ve AI atıf stratejileri.</p>
+      <h2>Temel GEO Hizmetlerimiz</h2>
+      <ul>
+        <li><strong>Nöral & Entity (Varlık Otoritesi) Kapsamlı Denetimi:</strong> Markanızın LLM modelleri tarafından nasıl algılandığının analizi.</li>
+        <li><strong>Schema.org & Deep Knowledge Graph Mimarisi:</strong> Verilerinizi yapay zekanın doğrudan anlayacağı JSON-LD grafiğine dönüştürme.</li>
+        <li><strong>AI Citation-Ready İçerik Dönüşümü ve llms.txt:</strong> ChatGPT ve Perplexity'nin doğrudan kaynak göstereceği içerik yapıları.</li>
+        <li><strong>Multi-Engine Marka Takibi:</strong> Düzenli görünürlük ve yapay zeka atıf raporlaması.</li>
+      </ul>
+      <h2>Fiyatlandırma & Paketler</h2>
+      <p>Tek Seferlik AI Kurulumu: $500 / ₺18.000 | Aylık GEO Retainer: $400 / ₺14.000 / ay. Ücretsiz AI Görünürlük Analizi için iletişime geçin.</p>
+    `
+  },
+  'geo-yapay-zeka-optimizasyonu': {
+    title: 'GEO & Yapay Zeka Arama Motoru Optimizasyonu | Samer Allaham',
+    description: 'Yapay zeka arama motorlarında (Gemini, ChatGPT, Perplexity, SearchGPT) markanızı öne çıkarın. Nöral varlık optimizasyonu ve AI atıf stratejileri.',
+    keywords: 'geo optimizasyonu, generative engine optimization, yapay zeka seo, chatgpt seo, samer allaham',
+    canonical: 'https://www.samer.life/hizmetler/geo-yapay-zeka-optimizasyonu',
+    lang: 'tr',
+    content: `<h1>GEO & Yapay Zeka Arama Motoru Optimizasyonu</h1><p>Markanızı AI arama motorlarında lider konuma getirin.</p>`
+  },
 
   // ==========================================
   // ENGLISH PAGES (Prefix /en)
@@ -477,6 +505,33 @@ const pages = {
     lang: 'en',
     content: `<h1>AI Chatbot Integration for E-Commerce</h1><p>Automated 24/7 product recommendations, order tracking, and instant customer query resolution.</p>`
   },
+  'en/services/generative-engine-optimization': {
+    title: 'Generative Engine Optimization (GEO) & AI Search | Samer Allaham',
+    description: 'Scale brand visibility across Gemini, ChatGPT, Perplexity & SearchGPT. Neural entity audits, Schema Knowledge Graphs, and AI citation strategies.',
+    keywords: 'generative engine optimization, GEO services, AI search optimization, ChatGPT SEO, Perplexity SEO, web development, mobile app development, Samer Allaham',
+    canonical: 'https://www.samer.life/en/services/generative-engine-optimization',
+    lang: 'en',
+    content: `
+      <h1>Generative Engine Optimization (GEO) & AI Search Solutions</h1>
+      <p>Dominate conversational and generative search engines: Gemini, ChatGPT, Perplexity, and SearchGPT. Neural entity authority, deep JSON-LD Knowledge Graphs, and direct AI citations.</p>
+      <h2>Core GEO Offerings</h2>
+      <ul>
+        <li><strong>Neural & Entity Authority Audit:</strong> Diagnostic analysis of how LLM models perceive and synthesize your brand.</li>
+        <li><strong>Schema.org & Deep Knowledge Graph Architecture:</strong> Comprehensive structured data connecting your founder, organization, and live works.</li>
+        <li><strong>AI Citation-Ready Content & llms.txt:</strong> Transformation of pages into self-contained direct answer blocks.</li>
+        <li><strong>Multi-Engine Brand Monitoring:</strong> Tracking and analyzing real-time AI citation positions.</li>
+      </ul>
+      <h2>Pricing & Free Audit</h2>
+      <p>One-Time AI Setup: $500 / ₺18,000 | Ongoing GEO Retainer: $400/month. Request your Free AI Visibility Audit today.</p>
+    `
+  },
+  'en/generative-engine-optimization': {
+    title: 'Generative Engine Optimization (GEO) & AI Search | Samer Allaham',
+    description: 'Scale brand visibility across Gemini, ChatGPT, Perplexity & SearchGPT. Neural entity audits and AI citations.',
+    canonical: 'https://www.samer.life/en/services/generative-engine-optimization',
+    lang: 'en',
+    content: `<h1>Generative Engine Optimization (GEO) & AI Search Solutions</h1><p>Position your brand as the leading cited authority in AI searches.</p>`
+  },
 
   // ==========================================
   // ARABIC PAGES (Prefix /ar)
@@ -646,11 +701,39 @@ const pages = {
     canonical: 'https://www.samer.life/ar/faq/eticarette-yapay-zeka-chatbot-entegrasyonu-nasil-yapilir',
     lang: 'ar',
     content: `<h1>دمج شات بوت الذكاء الاصطناعي للمتاجر</h1><p>ترشيح تلقائي للمنتجات، تتبع الشحنات الفوري، وإجابة استفسارات العملاء على مدار 24 ساعة.</p>`
+  },
+  'ar/services/generative-engine-optimization': {
+    title: 'تحسين محركات البحث بالذكاء الاصطناعي (GEO) | سامر اللحام',
+    description: 'تصدر نتائج محركات الذكاء الاصطناعي (ChatGPT, Gemini, Perplexity). تدقيق الكيانات العصبية وبنية Schema.org وبيانات الاستشهاد المباشر.',
+    keywords: 'تحسين محركات الذكاء الاصطناعي, GEO, سيو شات جي بي تي, سيو بيربليكسيتي, تطوير مواقع, برمجة تطبيقات, سامر اللحام',
+    canonical: 'https://www.samer.life/ar/services/generative-engine-optimization',
+    lang: 'ar',
+    content: `
+      <h1>تحسين محركات البحث بالذكاء الاصطناعي (GEO) — Gemini, ChatGPT, Perplexity</h1>
+      <p>اجعل علامتك التجارية المصدر الأول والموثوق الذي تستشهد به نماذج الذكاء الاصطناعي. تدقيق الكيانات وبنية المعرفة الشاملة.</p>
+      <h2>خدمات GEO الأساسية</h2>
+      <ul>
+        <li><strong>تدقيق الكيانات والسلطة المعرفية:</strong> تقييم شامل لظهور علامتك داخل نماذج الذكاء الاصطناعي التوليدي.</li>
+        <li><strong>بناء بنية Schema.org و Knowledge Graph:</strong> ربط المنظمة والمشاريع الحية برمجياً.</li>
+        <li><strong>تحويل المحتوى للاستشهاد بالذكاء الاصطناعي وملف llms.txt:</strong> صياغة إجابات مباشرة وسهلة الاقتباس.</li>
+        <li><strong>مراقبة الإشارات والتوصيات:</strong> متابعة مستمرة لمواقع استشهاد الذكاء الاصطناعي بمتجرك.</li>
+      </ul>
+      <h2>الأسعار والتدقيق المجاني</h2>
+      <p>باقة التأسيس: $500 (18,000 ليرة) | الإدارة الشهرية: $400 شهرياً. احصل على فحص مجاني لظهور موقعك في الذكاء الاصطناعي.</p>
+    `
+  },
+  'ar/generative-engine-optimization': {
+    title: 'تحسين محركات البحث بالذكاء الاصطناعي (GEO) | سامر اللحام',
+    description: 'تصدر نتائج محركات الذكاء الاصطناعي (ChatGPT, Gemini, Perplexity). تدقيق الكيانات العصبية.',
+    canonical: 'https://www.samer.life/ar/services/generative-engine-optimization',
+    lang: 'ar',
+    content: `<h1>تحسين محركات البحث بالذكاء الاصطناعي (GEO)</h1><p>تصدر ترشيحات محركات الذكاء الاصطناعي التوليدي.</p>`
   }
 };
 
-// Define blog posts configurations (6 posts * 3 languages = 18 pages)
+// Define blog posts configurations (7 posts * 3 languages = 21 pages)
 const blogPostsList = [
+  'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir',
   'eticaret-sitem-var-ama-satis-yok-sorun-nerede',
   'urunlerim-goruntuleniyor-ama-satilmiyor-ne-yapmaliyim',
   'eticarette-ilk-5-saniye-musteri-neden-terk-ediyor',
@@ -661,6 +744,11 @@ const blogPostsList = [
 
 const blogDetails = {
   tr: {
+    'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir': {
+      title: 'GEO Nedir? Yapay Zeka Arama Motorlarında Nasıl Öne Çıkılır? | Samer Allaham',
+      description: '2026\'da klasik SEO artık tek başına yeterli değil. Generative Engine Optimization (GEO) ile sitenizi yapay zekanın doğrudan referans gösterdiği kaynak yapın.',
+      content: `<h1>GEO Nedir? Yapay Zeka Arama Motorlarında Nasıl Öne Çıkılır?</h1><p>ChatGPT, Gemini ve Perplexity'de öne çıkma stratejileri, Schema.org Knowledge Graph ve AI citation mimarisi.</p>`
+    },
     'eticaret-sitem-var-ama-satis-yok-sorun-nerede': {
       title: 'E-Ticaret Sitem Var Ama Satış Yok, Sorun Nerede? | Samer Allaham',
       description: 'E-ticaret sitenizde trafik olduğu halde satış yapamıyorsanız bunun teknik ve tasarımsal sebeplerini analiz ediyor, çözüm yollarını sunuyorum.',
@@ -693,6 +781,11 @@ const blogDetails = {
     }
   },
   en: {
+    'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir': {
+      title: 'What is GEO? How to Rank in AI Search Engines in 2026 | Samer Allaham',
+      description: 'Traditional SEO is evolving. Learn how Generative Engine Optimization (GEO) positions your brand as an authoritative source in AI responses.',
+      content: `<h1>What is GEO? How to Rank in AI Search Engines in 2026</h1><p>Strategies to get cited by ChatGPT, Gemini, and Perplexity using Knowledge Graphs and structured data.</p>`
+    },
     'eticaret-sitem-var-ama-satis-yok-sorun-nerede': {
       title: 'I Have Traffic But No Sales, What Is Wrong? | Samer Allaham',
       description: 'Analyze why your e-commerce store is attracting visitors but failing to convert them into paying customers. CRO and technical fixes.',
@@ -725,6 +818,11 @@ const blogDetails = {
     }
   },
   ar: {
+    'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir': {
+      title: 'ما هو GEO؟ دليل التصدر في محركات الذكاء الاصطناعي 2026 | سامر اللحام',
+      description: 'دليل شامل حول تحسين محركات الذكاء الاصطناعي (GEO) وكيفية جعل متجرك أو موقعك المصدر الأول الذي يستشهد به ChatGPT و Perplexity و Gemini.',
+      content: `<h1>ما هو GEO؟ دليل التصدر في محركات الذكاء الاصطناعي 2026</h1><p>استراتيجيات التصدر في ChatGPT و Gemini وبناء بيانات الاستشهاد المباشر.</p>`
+    },
     'eticaret-sitem-var-ama-satis-yok-sorun-nerede': {
       title: 'لماذا يتصفح الزوار متجري ولا يشترون؟ | سامر اللحام',
       description: 'تحليل وحلول تقنية لعلاج ضعف المبيعات رغم وجود زيارات للمتجر الإلكتروني. تحسين معدل الشراء وسرعة التصفح.',
@@ -811,32 +909,34 @@ async function main() {
         content: `<h1>${post.title_ar || post.title_tr || post.title}</h1>${post.content_ar || post.content_tr || post.content || ''}`
       };
     });
-  } else {
-    console.log('ℹ Using local blog details fallback list.');
-    blogPostsList.forEach(slug => {
-      if (blogDetails.tr[slug]) {
-        allPages[`blog/${slug}`] = {
-          ...blogDetails.tr[slug],
-          canonical: `https://www.samer.life/blog/${slug}`,
-          lang: 'tr'
-        };
-      }
-      if (blogDetails.en[slug]) {
-        allPages[`en/blog/${slug}`] = {
-          ...blogDetails.en[slug],
-          canonical: `https://www.samer.life/en/blog/${slug}`,
-          lang: 'en'
-        };
-      }
-      if (blogDetails.ar[slug]) {
-        allPages[`ar/blog/${slug}`] = {
-          ...blogDetails.ar[slug],
-          canonical: `https://www.samer.life/ar/blog/${slug}`,
-          lang: 'ar'
-        };
-      }
-    });
   }
+
+  // Always merge local blog posts so newly created articles are never omitted
+  blogPostsList.forEach(slug => {
+    if (!allPages[`blog/${slug}`] && blogDetails.tr[slug]) {
+      allPages[`blog/${slug}`] = {
+        ...blogDetails.tr[slug],
+        canonical: `https://www.samer.life/blog/${slug}`,
+        lang: 'tr'
+      };
+    }
+    const enSlug = slug === 'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir' ? 'what-is-geo-how-to-rank-in-ai-search-engines' : slug;
+    if (!allPages[`en/blog/${enSlug}`] && (blogDetails.en[enSlug] || blogDetails.en[slug])) {
+      allPages[`en/blog/${enSlug}`] = {
+        ...(blogDetails.en[enSlug] || blogDetails.en[slug]),
+        canonical: `https://www.samer.life/en/blog/${enSlug}`,
+        lang: 'en'
+      };
+    }
+    const arSlug = slug === 'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir' ? 'what-is-geo-how-to-rank-in-ai-search-engines' : slug;
+    if (!allPages[`ar/blog/${arSlug}`] && (blogDetails.ar[arSlug] || blogDetails.ar[slug])) {
+      allPages[`ar/blog/${arSlug}`] = {
+        ...(blogDetails.ar[arSlug] || blogDetails.ar[slug]),
+        canonical: `https://www.samer.life/ar/blog/${arSlug}`,
+        lang: 'ar'
+      };
+    }
+  });
 
   // 2. Fetch dynamic FAQ posts from Supabase database
   let dbFaqs = [];
@@ -1031,7 +1131,11 @@ async function main() {
       '/yapay-zeka-cozumleri': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
       '/ai-solutions': { tr: '/yapay-zeka-cozumleri', en: '/en/ai-solutions', ar: '/ar/ai-solutions' },
       '/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
-      '/sss': { tr: '/sss', en: '/en/faq', ar: '/ar/faq' }
+      '/sss': { tr: '/sss', en: '/en/faq', ar: '/ar/faq' },
+      '/hizmetler/geo-yapay-zeka-optimizasyonu': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+      '/geo-yapay-zeka-optimizasyonu': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+      '/services/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+      '/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' }
     };
 
     if (lookupMap[lookupPath]) {
@@ -1040,9 +1144,15 @@ async function main() {
       arUrlSuffix = lookupMap[lookupPath].ar;
     } else if (cleanPath.includes('/blog/')) {
       const slug = cleanPath.split('/blog/')[1];
-      trUrlSuffix = `/blog/${slug}`;
-      enUrlSuffix = `/en/blog/${slug}`;
-      arUrlSuffix = `/ar/blog/${slug}`;
+      if (slug === 'geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir' || slug === 'what-is-geo-how-to-rank-in-ai-search-engines') {
+        trUrlSuffix = '/blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir';
+        enUrlSuffix = '/en/blog/what-is-geo-how-to-rank-in-ai-search-engines';
+        arUrlSuffix = '/ar/blog/what-is-geo-how-to-rank-in-ai-search-engines';
+      } else {
+        trUrlSuffix = `/blog/${slug}`;
+        enUrlSuffix = `/en/blog/${slug}`;
+        arUrlSuffix = `/ar/blog/${slug}`;
+      }
     } else {
       let stripped = cleanPath;
       if (stripped.startsWith('/en/')) stripped = stripped.replace('/en/', '/');

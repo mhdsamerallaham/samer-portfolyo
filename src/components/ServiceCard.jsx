@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Check, ArrowUpRight, ShieldCheck, Zap, Globe, BarChart, Settings, Code2, Cpu, Bot } from 'lucide-react';
+import { Check, ArrowUpRight, ShieldCheck, Zap, Globe, BarChart, Settings, Code2, Cpu, Bot, Sparkles } from 'lucide-react';
+import { getLocalizedPath } from '../utils/navigation';
 
 export default function ServiceCard({ serviceKey, serviceData, recommended = false }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const slugMap = {
     'site-kurulumu': '/eticaret-site-kurulumu',
@@ -13,65 +14,74 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
     'aylik-yonetim': '/aylik-yonetim',
     'web-gelistirme': '/web-sitesi-gelistirme',
     'ozel-yazilim': '/ozel-yazilim-gelistirme',
-    'yapay-zeka': '/yapay-zeka-cozumleri'
+    'yapay-zeka': '/yapay-zeka-cozumleri',
+    'geo-optimizasyon': '/hizmetler/geo-yapay-zeka-optimizasyonu'
   };
 
   const iconMap = {
-    'site-kurulumu': <Globe className="text-accent" size={24} />,
-    'optimizasyon': <Zap className="text-accent" size={24} />,
-    'urun-gorsel': <ShieldCheck className="text-accent" size={24} />,
-    'stok-depo': <Settings className="text-accent" size={24} />,
-    'aylik-yonetim': <BarChart className="text-accent" size={24} />,
-    'web-gelistirme': <Code2 className="text-accent" size={24} />,
-    'ozel-yazilim': <Cpu className="text-accent" size={24} />,
-    'yapay-zeka': <Bot className="text-accent" size={24} />
+    'site-kurulumu': <Globe className="text-teal-600" size={22} />,
+    'optimizasyon': <Zap className="text-teal-600" size={22} />,
+    'urun-gorsel': <ShieldCheck className="text-teal-600" size={22} />,
+    'stok-depo': <Settings className="text-teal-600" size={22} />,
+    'aylik-yonetim': <BarChart className="text-teal-600" size={22} />,
+    'web-gelistirme': <Code2 className="text-teal-600" size={22} />,
+    'ozel-yazilim': <Cpu className="text-teal-600" size={22} />,
+    'yapay-zeka': <Bot className="text-teal-600" size={22} />,
+    'geo-optimizasyon': <Sparkles className="text-teal-600" size={22} />
   };
 
-  const path = slugMap[serviceKey] || '/hizmetler';
+  const rawPath = slugMap[serviceKey] || '/hizmetler';
+  const path = getLocalizedPath(rawPath, i18n.language);
 
   if (!serviceData || typeof serviceData === 'string' || !Array.isArray(serviceData.features)) {
     return null;
   }
 
-  const icon = iconMap[serviceKey] || <Zap className="text-accent" size={24} />;
+  const icon = iconMap[serviceKey] || <Zap className="text-teal-600" size={22} />;
 
   return (
-    <div className={`group relative bg-bg-card border ${recommended ? 'border-accent/40' : 'border-white/5'} rounded-3xl p-8 md:p-10 flex flex-col justify-between hover:border-accent/30 hover:scale-[1.03] hover:shadow-[0_0_80px_rgba(255,107,107,0.06)] transition-all duration-500 overflow-hidden text-start min-h-[480px]`}>
+    <div 
+      className={`group relative bg-white border ${
+        recommended 
+          ? 'border-teal-400/90 shadow-[0_8px_30px_rgb(13,148,136,0.12)] ring-1 ring-teal-400/50' 
+          : 'border-slate-200/90 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.04)]'
+      } rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-teal-400 hover:shadow-[0_16px_36px_-6px_rgba(13,148,136,0.15)] hover:-translate-y-1 transition-all duration-300 text-start min-h-[460px]`}
+    >
       
       {/* Recommended Tag */}
       {recommended && (
-        <span className="absolute top-0 end-8 -translate-y-1/2 px-4 py-1 bg-accent text-white text-[9px] font-black tracking-widest uppercase rounded-full shadow-lg">
-          {t('services.recommended') || 'RECOMMENDED'}
+        <span className="absolute -top-3.5 end-6 inline-flex items-center gap-1 px-3.5 py-1 bg-orange-500 text-white text-[11px] font-extrabold tracking-wide uppercase rounded-full shadow-md shadow-orange-500/25">
+          <Sparkles size={12} className="text-orange-200" />
+          {t('services.recommended') || 'ÖNERİLEN'}
         </span>
       )}
 
-      {/* Glow Effect */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-accent/3 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
       <div>
         {/* Header: Icon & Price */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/15 flex items-center justify-center">
+        <div className="flex justify-between items-center mb-6">
+          <div className="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
             {icon}
           </div>
-          <span className="mono text-sm font-black text-accent tracking-tight bg-accent/5 border border-accent/10 px-3 py-1 rounded-full">
+          <span className="text-xs sm:text-sm font-bold text-slate-800 bg-slate-100 border border-slate-200/80 px-3 py-1.5 rounded-full font-mono">
             {serviceData.price}
           </span>
         </div>
 
         {/* Title & Description */}
-        <h3 className="text-xl md:text-2xl font-black text-white tracking-tight mb-3">
+        <h3 className="font-display text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-2.5 group-hover:text-teal-700 transition-colors">
           {serviceData.title}
         </h3>
-        <p className="text-neutral-400 text-xs md:text-sm leading-relaxed mb-6 font-medium">
+        <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">
           {serviceData.desc}
         </p>
 
-        {/* Features List (Max 3 Deliverables to prevent clutter) */}
-        <ul className="flex flex-col gap-3 mb-8">
+        {/* Deliverables List */}
+        <ul className="flex flex-col gap-2.5 mb-8">
           {serviceData.features.slice(0, 3).map((feature, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-xs text-neutral-300 font-semibold leading-relaxed">
-              <Check className="text-accent flex-shrink-0 mt-0.5" size={14} />
+            <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium leading-snug">
+              <div className="w-4 h-4 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Check className="text-teal-700" size={11} strokeWidth={3} />
+              </div>
               <span>{feature}</span>
             </li>
           ))}
@@ -79,10 +89,10 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
       </div>
 
       {/* Action Buttons */}
-      <div className="grid grid-cols-2 gap-4 mt-auto">
+      <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-slate-100">
         <Link
           to={path}
-          className="py-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white text-center rounded-xl mono text-[9px] font-black tracking-widest uppercase transition-all flex items-center justify-center gap-1.5"
+          className="py-2.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-center rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1"
         >
           {t('services.cta_card')}
         </Link>
@@ -90,13 +100,14 @@ export default function ServiceCard({ serviceKey, serviceData, recommended = fal
           href={`https://wa.me/905394611684?text=${encodeURIComponent(t('services.cta_whatsapp_msg', { service: serviceData.title }))}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="py-3 bg-accent hover:bg-accent-hover text-white text-center rounded-xl mono text-[9px] font-black tracking-widest uppercase hover:scale-102 transition-all flex items-center justify-center gap-1.5"
+          className="py-2.5 px-3 bg-teal-600 hover:bg-teal-700 text-white text-center rounded-xl text-xs font-bold shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1"
         >
-          {t('services.cta_contact')}
-          <ArrowUpRight size={12} />
+          <span>{t('services.cta_contact')}</span>
+          <ArrowUpRight size={13} />
         </a>
       </div>
 
     </div>
   );
 }
+

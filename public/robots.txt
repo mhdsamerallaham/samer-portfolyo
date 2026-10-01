@@ -41,8 +41,11 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# ── Google Gemini / Bard ──────────────────────────────────────────
+# ── Google Gemini / Bard / AI Overview ────────────────────────────
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Googleother
 Allow: /
 
 # ── Meta AI ───────────────────────────────────────────────────────
@@ -51,6 +54,14 @@ Allow: /
 
 # ── Apple ─────────────────────────────────────────────────────────
 User-agent: Applebot
+Allow: /
+
+# ── SearchGPT / OAI ───────────────────────────────────────────────
+User-agent: OAI-SearchBot
+Allow: /
+
+# ── You.com AI ────────────────────────────────────────────────────
+User-agent: YouBot
 Allow: /
 
 # ── Social Media Cards ────────────────────────────────────────────

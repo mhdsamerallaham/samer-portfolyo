@@ -73,18 +73,18 @@ export default function KnowledgeGraphViewer() {
     : 'Dinamik Varlık Düğümleri';
 
   return (
-    <div dir={isArabic ? 'rtl' : 'ltr'} className="p-6 rounded-2xl bg-[#161a20] border border-gray-800 my-8">
-      <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-800">
-        <div className="flex items-center gap-2 text-white text-base font-bold">
-          <Network className="w-5 h-5 text-[#ff6b6b]" />
+    <div dir={isArabic ? 'rtl' : 'ltr'} className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_10px_30px_-5px_rgba(15,23,42,0.04)] my-8 text-start">
+      <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+        <div className="flex items-center gap-2 text-slate-900 text-base font-extrabold">
+          <Network className="w-5 h-5 text-teal-600" />
           {headerTitle}
         </div>
-        <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20 flex items-center gap-1">
-          <Sparkles className="w-3.5 h-3.5" /> {badgeText}
+        <span className="text-xs text-teal-800 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-200 font-bold flex items-center gap-1">
+          <Sparkles className="w-3.5 h-3.5 text-teal-600" /> {badgeText}
         </span>
       </div>
 
-      <p className="text-gray-400 text-xs sm:text-sm mb-4 leading-relaxed">
+      <p className="text-slate-600 text-xs sm:text-sm mb-4 leading-relaxed font-medium">
         {subText}
       </p>
 

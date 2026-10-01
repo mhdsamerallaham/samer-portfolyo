@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Star, ChevronLeft, ChevronRight, Quote, CheckCircle } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, ShieldCheck, MapPin } from 'lucide-react';
 
 export default function Reviews() {
   const { t, i18n } = useTranslation();
@@ -61,33 +61,32 @@ export default function Reviews() {
     }, 150);
   };
 
-  // Autoplay slider every 6 seconds
+  // Autoplay slider every 7 seconds
   useEffect(() => {
-    const timer = setInterval(nextSlide, 6000);
+    const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
   }, [reviews.length]);
 
   return (
-    <section className="px-6 md:px-12 py-28 lg:py-36 max-w-[1200px] mx-auto border-t border-white/5 relative">
-      <div className="absolute inset-0 bg-[#ff6b6b]/2 rounded-full blur-[100px] pointer-events-none w-72 h-72 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+    <section className="px-6 md:px-12 py-20 lg:py-28 max-w-[1200px] mx-auto border-t border-slate-200/80 relative">
       
-      {/* Title block */}
-      <div className="text-center mb-16 flex flex-col items-center gap-3">
-        <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-          <CheckCircle className="text-[#ff6b6b]" size={12} />
-          <span className="mono text-[8px] tracking-[0.15em] font-black uppercase text-neutral-300">
-            {i18n.language === 'tr' ? '100% DOĞRULANMIŞ MÜŞTERİ YORUMLARI' : i18n.language === 'ar' ? 'مراجعات عملاء موثقة ١٠٠٪' : '100% VERIFIED CUSTOMER REVIEWS'}
+      {/* Section Title */}
+      <div className="text-center mb-14 flex flex-col items-center gap-3">
+        <div className="inline-flex items-center gap-1.5 bg-teal-50 border border-teal-200 text-teal-800 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide">
+          <ShieldCheck size={14} className="text-teal-600" />
+          <span>
+            {i18n.language === 'tr' ? 'DOĞRULANMIŞ MÜŞTERİ GERİ BİLDİRİMLERİ' : i18n.language === 'ar' ? 'مراجعات عملاء موثقة' : 'VERIFIED CLIENT REVIEWS'}
           </span>
         </div>
-        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-          {i18n.language === 'tr' ? 'Müşteri Yorumları' : i18n.language === 'ar' ? 'آراء العملاء' : 'Customer Reviews'}
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          {i18n.language === 'tr' ? 'Birlikte Büyüttüğümüz Markalar' : i18n.language === 'ar' ? 'علامات تجارية طورناها معاً' : 'Brands We Grew Together'}
         </h2>
-        <p className="text-neutral-400 text-xs md:text-sm max-w-xl font-semibold leading-relaxed">
+        <p className="text-slate-600 text-sm md:text-base max-w-xl font-normal leading-relaxed">
           {i18n.language === 'tr' 
-            ? 'Birlikte çalıştığımız e-ticaret markalarının ve girişimcilerin Google Maps / Benim İşletmem üzerinden paylaştığı görüşler.' 
+            ? 'Birlikte çalıştığımız e-ticaret markalarının ve girişimcilerin gerçek deneyimleri ve somut sonuçları.' 
             : i18n.language === 'ar' 
-            ? 'مراجعات وتعليقات حقيقية من العلامات التجارية ورواد الأعمال الذين تعاونا معهم في تحسين وتصميم متاجرهم.' 
-            : 'Genuine feedback shared by e-commerce brands and entrepreneurs we partner with, verified on Google Maps.'}
+            ? 'تجارب ونتائج حقيقية من أصحاب المتاجر والعلامات التجارية الذين تعاونا معهم.' 
+            : 'Verified feedback and measurable metrics from e-commerce entrepreneurs we partner with.'}
         </p>
       </div>
 
@@ -95,103 +94,70 @@ export default function Reviews() {
       <div className="max-w-[850px] mx-auto relative">
         
         {/* Carousel Inner Container */}
-        <div className="relative bg-bg-card border border-white/5 rounded-3xl p-8 md:p-12 xl:p-16 shadow-2xl backdrop-blur-sm overflow-hidden flex flex-col justify-between min-h-[300px]">
+        <div className="relative bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-10 md:p-14 shadow-[0_12px_40px_-8px_rgba(15,23,42,0.06)] overflow-hidden flex flex-col justify-between min-h-[300px]">
           
           {/* Big Quote background decoration */}
-          <div className="absolute right-8 top-8 opacity-[0.03] text-[#ff6b6b] pointer-events-none">
+          <div className="absolute right-6 top-6 opacity-5 text-teal-600 pointer-events-none">
             <Quote size={120} />
           </div>
 
-          <div className={`transition-all duration-300 transform ${animate ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+          <div className={`transition-all duration-300 transform ${animate ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-3'}`}>
             {/* Stars */}
-            <div className="flex gap-1 mb-6 justify-start">
+            <div className="flex gap-1 mb-5 justify-start">
               {Array.from({ length: reviews[activeIndex].rating || 5 }).map((_, i) => (
-                <Star key={i} className="text-[#ffc107] fill-[#ffc107]" size={16} />
+                <Star key={i} className="text-amber-400 fill-amber-400" size={18} />
               ))}
             </div>
 
             {/* Review Text */}
-            <p className="text-lg md:text-xl font-bold leading-relaxed text-white text-start mb-8 italic">
+            <p className="text-base sm:text-lg md:text-xl font-medium leading-relaxed text-slate-800 text-start mb-8 italic">
               "{reviews[activeIndex].text}"
             </p>
           </div>
 
           {/* Review Author detail */}
-          <div className={`flex justify-between items-end border-t border-white/5 pt-8 mt-4 transition-all duration-300 ${animate ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="flex flex-col text-start gap-1">
-              <span className="mono text-xs font-black text-white uppercase tracking-wider">{reviews[activeIndex].name}</span>
-              <span className="text-[10px] md:text-xs text-neutral-400 font-bold">{reviews[activeIndex].role}</span>
+          <div className={`flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-t border-slate-100 pt-6 mt-2 transition-all duration-300 ${animate ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex flex-col text-start">
+              <span className="font-display font-extrabold text-base text-slate-900">{reviews[activeIndex].name}</span>
+              <span className="text-xs sm:text-sm text-slate-500 font-medium">{reviews[activeIndex].role}</span>
             </div>
 
             {/* Google Rating Badge */}
-            <div className="flex items-center gap-2 bg-[#ff6b6b]/5 border border-[#ff6b6b]/10 rounded-xl px-3 py-1.5">
-              <span className="mono text-[8px] md:text-[9px] font-black text-[#ff6b6b] uppercase tracking-wider">
-                {i18n.language === 'tr' ? 'GOOGLE HARİTALAR' : i18n.language === 'ar' ? 'خرائط جوجل' : 'GOOGLE MAPS'}
+            <a 
+              href="https://share.google/IrAWdrTQOMekMNmwh" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center gap-2 bg-slate-50 hover:bg-teal-50 border border-slate-200 hover:border-teal-200 rounded-xl px-3 py-1.5 transition-colors group"
+            >
+              <MapPin size={13} className="text-teal-600" />
+              <span className="text-[11px] font-bold text-slate-700 group-hover:text-teal-800 uppercase tracking-wide">
+                {i18n.language === 'tr' ? 'GOOGLE HARİTALAR' : i18n.language === 'ar' ? 'خرائط جوجل' : 'GOOGLE REVIEWS'}
               </span>
-              <div className="w-[1.5px] h-3 bg-white/10" />
-              <span className="mono text-[10px] font-bold text-white">5.0 / 5.0 ★</span>
-            </div>
+              <span className="text-xs font-bold text-amber-500">5.0 ★</span>
+            </a>
           </div>
         </div>
 
         {/* Carousel controls - desktop arrows */}
-        <div className="hidden md:flex justify-between absolute top-1/2 transform -translate-y-1/2 -left-8 -right-8 w-[calc(100%+64px)] pointer-events-none">
+        <div className="hidden md:flex justify-between absolute top-1/2 transform -translate-y-1/2 -left-6 -right-6 w-[calc(100%+48px)] pointer-events-none">
           <button 
             onClick={prevSlide}
             aria-label="Previous review"
-            className="w-12 h-12 rounded-full border border-white/10 bg-[#0e1423]/60 backdrop-blur-md text-white hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 flex items-center justify-center transition-all cursor-pointer pointer-events-auto"
+            className="w-12 h-12 rounded-full border border-slate-200 bg-white text-slate-700 hover:text-white hover:bg-teal-600 hover:border-teal-600 shadow-md flex items-center justify-center transition-all cursor-pointer pointer-events-auto"
           >
             <ChevronLeft size={20} />
           </button>
           <button 
             onClick={nextSlide}
             aria-label="Next review"
-            className="w-12 h-12 rounded-full border border-white/10 bg-[#0e1423]/60 backdrop-blur-md text-white hover:text-[#ff6b6b] hover:border-[#ff6b6b]/30 flex items-center justify-center transition-all cursor-pointer pointer-events-auto"
+            className="w-12 h-12 rounded-full border border-slate-200 bg-white text-slate-700 hover:text-white hover:bg-teal-600 hover:border-teal-600 shadow-md flex items-center justify-center transition-all cursor-pointer pointer-events-auto"
           >
             <ChevronRight size={20} />
           </button>
         </div>
 
-        {/* Carousel controls - mobile arrows & dots */}
-        <div className="flex md:hidden justify-between items-center mt-6 px-4">
-          <button 
-            onClick={prevSlide}
-            aria-label="Previous review"
-            className="w-10 h-10 rounded-full border border-white/5 bg-white/5 text-white flex items-center justify-center transition-all"
-          >
-            <ChevronLeft size={18} />
-          </button>
-          
-          <div className="flex gap-2">
-            {reviews.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setAnimate(false);
-                  setTimeout(() => {
-                    setActiveIndex(idx);
-                    setAnimate(true);
-                  }, 150);
-                }}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? 'bg-[#ff6b6b] w-6' : 'bg-white/10'
-                }`}
-              />
-            ))}
-          </div>
-
-          <button 
-            onClick={nextSlide}
-            aria-label="Next review"
-            className="w-10 h-10 rounded-full border border-white/5 bg-white/5 text-white flex items-center justify-center transition-all"
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
-
-        {/* Dots underneath for desktop */}
-        <div className="hidden md:flex justify-center gap-2 mt-8">
+        {/* Carousel dots */}
+        <div className="flex justify-center gap-2 mt-6">
           {reviews.map((_, idx) => (
             <button
               key={idx}
@@ -203,8 +169,8 @@ export default function Reviews() {
                 }, 150);
               }}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                activeIndex === idx ? 'bg-[#ff6b6b] w-6' : 'bg-white/10 hover:bg-white/20'
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                activeIndex === idx ? 'bg-teal-600 w-7' : 'bg-slate-300 hover:bg-slate-400 w-2'
               }`}
             />
           ))}
@@ -213,3 +179,4 @@ export default function Reviews() {
     </section>
   );
 }
+

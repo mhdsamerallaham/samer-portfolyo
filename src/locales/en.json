@@ -357,46 +357,121 @@
                         "a": "We build scripts that take raw product feeds, run them through customized prompts, generate SEO-friendly copy, and publish them directly to your e-commerce catalog."
                     }
                 ]
+            },
+            "geo-optimizasyon": {
+                "title": "Generative Engine Optimization (GEO) & AI Search",
+                "price": "From $500 / ₺18,000",
+                "badge": "2026 AI Search Standard",
+                "desc": "Scale your brand visibility across generative AI engines (Gemini, ChatGPT, Perplexity, SearchGPT). Neural entity optimization and AI citation architectures.",
+                "features": [
+                    "Neural & Entity Authority Comprehensive Audit",
+                    "Deep Schema.org & Knowledge Graph Architecture",
+                    "AI Citation-Ready Content Strategy & llms.txt Setup",
+                    "Multi-Engine Brand Mentions & Citation Tracking"
+                ],
+                "pricing_tiers": [
+                    {
+                        "name": "One-Time AI Setup",
+                        "price": "$500 / ₺18,000",
+                        "billing": "One-Time Delivery",
+                        "desc": "Complete technical overhaul to make your brand readable, verifiable, and recommended by leading generative AI search models.",
+                        "features": [
+                            "Neural & Entity Authority Audit",
+                            "Full JSON-LD Schema Knowledge Graph Implementation",
+                            "Root Directory llms.txt & AI Crawler Directives",
+                            "Transformation of 5 Core Pages into AI Citation Blocks",
+                            "Google AI Overviews & Perplexity Indexing Validation"
+                        ]
+                    },
+                    {
+                        "name": "Ongoing GEO Retainer",
+                        "price": "$400 / mo (₺14,000)",
+                        "billing": "Monthly Retainer",
+                        "desc": "Continuous monitoring and entity expansion to ensure your brand remains the primary cited authority through model updates.",
+                        "features": [
+                            "Monthly Multi-Engine Visibility & Citation Reports",
+                            "AI Entity Expansion for New Products & Services",
+                            "Perplexity & SearchGPT Ranking Position Tracking",
+                            "Weekly Knowledge Graph & Schema Refinement",
+                            "Direct AI Search Advisory & Priority Technical Support"
+                        ]
+                    }
+                ],
+                "ai_desc": {
+                    "definition": "Generative Engine Optimization (GEO) is the next-generation practice of structuring web pages so that large language models (LLMs)—including ChatGPT, Google Gemini, Perplexity, and SearchGPT—accurately synthesize your content and cite your website as an authoritative, primary recommendation.",
+                    "for_whom": "Modern e-commerce brands and enterprises looking to move beyond obsolete keyword games, outrank competitors in conversational search, and acquire high-intent buyers looking for verified solutions.",
+                    "how_works": "1. Neural brand audit and entity baseline assessment\n2. Implementation of connected Schema.org knowledge graph and llms.txt\n3. Restructuring content into self-contained direct answer blocks\n4. Multi-engine prompt testing and citation verification\n5. Ongoing AI visibility tracking and iterative tuning.",
+                    "example": "Positioning an e-commerce or agency brand as the #1 cited developer when users prompt Perplexity or Gemini with: 'Who is the top e-commerce developer in Istanbul?' or 'Best headless React agency?'"
+                },
+                "faqs": [
+                    {
+                        "q": "What is GEO (Generative Engine Optimization) and how does it differ from traditional SEO?",
+                        "a": "Traditional SEO targets ranking in Google's ten blue links. GEO (Generative Engine Optimization) optimizes content so generative AI models (ChatGPT, Gemini, Perplexity) directly cite your brand in summarized answers and recommend your products."
+                    },
+                    {
+                        "q": "How do AI engines choose which websites to cite?",
+                        "a": "AI engines prioritize websites with deep Schema.org structured data, verifiable numerical metrics, transparent entity signals, llms.txt files, and clear direct-answer tables."
+                    },
+                    {
+                        "q": "How does GEO impact my bottom-line conversion rate?",
+                        "a": "Users querying AI assistants have high purchase intent. When an AI model specifically recommends your brand with a direct citation link, conversion rates average 3-4x higher than standard ad traffic."
+                    },
+                    {
+                        "q": "What are your GEO service pricing tiers?",
+                        "a": "Our foundational One-Time AI Setup starts at $500 (₺18,000). For ongoing multi-engine ranking management and entity expansion, our monthly retainer is $400/month (₺14,000)."
+                    }
+                ]
             }
         }
     },
     "case_studies": {
-        "title": "Success Stories & Impact",
-        "subtitle": "How the built systems directly affected sales conversion and operational efficiency.",
-        "results": "Achieved Results",
+        "tag": "PROVEN METRICS",
+        "title": "Success Stories & Real Results",
+        "subtitle": "Measurable growth metrics and engineering results achieved for e-commerce partner brands.",
+        "results": "Proven Outcome",
+        "view_all": "View All Case Studies",
         "items": [
             {
-                "client": "AIO Coffee (Premium Coffee E-Commerce)",
-                "metric": "+35% Conversion Rate (CR) Boost",
+                "client": "AIO Coffee (Shopify Coffee Brand)",
+                "project": "Shopify Speed & Checkout CRO",
+                "metric": "+35% CONVERSION RATE",
                 "desc": "Cart abandonment rates were slashed, and mobile load speed was optimized for this Shopify-based coffee retailer.",
                 "problem": "The mobile cart abandonment rate was sitting at 82%. Page load time was high at 3.8 seconds.",
                 "solution": "Implemented custom single-page checkout flow and performed extensive script payload optimization.",
                 "process": "Conducted funnel leaks analysis via Hotjar, eliminated unused third-party application tags, and fixed LCP metrics.",
                 "results": "Lifted global checkout conversion rate by 35% and dropped page load time to 1.4 seconds (Data: July 2025).",
-                "linkText": "aio.coffee",
-                "linkUrl": "https://aio.coffee"
+                "linkText": "aiocoffee.com/tr",
+                "linkUrl": "https://www.aiocoffee.com/tr",
+                "tags": ["Shopify", "CRO", "Speed"],
+                "author": "Ahmet Y., AIO Coffee CEO"
             },
             {
-                "client": "Moda Butiği (Fashion Boutique)",
-                "metric": "1.1s Mobile Load & 98 SEO Score",
-                "desc": "Migrated the boutique catalog from WordPress to İKAS, saving server costs while unlocking rapid organic rankings.",
-                "problem": "Frequent WooCommerce server drops and slow page rendering were causing significant losses in Google rankings.",
-                "solution": "Migrated the entire store architecture to İKAS cloud infrastructure and implemented optimized assets delivery.",
-                "process": "Mapped and transferred product datasets, preserved catalog indexing via 301 mappings, and customized responsive themes.",
-                "results": "Reduced mobile load speeds to 1.1 seconds. Lighthouse SEO scores hit 98/100 (Data: Oct 2025).",
-                "linkText": "modabutigi.com",
-                "linkUrl": "https://modabutigi.com"
+                "client": "Nourla (E-Commerce & Brand Store)",
+                "project": "Modern Web Architecture & SEO",
+                "metric": "1.1s MOBILE SPEED & 98 SEO",
+                "desc": "Built modern, fast, and conversion-focused e-commerce infrastructure for Nourla, maximizing Google search visibility.",
+                "problem": "Legacy platform sluggishness and poor mobile UX caused potential buyers to drop off before checkout.",
+                "solution": "Deployed ultra-fast, mobile-first e-commerce architecture with React and modern headless principles.",
+                "process": "Restructured category catalog, optimized asset pipeline with WebP, and implemented deep Schema.org JSON-LD data graphs.",
+                "results": "Reduced mobile load speeds to 1.1 seconds. Lighthouse SEO score reached 98/100 (Data: Oct 2025).",
+                "linkText": "nourla.com.tr/tr",
+                "linkUrl": "https://www.nourla.com.tr/tr",
+                "tags": ["E-Commerce", "React", "SEO"],
+                "author": "Nourla Brand Management"
             },
             {
-                "client": "Multi-Channel Apparel Brand",
-                "metric": "90% Reduction in Inventory Errors",
-                "desc": "Built a bi-directional Node.js API to sync stocks in real-time across Shopify, İKAS, and major marketplaces.",
-                "problem": "Selling across multiple marketplaces led to inventory delays, resulting in severe penalties due to overselling.",
-                "solution": "Coded a custom Node.js and Python middleware sync system utilizing webhooks and background jobs.",
-                "process": "Integrated Trendyol, Hepsiburada, and Shopify APIs. Created Webhook triggers to update stock figures instantly across all nodes upon receipt of purchase.",
-                "results": "Eliminated out-of-stock order cancelations completely. Manual inventory tracking hours reduced from 4 hrs/day to 0 (Data: Dec 2025).",
-                "linkText": "Integration Details",
-                "linkUrl": "/stok-ve-depo-sistemi"
+                "client": "Taam Club (Multi-Branch Order System)",
+                "project": "Web App & Order Automation",
+                "metric": "0% ERRORS & FULL AUTOMATION",
+                "desc": "Automated order routing, dynamic menu updates, and cross-branch operations with a modern web application.",
+                "problem": "Manual consolidation of orders and menu items from different channels caused severe fulfillment delays and errors.",
+                "solution": "Engineered a real-time order orchestration and menu sync platform using Next.js and Node.js.",
+                "process": "Integrated instant cloud webhook notifications, dynamic branch catalog management, and high-availability API middleware.",
+                "results": "Completely eliminated manual ordering mistakes and accelerated branch dispatch velocity by 75% (Data: Dec 2025).",
+                "linkText": "taam-club.vercel.app",
+                "linkUrl": "https://taam-club.vercel.app/",
+                "tags": ["Next.js", "Web App", "API Integration"],
+                "author": "Taam Club Operations Director"
             }
         ]
     },
@@ -470,6 +545,14 @@
         "read_more": "Continue Reading",
         "back_to_blog": "Back to Blog",
         "articles": [
+            {
+                "id": "what-is-geo-guide",
+                "slug": "what-is-geo-how-to-rank-in-ai-search-engines",
+                "title": "What is GEO? How to Rank in AI Search Engines (Gemini, ChatGPT, Perplexity) in 2026",
+                "date": "October 1, 2026",
+                "summary": "Traditional SEO is evolving. Learn how Generative Engine Optimization (GEO) positions your brand as an authoritative source in AI responses.",
+                "content": "<p>Search is experiencing its greatest paradigm shift in two decades. Consumers are no longer just typing disconnected keywords into Google to browse endless lists of blue links. Instead, millions are directly asking conversational questions to <strong>ChatGPT, Google Gemini, Perplexity, and SearchGPT</strong> to receive synthesized, verified answers. To dominate organic discovery today, businesses must adopt <strong>GEO (Generative Engine Optimization)</strong>.</p><h3>Key Differences: Traditional SEO vs. GEO</h3><p>Traditional SEO focuses on optimizing keyword densities and building backlinks to climb Google SERP rankings. In contrast, GEO engineers your digital presence so that large language models can parse, verify, and cite your brand as an authoritative source within AI-generated overviews.</p><table border=\"1\" style=\"width:100%;border-collapse:collapse;margin:1.5rem 0\"><thead><tr style=\"background:#f1f5f9\"><th>Dimension</th><th>Traditional SEO</th><th>Generative Engine Optimization (GEO)</th></tr></thead><tbody><tr><td><strong>Target Platform</strong></td><td>Google, Bing, Yandex</td><td>ChatGPT, Gemini, Perplexity, Claude, SearchGPT</td></tr><tr><td><strong>Output Format</strong></td><td>Clickable Blue Link Lists</td><td>Direct Synthesized Summaries & AI Citations</td></tr><tr><td><strong>Core Focus</strong></td><td>Keyword Density & Backlink Volume</td><td>Entity Authority, Knowledge Graphs & Verifiable Data</td></tr><tr><td><strong>Conversion Rate</strong></td><td>Average (1% - 3%)</td><td>Exceptional (8% - 15% via AI Endorsements)</td></tr></tbody></table><h3>How AI Engines Select and Cite Websites</h3><p>Generative search engines leverage Retrieval-Augmented Generation (RAG) to fulfill user queries in real-time. They filter web resources based on 4 primary authority signals:</p><ol><li><strong>Structured Data Depth (Schema.org JSON-LD):</strong> Models rely heavily on JSON-LD nodes (Organization, Service, Product, and FAQPage) as primary ground-truth entities.</li><li><strong>llms.txt Architecture:</strong> A root-level llms.txt file gives AI crawlers a direct summary of your business, services, and core specialties.</li><li><strong>Verifiable Numerical Data:</strong> LLMs favor concrete, cited statistics—such as 'decreased load times to 1.1s' or 'improved conversion rates by +35%'—over generic promotional claims.</li><li><strong>Entity Consistency Across the Web:</strong> Your brand name, founder identity, service scope, and live client examples (such as AIO Coffee, Nourla, Taam Club) must connect coherently.</li></ol><h3>4 Actionable Technical Strategies for GEO Dominance</h3><h4>1. Knowledge Graph Implementation</h4><p>Interlink your entity relationships. Define your founder (Person), organization (LocalBusiness), and client deliveries (workExample) using Schema JSON-LD graphs to build trust with AI crawlers.</p><h4>2. AI Citation-Ready Formatting</h4><p>Structure your knowledge into Direct Answer Boxes, concise bullet points, and data tables that LLMs can quote verbatim when responding to user queries.</p><h4>3. Explicit AI Crawler Permissions</h4><p>Ensure your robots.txt allows full access to GPTBot, PerplexityBot, ClaudeBot, Google-Extended, and Googleother.</p><h4>4. Neural Entity Auditing</h4><p>Benchmark how AI engines describe your brand today. If assistants recommend competitors or lack awareness of your services, immediate GEO technical intervention is essential.</p><hr /><p>Ready to position your company as the leading authority in AI search engines? Explore our <a href=\"/en/services/generative-engine-optimization\"><strong>GEO & AI Optimization Service</strong></a> or contact us for a free AI visibility audit.</p>"
+            },
             {
                 "id": "shopify-vs-ikas",
                 "slug": "shopify-vs-ikas-turkey-2026",

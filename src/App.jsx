@@ -21,12 +21,14 @@ const FAQ = lazy(() => import('./pages/FAQ'));
 const FAQDetail = lazy(() => import('./pages/FAQDetail'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const DesignPreviewA = lazy(() => import('./pages/DesignPreviewA'));
+const DesignPreviewB = lazy(() => import('./pages/DesignPreviewB'));
 
 // Minimal loading spinner for Suspense fallback
 function PageLoader() {
   return (
     <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="w-8 h-8 border-2 border-[#ff6b6b]/30 border-t-[#ff6b6b] rounded-full animate-spin" />
+      <div className="w-8 h-8 border-3 border-teal-200 border-t-teal-600 rounded-full animate-spin" />
     </div>
   );
 }
@@ -42,6 +44,9 @@ function ScrollToTop() {
 
 function App() {
   const { i18n } = useTranslation();
+  const location = useLocation();
+
+  const isPreview = location.pathname.includes('design-preview');
 
   // Setup Lenis smooth scrolling — DISABLED on mobile to prevent jank and improve performance
   useEffect(() => {
@@ -76,43 +81,54 @@ function App() {
     };
   }, []);
 
-  // Sync i18n language with pathname prefix (/en or /ar)
-  const location = useLocation();
+  // Sync i18n language with URL prefix AND immediately update document attributes
+  // (before react-helmet-async fires) to prevent a dir= flash on hard navigation.
   useEffect(() => {
     const path = location.pathname;
-    if (path.startsWith('/en/') || path === '/en') {
-      if (i18n.language !== 'en') i18n.changeLanguage('en');
-    } else if (path.startsWith('/ar/') || path === '/ar') {
-      if (i18n.language !== 'ar') i18n.changeLanguage('ar');
-    } else {
-      if (i18n.language !== 'tr') i18n.changeLanguage('tr');
+    let targetLang = 'tr';
+    if (path.startsWith('/en/') || path === '/en') targetLang = 'en';
+    else if (path.startsWith('/ar/') || path === '/ar') targetLang = 'ar';
+
+    if (i18n.language !== targetLang) {
+      i18n.changeLanguage(targetLang);
     }
+
+    // Set document attributes immediately — Helmet will also set these but this
+    // ensures the FIRST paint after a hard /ar/ navigation is already RTL.
+    const dir = targetLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.setAttribute('dir', dir);
+    document.documentElement.setAttribute('lang', targetLang);
   }, [location.pathname, i18n]);
 
-  // Update HTML tag text direction dynamically for RTL language support (Arabic)
-  useEffect(() => {
-    const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.dir = dir;
-    document.documentElement.lang = i18n.language || 'tr';
-  }, [i18n.language]);
-
   return (
-    <div className="bg-[#0b0f19] text-white min-h-screen flex flex-col relative overflow-x-hidden">
-      {/* Dynamic Background Mesh Gradients — reduced blur on mobile via CSS class */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff6b6b]/5 rounded-full mesh-blur pointer-events-none" />
-      <div className="absolute top-[800px] left-0 w-[500px] h-[500px] bg-[#3b82f6]/3 rounded-full mesh-blur pointer-events-none hidden md:block" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#ff6b6b]/3 rounded-full mesh-blur pointer-events-none hidden md:block" />
+    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen flex flex-col relative overflow-x-hidden selection:bg-teal-100 selection:text-teal-900">
+      {/* Subtle ambient light accents (only on regular pages) */}
+      {!isPreview && (
+        <>
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-[800px] left-0 w-[500px] h-[500px] bg-orange-500/[0.03] rounded-full blur-3xl pointer-events-none hidden md:block" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-teal-500/[0.03] rounded-full blur-3xl pointer-events-none hidden md:block" />
+        </>
+      )}
 
       {/* Force page scroll resets */}
       <ScrollToTop />
 
-      {/* Global Navigation bar */}
-      <Navbar />
+      {/* Global Navigation bar (Hidden on preview routes for pure layout isolation) */}
+      {!isPreview && <Navbar />}
 
       {/* Route Switchboard with Suspense for lazy-loaded pages */}
       <main className="flex-grow z-10 relative">
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            {/* === ISOLATED DESIGN PREVIEW ROUTES === */}
+            <Route path="/design-preview-a" element={<DesignPreviewA />} />
+            <Route path="/design-preview-b" element={<DesignPreviewB />} />
+            <Route path="/en/design-preview-a" element={<DesignPreviewA />} />
+            <Route path="/en/design-preview-b" element={<DesignPreviewB />} />
+            <Route path="/ar/design-preview-a" element={<DesignPreviewA />} />
+            <Route path="/ar/design-preview-b" element={<DesignPreviewB />} />
+
             {/* === TURKISH ROUTES (Default) === */}
             <Route path="/" element={<Home />} />
             <Route path="/hizmetler" element={<ServicesOverview />} />
@@ -128,6 +144,8 @@ function App() {
             <Route path="/web-sitesi-gelistirme" element={<ServiceDetail />} />
             <Route path="/ozel-yazilim-gelistirme" element={<ServiceDetail />} />
             <Route path="/yapay-zeka-cozumleri" element={<ServiceDetail />} />
+            <Route path="/hizmetler/geo-yapay-zeka-optimizasyonu" element={<ServiceDetail />} />
+            <Route path="/geo-yapay-zeka-optimizasyonu" element={<ServiceDetail />} />
             <Route path="/basari-hikayeleri" element={<CaseStudies />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<Blog />} />
@@ -153,6 +171,8 @@ function App() {
             <Route path="/en/web-development" element={<ServiceDetail />} />
             <Route path="/en/custom-software" element={<ServiceDetail />} />
             <Route path="/en/ai-solutions" element={<ServiceDetail />} />
+            <Route path="/en/services/generative-engine-optimization" element={<ServiceDetail />} />
+            <Route path="/en/generative-engine-optimization" element={<ServiceDetail />} />
             <Route path="/en/case-studies" element={<CaseStudies />} />
             <Route path="/en/blog" element={<Blog />} />
             <Route path="/en/blog/:slug" element={<Blog />} />
@@ -176,6 +196,8 @@ function App() {
             <Route path="/ar/web-development" element={<ServiceDetail />} />
             <Route path="/ar/custom-software" element={<ServiceDetail />} />
             <Route path="/ar/ai-solutions" element={<ServiceDetail />} />
+            <Route path="/ar/services/generative-engine-optimization" element={<ServiceDetail />} />
+            <Route path="/ar/generative-engine-optimization" element={<ServiceDetail />} />
             <Route path="/ar/case-studies" element={<CaseStudies />} />
             <Route path="/ar/blog" element={<Blog />} />
             <Route path="/ar/blog/:slug" element={<Blog />} />
@@ -190,11 +212,11 @@ function App() {
         </Suspense>
       </main>
 
-      {/* Global rich footer */}
-      <Footer />
+      {/* Global rich footer (Hidden on preview routes) */}
+      {!isPreview && <Footer />}
 
-      {/* Floating WhatsApp chat widget */}
-      <WhatsAppButton />
+      {/* Floating WhatsApp chat widget (Hidden on preview routes) */}
+      {!isPreview && <WhatsAppButton />}
     </div>
   );
 }

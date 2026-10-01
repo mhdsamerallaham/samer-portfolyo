@@ -17,13 +17,13 @@ export default function DirectAnswerBox({ answer = '' }) {
   return (
     <div
       dir={isArabic ? 'rtl' : 'ltr'}
-      className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#ff6b6b]/15 via-purple-500/5 to-transparent border border-[#ff6b6b]/30 mb-6 shadow-sm"
+      className="p-4 sm:p-5 rounded-2xl bg-teal-50/70 border border-teal-200/90 mb-6 shadow-xs text-start"
     >
-      <div className="flex items-center gap-2 text-[#ff6b6b] text-xs font-extrabold uppercase tracking-wider mb-2">
-        <Zap className="w-4 h-4 text-[#ff6b6b] animate-pulse" />
+      <div className="flex items-center gap-2 text-teal-800 text-xs font-black uppercase tracking-wider mb-2">
+        <Zap className="w-4 h-4 text-teal-600 animate-pulse" />
         {titleText}
       </div>
-      <p className="text-neutral-100 text-sm sm:text-base font-medium leading-relaxed">
+      <p className="text-slate-800 text-sm sm:text-base font-medium leading-relaxed">
         {answer}
       </p>
     </div>

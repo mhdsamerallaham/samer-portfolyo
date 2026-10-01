@@ -77,7 +77,20 @@ export const pageLanguageMap = {
   '/en/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
   '/ar/faq': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
   // /sss → canonical /faq'a işaret et
-  '/sss': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' }
+  '/sss': { tr: '/faq', en: '/en/faq', ar: '/ar/faq' },
+
+  // GEO (Generative Engine Optimization) Service
+  '/hizmetler/geo-yapay-zeka-optimizasyonu': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+  '/geo-yapay-zeka-optimizasyonu': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+  '/en/services/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+  '/en/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+  '/ar/services/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+  '/ar/generative-engine-optimization': { tr: '/hizmetler/geo-yapay-zeka-optimizasyonu', en: '/en/services/generative-engine-optimization', ar: '/ar/services/generative-engine-optimization' },
+
+  // Technical GEO Blog Post
+  '/blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir': { tr: '/blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir', en: '/en/blog/what-is-geo-how-to-rank-in-ai-search-engines', ar: '/ar/blog/what-is-geo-how-to-rank-in-ai-search-engines' },
+  '/en/blog/what-is-geo-how-to-rank-in-ai-search-engines': { tr: '/blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir', en: '/en/blog/what-is-geo-how-to-rank-in-ai-search-engines', ar: '/ar/blog/what-is-geo-how-to-rank-in-ai-search-engines' },
+  '/ar/blog/what-is-geo-how-to-rank-in-ai-search-engines': { tr: '/blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir', en: '/en/blog/what-is-geo-how-to-rank-in-ai-search-engines', ar: '/ar/blog/what-is-geo-how-to-rank-in-ai-search-engines' }
 };
 
 /**
@@ -100,6 +113,17 @@ export function getLanguageUrl(pathname, targetLang) {
       const slug = segments[blogIndex + 1];
       const prefix = targetLang === 'tr' ? '' : `/${targetLang}`;
       return `${prefix}/blog/${slug}`;
+    }
+  }
+
+  // Handling dynamic faq detail slugs: /faq/:slug, /en/faq/:slug, /ar/faq/:slug
+  if (cleanPath.includes('/faq/')) {
+    const segments = cleanPath.split('/');
+    const faqIndex = segments.indexOf('faq');
+    if (faqIndex !== -1 && segments[faqIndex + 1]) {
+      const slug = segments[faqIndex + 1];
+      const prefix = targetLang === 'tr' ? '' : `/${targetLang}`;
+      return `${prefix}/faq/${slug}`;
     }
   }
 
@@ -127,5 +151,6 @@ export function getLocalizedPath(trPath, lang) {
   if (pageLanguageMap[trPath]) {
     return pageLanguageMap[trPath][lang] || trPath;
   }
-  return trPath;
+  return getLanguageUrl(trPath, lang);
 }
+

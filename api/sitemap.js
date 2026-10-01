@@ -27,6 +27,8 @@ module.exports = async (req, res) => {
     "web-sitesi-gelistirme": { tr: "web-sitesi-gelistirme", en: "en/web-development", ar: "ar/web-development" },
     "ozel-yazilim-gelistirme": { tr: "ozel-yazilim-gelistirme", en: "en/custom-software", ar: "ar/custom-software" },
     "yapay-zeka-cozumleri": { tr: "yapay-zeka-cozumleri", en: "en/ai-solutions", ar: "ar/ai-solutions" },
+    "hizmetler/geo-yapay-zeka-optimizasyonu": { tr: "hizmetler/geo-yapay-zeka-optimizasyonu", en: "en/services/generative-engine-optimization", ar: "ar/services/generative-engine-optimization" },
+    "geo-yapay-zeka-optimizasyonu": { tr: "hizmetler/geo-yapay-zeka-optimizasyonu", en: "en/services/generative-engine-optimization", ar: "ar/services/generative-engine-optimization" },
     "basari-hikayeleri": { tr: "basari-hikayeleri", en: "en/case-studies", ar: "ar/case-studies" },
     "blog": { tr: "blog", en: "en/blog", ar: "ar/blog" },
     "faq": { tr: "faq", en: "en/faq", ar: "ar/faq" },
@@ -40,20 +42,25 @@ module.exports = async (req, res) => {
     "e-ticaret-web-tasarim", "eticaret-site-kurulumu", "eticaret-optimizasyon",
     "urun-gorsel-ve-icerik", "stok-ve-depo-sistemi", "aylik-yonetim",
     "web-sitesi-gelistirme", "ozel-yazilim-gelistirme", "yapay-zeka-cozumleri",
+    "hizmetler/geo-yapay-zeka-optimizasyonu", "geo-yapay-zeka-optimizasyonu",
     "basari-hikayeleri", "blog", "faq", "sss", "hakkimda", "iletisim",
     "en", "en/services", "en/web-design", "en/istanbul-web-design", "en/fatih-web-design",
     "en/ecommerce-web-design", "en/ecommerce-setup", "en/ecommerce-optimization",
     "en/product-visuals-content", "en/inventory-stock-automation", "en/monthly-management",
-    "en/web-development", "en/custom-software", "en/ai-solutions", "en/case-studies",
+    "en/web-development", "en/custom-software", "en/ai-solutions",
+    "en/services/generative-engine-optimization", "en/generative-engine-optimization", "en/case-studies",
     "en/blog", "en/faq", "en/about", "en/contact",
     "ar", "ar/services", "ar/web-design", "ar/istanbul-web-design", "ar/fatih-web-design",
     "ar/ecommerce-web-design", "ar/shopify-setup-turkey", "ar/ecommerce-optimization",
     "ar/product-content-ai", "ar/stock-inventory-system", "ar/monthly-ecommerce-management",
-    "ar/web-development", "ar/custom-software", "ar/ai-solutions", "ar/case-studies",
+    "ar/web-development", "ar/custom-software", "ar/ai-solutions",
+    "ar/services/generative-engine-optimization", "ar/generative-engine-optimization", "ar/case-studies",
     "ar/blog", "ar/faq", "ar/about", "ar/contact"
   ];
 
   let blogSlugs = [
+    "geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir",
+    "what-is-geo-how-to-rank-in-ai-search-engines",
     "eticaret-sitem-var-ama-satis-yok-sorun-nerede",
     "urunlerim-goruntuleniyor-ama-satilmiyor-ne-yapmaliyim",
     "eticarette-ilk-5-saniye-musteri-neden-terk-ediyor",
@@ -119,10 +126,19 @@ module.exports = async (req, res) => {
   });
 
   // 2. Add blog routes in TR, EN, AR with hreflang tags
+  const processedBlogKeys = new Set();
   blogSlugs.forEach(slug => {
-    const trPath = `blog/${slug}`;
-    const enPath = `en/blog/${slug}`;
-    const arPath = `ar/blog/${slug}`;
+    let trPath = `blog/${slug}`;
+    let enPath = `en/blog/${slug}`;
+    let arPath = `ar/blog/${slug}`;
+
+    if (slug === "geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir" || slug === "what-is-geo-how-to-rank-in-ai-search-engines") {
+      if (processedBlogKeys.has("geo-blog")) return;
+      processedBlogKeys.add("geo-blog");
+      trPath = "blog/geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir";
+      enPath = "en/blog/what-is-geo-how-to-rank-in-ai-search-engines";
+      arPath = "ar/blog/what-is-geo-how-to-rank-in-ai-search-engines";
+    }
 
     [trPath, enPath, arPath].forEach(path => {
       const loc = `${domain}/${path}`;

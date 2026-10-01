@@ -9,11 +9,11 @@ import { getLanguageUrl } from '../utils/navigation';
 const routeSEOMap = {
   // ── TURKISH ROUTES ──────────────────────────────────
   '/': {
-    title: 'Shopify & İKAS E-Ticaret Uzmanı | Web Tasarım & Online Mağaza Kurulumu — Samer',
+    title: 'Fatih Web Tasarım & E-Ticaret | Shopify & İKAS — Samer',
     description:
-      'Shopify ve İKAS ile profesyonel e-ticaret web sitesi kurulumu, dönüşüm optimizasyonu ve online mağaza yönetimi. İstanbul merkezli, Türkiye geneline hizmet. Ücretsiz analiz için iletişime geçin.',
+      'Fatih & İstanbul profesyonel web tasarım, e-ticaret kurulumu ve mobil uygulama. Shopify & İKAS uzmanı Samer ile satışlarınızı katlayın. Ücretsiz analiz.',
     keywords:
-      'e ticaret web tasarım, shopify site kurulumu, ikas e-ticaret sitesi, web tasarım istanbul, e-ticaret sitesi kurulumu, shopify kurulumu türkiye, ikas uzmanı, profesyonel web tasarım, online mağaza kurulumu',
+      'fatih web tasarım, fatih web yazılım ajansı, fatih e-ticaret yazılımı, fatih yazılım firmaları, e ticaret web tasarım, shopify site kurulumu, ikas e-ticaret sitesi, web tasarım istanbul, profesyonel web tasarım',
   },
   '/hizmetler': {
     title: 'Web Tasarım & E-Ticaret Websitesi Hizmetleri',
@@ -37,14 +37,14 @@ const routeSEOMap = {
       'istanbul web tasarım, istanbul web tasarım ajansı, istanbul web sitesi yapan şirketler, profesyonel web tasarım istanbul, freelance web tasarımcı istanbul',
   },
   '/fatih-web-tasarim': {
-    title: 'Fatih Web Tasarım & E-Ticaret Kurulumu | Samer Allaham',
+    title: 'Fatih Web Tasarım & Yazılım Ajansı | E-Ticaret — Samer',
     description:
-      'İstanbul Fatih bölgesinde profesyonel web tasarım, e-ticaret ve yazılım çözümleri. İşletmenizi dijitale taşıyan modern web sitesi projeleri.',
+      'Fatih İstanbul web tasarım, e-ticaret yazılımı ve mobil uygulama geliştirme. Toptan & ihracat işletmeleri için dönüşüm odaklı dijital çözümler.',
     keywords:
-      'fatih web tasarım, fatih web tasarım ajansı, istanbul fatih web tasarımcı, fatih e-ticaret kurulumu, fatih web sitesi yapanlar',
+      'fatih web tasarım, fatih web yazılım ajansı, fatih mobil uygulama geliştirme, fatih e-ticaret yazılımı, fatih yazılım firmaları, istanbul fatih web tasarımcı, fatih e-ticaret kurulumu',
   },
   '/e-ticaret-web-tasarim': {
-    title: 'E-Ticaret Web Tasarım | Profesyonel Online Mağaza Kurulumu — Samer',
+    title: 'E-Ticaret Web Tasarım | Online Mağaza Kurulumu — Samer',
     description:
       'E-ticaret web tasarım hizmetleri. Shopify & İKAS ile satış yapan, mobil uyumlu ve SEO dostu online mağaza websitesi tasarımı. Samer Allaham.',
     keywords:
@@ -65,7 +65,7 @@ const routeSEOMap = {
       'yapay zeka çözümleri, ai e-ticaret, yapay zeka ürün fotoğrafı, chatbot, otomatik içerik',
   },
   '/eticaret-site-kurulumu': {
-    title: 'E-Ticaret Site Kurulumu İstanbul | Shopify & İKAS Uzmanı — Samer',
+    title: 'E-Ticaret Site Kurulumu | Shopify & İKAS — Samer',
     description:
       'İstanbul\'da profesyonel e-ticaret sitesi kurulumu. Shopify, İKAS ve WooCommerce ile 3-7 günde yayına al. Fiyat için iletişime geç.',
     keywords:
@@ -121,11 +121,11 @@ const routeSEOMap = {
       'e-ticaret blog, shopify rehber, ikas rehber, e-ticaret satış artırma, sepet terk, dönüşüm oranı',
   },
   '/hakkimda': {
-    title: 'Hakkımda — Samer Allaham',
+    title: 'Hakkımda | E-Ticaret & Web Tasarım Uzmanı — Samer',
     description:
-      'Türkiye merkezli e-ticaret büyüme uzmanı Samer Allaham hakkında. Shopify ve İKAS konusunda uzman yazılım geliştirici.',
+      'İstanbul Fatih merkezli e-ticaret sistemleri ve full-stack yazılım mühendisi Samer Allaham. Shopify, İKAS ve modern web mimarileri uzmanlığı.',
     keywords:
-      'samer allaham kim, e-ticaret uzmanı türkiye, shopify geliştirici türkiye, ikas uzmanı',
+      'samer allaham kim, e-ticaret uzmanı türkiye, shopify geliştirici türkiye, ikas uzmanı, fatih yazılımcı',
   },
   '/iletisim': {
     title: 'İletişim — Ücretsiz E-Ticaret Analizi',
@@ -137,21 +137,21 @@ const routeSEOMap = {
 
   // ── ENGLISH ROUTES ──────────────────────────────────
   '/en': {
-    title: 'Shopify & İKAS E-Commerce Expert | Web Design & Store Setup Turkey — Samer',
+    title: 'Web Design & E-Commerce Expert | Shopify & İKAS — Samer',
     description:
-      'Professional Shopify & İKAS e-commerce store setup, conversion optimization, and web design in Turkey. Istanbul-based specialist serving global brands. Get a free analysis.',
+      'Fatih & Istanbul web design, mobile app development, and Shopify & İKAS e-commerce setup. High-converting digital solutions by Samer Allaham.',
     keywords:
       'shopify expert turkey, ikas ecommerce setup, ecommerce web design istanbul, shopify store setup turkey, web design expert istanbul',
   },
   '/en/services': {
-    title: 'E-Commerce & Web Design Services Turkey | Shopify & İKAS — Samer',
+    title: 'E-Commerce & Web Design Services | Shopify & İKAS — Samer',
     description:
       'Professional e-commerce setup, conversion rate optimization, inventory automation, and web design services. Shopify & İKAS specialist in Istanbul.',
     keywords:
       'shopify services turkey, ecommerce web design services, ikas setup, conversion optimization, web design services istanbul',
   },
   '/en/web-design': {
-    title: 'Web Design & Corporate Website Development Turkey | Samer Allaham',
+    title: 'Web Design & Corporate Website Development | Samer',
     description:
       'Professional web design and modern website development services. Fast, SEO-friendly, mobile-first corporate and e-commerce websites with React & Next.js.',
     keywords:
@@ -165,11 +165,11 @@ const routeSEOMap = {
       'istanbul web design, istanbul web design agency, professional web design istanbul, freelance web designer istanbul',
   },
   '/en/fatih-web-design': {
-    title: 'Fatih Istanbul Web Design & E-Commerce Setup | Samer Allaham',
+    title: 'Fatih Istanbul Web Design Agency & Software | Samer Allaham',
     description:
-      'Professional web design and e-commerce software solutions in the Fatih district of Istanbul. Modern websites for wholesalers, exporters, and local businesses.',
+      'Web design, e-commerce software & mobile app development in Fatih, Istanbul. High-converting digital solutions for wholesalers and export brands.',
     keywords:
-      'fatih istanbul web design, istanbul web design fatih, ecommerce setup fatih istanbul',
+      'fatih istanbul web design, fatih web design agency, fatih mobile app development, fatih ecommerce software, istanbul web design fatih, ecommerce setup fatih istanbul',
   },
   '/en/ecommerce-web-design': {
     title: 'E-Commerce Web Design | Shopify & İKAS Online Store — Samer',
@@ -179,14 +179,14 @@ const routeSEOMap = {
       'ecommerce web design, shopify web design, ikas web design, online store design turkey',
   },
   '/en/ecommerce-setup': {
-    title: 'E-Commerce Store Setup Istanbul | Shopify & İKAS Expert — Samer',
+    title: 'E-Commerce Store Setup | Shopify & İKAS Expert — Samer',
     description:
       'Professional e-commerce store setup in Istanbul. Launch on Shopify or İKAS in 3-7 days. Contact for pricing.',
     keywords:
       'shopify setup istanbul, ikas ecommerce setup, ecommerce store launch, shopify design turkey',
   },
   '/en/ecommerce-optimization': {
-    title: 'E-Commerce Optimization | Conversion Rate & Sales Growth — Samer',
+    title: 'E-Commerce Optimization | CRO & Sales Growth — Samer',
     description:
       'Boost your e-commerce store conversion rate. A/B testing, speed optimization, and UX improvements to grow your sales.',
     keywords:
@@ -214,16 +214,16 @@ const routeSEOMap = {
       'monthly ecommerce management, shopify maintenance, ikas management, ecommerce consulting monthly',
   },
   '/en/web-development': {
-    title: 'Shopify & E-Commerce Web Development | React Expert Turkey — Samer',
+    title: 'Shopify & E-Commerce Web Development | React — Samer',
     description:
-      'Custom e-commerce web development with React & Next.js. Fast, SEO-optimized, and conversion-focused online store and corporate website development in Turkey.',
+      'Custom e-commerce web development with React & Next.js. Fast, SEO-optimized, and conversion-focused online stores and corporate websites in Turkey.',
     keywords:
       'ecommerce web development turkey, react developer turkey, next.js ecommerce, custom web development istanbul, shopify developer react',
   },
   '/en/custom-software': {
-    title: 'Custom E-Commerce Software Development Istanbul | Full-Stack — Samer',
+    title: 'Custom E-Commerce Software Development | Full-Stack — Samer',
     description:
-      'Custom web applications and API integrations for e-commerce. Istanbul-based freelance full-stack developer specializing in Shopify, İKAS, and marketplace automation.',
+      'Custom web apps and API integrations for e-commerce. Istanbul full-stack developer specializing in Shopify, İKAS, and marketplace automation.',
     keywords:
       'custom software development istanbul, full stack developer istanbul, ecommerce api development, shopify custom development',
   },
@@ -263,7 +263,7 @@ const routeSEOMap = {
       'ecommerce consulting contact, shopify setup pricing, ikas ecommerce quote, free analysis',
   },
   '/en/faq': {
-    title: 'E-Commerce FAQ | Shopify, İKAS & Web Design Questions — Samer',
+    title: 'E-Commerce FAQ | Shopify, İKAS & Web Design — Samer',
     description:
       'Frequently asked questions about Shopify and İKAS e-commerce setup, web design pricing, and conversion optimization. Expert answers.',
     keywords:
@@ -272,16 +272,16 @@ const routeSEOMap = {
 
   // ── ARABIC ROUTES ──────────────────────────────────
   '/ar': {
-    title: 'خبير متاجر شوبيفاي وإيكاس في تركيا | تصميم متاجر احترافية — سامر',
+    title: 'تصميم مواقع ومتاجر إلكترونية | شوبيفاي وإيكاس — سامر',
     description:
-      'إنشاء متاجر شوبيفاي وإيكاس الاحترافية في تركيا. تحسين معدل التحويل وتصميم المتاجر الإلكترونية. متخصص في إسطنبول يخدم الشركات العربية.',
+      'تصميم مواقع ويب ومتاجر شوبيفاي وإيكاس الاحترافية وتطبيقات الهاتف في إسطنبول الفاتح. حلول لزيادة المبيعات والتحويل مع سامر اللحام.',
     keywords:
       'تصميم متجر شوبيفاي تركيا, خبير إيكاس, برمجة متجر الكتروني, تصميم مواقع تجارة إلكترونية, سامر اللحام',
   },
   '/ar/services': {
     title: 'خدمات التجارة الإلكترونية وتصميم المواقع | سامر اللحام',
     description:
-      'خدمات احترافية لإنشاء المتاجر الإلكترونية وتحسين معدل التحويل وأتمتة المخزون وتصميم المواقع.',
+      'خدمات احترافية لإنشاء المتاجر الإلكترونية على شوبيفاي وإيكاس، وتحسين معدل التحويل وتطوير مواقع الويب في تركيا مع سامر اللحام.',
     keywords:
       'خدمات شوبيفاي, تصميم متجر الكتروني, إيكاس, تحسين التحويل, تصميم مواقع إسطنبول',
   },
@@ -314,7 +314,7 @@ const routeSEOMap = {
       'تحسين التجارة الإلكترونية, تحسين معدل التحويل, تحسين سرعة شوبيفاي, Core Web Vitals',
   },
   '/ar/product-content-ai': {
-    title: 'صور المنتجات والمحتوى بالذكاء الاصطناعي | التجارة الإلكترونية — سامر',
+    title: 'صور المنتجات والمحتوى بالذكاء الاصطناعي | سامر',
     description:
       'تصوير منتجات احترافي وإنشاء محتوى متوافق مع SEO. صور وأوصاف تحويلية لمتجرك الإلكتروني.',
     keywords:
@@ -349,7 +349,7 @@ const routeSEOMap = {
       'تطوير برمجيات مخصصة إسطنبول, مطور Full-Stack إسطنبول, تطوير API تجارة إلكترونية',
   },
   '/ar/ai-solutions': {
-    title: 'حلول الذكاء الاصطناعي للتجارة الإلكترونية | تكامل الشات بوت — سامر',
+    title: 'حلول الذكاء الاصطناعي للتجارة الإلكترونية | سامر',
     description:
       'حلول ذكاء اصطناعي للتجارة الإلكترونية. تكامل شات بوت GPT وإنشاء محتوى المنتجات تلقائياً.',
     keywords:
@@ -556,6 +556,56 @@ const serviceFAQs = {
       a: 'Evet, hazırladığımız tüm e-ticaret web tasarımları arama motorlarına tam uyumlu (Technical SEO & Schema markup) olarak teslim edilir.',
     },
   ],
+  '/fatih-web-tasarim': [
+    {
+      q: 'Fatih bölgesindeki işletmelere ne tür web tasarım ve yazılım çözümleri sunuyorsunuz?',
+      a: 'Fatih\'teki toptan, ihracat ve perakende işletmeleri için özel web tasarım, e-ticaret yazılımı ve mobil uygulama geliştirme hizmetleri sunuyoruz. Shopify, İKAS ve React tabanlı çözümlerle dijital dönüşümü hızlandırıyoruz.',
+    },
+    {
+      q: 'Fatih bölgesindeki e-ticaret markalarına ne tür özel yazılım çözümleri sunuyorsunuz?',
+      a: 'Fatih\'teki e-ticaret markalarına Shopify ve İKAS mağaza kurulumu, stok otomasyon sistemleri, çok kanallı satış entegrasyonu (Trendyol, Hepsiburada) ve yapay zeka destekli içerik üretimi sunuyoruz.',
+    },
+    {
+      q: 'Fatih web tasarım hizmetleri ne kadar sürede tamamlanır?',
+      a: 'Fatih bölgesindeki kurumsal web sitesi projeleri genellikle 2-3 haftada, e-ticaret kurulum projeleri ise 3-7 iş günü içinde tamamlanarak yayına alınır. Proje kapsamına göre değişiklik gösterebilir.',
+    },
+    {
+      q: 'Fatih\'te bulunan işletmeniz için neden Samer\'i tercih etmelisiniz?',
+      a: 'AIO Coffee, Nourla ve Taam Club gibi Türkiye merkezli markalarla çalışmış, teknik SEO ve e-ticaret dönüşümü konusunda uzmanlaşmış, İstanbul Fatih bölgesine yakın freelance geliştirici olarak hızlı ve kaliteli çözüm sunuyoruz.',
+    },
+    {
+      q: 'Fatih web tasarım fiyatları ne kadar?',
+      a: 'Fatih bölgesindeki işletmeler için web tasarım projeleri 30.000 TL\'den, e-ticaret kurulumu 20.000 TL\'den başlamaktadır. Ücretsiz analiz için WhatsApp veya iletişim formuyla ulaşabilirsiniz.',
+    },
+  ],
+  '/istanbul-web-tasarim': [
+    {
+      q: 'İstanbul\'da web tasarım ve e-ticaret hizmeti alabilir miyim?',
+      a: 'Evet, İstanbul genelinde ve özellikle Fatih, Beyoğlu, Şişli gibi ilçelerde faaliyet gösteren işletmelere web tasarım, e-ticaret kurulumu ve mobil uygulama geliştirme hizmetleri sunuyoruz.',
+    },
+    {
+      q: 'İstanbul web tasarım hizmetleri neleri kapsar?',
+      a: 'İstanbul\'daki işletmelere kurumsal web sitesi tasarımı, e-ticaret mağazası kurulumu (Shopify/İKAS), dönüşüm oranı optimizasyonu, stok otomasyon sistemi ve aylık yönetim hizmetleri sunuyoruz.',
+    },
+    {
+      q: 'Fatih ve İstanbul\'da hangi sektörlere hizmet veriyorsunuz?',
+      a: 'Fatih ve İstanbul genelinde tekstil, gıda, restoran, kozmetik, elektronik ve toptan ticaret sektörlerine özel web tasarım ve e-ticaret yazılım çözümleri geliştiriyoruz.',
+    },
+  ],
+  '/en/fatih-web-design': [
+    {
+      q: 'What web design and software services do you offer to businesses in Fatih, Istanbul?',
+      a: 'We offer custom web design, e-commerce software (Shopify/İKAS), and mobile app development for wholesale, export, and retail businesses in Fatih, Istanbul. Our conversion-driven solutions help local businesses grow digitally.',
+    },
+    {
+      q: 'What type of e-commerce solutions do you offer to brands in the Fatih district?',
+      a: 'For Fatih-based e-commerce brands, we provide Shopify & İKAS store setup, inventory automation, multi-channel integration (Trendyol, Hepsiburada), and AI-powered content generation tailored to the Turkish market.',
+    },
+    {
+      q: 'Why choose a web developer based near Fatih, Istanbul?',
+      a: 'Working with a local Istanbul-based developer means faster communication, understanding of the Turkish market, and proven results — as demonstrated by AIO Coffee (35% CR increase), Nourla, and Taam Club projects.',
+    },
+  ],
 };
 
 // ─────────────────────────────────────────────────
@@ -610,12 +660,19 @@ const serviceSchemas = {
 const personProfessionalServiceSchema = {
   '@context': 'https://schema.org',
   '@type': ['Person', 'ProfessionalService'],
-  name: 'Samer',
+  '@id': 'https://www.samer.life/#person',
+  name: 'Samer Allaham',
+  alternateName: 'سامر اللحام',
   url: 'https://www.samer.life',
-  jobTitle: 'E-Ticaret Web Tasarım & Websitesi Geliştirme Uzmanı',
+  image: 'https://www.samer.life/avatar.jpeg',
+  jobTitle: 'Web Tasarım, E-Ticaret & Yazılım Geliştirme Uzmanı',
+  description: 'Fatih, İstanbul merkezli profesyonel web tasarım, e-ticaret yazılımı ve mobil uygulama geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club gibi markaların dijital büyümesine katkı sağlamıştır.',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Fatih',
     addressLocality: 'İstanbul',
+    addressRegion: 'İstanbul',
+    postalCode: '34000',
     addressCountry: 'TR',
   },
   sameAs: [
@@ -628,7 +685,48 @@ const personProfessionalServiceSchema = {
     'https://hashnode.com/@samerallaham'
   ],
   knowsLanguage: ['tr', 'ar', 'en'],
-  areaServed: ['TR', 'SY', 'EG'],
+  areaServed: [
+    { '@type': 'City', name: 'Fatih', containedIn: { '@type': 'City', name: 'İstanbul' } },
+    { '@type': 'Country', name: 'Turkey' }
+  ],
+  knowsAbout: [
+    'Fatih Web Tasarım',
+    'Fatih Web Yazılım Ajansı',
+    'Fatih Mobil Uygulama Geliştirme',
+    'Fatih E-Ticaret Yazılımı',
+    { '@type': 'Specialty', name: 'Shopify', sameAs: 'https://www.wikidata.org/wiki/Q7521342' },
+    { '@type': 'Specialty', name: 'E-Commerce', sameAs: 'https://www.wikidata.org/wiki/Q484847' },
+    { '@type': 'Specialty', name: 'React', sameAs: 'https://www.wikidata.org/wiki/Q19399674' },
+    { '@type': 'Specialty', name: 'Node.js', sameAs: 'https://www.wikidata.org/wiki/Q756134' },
+    { '@type': 'Specialty', name: 'Search Engine Optimization', sameAs: 'https://www.wikidata.org/wiki/Q180711' },
+    'İKAS E-Commerce Platform',
+    'Conversion Rate Optimization',
+    'Stok Otomasyon Sistemleri',
+    'E-Ticaret API Entegrasyonu'
+  ],
+  workExample: [
+    {
+      '@type': 'CreativeWork',
+      name: 'AIO Coffee — E-Ticaret Websitesi',
+      url: 'https://www.aiocoffee.com/tr',
+      description: 'Shopify altyapısında geliştirilen AIO Coffee e-ticaret sitesi. Dönüşüm oranı %35 artış sağlandı.',
+      creator: { '@type': 'Person', name: 'Samer Allaham', url: 'https://www.samer.life' }
+    },
+    {
+      '@type': 'CreativeWork',
+      name: 'Nourla — E-Ticaret & Marka Sitesi',
+      url: 'https://www.nourla.com.tr/tr',
+      description: 'Nourla markası için geliştirilen modern e-ticaret ve marka tanıtım websitesi.',
+      creator: { '@type': 'Person', name: 'Samer Allaham', url: 'https://www.samer.life' }
+    },
+    {
+      '@type': 'CreativeWork',
+      name: 'Taam Club — Restaurant & Food Platform',
+      url: 'https://taam-club.vercel.app/',
+      description: 'Taam Club için geliştirilen restoran ve gıda platformu web uygulaması.',
+      creator: { '@type': 'Person', name: 'Samer Allaham', url: 'https://www.samer.life' }
+    }
+  ],
 };
 
 // ─────────────────────────────────────────────────
@@ -746,47 +844,127 @@ function buildWebSiteSchema() {
 // Build LocalBusiness JSON-LD
 // ─────────────────────────────────────────────────
 function buildLocalBusinessSchema(pathname) {
-  const isLocal = ['/fatih-web-tasarim', '/istanbul-web-tasarim', '/en/fatih-web-design', '/en/istanbul-web-design', '/ar/istanbul-web-design', '/ar/fatih-web-design'].includes(pathname);
-  const streetAddress = pathname.includes('fatih') ? 'Fatih' : 'İstanbul';
+  const isFatih = pathname.includes('fatih');
+  const streetAddress = isFatih ? 'Fatih' : 'İstanbul Merkez';
   return {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService'],
     '@id': 'https://www.samer.life/#local-business',
-    name: 'Samer Allaham | E-Ticaret & Web Tasarım',
+    name: isFatih
+      ? 'Samer Allaham | Fatih Web Tasarım & Yazılım Ajansı'
+      : 'Samer Allaham | İstanbul Web Tasarım & E-Ticaret',
     url: 'https://www.samer.life/',
     telephone: '+905394611684',
-    email: 'SAMERALLAHAM3@GMAIL.COM',
+    email: 'samerallaham3@gmail.com',
     logo: 'https://www.samer.life/avatar.jpeg',
     image: 'https://www.samer.life/avatar.jpeg',
     priceRange: '₺₺₺',
     address: {
       '@type': 'PostalAddress',
       streetAddress: streetAddress,
-      addressLocality: 'İstanbul',
+      addressLocality: isFatih ? 'Fatih' : 'İstanbul',
       addressRegion: 'İstanbul',
-      postalCode: '34000',
+      postalCode: isFatih ? '34080' : '34000',
       addressCountry: 'TR',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 41.0186,
-      longitude: 28.9404,
+      latitude: isFatih ? 41.0186 : 41.0082,
+      longitude: isFatih ? 28.9404 : 28.9784,
     },
-    areaServed: isLocal
-      ? [{ '@type': 'City', name: 'İstanbul' }, { '@type': 'Country', name: 'Turkey' }]
-      : [{ '@type': 'Country', name: 'Turkey' }],
+    serviceArea: [
+      { '@type': 'AdministrativeArea', name: 'Fatih', containedIn: { '@type': 'City', name: 'İstanbul' } },
+      { '@type': 'City', name: 'İstanbul' },
+      { '@type': 'Country', name: 'Turkey' }
+    ],
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: 'Fatih' },
+      { '@type': 'City', name: 'İstanbul' },
+      { '@type': 'Country', name: 'Turkey' }
+    ],
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       opens: '09:00',
-      closes: '18:00',
+      closes: '19:00',
     },
     hasMap: 'https://share.google/IrAWdrTQOMekMNmwh',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: isFatih ? 'Fatih Web Tasarım & Yazılım Hizmetleri' : 'Web Tasarım & E-Ticaret Hizmetleri',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fatih Web Tasarım', url: 'https://www.samer.life/fatih-web-tasarim' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fatih E-Ticaret Yazılımı', url: 'https://www.samer.life/eticaret-site-kurulumu' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fatih Mobil Uygulama Geliştirme', url: 'https://www.samer.life/ozel-yazilim-gelistirme' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Fatih Web Yazılım Ajansı', url: 'https://www.samer.life/web-tasarim' } }
+      ]
+    },
     sameAs: [
       'https://github.com/mhdsamerallaham',
       'https://www.linkedin.com/in/samer-allaham-18a784162/',
       'https://share.google/IrAWdrTQOMekMNmwh',
     ],
+  };
+}
+
+// ─────────────────────────────────────────────────
+// Build Portfolio / CreativeWork JSON-LD (E-E-A-T)
+// ─────────────────────────────────────────────────
+function buildPortfolioSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': 'https://www.samer.life/#portfolio',
+    name: 'Samer Allaham — Referans Projeler & Canlı Portföy',
+    description: 'Samer Allaham tarafından geliştirilen AIO Coffee, Nourla ve Taam Club gibi canlı e-ticaret ve web projeleri.',
+    numberOfItems: 3,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        item: {
+          '@type': 'CreativeWork',
+          '@id': 'https://www.aiocoffee.com/tr',
+          name: 'AIO Coffee — Shopify E-Ticaret Sitesi',
+          url: 'https://www.aiocoffee.com/tr',
+          description: 'AIO Coffee markası için Shopify altyapısında geliştirilen premium e-ticaret websitesi. Dönüşüm oranı optimizasyonu ile %35 CR artışı sağlandı.',
+          keywords: 'shopify ecommerce, coffee brand website, conversion optimization',
+          creator: { '@type': 'Person', '@id': 'https://www.samer.life/#person', name: 'Samer Allaham', url: 'https://www.samer.life' },
+          dateCreated: '2025-08-01',
+          inLanguage: 'tr'
+        }
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        item: {
+          '@type': 'CreativeWork',
+          '@id': 'https://www.nourla.com.tr/tr',
+          name: 'Nourla — E-Ticaret & Marka Websitesi',
+          url: 'https://www.nourla.com.tr/tr',
+          description: 'Nourla markası için React ve modern web teknolojileriyle geliştirilen e-ticaret ve kurumsal kimlik websitesi.',
+          keywords: 'brand website, ecommerce, react web design turkey',
+          creator: { '@type': 'Person', '@id': 'https://www.samer.life/#person', name: 'Samer Allaham', url: 'https://www.samer.life' },
+          dateCreated: '2025-06-01',
+          inLanguage: 'tr'
+        }
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        item: {
+          '@type': 'CreativeWork',
+          '@id': 'https://taam-club.vercel.app/',
+          name: 'Taam Club — Restaurant & Food Web Uygulaması',
+          url: 'https://taam-club.vercel.app/',
+          description: 'Taam Club için React ile geliştirilen restoran, yemek ve gıda sektörüne özel modern web platformu.',
+          keywords: 'restaurant web app, food platform, react web development',
+          creator: { '@type': 'Person', '@id': 'https://www.samer.life/#person', name: 'Samer Allaham', url: 'https://www.samer.life' },
+          dateCreated: '2025-04-01',
+          inLanguage: 'ar'
+        }
+      }
+    ]
   };
 }
 
@@ -856,14 +1034,26 @@ export default function SEO({
   const finalDesc = description || routeData.description || '';
   const finalKeywords = keywords || routeData.keywords || '';
 
-  // Canonical URL always points strictly to pathname (stripping query parameters)
-  const canonicalUrl = `https://www.samer.life${pathname}`;
+  // Canonical URL — strip trailing slash (except root '/') and query params
+  const rawCanonical = pathname.length > 1 && pathname.endsWith('/')
+    ? pathname.slice(0, -1)
+    : pathname;
+  const canonicalUrl = `https://www.samer.life${rawCanonical}`;
   const pageTitle = finalTitle.includes('Samer') ? finalTitle : `${finalTitle} | Samer`;
 
-  // Alternate Multilingual URLs (hreflang)
+  // Alternate Multilingual URLs (hreflang) — uses pageLanguageMap for static routes
+  // and slug-aware fallback for dynamic /blog/:slug and /faq/:slug pages
   const trUrl = `https://www.samer.life${getLanguageUrl(pathname, 'tr')}`;
   const enUrl = `https://www.samer.life${getLanguageUrl(pathname, 'en')}`;
   const arUrl = `https://www.samer.life${getLanguageUrl(pathname, 'ar')}`;
+
+  // OG locale map
+  const ogLocale = lang === 'tr' ? 'tr_TR' : lang === 'ar' ? 'ar_SA' : 'en_US';
+  const ogLocaleAlternates = [
+    lang !== 'tr' ? 'tr_TR' : null,
+    lang !== 'en' ? 'en_US' : null,
+    lang !== 'ar' ? 'ar_SA' : null,
+  ].filter(Boolean);
 
   // Collect all schemas for this page
   const schemas = [];
@@ -874,24 +1064,28 @@ export default function SEO({
   // 2. WebSite + LocalBusiness Schema on homepage & local pages
   const isHomepage = pathname === '/' || pathname === '/en' || pathname === '/ar';
   const isLocalPage = ['/fatih-web-tasarim', '/istanbul-web-tasarim', '/en/fatih-web-design', '/en/istanbul-web-design'].includes(pathname);
+  const isCaseStudies = ['/basari-hikayeleri', '/en/case-studies', '/ar/case-studies'].includes(pathname);
   if (isHomepage) schemas.push(buildWebSiteSchema());
-  if (isHomepage || isLocalPage) schemas.push(buildLocalBusinessSchema(pathname));
+  if (isHomepage || isLocalPage) schemas.push(buildLocalBusinessSchema(pathname.includes('fatih') ? pathname : '/'));
 
-  // 3. FAQ schema for service pages
+  // 3. Portfolio schema on homepage and case studies — E-E-A-T trust signals
+  if (isHomepage || isCaseStudies) schemas.push(buildPortfolioSchema());
+
+  // 4. FAQ schema for service pages
   const faqs = faqItems || serviceFAQs[pathname];
   if (faqs) schemas.push(buildFAQSchema(faqs));
 
-  // 4. Service schema for service pages
+  // 5. Service schema for service pages
   const svc = serviceSchemas[pathname];
   if (svc) schemas.push(buildServiceSchema(svc, pathname));
 
-  // 5. Article schema for blog posts
+  // 6. Article schema for blog posts
   if (article) schemas.push(buildArticleSchema(article));
 
-  // 6. Breadcrumb for all pages except homepage
+  // 7. Breadcrumb for all pages except homepage
   if (pathname !== '/' && pathname !== '/en' && pathname !== '/ar') schemas.push(buildBreadcrumbSchema(pathname));
 
-  // 7. Custom schema override/addition
+  // 8. Custom schema override/addition
   if (schema) schemas.push(schema);
 
   return (
@@ -903,30 +1097,46 @@ export default function SEO({
       <title>{pageTitle}</title>
       <meta name="description" content={finalDesc} />
       <meta name="author" content="Samer Allaham" />
+      <meta name="keywords" content={finalKeywords} />
 
-      {/* Canonical Link (Parametresiz Temiz URL) */}
+      {/* Robots — allow all crawlers incl. AI bots */}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="googlebot" content="index, follow" />
+
+      {/* Canonical Link */}
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Alternate Language Links (hreflang) */}
-      <link rel="alternate" hreflang="tr" href={trUrl} />
-      <link rel="alternate" hreflang="en" href={enUrl} />
-      <link rel="alternate" hreflang="ar" href={arUrl} />
-      <link rel="alternate" hreflang="x-default" href={trUrl} />
+      {/* Alternate Language Links (hreflang) — 3 languages + x-default */}
+      <link rel="alternate" hrefLang="tr" href={trUrl} />
+      <link rel="alternate" hrefLang="en" href={enUrl} />
+      <link rel="alternate" hrefLang="ar" href={arUrl} />
+      <link rel="alternate" hrefLang="x-default" href={trUrl} />
+
+      {/* Content-Language for HTTP-equiv (helps Googlebot classify language) */}
+      <meta http-equiv="content-language" content={lang === 'ar' ? 'ar' : lang === 'en' ? 'en' : 'tr'} />
 
       {/* Open Graph */}
       <meta property="og:type" content={article ? 'article' : 'website'} />
-      <meta property="og:site_name" content="Samer | E-Ticaret & Web Geliştirme Uzmanı" />
-      <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : lang === 'ar' ? 'ar_SA' : 'en_US'} />
+      <meta property="og:site_name" content="Samer | Fatih Web Tasarım & E-Ticaret Uzmanı" />
+      <meta property="og:locale" content={ogLocale} />
+      {ogLocaleAlternates.map((loc) => (
+        <meta key={loc} property="og:locale:alternate" content={loc} />
+      ))}
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={finalDesc} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content="https://www.samer.life/avatar.jpeg" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@samerallaham" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={finalDesc} />
       <meta name="twitter:image" content="https://www.samer.life/avatar.jpeg" />
+      <meta name="twitter:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" />
 
       {/* JSON-LD schemas */}
       {schemas.map((s, i) =>
