@@ -59,6 +59,16 @@ module.exports = async (req, res) => {
   ];
 
   let blogSlugs = [
+    "kurumsal-web-sitesi-gelistirme-react-ve-nextjs-avantajlari",
+    "yapay-zeka-destekli-icerik-uretimi-urun-sayfasi-optimizasyonu",
+    "eticaret-performansini-artiran-seo-iyilestirme-kilavuzu",
+    "otomatik-stok-ve-siparis-yonetim-sistemleri-nasil-calisir",
+    "stok-entegrasyonu-ve-otomasyonla-eticaret-yonetimi-nasil-kurulur",
+    "urun-icerik-otomasyonu-ile-seo-ve-donusumu-guclendirme",
+    "shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+    "eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+    "pazaryeri-entegrasyonu-ile-stok-yonetimi-rehberi",
+    "web-sitelerinde-yapay-zeka-entegrasyonu-avantajlari",
     "geo-nedir-yapay-zeka-arama-motorlarinda-nasil-one-cikilir",
     "what-is-geo-how-to-rank-in-ai-search-engines",
     "eticaret-sitem-var-ama-satis-yok-sorun-nerede",

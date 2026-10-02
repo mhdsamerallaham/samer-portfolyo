@@ -7,6 +7,7 @@ import AIDemo from '../components/AIDemo';
 import FAQ from '../components/FAQ';
 import ContactForm from '../components/ContactForm';
 import Reviews from '../components/Reviews';
+import GeoKnowledgeCard from '../components/knowledge/GeoKnowledgeCard';
 import { getLocalizedPath } from '../utils/navigation';
 
 export default function Home() {
@@ -455,6 +456,9 @@ export default function Home() {
             </table>
           </div>
         </div>
+
+        {/* 2.2. GEO / AI ENGINE DIRECT CITABILITY KNOWLEDGE BLOCK */}
+        <GeoKnowledgeCard />
       </section>
 
       {/* ─────────────────────────────────────────────────────────────

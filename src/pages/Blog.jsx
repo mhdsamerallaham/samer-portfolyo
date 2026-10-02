@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
@@ -13,20 +13,30 @@ export default function Blog() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { slug } = useParams();
-  const [activeArticle, setActiveArticle] = useState(null);
   const [dynamicArticles, setDynamicArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const lang = i18n.language || 'tr';
   const isAr = lang === 'ar';
   const isEn = lang === 'en';
 
-  const localArticles = t('blog_page.articles', { returnObjects: true }) || [];
-  const articles = Array.isArray(dynamicArticles) && dynamicArticles.length > 0 ? dynamicArticles : localArticles;
+  const localArticles = useMemo(() => t('blog_page.articles', { returnObjects: true }) || [], [t]);
+  const articles = useMemo(() => {
+    return Array.isArray(dynamicArticles) && dynamicArticles.length > 0
+      ? [
+          ...localArticles,
+          ...dynamicArticles.filter((dyn) => !localArticles.some((loc) => loc.slug === dyn.slug || loc.id === dyn.id))
+        ]
+      : localArticles;
+  }, [dynamicArticles, localArticles]);
+
+  const postSlug = slug || searchParams.get('post');
+  const activeArticle = useMemo(() => {
+    if (!postSlug || articles.length === 0) return null;
+    return articles.find((a) => a.slug === postSlug || a.id === postSlug) || null;
+  }, [postSlug, articles]);
 
   useEffect(() => {
     let active = true;
-    setIsLoading(true);
     fetch(`/api/blog/posts?lang=${i18n.language}`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch dynamic articles');
@@ -39,29 +49,12 @@ export default function Blog() {
       })
       .catch((err) => {
         console.warn('API error, using fallback local JSON articles:', err);
-      })
-      .finally(() => {
-        if (active) setIsLoading(false);
       });
 
     return () => {
       active = false;
     };
   }, [i18n.language]);
-
-  useEffect(() => {
-    const postSlug = slug || searchParams.get('post');
-    if (postSlug && articles.length > 0) {
-      const match = articles.find((a) => a.slug === postSlug || a.id === postSlug);
-      if (match) {
-        setActiveArticle(match);
-      } else {
-        setActiveArticle(null);
-      }
-    } else {
-      setActiveArticle(null);
-    }
-  }, [slug, searchParams, articles]);
 
   const handleSelectArticle = (article) => {
     const postSlug = article.slug || article.id;

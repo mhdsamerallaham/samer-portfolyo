@@ -667,17 +667,29 @@ const personProfessionalServiceSchema = {
   image: 'https://www.samer.life/avatar.jpeg',
   jobTitle: 'Web Tasarım, E-Ticaret & Yazılım Geliştirme Uzmanı',
   description: 'Fatih, İstanbul merkezli profesyonel web tasarım, e-ticaret yazılımı ve mobil uygulama geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club gibi markaların dijital büyümesine katkı sağlamıştır.',
+  telephone: '+905394611684',
+  email: 'samerallaham3@gmail.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Fatih',
-    addressLocality: 'İstanbul',
+    streetAddress: 'Akşemsettin Mah., Fatih',
+    addressLocality: 'Fatih',
     addressRegion: 'İstanbul',
-    postalCode: '34000',
+    postalCode: '34080',
     addressCountry: 'TR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 41.0186,
+    longitude: 28.9404,
   },
   sameAs: [
     'https://github.com/mhdsamerallaham',
     'https://www.linkedin.com/in/samer-allaham-18a784162/',
+    'https://x.com/samerallaham',
+    'https://twitter.com/samerallaham',
+    'https://www.instagram.com/samerallaham',
+    'https://www.facebook.com/samerallaham',
+    'https://share.google/IrAWdrTQOMekMNmwh',
     'https://contra.com/samer_allaham_s51lxcvv',
     'https://www.fiverr.com/s/akQab8g',
     'https://www.upwork.com/freelancers/~010348fd03fde0f41b',
@@ -845,7 +857,7 @@ function buildWebSiteSchema() {
 // ─────────────────────────────────────────────────
 function buildLocalBusinessSchema(pathname) {
   const isFatih = pathname.includes('fatih');
-  const streetAddress = isFatih ? 'Fatih' : 'İstanbul Merkez';
+  const streetAddress = isFatih ? 'Akşemsettin Mah., Fatih' : 'İstanbul Merkez';
   return {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'ProfessionalService'],
@@ -859,6 +871,8 @@ function buildLocalBusinessSchema(pathname) {
     logo: 'https://www.samer.life/avatar.jpeg',
     image: 'https://www.samer.life/avatar.jpeg',
     priceRange: '₺₺₺',
+    paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+    currenciesAccepted: 'TRY',
     address: {
       '@type': 'PostalAddress',
       streetAddress: streetAddress,
@@ -902,7 +916,13 @@ function buildLocalBusinessSchema(pathname) {
     sameAs: [
       'https://github.com/mhdsamerallaham',
       'https://www.linkedin.com/in/samer-allaham-18a784162/',
+      'https://x.com/samerallaham',
+      'https://twitter.com/samerallaham',
+      'https://www.instagram.com/samerallaham',
+      'https://www.facebook.com/samerallaham',
       'https://share.google/IrAWdrTQOMekMNmwh',
+      'https://contra.com/samer_allaham_s51lxcvv',
+      'https://www.upwork.com/freelancers/~010348fd03fde0f41b'
     ],
   };
 }
@@ -1018,6 +1038,7 @@ export default function SEO({
   title,
   description,
   keywords = '',
+  canonical = null,
   schema = null,
   article = null,
   faqItems = null,
@@ -1034,11 +1055,20 @@ export default function SEO({
   const finalDesc = description || routeData.description || '';
   const finalKeywords = keywords || routeData.keywords || '';
 
-  // Canonical URL — strip trailing slash (except root '/') and query params
-  const rawCanonical = pathname.length > 1 && pathname.endsWith('/')
-    ? pathname.slice(0, -1)
-    : pathname;
-  const canonicalUrl = `https://www.samer.life${rawCanonical}`;
+  // Bulletproof Canonical URL sanitization:
+  // Handles explicit prop, strips any protocol/host, strips query/hash, strips trailing slash (except root '/')
+  let pathForCanonical = (canonical || pathname || '/').trim();
+  pathForCanonical = pathForCanonical
+    .replace(/^https?:\/\/www\.samer\.life/i, '')
+    .replace(/^https?:\/\/samer\.life/i, '');
+  pathForCanonical = pathForCanonical.split('?')[0].split('#')[0];
+  if (!pathForCanonical.startsWith('/')) {
+    pathForCanonical = `/${pathForCanonical}`;
+  }
+  if (pathForCanonical.length > 1 && pathForCanonical.endsWith('/')) {
+    pathForCanonical = pathForCanonical.slice(0, -1);
+  }
+  const canonicalUrl = `https://www.samer.life${pathForCanonical}`;
   const pageTitle = finalTitle.includes('Samer') ? finalTitle : `${finalTitle} | Samer`;
 
   // Alternate Multilingual URLs (hreflang) — uses pageLanguageMap for static routes

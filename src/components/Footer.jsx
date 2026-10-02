@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowDownRight, Github, Linkedin, Mail, MapPin, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowDownRight, Github, Linkedin, Mail, MapPin, ExternalLink, Sparkles, Phone, Instagram, Facebook } from 'lucide-react';
 import { getLocalizedPath } from '../utils/navigation';
 
 export default function Footer() {
@@ -33,18 +33,106 @@ export default function Footer() {
               {t('about_page.identity_statement') || 'İstanbul merkezli e-ticaret ve tam yığın web geliştirici. Shopify, İKAS ve modern web altyapılarıyla satışlarınızı ölçeklendiriyorum.'}
             </p>
             
-            {/* Social Icons */}
-            <div className="flex items-center gap-2 mt-1 flex-wrap">
-              <a href="https://share.google/IrAWdrTQOMekMNmwh" target="_blank" rel="noopener noreferrer" aria-label="Google Maps Business Profile" title="Google Maps İşletme Profili" className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all">
+            {/* Local SEO Visible NAP (Address, Phone, Email) */}
+            <div className="flex flex-col gap-2 pt-1 text-xs text-slate-300 border-t border-slate-800/80">
+              <a
+                href="https://share.google/IrAWdrTQOMekMNmwh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 hover:text-teal-400 transition-colors group"
+                title="Google Maps İşletme Konumu"
+              >
+                <MapPin size={15} className="text-teal-400 flex-shrink-0 mt-0.5" />
+                <span className="leading-snug">Akşemsettin Mah., Fatih, 34080 İstanbul, Türkiye</span>
+              </a>
+              <a
+                href="tel:+905394611684"
+                className="flex items-center gap-2 hover:text-teal-400 transition-colors"
+                title="Telefon ile arayın"
+              >
+                <Phone size={15} className="text-teal-400 flex-shrink-0" />
+                <span>+90 539 461 16 84</span>
+              </a>
+              <a
+                href="mailto:samerallaham3@gmail.com"
+                className="flex items-center gap-2 hover:text-teal-400 transition-colors"
+                title="E-posta gönderin"
+              >
+                <Mail size={15} className="text-teal-400 flex-shrink-0" />
+                <span>samerallaham3@gmail.com</span>
+              </a>
+            </div>
+
+            {/* Social Icons (X, LinkedIn, Facebook, Instagram, GitHub, Maps, Email) */}
+            <div className="flex items-center gap-2 mt-2 flex-wrap">
+              <a
+                href="https://share.google/IrAWdrTQOMekMNmwh"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Maps Business Profile"
+                title="Google Maps İşletme Profili"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
                 <MapPin size={16} />
               </a>
-              <a href="https://github.com/mhdsamerallaham" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub" className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all">
-                <Github size={16} />
-              </a>
-              <a href="https://www.linkedin.com/in/samer-allaham-18a784162/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn" className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all">
+              <a
+                href="https://www.linkedin.com/in/samer-allaham-18a784162/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                title="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
                 <Linkedin size={16} />
               </a>
-              <a href="mailto:samerallaham3@gmail.com" aria-label="Send Email" title="E-Posta" className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all">
+              <a
+                href="https://x.com/samerallaham"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter) Profile"
+                title="X (Twitter)"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/samerallaham"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram Profile"
+                title="Instagram"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://www.facebook.com/samerallaham"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook Profile"
+                title="Facebook"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
+                <Facebook size={16} />
+              </a>
+              <a
+                href="https://github.com/mhdsamerallaham"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                title="GitHub"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href="mailto:samerallaham3@gmail.com"
+                aria-label="Send Email"
+                title="E-Posta"
+                className="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center justify-center text-slate-400 hover:text-teal-400 hover:border-teal-500/50 hover:bg-slate-800/80 transition-all"
+              >
                 <Mail size={16} />
               </a>
             </div>

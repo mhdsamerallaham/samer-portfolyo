@@ -19,44 +19,44 @@
   <meta name="googlebot" content="index, follow" />
   <meta name="Googleother" content="index, follow" />
 
-  <!-- Canonical Tag (Dynamically updated per route by Helmet / Prerender) -->
-  <link rel="canonical" href="https://www.samer.life/" />
+  <!-- Canonical Tag (Managed dynamically by Helmet & Prerender with data-rh) -->
+  <link rel="canonical" href="https://www.samer.life/" data-rh="true" />
 
   <!-- =====================================================
-       HREFLANG — Statik fallback (crawlers için)
+       HREFLANG — Alternate Language Links
        ===================================================== -->
-  <link rel="alternate" hreflang="tr" href="https://www.samer.life/" />
-  <link rel="alternate" hreflang="en" href="https://www.samer.life/en" />
-  <link rel="alternate" hreflang="ar" href="https://www.samer.life/ar" />
-  <link rel="alternate" hreflang="x-default" href="https://www.samer.life/" />
+  <link rel="alternate" hreflang="tr" href="https://www.samer.life/" data-rh="true" />
+  <link rel="alternate" hreflang="en" href="https://www.samer.life/en" data-rh="true" />
+  <link rel="alternate" hreflang="ar" href="https://www.samer.life/ar" data-rh="true" />
+  <link rel="alternate" hreflang="x-default" href="https://www.samer.life/" data-rh="true" />
 
   <!-- =====================================================
        OPEN GRAPH — SOCIAL / AI PREVIEW
        ===================================================== -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Samer | Fatih Web Tasarım & E-Ticaret Uzmanı" />
-  <meta property="og:locale" content="tr_TR" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:locale:alternate" content="ar_SA" />
-  <meta property="og:title" content="Fatih Web Tasarım & E-Ticaret Uzmanı | Shopify & İKAS — Samer" />
+  <meta property="og:type" content="website" data-rh="true" />
+  <meta property="og:site_name" content="Samer | Fatih Web Tasarım & E-Ticaret Uzmanı" data-rh="true" />
+  <meta property="og:locale" content="tr_TR" data-rh="true" />
+  <meta property="og:locale:alternate" content="en_US" data-rh="true" />
+  <meta property="og:locale:alternate" content="ar_SA" data-rh="true" />
+  <meta property="og:title" content="Fatih Web Tasarım & E-Ticaret Uzmanı | Shopify & İKAS — Samer" data-rh="true" />
   <meta property="og:description"
-    content="Fatih İstanbul web tasarım, e-ticaret yazılımı ve yazılım geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club gibi markaları büyüten Shopify & İKAS uzmanı Samer." />
-  <meta property="og:url" content="https://www.samer.life/" />
-  <meta property="og:image" content="https://www.samer.life/avatar.jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" />
+    content="Fatih İstanbul web tasarım, e-ticaret yazılımı ve yazılım geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club gibi markaları büyüten Shopify & İKAS uzmanı Samer." data-rh="true" />
+  <meta property="og:url" content="https://www.samer.life/" data-rh="true" />
+  <meta property="og:image" content="https://www.samer.life/avatar.jpeg" data-rh="true" />
+  <meta property="og:image:width" content="1200" data-rh="true" />
+  <meta property="og:image:height" content="630" data-rh="true" />
+  <meta property="og:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" data-rh="true" />
 
   <!-- =====================================================
        TWITTER CARD
        ===================================================== -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@samerallaham" />
-  <meta name="twitter:title" content="Fatih Web Tasarım & E-Ticaret Uzmanı | Shopify & İKAS — Samer" />
+  <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+  <meta name="twitter:site" content="@samerallaham" data-rh="true" />
+  <meta name="twitter:title" content="Fatih Web Tasarım & E-Ticaret Uzmanı | Shopify & İKAS — Samer" data-rh="true" />
   <meta name="twitter:description"
-    content="Fatih İstanbul web tasarım, e-ticaret yazılımı ve yazılım geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club markalarını büyüten Shopify & İKAS uzmanı." />
-  <meta name="twitter:image" content="https://www.samer.life/avatar.jpeg" />
-  <meta name="twitter:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" />
+    content="Fatih İstanbul web tasarım, e-ticaret yazılımı ve yazılım geliştirme uzmanı. AIO Coffee, Nourla ve Taam Club markalarını büyüten Shopify & İKAS uzmanı." data-rh="true" />
+  <meta name="twitter:image" content="https://www.samer.life/avatar.jpeg" data-rh="true" />
+  <meta name="twitter:image:alt" content="Samer Allaham — Fatih Web Tasarım & E-Ticaret Uzmanı" data-rh="true" />
 
   <!-- =====================================================
        FAVICON — BRANDED
@@ -121,7 +121,13 @@
     "sameAs": [
       "https://github.com/mhdsamerallaham",
       "https://www.linkedin.com/in/samer-allaham-18a784162/",
-      "https://share.google/IrAWdrTQOMekMNmwh"
+      "https://x.com/samerallaham",
+      "https://twitter.com/samerallaham",
+      "https://www.instagram.com/samerallaham",
+      "https://www.facebook.com/samerallaham",
+      "https://share.google/IrAWdrTQOMekMNmwh",
+      "https://contra.com/samer_allaham_s51lxcvv",
+      "https://www.upwork.com/freelancers/~010348fd03fde0f41b"
     ],
     "areaServed": [
       { "@type": "AdministrativeArea", "name": "Fatih", "containedIn": { "@type": "City", "name": "İstanbul" } },
@@ -173,31 +179,58 @@
   }
   </script>
 
-  <!-- 3. Organization / ProfessionalService Schema -->
+  <!-- 3. Organization / LocalBusiness / ProfessionalService Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
     "@id": "https://www.samer.life/#organization",
     "name": "Samer Allaham | E-Ticaret Web Tasarım & Websitesi Geliştirme Hizmetleri",
+    "alternateName": "Samer Allaham E-Commerce & Web Design Studio",
     "url": "https://www.samer.life/",
     "hasMap": "https://share.google/IrAWdrTQOMekMNmwh",
     "logo": "https://www.samer.life/avatar.jpeg",
     "image": "https://www.samer.life/avatar.jpeg",
     "telephone": "+905394611684",
-    "email": "SAMERALLAHAM3@GMAIL.COM",
+    "email": "samerallaham3@gmail.com",
     "founder": { "@id": "https://www.samer.life/#person" },
     "priceRange": "₺₺₺",
     "currenciesAccepted": "TRY",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "İstanbul",
+      "streetAddress": "Akşemsettin Mah., Fatih",
+      "addressLocality": "Fatih",
+      "addressRegion": "İstanbul",
+      "postalCode": "34080",
       "addressCountry": "TR"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Turkey"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.0186,
+      "longitude": 28.9404
     },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "İstanbul"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Fatih",
+        "containedIn": { "@type": "City", "name": "İstanbul" }
+      },
+      {
+        "@type": "Country",
+        "name": "Turkey"
+      }
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "E-Ticaret Hizmetleri",
@@ -252,7 +285,13 @@
     "sameAs": [
       "https://github.com/mhdsamerallaham",
       "https://www.linkedin.com/in/samer-allaham-18a784162/",
-      "https://share.google/IrAWdrTQOMekMNmwh"
+      "https://x.com/samerallaham",
+      "https://twitter.com/samerallaham",
+      "https://www.instagram.com/samerallaham",
+      "https://www.facebook.com/samerallaham",
+      "https://share.google/IrAWdrTQOMekMNmwh",
+      "https://contra.com/samer_allaham_s51lxcvv",
+      "https://www.upwork.com/freelancers/~010348fd03fde0f41b"
     ]
   }
   </script>
@@ -315,36 +354,49 @@
   </script>
 
   <!-- =====================================================
-       TYPOGRAPHY — Plus Jakarta Sans, Playfair Display (Serif) & Tajawal (Arabic)
+       TYPOGRAPHY — Non-blocking font loading
        ===================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  </noscript>
 
   <!-- =====================================================
        SELF-HOSTED LOCAL FONTS — Preload critical font files
        ===================================================== -->
   <link rel="preload" href="/fonts/inter-v20-UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="/fonts/fonts.css" /></noscript>
   <link rel="preconnect" href="https://connect.facebook.net" />
 
-  <!-- Meta Pixel Code — Deferred to not block initial render -->
+  <!-- Meta Pixel Code — Deferred to not block initial render (lazyOnload equivalent) -->
   <script>
-    // Defer Facebook Pixel loading until after page is interactive
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1296692525617325');
-        fbq('track', 'PageView');
-      }, 2000);
-    });
+    // Defer Facebook Pixel loading until page is interactive and CPU is idle
+    function initMetaPixel() {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1296692525617325');
+      fbq('track', 'PageView');
+    }
+    if ('requestIdleCallback' in window) {
+      window.addEventListener('load', function() {
+        requestIdleCallback(function() {
+          setTimeout(initMetaPixel, 1500);
+        });
+      });
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(initMetaPixel, 2500);
+      });
+    }
   </script>
   <!-- End Meta Pixel Code -->
 </head>
