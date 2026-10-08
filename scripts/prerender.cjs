@@ -20,6 +20,28 @@ const pages = {
   // ==========================================
   // TURKISH PAGES (Default / Root)
   // ==========================================
+  'admin/seo': {
+    title: 'AutoSEO & AI Bütçe Yönetim Paneli | Samer',
+    description: 'Samer.life AutoSEO ve çoklu sağlayıcı AI bütçe ve kota yönetim komuta merkezi.',
+    keywords: 'autoseo, seo dashboard, ai budget manager',
+    canonical: 'https://www.samer.life/admin/seo',
+    lang: 'tr',
+    content: `
+      <h1>AutoSEO & AI Bütçe Yönetim Paneli</h1>
+      <p>Google Search Console fırsatları, teknik SEO denetimi ve yapay zeka bütçe yönetim arayüzü.</p>
+    `
+  },
+  'seo-dashboard': {
+    title: 'AutoSEO & AI Bütçe Yönetim Paneli | Samer',
+    description: 'Samer.life AutoSEO ve çoklu sağlayıcı AI bütçe ve kota yönetim komuta merkezi.',
+    keywords: 'autoseo, seo dashboard, ai budget manager',
+    canonical: 'https://www.samer.life/seo-dashboard',
+    lang: 'tr',
+    content: `
+      <h1>AutoSEO & AI Bütçe Yönetim Paneli</h1>
+      <p>Google Search Console fırsatları, teknik SEO denetimi ve yapay zeka bütçe yönetim arayüzü.</p>
+    `
+  },
   '': {
     title: 'E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer',
     description: 'Profesyonel e-ticaret web tasarım ve kurulum hizmetleri. Shopify & İKAS ile yüksek dönüşümlü online mağazanızı kurun. İstanbul e-ticaret uzmanı — Samer.',

@@ -43,9 +43,8 @@
       "permanent": true
     }
   ],
-  "routes": [
-    { "src": "/sitemap.xml", "dest": "/api/sitemap" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
