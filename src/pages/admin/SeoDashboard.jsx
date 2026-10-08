@@ -187,16 +187,17 @@ export default function SeoDashboard() {
 
   // Blog Optimizasyon Diff'i Oluştur ve Modalı Aç
   const handleOpenOptimization = async (opportunity) => {
-    const targetSlug = opportunity.target_page
-      ? opportunity.target_page.replace(/^\/blog\//, '').replace(/^\//, '')
-      : null;
+    let targetSlug = opportunity.matched_post_slug;
 
-    if (!targetSlug) {
-      setActionFeedback({ type: 'error', message: 'Bu fırsat için geçerli bir blog URL bulunamadı.' });
-      return;
+    if (!targetSlug && opportunity.target_page) {
+      targetSlug = opportunity.target_page
+        .replace(/^https?:\/\/[^/]+/i, '')
+        .replace(/^\/(?:en\/|ar\/)?(?:blog\/)?/i, '')
+        .replace(/\/$/, '')
+        .trim();
     }
 
-    setOptimizingSlug(targetSlug);
+    setOptimizingSlug(targetSlug || 'main-page');
     setActionFeedback(null);
 
     try {
