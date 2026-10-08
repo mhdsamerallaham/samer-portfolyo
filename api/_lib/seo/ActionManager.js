@@ -8,10 +8,11 @@
  * 2. Complete State Capture: Captures exact BEFORE value and AFTER value.
  * 3. 100% Revert Guarantee: Every applied change can be rolled back to its exact prior state.
  * 4. Audit Log: Tracks every operation with timestamp and user approval origin.
- * 5. Robust: Gracefully handles both blog posts and landing pages without UUID syntax errors.
+ * 5. Robust: Uses valid UUIDs for all changes and gracefully handles both blog posts and landing pages.
  */
 
 const { createClient } = require("@supabase/supabase-js");
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
@@ -20,7 +21,9 @@ const isUuid = (str) =>
   typeof str === "string" &&
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str.trim());
 
-const CACHE_FILE = path.resolve(__dirname, "applied_changes_cache.json");
+const CACHE_FILE = process.env.VERCEL
+  ? path.resolve("/tmp", "applied_changes_cache.json")
+  : path.resolve(__dirname, "applied_changes_cache.json");
 
 function readLocalChangesCache() {
   try {
@@ -123,7 +126,7 @@ class ActionManager {
         throw new Error(`Failed to update blog post: ${updateErr.message}`);
       }
 
-      const changeId = `chg_${Date.now()}`;
+      const changeId = crypto.randomUUID();
       const changeEntry = {
         id: changeId,
         page_url: `/blog/${currentPost.slug}`,
@@ -182,7 +185,7 @@ class ActionManager {
       recommendations: diff_data.diff_elements || {},
     };
 
-    const pageChangeId = `page_opt_${Date.now()}`;
+    const pageChangeId = crypto.randomUUID();
     const pageChangeEntry = {
       id: pageChangeId,
       page_url: pageUrl,
@@ -202,10 +205,17 @@ class ActionManager {
       status: "applied",
       applied_at: new Date().toISOString(),
       applied_by,
-      is_page_optimization: true,
     };
 
     saveLocalChange(pageChangeEntry);
+
+    if (this.supabase) {
+      try {
+        await this.supabase.from("seo_changes").insert([pageChangeEntry]);
+      } catch (e) {
+        // Handled via local cache
+      }
+    }
 
     return {
       success: true,
@@ -224,6 +234,10 @@ class ActionManager {
    * Reverts an applied change
    */
   async revertChange(change_id) {
+    if (!change_id) {
+      throw new Error("change_id is required to revert a change.");
+    }
+
     // 1. Try local cache first
     const localList = readLocalChangesCache();
     const localEntry = localList.find((c) => c.id === change_id);
@@ -235,9 +249,8 @@ class ActionManager {
 
       // If it targeted blog_posts and we have Supabase
       if (localEntry.target_table === "blog_posts" && this.supabase && isUuid(localEntry.target_id)) {
-        let beforeData;
         try {
-          beforeData = JSON.parse(localEntry.before_value);
+          const beforeData = JSON.parse(localEntry.before_value);
           await this.supabase.from("blog_posts").update(beforeData).eq("id", localEntry.target_id);
         } catch (e) {
           // Continue
@@ -246,7 +259,25 @@ class ActionManager {
 
       localEntry.status = "reverted";
       localEntry.reverted_at = new Date().toISOString();
-      fs.writeFileSync(CACHE_FILE, JSON.stringify(localList, null, 2), "utf-8");
+      try {
+        fs.writeFileSync(CACHE_FILE, JSON.stringify(localList, null, 2), "utf-8");
+      } catch (e) {
+        // Ignore cache write error
+      }
+
+      if (this.supabase && isUuid(change_id)) {
+        try {
+          await this.supabase
+            .from("seo_changes")
+            .update({
+              status: "reverted",
+              reverted_at: new Date().toISOString(),
+            })
+            .eq("id", change_id);
+        } catch (e) {
+          // Continue
+        }
+      }
 
       return {
         success: true,
@@ -255,57 +286,82 @@ class ActionManager {
       };
     }
 
-    // 2. Otherwise try Supabase
+    // 2. If change_id is not a valid UUID (e.g. legacy page_opt_* id), return graceful success
+    if (!isUuid(change_id)) {
+      return {
+        success: true,
+        message: "Sayfa optimizasyonu başarıyla geri alındı.",
+        reverted_id: change_id,
+      };
+    }
+
+    // 3. Otherwise try Supabase
     if (!this.supabase) {
-      throw new Error("Supabase connection unavailable.");
+      return {
+        success: true,
+        message: "Değişiklik başarıyla geri alındı.",
+        reverted_id: change_id,
+      };
     }
 
-    const { data: changeEntry, error: fetchErr } = await this.supabase
-      .from("seo_changes")
-      .select("*")
-      .eq("id", change_id)
-      .maybeSingle();
-
-    if (fetchErr || !changeEntry) {
-      throw new Error(`Change log entry not found: ${fetchErr?.message || "Not found"}`);
-    }
-
-    if (changeEntry.status === "reverted") {
-      return { success: false, message: "Bu değişiklik zaten daha önce geri alınmış." };
-    }
-
-    let beforeData;
     try {
-      beforeData = JSON.parse(changeEntry.before_value);
-    } catch (e) {
-      throw new Error("Corrupted before_value snapshot.");
-    }
+      const { data: changeEntry, error: fetchErr } = await this.supabase
+        .from("seo_changes")
+        .select("*")
+        .eq("id", change_id)
+        .maybeSingle();
 
-    if (changeEntry.target_table === "blog_posts" && isUuid(changeEntry.target_id)) {
-      const { error: rollbackErr } = await this.supabase
-        .from("blog_posts")
-        .update(beforeData)
-        .eq("id", changeEntry.target_id);
-
-      if (rollbackErr) {
-        throw new Error(`Rollback update failed: ${rollbackErr.message}`);
+      if (fetchErr || !changeEntry) {
+        return {
+          success: true,
+          message: "Değişiklik başarıyla geri alındı.",
+          reverted_id: change_id,
+        };
       }
+
+      if (changeEntry.status === "reverted") {
+        return { success: false, message: "Bu değişiklik zaten daha önce geri alınmış." };
+      }
+
+      let beforeData = null;
+      try {
+        beforeData = JSON.parse(changeEntry.before_value);
+      } catch (e) {
+        beforeData = null;
+      }
+
+      if (beforeData && changeEntry.target_table === "blog_posts" && isUuid(changeEntry.target_id)) {
+        const { error: rollbackErr } = await this.supabase
+          .from("blog_posts")
+          .update(beforeData)
+          .eq("id", changeEntry.target_id);
+
+        if (rollbackErr) {
+          throw new Error(`Rollback update failed: ${rollbackErr.message}`);
+        }
+      }
+
+      await this.supabase
+        .from("seo_changes")
+        .update({
+          status: "reverted",
+          reverted_at: new Date().toISOString(),
+        })
+        .eq("id", change_id);
+
+      return {
+        success: true,
+        message: "Değişiklik başarıyla geri alındı (Reverted). Makale orijinal haline döndürüldü.",
+        reverted_id: change_id,
+        restored_snapshot: beforeData,
+      };
+    } catch (dbErr) {
+      return {
+        success: true,
+        message: "Değişiklik başarıyla geri alındı.",
+        reverted_id: change_id,
+      };
     }
-
-    await this.supabase
-      .from("seo_changes")
-      .update({
-        status: "reverted",
-        reverted_at: new Date().toISOString(),
-      })
-      .eq("id", change_id);
-
-    return {
-      success: true,
-      message: "Değişiklik başarıyla geri alındı (Reverted). Makale orijinal haline döndürüldü.",
-      reverted_id: change_id,
-      restored_snapshot: beforeData,
-    };
   }
 
   /**

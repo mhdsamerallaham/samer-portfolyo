@@ -23,13 +23,14 @@ module.exports = async (req, res) => {
 
   try {
     if (action === "apply") {
-      if (!post_id || !diff_data) {
-        return res.status(400).json({ error: "post_id and diff_data are required to apply optimization." });
+      const targetPostId = post_id || diff_data?.post_id || post_slug || "page_home";
+      if (!diff_data) {
+        return res.status(400).json({ error: "diff_data is required to apply optimization." });
       }
 
       const result = await actionManager.applyOptimization({
-        post_id,
-        post_slug,
+        post_id: targetPostId,
+        post_slug: post_slug || diff_data?.post_slug,
         diff_data,
         applied_by: applied_by || "user_manual_approval",
       });
