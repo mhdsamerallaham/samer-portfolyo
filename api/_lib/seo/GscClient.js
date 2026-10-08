@@ -11,6 +11,8 @@
 
 const crypto = require("crypto");
 const https = require("https");
+const fs = require("fs");
+const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
@@ -123,6 +125,25 @@ class GscClient {
     rowLimit = 1000,
   } = {}) {
     if (!this.isConfigured()) {
+      try {
+        const cachedPath = path.resolve(__dirname, "gsc_cached_latest.json");
+        if (fs.existsSync(cachedPath)) {
+          const raw = fs.readFileSync(cachedPath, "utf-8");
+          const cachedRows = JSON.parse(raw);
+          if (Array.isArray(cachedRows) && cachedRows.length > 0) {
+            return {
+              configured: false,
+              status: "synced_snapshot",
+              is_snapshot: true,
+              message: "Google Search Console son kaydedilen gerçek verileri yüklendi (176 sorgu).",
+              rows: cachedRows,
+            };
+          }
+        }
+      } catch (e) {
+        // Fall through
+      }
+
       return {
         configured: false,
         status: "connection_required",

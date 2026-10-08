@@ -42,22 +42,23 @@ module.exports = async (req, res) => {
 
     const totalPosts = posts ? posts.length : 0;
 
-    // 2. Fetch GSC Data (from DB or live API, with STRICT NO-FAKING in production)
+    // 2. Fetch GSC Data (Live API or Real Snapshot with Strict No-Faking)
     let gscRows = [];
     let gscStatus = "connection_required";
 
-    if (isGscConfigured) {
-      const gscResult = await gscClient.querySearchAnalytics();
-      if (gscResult.status === "success") {
-        gscRows = gscResult.rows;
-        gscStatus = "connected";
-      } else {
-        gscStatus = gscResult.status;
-      }
-    } else if (isDev) {
-      // ONLY in development or when explicitly requested with ?demo=true
+    const gscResult = await gscClient.querySearchAnalytics();
+    if (gscResult.status === "success") {
+      gscRows = gscResult.rows;
+      gscStatus = "connected";
+    } else if (gscResult.status === "synced_snapshot" && gscResult.rows?.length > 0) {
+      gscRows = gscResult.rows;
+      gscStatus = "synced_snapshot";
+    } else if (req.query?.demo === "true") {
+      // ONLY when explicitly requested with ?demo=true for UI testing
       gscRows = gscClient.getDemoDataset();
       gscStatus = "demo_mode";
+    } else {
+      gscStatus = gscResult.status || "connection_required";
     }
 
     // 3. Run Rule-Based Opportunity Engine

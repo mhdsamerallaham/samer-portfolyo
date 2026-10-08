@@ -56,11 +56,15 @@ export default function SeoDashboard() {
     isAiEnabled: true,
   });
 
+  const [isDemoMode, setIsDemoMode] = useState(false);
+
   // 1. Dashboard Genel Verilerini Çek
-  const fetchDashboardData = useCallback(async () => {
+  const fetchDashboardData = useCallback(async (forceDemo = null) => {
     try {
       setLoading(true);
-      const res = await fetch('/api/seo/dashboard-data?demo=true');
+      const useDemo = forceDemo !== null ? forceDemo : isDemoMode;
+      const url = useDemo ? '/api/seo/dashboard-data?demo=true' : '/api/seo/dashboard-data';
+      const res = await fetch(url);
       const json = await res.json();
       if (json.success) {
         setDashboardData(json);
@@ -70,7 +74,7 @@ export default function SeoDashboard() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [isDemoMode]);
 
   // 2. AI Bütçe ve Kota Verilerini Çek
   const fetchAiBudgetData = useCallback(async () => {
@@ -284,6 +288,32 @@ export default function SeoDashboard() {
 
           {/* Durum Rozetleri ve Hızlı Aksiyonlar */}
           <div className="flex flex-wrap items-center gap-2">
+            {/* GSC Bağlantı Durumu Rozeti */}
+            {dashboardData?.system_status?.gsc_status === 'connected' && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="text-emerald-300 font-medium">GSC Canlı Bağlı</span>
+              </div>
+            )}
+            {dashboardData?.system_status?.gsc_status === 'synced_snapshot' && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-xs" title="176 gerçek Google arama sorgusu snapshot verisi">
+                <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                <span className="text-cyan-300 font-medium">GSC Gerçek Veri (176 Sorgu)</span>
+              </div>
+            )}
+            {dashboardData?.system_status?.gsc_status === 'demo_mode' && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs">
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                <span className="text-amber-300 font-medium">Demo Veri Seti</span>
+              </div>
+            )}
+            {dashboardData?.system_status?.gsc_status === 'connection_required' && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs">
+                <span className="w-2 h-2 rounded-full bg-rose-400" />
+                <span className="text-rose-300 font-medium">GSC Bağlantı Bekliyor</span>
+              </div>
+            )}
+
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/60 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-slate-300 font-medium">Assisted Mode</span>
@@ -294,6 +324,19 @@ export default function SeoDashboard() {
               <Shield size={13} className="text-teal-400" />
               <span className="text-slate-300 font-medium">%80 Safe Limit</span>
             </div>
+
+            {/* Demo / Gerçek Veri Geçiş Butonu */}
+            <button
+              onClick={() => {
+                const nextMode = !isDemoMode;
+                setIsDemoMode(nextMode);
+                fetchDashboardData(nextMode);
+              }}
+              className="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors text-xs font-medium"
+              title="Gerçek ve demo verileri arasında geçiş yap"
+            >
+              {isDemoMode ? 'Gerçek Veriye Dön' : 'Demo Verisini Gör'}
+            </button>
 
             <button
               onClick={() => {
