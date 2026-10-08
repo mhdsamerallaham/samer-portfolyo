@@ -1,8 +1,8 @@
 /**
- * api/seo/crawl.js — On-Demand & Scheduled Technical SEO Crawler API
+ * api/_lib/seo_endpoints/crawl.js — On-Demand & Scheduled Technical SEO Crawler API
  */
 
-const TechnicalCrawler = require("../_lib/seo/TechnicalCrawler");
+const TechnicalCrawler = require("../seo/TechnicalCrawler");
 
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

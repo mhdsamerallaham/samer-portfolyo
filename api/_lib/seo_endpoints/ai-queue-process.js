@@ -1,5 +1,5 @@
 /**
- * /api/seo/ai-queue-process.js — AutoSEO Görev Kuyruğu İşleyicisi
+ * api/_lib/seo_endpoints/ai-queue-process.js — AutoSEO Görev Kuyruğu İşleyicisi
  *
  * Cron veya Admin tarafından tetiklenir:
  *   1. CronJobLock ile kilit alır (Aynı anda iki çağrıyı engeller).
@@ -11,11 +11,11 @@
  */
 
 const { createClient } = require("@supabase/supabase-js");
-const AiBudgetManager = require("../_lib/ai/AiBudgetManager");
-const AiTaskQueue = require("../_lib/ai/AiTaskQueue");
-const AiCache = require("../_lib/ai/AiCache");
-const AiRouter = require("../_lib/ai/AiRouter");
-const CronJobLock = require("../_lib/ai/CronJobLock");
+const AiBudgetManager = require("../ai/AiBudgetManager");
+const AiTaskQueue = require("../ai/AiTaskQueue");
+const AiCache = require("../ai/AiCache");
+const AiRouter = require("../ai/AiRouter");
+const CronJobLock = require("../ai/CronJobLock");
 require("dotenv").config();
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;

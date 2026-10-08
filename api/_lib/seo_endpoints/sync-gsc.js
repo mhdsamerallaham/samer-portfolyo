@@ -1,8 +1,8 @@
 /**
- * api/seo/sync-gsc.js — Manual & Cron Triggerable GSC Sync Endpoint
+ * api/_lib/seo_endpoints/sync-gsc.js — Manual & Cron Triggerable GSC Sync Endpoint
  */
 
-const GscClient = require("../_lib/seo/GscClient");
+const GscClient = require("../seo/GscClient");
 
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

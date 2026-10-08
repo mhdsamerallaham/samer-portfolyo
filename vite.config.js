@@ -30,6 +30,10 @@ function vercelDevApiPlugin() {
 
         let targetFile = possibleFiles.find((f) => fs.existsSync(f) && fs.statSync(f).isFile());
 
+        if (!targetFile && apiPath.startsWith('seo/')) {
+          targetFile = path.resolve(__dirname, 'api', 'seo.js');
+        }
+
         if (!targetFile) {
           return next();
         }

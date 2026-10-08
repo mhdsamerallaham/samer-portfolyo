@@ -1,5 +1,5 @@
 /**
- * /api/seo/ai-budget.js — AI Bütçe ve Kota Yönetim API Endpoint'i
+ * api/_lib/seo_endpoints/ai-budget.js — AI Bütçe ve Kota Yönetim API Endpoint'i
  *
  * GET:
  *   - Tüm sağlayıcıların anlık durumları, güvenli kapasiteleri,
@@ -13,9 +13,9 @@
  */
 
 const { createClient } = require("@supabase/supabase-js");
-const AiBudgetManager = require("../_lib/ai/AiBudgetManager");
-const AiTaskQueue = require("../_lib/ai/AiTaskQueue");
-const AiCache = require("../_lib/ai/AiCache");
+const AiBudgetManager = require("../ai/AiBudgetManager");
+const AiTaskQueue = require("../ai/AiTaskQueue");
+const AiCache = require("../ai/AiCache");
 require("dotenv").config();
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;

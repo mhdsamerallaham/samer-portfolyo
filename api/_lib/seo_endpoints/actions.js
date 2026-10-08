@@ -1,8 +1,8 @@
 /**
- * api/seo/actions.js — User Approval, Apply & Revert Handler API
+ * api/_lib/seo_endpoints/actions.js — User Approval, Apply & Revert Handler API
  */
 
-const ActionManager = require("../_lib/seo/ActionManager");
+const ActionManager = require("../seo/ActionManager");
 
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

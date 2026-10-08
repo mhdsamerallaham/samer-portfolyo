@@ -1,15 +1,15 @@
 /**
- * api/seo/dashboard-data.js — SEO Dashboard Overview & Aggregated State API
+ * api/_lib/seo_endpoints/dashboard-data.js — SEO Dashboard Overview & Aggregated State API
  */
 
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
-const GscClient = require("../_lib/seo/GscClient");
-const OpportunityEngine = require("../_lib/seo/OpportunityEngine");
-const InternalLinkEngine = require("../_lib/seo/InternalLinkEngine");
-const ActionManager = require("../_lib/seo/ActionManager");
-const TechnicalCrawler = require("../_lib/seo/TechnicalCrawler");
+const GscClient = require("../seo/GscClient");
+const OpportunityEngine = require("../seo/OpportunityEngine");
+const InternalLinkEngine = require("../seo/InternalLinkEngine");
+const ActionManager = require("../seo/ActionManager");
+const TechnicalCrawler = require("../seo/TechnicalCrawler");
 
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey =
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
   try {
     const gscClient = new GscClient();
     const isGscConfigured = gscClient.isConfigured();
-    const isDev = process.env.NODE_ENV === "development" || req.query.demo === "true";
+    const isDev = process.env.NODE_ENV === "development" || req.query?.demo === "true";
 
     // 1. Fetch live published blogs for cross-analysis
     const { data: posts, error: postsErr } = await supabase
