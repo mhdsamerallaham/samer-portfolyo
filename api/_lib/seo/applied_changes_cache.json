@@ -1,0 +1,45 @@
+[
+  {
+    "id": "page_opt_1791477475227",
+    "page_url": "/",
+    "target_table": "site_pages",
+    "target_id": "page_home",
+    "field_changed": "seo_meta_and_headings",
+    "before_value": "{\"title_tr\":\"Old\",\"h1\":\"Mevcut H1\",\"meta_description\":\"\"}",
+    "after_value": "{\"title_tr\":\"New\",\"h1\":\"Önerilen H1\",\"meta_description\":\"\",\"recommendations\":{}}",
+    "diff_summary": {
+      "target_query": "mobile app development",
+      "added_subtopics": [],
+      "added_links": [],
+      "metrics": {}
+    },
+    "change_reason": "Sayfa Optimizasyonu: \"mobile app development\" sorgusu için onaylanan öneriler kaydedildi.",
+    "change_mode": "assisted",
+    "status": "reverted",
+    "applied_at": "2026-10-08T16:37:55.227Z",
+    "applied_by": "user_manual_approval",
+    "is_page_optimization": true,
+    "reverted_at": "2026-10-08T16:52:46.324Z"
+  },
+  {
+    "id": "page_opt_1791477461356",
+    "page_url": "/",
+    "target_table": "site_pages",
+    "target_id": "page_home",
+    "field_changed": "seo_meta_and_headings",
+    "before_value": "{\"title_tr\":\"Old\",\"h1\":\"Mevcut H1\",\"meta_description\":\"\"}",
+    "after_value": "{\"title_tr\":\"New\",\"h1\":\"Önerilen H1\",\"meta_description\":\"Desc\",\"recommendations\":{}}",
+    "diff_summary": {
+      "target_query": "mobile app development",
+      "added_subtopics": [],
+      "added_links": [],
+      "metrics": {}
+    },
+    "change_reason": "Sayfa Optimizasyonu: \"mobile app development\" sorgusu için onaylanan öneriler kaydedildi.",
+    "change_mode": "assisted",
+    "status": "applied",
+    "applied_at": "2026-10-08T16:37:41.356Z",
+    "applied_by": "user_approval",
+    "is_page_optimization": true
+  }
+]
