@@ -8,6 +8,10 @@
  *   - Zaman aşımına uğramış kilitleri otomatik temizler.
  */
 
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+
 class CronJobLock {
   /**
    * @param {import('@supabase/supabase-js').SupabaseClient} [supabaseClient]
@@ -17,21 +21,39 @@ class CronJobLock {
     this.memoryLocks = new Map(); // lockKey -> expiresAt
   }
 
+  _getLockFilePath(lockKey) {
+    const safeKey = String(lockKey).replace(/[^a-zA-Z0-9_-]/g, "_");
+    return path.join(os.tmpdir(), `autoseo_lock_${safeKey}.json`);
+  }
+
   /**
    * Kilit almaya çalışır
    *
    * @param {string} lockKey
-   * @param {number} [ttlSeconds=120] Kilidin geçerlilik süresi (saniye)
+   * @param {number} [ttlSeconds=60] Kilidin geçerlilik süresi (saniye)
    * @returns {Promise<boolean>} Kilit alındıysa true, alınamadıysa false
    */
-  async acquire(lockKey = "autoseo_queue_lock", ttlSeconds = 120) {
+  async acquire(lockKey = "autoseo_queue_lock", ttlSeconds = 60) {
     const now = Date.now();
     const expiresAt = new Date(now + ttlSeconds * 1000).toISOString();
 
     // 1. Supabase ile atomik kilit
     if (this.supabase) {
       try {
-        // Eski zaman aşımına uğramış kilitleri sil
+        // Kontrol et: Supabase'de aktif (süresi dolmamış) kilit var mı?
+        const { data: activeLocks, error: selectErr } = await this.supabase
+          .from("ai_cron_locks")
+          .select("*")
+          .eq("lock_key", lockKey)
+          .gt("expires_at", new Date(now).toISOString())
+          .limit(1);
+
+        if (!selectErr && Array.isArray(activeLocks) && activeLocks.length > 0) {
+          // Gerçekten veritabanında aktif bir kilit var! Başka bir worker çalışıyor.
+          return false;
+        }
+
+        // Eski zaman aşımına uğramış kilitleri silmeyi dene
         await this.supabase
           .from("ai_cron_locks")
           .delete()
@@ -39,25 +61,55 @@ class CronJobLock {
           .lt("expires_at", new Date(now).toISOString());
 
         // Yeni kilidi eklemeyi dene
-        const { error } = await this.supabase.from("ai_cron_locks").insert({
+        const { error: insertErr } = await this.supabase.from("ai_cron_locks").insert({
           lock_key: lockKey,
           locked_at: new Date(now).toISOString(),
           locked_by: `process_${process.pid || "node"}`,
           expires_at: expiresAt,
         });
 
-        if (!error) {
-          return true; // Kilit başarıyla alındı
+        if (!insertErr) {
+          return true; // DB kilidi başarıyla alındı
         }
 
-        // Hata varsa (primary key conflict), kilit başkasında
-        return false;
+        // Eğer hata sadece benzersiz anahtar çakışması (duplicate key) ise:
+        if (insertErr.code === "23505") {
+          return false; // Başka bir işlem tam bu anda kilidi kaptı
+        }
+
+        // DB tablosu yoksa (42P01) veya RLS anon izni yoksa (42501),
+        // hata fırlatıp işlemi kilitlemek yerine yerel/dosya kilit sistemine güvenle devam et.
       } catch (err) {
         // Fallback
       }
     }
 
-    // 2. In-memory kilit kontrolü
+    // 2. Dosya bazlı kilit kontrolü (/tmp/autoseo_lock_*.json - Serverless/Container uyumlu)
+    const lockFilePath = this._getLockFilePath(lockKey);
+    try {
+      if (fs.existsSync(lockFilePath)) {
+        const raw = fs.readFileSync(lockFilePath, "utf-8");
+        const lockData = JSON.parse(raw);
+        if (lockData && lockData.expires_at && lockData.expires_at > now) {
+          return false; // Dosya kilidi aktif, duplicate çağrıyı engelle
+        }
+      }
+      fs.writeFileSync(
+        lockFilePath,
+        JSON.stringify({
+          lock_key: lockKey,
+          locked_at: now,
+          expires_at: now + ttlSeconds * 1000,
+          locked_by: `process_${process.pid || "node"}`,
+        }),
+        "utf-8"
+      );
+      return true;
+    } catch (fsErr) {
+      // In-memory fallback
+    }
+
+    // 3. In-memory kilit kontrolü
     const existingExpiry = this.memoryLocks.get(lockKey);
     if (existingExpiry && existingExpiry > now) {
       return false; // Kilit meşgul
@@ -78,6 +130,16 @@ class CronJobLock {
       } catch (err) {
         // Sessizce geç
       }
+    }
+
+    // Dosya kilidini temizle
+    try {
+      const lockFilePath = this._getLockFilePath(lockKey);
+      if (fs.existsSync(lockFilePath)) {
+        fs.unlinkSync(lockFilePath);
+      }
+    } catch (fsErr) {
+      // Sessizce geç
     }
 
     this.memoryLocks.delete(lockKey);

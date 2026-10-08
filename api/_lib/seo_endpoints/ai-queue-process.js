@@ -33,14 +33,25 @@ const aiRouter = new AiRouter({ budgetManager, taskQueue, aiCache });
 const cronLock = new CronJobLock(supabase);
 
 module.exports = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Content-Type", "application/json");
 
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   // 1. Kilit Al (Job Locking)
-  const lockAcquired = await cronLock.acquire("autoseo_queue_lock", 120);
+  if (req.query && req.query.force === "true") {
+    await cronLock.release("autoseo_queue_lock");
+  }
+
+  const lockAcquired = await cronLock.acquire("autoseo_queue_lock", 30);
   if (!lockAcquired) {
     return res.status(429).json({
       success: false,
-      message: "İşlem zaten devam ediyor (Lock meşgul). Duplicate çağrı engellendi.",
+      message: "İşlem zaten devam ediyor (Kilit meşgul). Lütfen birkaç saniye sonra tekrar deneyin.",
     });
   }
 
@@ -69,6 +80,10 @@ module.exports = async (req, res) => {
       success: true,
       processedCount: processedTasks.length,
       tasks: processedTasks,
+      message:
+        processedTasks.length > 0
+          ? `Kuyruk işlendi: ${processedTasks.length} görev tamamlandı.`
+          : "Kuyrukta bekleyen görev bulunmuyor (Tüm görevler güncel).",
       timestamp: new Date().toISOString(),
     });
   } catch (err) {
