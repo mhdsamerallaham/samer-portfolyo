@@ -9,11 +9,11 @@ const OpenAICompatibleProvider = require("../OpenAICompatibleProvider");
  * Env: GROQ_API_KEY
  */
 const GROQ_MODELS = [
-  "llama-3.3-70b-versatile",    // Meta Llama 3.3 70B — güçlü, çok yönlü
-  "llama-3.1-8b-instant",       // Meta Llama 3.1 8B — hızlı, hafif
-  "qwen-qwq-32b",               // Qwen QWQ 32B — reasoning destekli
-  "openai/gpt-oss-120b",        // OpenAI OSS 120B — flagship açık model
-  "openai/gpt-oss-20b",         // OpenAI OSS 20B — hafif açık model
+  "openai/gpt-oss-120b",        // OpenAI OSS 120B — doğrulanmış aktif model
+  "openai/gpt-oss-20b",         // OpenAI OSS 20B — hızlı doğrulanmış aktif model
+  "qwen/qwen3.8-27b",           // Qwen 3.8 27B — doğrulanmış aktif model
+  "llama-3.3-70b-versatile",    // Fallback
+  "llama-3.1-8b-instant",       // Fallback
 ];
 
 /**

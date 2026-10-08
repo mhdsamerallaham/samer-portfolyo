@@ -23,6 +23,7 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const DesignPreviewA = lazy(() => import('./pages/DesignPreviewA'));
 const DesignPreviewB = lazy(() => import('./pages/DesignPreviewB'));
+const SeoDashboard = lazy(() => import('./pages/admin/SeoDashboard'));
 
 // Minimal loading spinner for Suspense fallback
 function PageLoader() {
@@ -155,6 +156,8 @@ function App() {
             <Route path="/sss/:slug" element={<FAQDetail />} />
             <Route path="/hakkimda" element={<About />} />
             <Route path="/iletisim" element={<Contact />} />
+            <Route path="/admin/seo" element={<SeoDashboard />} />
+            <Route path="/seo-dashboard" element={<SeoDashboard />} />
 
             {/* === ENGLISH ROUTES === */}
             <Route path="/en" element={<Home />} />
@@ -180,6 +183,7 @@ function App() {
             <Route path="/en/faq/:slug" element={<FAQDetail />} />
             <Route path="/en/about" element={<About />} />
             <Route path="/en/contact" element={<Contact />} />
+            <Route path="/en/admin/seo" element={<SeoDashboard />} />
 
             {/* === ARABIC ROUTES === */}
             <Route path="/ar" element={<Home />} />
@@ -205,6 +209,7 @@ function App() {
             <Route path="/ar/faq/:slug" element={<FAQDetail />} />
             <Route path="/ar/about" element={<About />} />
             <Route path="/ar/contact" element={<Contact />} />
+            <Route path="/ar/admin/seo" element={<SeoDashboard />} />
 
             {/* Catch-all redirect to Home */}
             <Route path="*" element={<Navigate to="/" replace />} />

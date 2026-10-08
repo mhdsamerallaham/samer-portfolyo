@@ -69,9 +69,61 @@ module.exports = async (req, res) => {
       .select("slug, title_tr")
       .order("published_at", { ascending: false });
 
-    // Step 2: Topic Discovery & Intent Classification Engine
-    const discoveredTopics = TopicDiscoveryEngine.discoverTopics();
-    const candidateTopic = discoveredTopics[Math.floor(Math.random() * discoveredTopics.length)];
+    // Step 2: AutoSEO Intelligent Topic Discovery & Opportunity Prioritization
+    // Priority Chain:
+    // 1. High-value Search Console Opportunity
+    // 2. Existing article refresh opportunity (Avoid duplicate content!)
+    // 3. Content gap
+    // 4. New keyword opportunity
+    // 5. Existing seed topics (Preserved fallback)
+    let candidateTopic = null;
+    let selectedReason = "Existing seed topics (Fallback)";
+
+    try {
+      const GscClient = require("../_lib/seo/GscClient");
+      const OpportunityEngine = require("../_lib/seo/OpportunityEngine");
+      const gscClient = new GscClient();
+      let gscRows = [];
+
+      if (gscClient.isConfigured()) {
+        const gscRes = await gscClient.querySearchAnalytics();
+        if (gscRes.status === "success") gscRows = gscRes.rows;
+      } else if (process.env.NODE_ENV === "development") {
+        gscRows = gscClient.getDemoDataset();
+      }
+
+      const oppAnalysis = OpportunityEngine.analyzeOpportunities(gscRows, existingPosts || []);
+      const newKwOpp = oppAnalysis.opportunities.find((o) => o.opportunity_type === "new_keyword");
+      const highValOpp = oppAnalysis.opportunities.find((o) => o.priority === "critical" && o.action_type === "new_article");
+
+      if (highValOpp) {
+        candidateTopic = {
+          title: highValOpp.target_query.charAt(0).toUpperCase() + highValOpp.target_query.slice(1) + " Rehberi",
+          source: "gsc_opportunity",
+          category: "E-Ticaret & SEO",
+          intent: "informational",
+        };
+        selectedReason = "Priority 1: High-value Search Console opportunity";
+      } else if (newKwOpp) {
+        candidateTopic = {
+          title: newKwOpp.target_query.charAt(0).toUpperCase() + newKwOpp.target_query.slice(1) + " Rehberi",
+          source: "gsc_new_keyword",
+          category: "E-Ticaret & SEO",
+          intent: "informational",
+        };
+        selectedReason = "Priority 4: New keyword opportunity";
+      }
+    } catch (oppErr) {
+      console.warn("[AutoSEO Blog Prioritization Notice]:", oppErr.message);
+    }
+
+    // Fallback to Existing Seed Topics if no new keyword opportunity was selected
+    if (!candidateTopic) {
+      const discoveredTopics = TopicDiscoveryEngine.discoverTopics();
+      candidateTopic = discoveredTopics[Math.floor(Math.random() * discoveredTopics.length)];
+    }
+
+    console.log(`[Blog Generation Topic Selected] Reason: ${selectedReason} | Topic: "${candidateTopic.title}"`);
 
     // Check Content Memory
     const memoryCheck = MemoryEngine.checkMemory(candidateTopic.title, existingPosts || []);

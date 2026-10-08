@@ -65,11 +65,11 @@ function createProviderManager() {
   // ── 1. Gemini (En yüksek kota — 500 RPD lite modeller önce) ───
   if (process.env.GEMINI_API_KEY) {
     const geminiModels = [
+      { model: "gemini-3.8-flash",      label: "Gemini (gemini-3.8-flash)" },        // Google güncel model
       { model: "gemini-3.1-flash-lite", label: "Gemini (gemini-3.1-flash-lite)" },   // 500 RPD, 15 RPM
       { model: "gemini-3.5-flash-lite", label: "Gemini (gemini-3.5-flash-lite)" },   // 500 RPD, 15 RPM
       { model: "gemini-3.6-flash",      label: "Gemini (gemini-3.6-flash)" },        // 20 RPD, 5 RPM
       { model: "gemini-3-flash",        label: "Gemini (gemini-3-flash)" },          // 20 RPD, 5 RPM
-      { model: "gemini-2.5-flash",      label: "Gemini (gemini-2.5-flash)" },        // 20 RPD, 5 RPM
       { model: "gemini-2.5-flash-lite", label: "Gemini (gemini-2.5-flash-lite)" },   // 20 RPD, 10 RPM
     ];
     for (const { model, label } of geminiModels) {
@@ -109,8 +109,8 @@ function createProviderManager() {
   // ── 6. Mistral (2 model) ──────────────────────────────────────
   if (process.env.MISTRAL_API_KEY) {
     const mistralModels = [
-      { model: "mistral-small-latest", label: "Mistral (mistral-small-latest)" },
       { model: "ministral-8b-latest",  label: "Mistral (ministral-8b-latest)" },
+      { model: "mistral-small-latest", label: "Mistral (mistral-small-latest)" },
     ];
     for (const { model, label } of mistralModels) {
       providers.push(
