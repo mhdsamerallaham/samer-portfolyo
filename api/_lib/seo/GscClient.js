@@ -37,15 +37,30 @@ class GscClient {
 
   /**
    * Normalizes a raw private key string from env variables.
-   * Handles: literal \n, real newlines, Windows CRLF, and extra whitespace.
+   * Handles: literal \n, real newlines, Windows CRLF, missing line breaks.
+   * Always outputs a correctly PEM-formatted key with 64-char line wrapping.
    */
   _normalizePrivateKey(raw) {
     if (!raw) return "";
-    return raw
-      .replace(/\\n/g, "\n")   // literal \n → real newline
-      .replace(/\r\n/g, "\n")  // Windows CRLF → LF
-      .replace(/\r/g, "\n")    // stray CR → LF
+
+    // Step 1: Convert literal \n to real newlines, normalize line endings
+    let key = raw
+      .replace(/\\n/g, "\n")
+      .replace(/\r\n/g, "\n")
+      .replace(/\r/g, "\n")
       .trim();
+
+    // Step 2: If the key has PEM markers, reformat the base64 body with correct 64-char line breaks
+    if (key.includes("BEGIN PRIVATE KEY")) {
+      const match = key.match(/-----BEGIN PRIVATE KEY-----\s*([\s\S]+?)\s*-----END PRIVATE KEY-----/);
+      if (match) {
+        const body = match[1].replace(/\s+/g, ""); // Strip ALL whitespace from body
+        const wrapped = (body.match(/.{1,64}/g) || []).join("\n");
+        return `-----BEGIN PRIVATE KEY-----\n${wrapped}\n-----END PRIVATE KEY-----\n`;
+      }
+    }
+
+    return key;
   }
 
   /**
