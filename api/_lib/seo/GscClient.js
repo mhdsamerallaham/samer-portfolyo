@@ -20,8 +20,9 @@ class GscClient {
   constructor() {
     this.siteUrl = process.env.GSC_SITE_URL || "https://www.samer.life/";
     this.clientEmail = process.env.GSC_CLIENT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL;
-    this.privateKey = (process.env.GSC_PRIVATE_KEY || process.env.GOOGLE_PRIVATE_KEY || "")
-      .replace(/\\n/g, "\n");
+    this.privateKey = this._normalizePrivateKey(
+      process.env.GSC_PRIVATE_KEY || process.env.GOOGLE_PRIVATE_KEY || ""
+    );
 
     const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey =
@@ -32,6 +33,19 @@ class GscClient {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     this.supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+  }
+
+  /**
+   * Normalizes a raw private key string from env variables.
+   * Handles: literal \n, real newlines, Windows CRLF, and extra whitespace.
+   */
+  _normalizePrivateKey(raw) {
+    if (!raw) return "";
+    return raw
+      .replace(/\\n/g, "\n")   // literal \n → real newline
+      .replace(/\r\n/g, "\n")  // Windows CRLF → LF
+      .replace(/\r/g, "\n")    // stray CR → LF
+      .trim();
   }
 
   /**
@@ -70,7 +84,7 @@ class GscClient {
     const signer = crypto.createSign("RSA-SHA256");
     signer.update(signInput);
     const signature = signer
-      .sign(this.privateKey, "base64")
+      .sign({ key: this.privateKey, format: "pem", type: "pkcs8" }, "base64")
       .replace(/=/g, "")
       .replace(/\+/g, "-")
       .replace(/\//g, "_");
