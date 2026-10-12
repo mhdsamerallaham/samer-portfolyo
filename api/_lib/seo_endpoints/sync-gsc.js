@@ -10,25 +10,12 @@ module.exports = async (req, res) => {
 
   const client = new GscClient();
 
-  // --- TEMP DEBUG (remove after fix) ---
-  const debugInfo = {
-    has_client_email: Boolean(process.env.GSC_CLIENT_EMAIL),
-    client_email_value: process.env.GSC_CLIENT_EMAIL || "(missing)",
-    has_private_key: Boolean(process.env.GSC_PRIVATE_KEY),
-    private_key_length: (process.env.GSC_PRIVATE_KEY || "").length,
-    private_key_starts: (process.env.GSC_PRIVATE_KEY || "").substring(0, 30),
-    has_begin_marker: (process.env.GSC_PRIVATE_KEY || "").includes("BEGIN PRIVATE KEY"),
-    is_configured: client.isConfigured(),
-  };
-  // --- END TEMP DEBUG ---
-
   if (!client.isConfigured()) {
     return res.status(200).json({
       success: false,
       status: "connection_required",
       message: "Google Search Console bağlantısı henüz yapılandırılmamış. GSC_CLIENT_EMAIL ve GSC_PRIVATE_KEY ortam değişkenleri bekleniyor.",
       synced_rows: 0,
-      _debug: debugInfo,
     });
   }
 

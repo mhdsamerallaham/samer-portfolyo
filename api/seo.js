@@ -55,31 +55,7 @@ module.exports = async (req, res) => {
     }
   }
 
-  // TEMP: debug route to check env vars
-  if (action === "debug") {
-    let accessibleSites = [];
-    let listError = null;
-    try {
-      const GscClient = require("./_lib/seo/GscClient");
-      const testClient = new GscClient();
-      if (testClient.isConfigured()) {
-        accessibleSites = await testClient.listSites();
-      }
-    } catch (e) {
-      listError = e.message;
-    }
 
-    return res.status(200).json({
-      gsc_client_email: process.env.GSC_CLIENT_EMAIL || "(missing)",
-      gsc_private_key_length: (process.env.GSC_PRIVATE_KEY || "").length,
-      gsc_private_key_starts: (process.env.GSC_PRIVATE_KEY || "").substring(0, 30),
-      gsc_site_url: process.env.GSC_SITE_URL || "(missing)",
-      has_begin_marker: (process.env.GSC_PRIVATE_KEY || "").includes("BEGIN PRIVATE KEY"),
-      node_env: process.env.NODE_ENV,
-      accessible_sites: accessibleSites,
-      list_error: listError,
-    });
-  }
 
   const handler = handlers[action];
   if (handler) {
