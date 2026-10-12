@@ -9,6 +9,10 @@
     {
       "path": "/api/faq/generate",
       "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/seo/ai-queue-process",
+      "schedule": "0 8 * * *"
     }
   ],
   "redirects": [
