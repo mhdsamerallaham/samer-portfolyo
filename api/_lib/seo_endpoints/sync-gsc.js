@@ -49,6 +49,8 @@ module.exports = async (req, res) => {
       status: analytics.status,
       message: analytics.error || "No rows returned from GSC.",
       rows_fetched: 0,
+      accessible_sites: analytics.accessible_sites || [],
+      current_site: analytics.current_site || client.siteUrl,
     });
   } catch (err) {
     console.error("[SyncGSC API] Exception:", err);

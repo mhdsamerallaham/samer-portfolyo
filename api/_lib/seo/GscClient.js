@@ -194,7 +194,81 @@ class GscClient {
       rowLimit,
     });
 
-    const encodedSite = encodeURIComponent(this.siteUrl);
+    let currentSite = this.siteUrl;
+    let data = await this._queryEndpoint(token, currentSite, payload);
+
+    // If permission or site error, check accessible sites and try auto-fallback
+    let accessibleSites = [];
+    if (data && data.error) {
+      try {
+        accessibleSites = await this.listSites(token);
+        if (accessibleSites && accessibleSites.length > 0) {
+          // Look for a matching site (e.g. sc-domain:samer.life or https://www.samer.life/)
+          const match =
+            accessibleSites.find(
+              (s) => s.siteUrl.includes("samer.life") || s.siteUrl === currentSite
+            ) || accessibleSites[0];
+
+          if (match && match.siteUrl !== currentSite) {
+            console.log(`[GscClient] Auto-switching site from ${currentSite} to ${match.siteUrl}`);
+            const retryData = await this._queryEndpoint(token, match.siteUrl, payload);
+            if (!retryData.error) {
+              data = retryData;
+              currentSite = match.siteUrl;
+              this.siteUrl = match.siteUrl;
+            }
+          }
+        }
+      } catch (listErr) {
+        console.warn("[GscClient] listSites error:", listErr.message);
+      }
+    }
+
+    if (data.error) {
+      const siteListNames = accessibleSites.map((s) => s.siteUrl).join(", ");
+      const permissionMsg =
+        accessibleSites.length === 0
+          ? `Servis hesabı (${this.clientEmail}) henüz Google Search Console'da mülke Kullanıcı olarak eklenmemiş. Lütfen Google Search Console > Ayarlar > Kullanıcılar ve İzinler bölümünden '${this.clientEmail}' adresini 'Tam' yetki ile ekleyin.`
+          : `Servis hesabının erişebildiği mülkler: [${siteListNames}]. Sorgulanan: '${currentSite}'.`;
+
+      return {
+        configured: true,
+        status: "api_error",
+        error: `${data.error.message}. ${permissionMsg}`,
+        accessible_sites: accessibleSites,
+        current_site: currentSite,
+        client_email: this.clientEmail,
+        rows: [],
+      };
+    }
+
+    const formattedRows = (data.rows || []).map((row) => ({
+      date: row.keys[0],
+      query: row.keys[1],
+      page: row.keys[2],
+      device: row.keys[3] || "ALL",
+      country: row.keys[4] || "ALL",
+      clicks: row.clicks || 0,
+      impressions: row.impressions || 0,
+      ctr: Number((row.ctr || 0).toFixed(4)),
+      position: Number((row.position || 0).toFixed(2)),
+      is_demo: false,
+    }));
+
+    return {
+      configured: true,
+      status: "success",
+      siteUrl: currentSite,
+      rowCount: formattedRows.length,
+      rows: formattedRows,
+    };
+  }
+
+  /**
+   * Helper to query Search Console searchAnalytics endpoint for a specific site
+   */
+  _queryEndpoint(token, siteUrl, payload) {
+    const encodedSite = encodeURIComponent(siteUrl);
     const endpoint = `https://www.googleapis.com/webmasters/v3/sites/${encodedSite}/searchAnalytics/query`;
 
     return new Promise((resolve, reject) => {
@@ -214,34 +288,7 @@ class GscClient {
           res.on("end", () => {
             try {
               const data = JSON.parse(body);
-              if (data.error) {
-                resolve({
-                  configured: true,
-                  status: "api_error",
-                  error: data.error.message,
-                  rows: [],
-                });
-              } else {
-                const formattedRows = (data.rows || []).map((row) => ({
-                  date: row.keys[0],
-                  query: row.keys[1],
-                  page: row.keys[2],
-                  device: row.keys[3] || "ALL",
-                  country: row.keys[4] || "ALL",
-                  clicks: row.clicks || 0,
-                  impressions: row.impressions || 0,
-                  ctr: Number((row.ctr || 0).toFixed(4)),
-                  position: Number((row.position || 0).toFixed(2)),
-                  is_demo: false,
-                }));
-
-                resolve({
-                  configured: true,
-                  status: "success",
-                  rowCount: formattedRows.length,
-                  rows: formattedRows,
-                });
-              }
+              resolve(data);
             } catch (err) {
               reject(new Error(`Failed to parse GSC response: ${err.message}`));
             }
@@ -251,6 +298,44 @@ class GscClient {
 
       req.on("error", reject);
       req.write(payload);
+      req.end();
+    });
+  }
+
+  /**
+   * List all verified sites accessible by this Service Account
+   */
+  async listSites(token) {
+    if (!token) {
+      if (!this.isConfigured()) return [];
+      token = await this.getAccessToken();
+    }
+
+    return new Promise((resolve) => {
+      const req = https.request(
+        "https://www.googleapis.com/webmasters/v3/sites",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        (res) => {
+          let body = "";
+          res.on("data", (chunk) => (body += chunk));
+          res.on("end", () => {
+            try {
+              const data = JSON.parse(body);
+              const entries = data.siteEntry || [];
+              resolve(entries.map((e) => ({ siteUrl: e.siteUrl, permissionLevel: e.permissionLevel })));
+            } catch (e) {
+              resolve([]);
+            }
+          });
+        }
+      );
+
+      req.on("error", () => resolve([]));
       req.end();
     });
   }
