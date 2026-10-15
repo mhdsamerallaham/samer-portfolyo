@@ -142,8 +142,11 @@ class ActionManager {
           added_links: diff_data.diff_elements?.proposed_internal_links || [],
           metrics: diff_data.metrics || {},
         },
-        change_reason: `Fırsat Optimizasyonu: "${diff_data.target_query}" sorgusu için CTR ve içerik zenginleştirmesi uygulandı.`,
-        change_mode: "assisted",
+        change_reason:
+          applied_by === "autonomous_cron"
+            ? `Otomatik SEO: "${diff_data.target_query}" fırsatı için başlık, meta ve içerik zenginleştirmesi canlıya uygulandı.`
+            : `Fırsat Optimizasyonu: "${diff_data.target_query}" sorgusu için CTR ve içerik zenginleştirmesi uygulandı.`,
+        change_mode: applied_by === "autonomous_cron" ? "autonomous" : "assisted",
         status: "applied",
         applied_at: new Date().toISOString(),
         applied_by,
@@ -201,8 +204,11 @@ class ActionManager {
         added_links: diff_data.diff_elements?.proposed_internal_links || [],
         metrics: diff_data.metrics || {},
       },
-      change_reason: `Sayfa Optimizasyonu: "${diff_data.target_query}" sorgusu için onaylanan öneriler kaydedildi.`,
-      change_mode: "assisted",
+      change_reason:
+        applied_by === "autonomous_cron"
+          ? `Otomatik Sayfa Optimizasyonu: "${diff_data.target_query}" sorgusu için başlık ve meta önerileri canlıya uygulandı.`
+          : `Sayfa Optimizasyonu: "${diff_data.target_query}" sorgusu için onaylanan öneriler kaydedildi.`,
+      change_mode: applied_by === "autonomous_cron" ? "autonomous" : "assisted",
       status: "applied",
       applied_at: new Date().toISOString(),
       applied_by,

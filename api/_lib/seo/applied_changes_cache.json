@@ -1,1 +1,163 @@
-[]
+[
+  {
+    "id": "92d49339-4105-4f73-9c4b-38ad9a3c4a50",
+    "page_url": "/blog/eticaret-web-aksesibilite",
+    "target_table": "blog_posts",
+    "target_id": "8ff341de-4b3a-4f6a-93fb-511c76418e31",
+    "field_changed": "content_and_seo_bundle",
+    "before_value": "{\"title_tr\":\"Web Tasarım ile E-Ticarette Dönüşüm ve Satış Artırma Stratejileri\",\"seo_title_tr\":\"Web Tasarım ile Satışları Artırma Rehberi (2025)\",\"seo_description_tr\":\"Ziyaretçileri müşteriye dönüştüren profesyonel web tasarım sırlarını keşfedin. Satış artıran UX ve erişilebilirlik çözümleri için rehberimize göz atın!\",\"content_tr\":\"<p>Yazı içeriği yüklenemedi.</p>\\n\\n<h3>Web Tasarımda Performansın Dönüşüme Etkisi</h3><p>Modern bir web tasarım sadece estetik değil, aynı zamanda teknik bir başarıdır. Kullanıcıların %40'ı 3 saniyeden geç açılan siteleri terk etmektedir. Tasarım aşamasında temiz kod yapısı, görsel optimizasyonu ve 'mobil-öncelikli' (mobile-first) yaklaşım benimsemek, sitenizin Google'daki sıralamasını doğrudan iyileştirir. Ayrıca, renk kontrastları ve okunabilir yazı tipleri gibi erişilebilirlik unsurları, engelli kullanıcıların yanı sıra genel kullanıcı deneyimini de iyileştirerek hemen çıkma oranlarını düşürür. Profesyonel bir tasarım sürecinde, tasarımın sadece estetik değil, veri odaklı bir stratejiyle birleştirilmesi, işletmenizin dijital varlığını sürdürülebilir bir başarıya taşır.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarım neden e-ticaret satışlarını etkiler?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">İyi bir web tasarım, kullanıcıların aradıklarını kolayca bulmasını sağlayarak güven oluşturur ve satın alma sürecini hızlandırır. Bu durum doğrudan dönüşüm oranlarını artırır.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarımda erişilebilirlik yasal zorunluluk mu?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, birçok ülkede ve sektörde dijital erişilebilirlik standartlarına uyum, hem yasal bir gereklilik hem de tüm müşteri kitlesine ulaşmak için etik bir zorunluluktur.</p>\\n          </div>\\n        \\n      </div>\\n    \\n\\n<h3>Dönüşüm Odaklı Web Tasarımında Mikro Etkileşimler ve Hız Dengesi</h3><p>Modern bir e-ticaret sitesinde estetik tasarım tek başına yeterli değildir; kullanıcı deneyimini (UX) doğrudan gelire dönüştüren asıl faktör mikro etkileşimler ve teknik performanstır. Müşterinin sepete ürün eklediğinde aldığı görsel onay, form alanlarındaki sezgisel hata bildirimleri ve net çağrı butonları (CTA) karar alma sürecini hızlandırır. Ancak bu görsel zenginliği sunarken Google Core Web Vitals metriklerinden (özellikle INP ve LCP) asla ödün verilmemelidir. Aşırı JavaScript yükü yerine modern CSS mimarisi ve yeni nesil görsel formatları (WebP/AVIF) kullanılmalıdır. Pürüzsüz çalışan bir arayüz, ziyaretçide anında güven duygusu oluşturarak satış hunisindeki kayıpları radikal biçimde azaltır.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Profesyonel web tasarım e-ticaret satışlarını nasıl artırır?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Kullanıcı dostu arayüz ve sezgisel navigasyon, müşterilerin satın alma yolculuğundaki pürüzleri gidererek doğrudan dönüşüm oranlarını yükseltir. Ayrıca optimize edilmiş sayfa hızı ve net çağrı butonları (CTA) sepet terk etme oranını minimuma indirir.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarımında erişilebilirlik (WCAG) SEO'yu etkiler mi?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, anlamsal HTML ve erişilebilir navigasyon yapısı arama motoru botlarının siteyi daha iyi dizine eklemesini sağlar. Genişletilmiş kullanıcı kitlesi sayesinde sitede kalma süresi artar ve bu olumlu kullanıcı sinyalleri sıralamanızı yükseltir.</p>\\n          </div>\\n        \\n      </div>\\n    \"}",
+    "after_value": "{\"title_tr\":\"Satış Odaklı Web Tasarım Rehberi: Daha Fazla Müşteri Kazanın\",\"seo_title_tr\":\"Profesyonel Web Tasarım ile Satışlarınızı %200 Artırın (2025)\",\"seo_description_tr\":\"Ziyaretçileri müşteriye dönüştüren etkili web tasarım stratejilerini keşfedin. Dönüşüm odaklı UX, mobil uyum ve hız teknikleri için hemen tıklayın!\",\"content_tr\":\"<p>Yazı içeriği yüklenemedi.</p>\\n\\n<h3>Web Tasarımda Performansın Dönüşüme Etkisi</h3><p>Modern bir web tasarım sadece estetik değil, aynı zamanda teknik bir başarıdır. Kullanıcıların %40'ı 3 saniyeden geç açılan siteleri terk etmektedir. Tasarım aşamasında temiz kod yapısı, görsel optimizasyonu ve 'mobil-öncelikli' (mobile-first) yaklaşım benimsemek, sitenizin Google'daki sıralamasını doğrudan iyileştirir. Ayrıca, renk kontrastları ve okunabilir yazı tipleri gibi erişilebilirlik unsurları, engelli kullanıcıların yanı sıra genel kullanıcı deneyimini de iyileştirerek hemen çıkma oranlarını düşürür. Profesyonel bir tasarım sürecinde, tasarımın sadece estetik değil, veri odaklı bir stratejiyle birleştirilmesi, işletmenizin dijital varlığını sürdürülebilir bir başarıya taşır.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarım neden e-ticaret satışlarını etkiler?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">İyi bir web tasarım, kullanıcıların aradıklarını kolayca bulmasını sağlayarak güven oluşturur ve satın alma sürecini hızlandırır. Bu durum doğrudan dönüşüm oranlarını artırır.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarımda erişilebilirlik yasal zorunluluk mu?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, birçok ülkede ve sektörde dijital erişilebilirlik standartlarına uyum, hem yasal bir gereklilik hem de tüm müşteri kitlesine ulaşmak için etik bir zorunluluktur.</p>\\n          </div>\\n        \\n      </div>\\n    \\n\\n<h3>Dönüşüm Odaklı Web Tasarımında Mikro Etkileşimler ve Hız Dengesi</h3><p>Modern bir e-ticaret sitesinde estetik tasarım tek başına yeterli değildir; kullanıcı deneyimini (UX) doğrudan gelire dönüştüren asıl faktör mikro etkileşimler ve teknik performanstır. Müşterinin sepete ürün eklediğinde aldığı görsel onay, form alanlarındaki sezgisel hata bildirimleri ve net çağrı butonları (CTA) karar alma sürecini hızlandırır. Ancak bu görsel zenginliği sunarken Google Core Web Vitals metriklerinden (özellikle INP ve LCP) asla ödün verilmemelidir. Aşırı JavaScript yükü yerine modern CSS mimarisi ve yeni nesil görsel formatları (WebP/AVIF) kullanılmalıdır. Pürüzsüz çalışan bir arayüz, ziyaretçide anında güven duygusu oluşturarak satış hunisindeki kayıpları radikal biçimde azaltır.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Profesyonel web tasarım e-ticaret satışlarını nasıl artırır?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Kullanıcı dostu arayüz ve sezgisel navigasyon, müşterilerin satın alma yolculuğundaki pürüzleri gidererek doğrudan dönüşüm oranlarını yükseltir. Ayrıca optimize edilmiş sayfa hızı ve net çağrı butonları (CTA) sepet terk etme oranını minimuma indirir.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarımında erişilebilirlik (WCAG) SEO'yu etkiler mi?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, anlamsal HTML ve erişilebilir navigasyon yapısı arama motoru botlarının siteyi daha iyi dizine eklemesini sağlar. Genişletilmiş kullanıcı kitlesi sayesinde sitede kalma süresi artar ve bu olumlu kullanıcı sinyalleri sıralamanızı yükseltir.</p>\\n          </div>\\n        \\n      </div>\\n    \\n\\n<h3>Dönüşüm Odaklı Tasarım Stratejileri</h3><p>Başarılı bir web tasarım sadece estetik değil, stratejik bir kurgudur. Kullanıcı bir web sitesine girdiğinde, beyni saniyeler içinde tasarımın güvenilir olup olmadığını analiz eder. Görsel hiyerarşiyi doğru yönetmek, müşterinin dikkatini en önemli tekliflerinize veya 'Satın Al' butonlarına çekmek için hayati önem taşır. Özellikle negatif boşluk (white space) kullanımı, kullanıcının gözünü yormadan içeriğe odaklanmasını sağlar. Ayrıca, mobilde kusursuz çalışan bir tasarım, modern SEO süreçlerinin olmazsa olmazıdır. Tasarımınızda sade bir arayüz, hızlı yüklenen görseller ve belirgin eylem çağrıları kullanarak ziyaretçilerinizi potansiyel müşterilere dönüştürme şansınızı ciddi oranda artırabilirsiniz. Profesyonel bir yaklaşım, markanızın ciddiyetini yansıtan en büyük dijital yatırımınızdır.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Modern web tasarım satışları gerçekten artırır mı?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, profesyonel web tasarım ziyaretçilerin güvenini kazanır ve site içi navigasyonu iyileştirerek satın alma sürecindeki engelleri kaldırır. Bu da doğrudan dönüşüm oranlarının artmasını sağlar.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarımında en önemli 3 faktör nedir?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">En kritik faktörler mobil uyumluluk, sayfa yüklenme hızı ve kullanıcı odaklı net eylem çağrılarıdır (CTA). Bu üç unsur birleştiğinde kullanıcı deneyimi ve satış performansı optimize edilir.</p>\\n          </div>\\n        \\n      </div>\\n    \"}",
+    "diff_summary": {
+      "target_query": "web tasarım",
+      "added_subtopics": [
+        "Web tasarımında bilişsel yük azaltma teknikleri",
+        "Dönüşüm oranı optimizasyonu (CRO) ve tasarım ilişkisi",
+        "Web tasarımında sürdürülebilirlik ve performans etkileri"
+      ],
+      "added_links": [
+        {
+          "target_url": "/eticaret-optimizasyon",
+          "anchor_text": "e-ticaret dönüşüm optimizasyonu",
+          "reason": "Hedef dönüşüm hizmet sayfasına yetki akışı sağlar."
+        },
+        {
+          "target_url": "/web-tasarim",
+          "anchor_text": "profesyonel web tasarım",
+          "reason": "Teknik altyapı hizmetiyle semantik bağ kurar."
+        }
+      ],
+      "metrics": {
+        "position": 1.1,
+        "impressions": 13,
+        "ctr": "1.4%",
+        "clicks": 0
+      }
+    },
+    "change_reason": "Otomatik SEO: \"web tasarım\" fırsatı için başlık, meta ve içerik zenginleştirmesi canlıya uygulandı.",
+    "change_mode": "autonomous",
+    "status": "applied",
+    "applied_at": "2026-10-15T10:52:44.476Z",
+    "applied_by": "autonomous_cron"
+  },
+  {
+    "id": "0662ea98-4497-461d-9cf3-5c9767b47001",
+    "page_url": "/blog/eticaret-pdp-ux-tasarimi-otomasyonu-6976",
+    "target_table": "blog_posts",
+    "target_id": "c47b6a52-13bb-4127-bc69-9074a9c21630",
+    "field_changed": "content_and_seo_bundle",
+    "before_value": "{\"title_tr\":\"E-Ticaret Ürün Detay Sayfası (PDP) UX Tasarımı ve Otomasyon Rehberi\",\"seo_title_tr\":\"Ürün Detay Sayfası (PDP) UX ve Otomasyon Rehberi | Samer Allaham\",\"seo_description_tr\":\"E-ticarette yüksek dönüşüm sağlayan PDP tasarımı nasıl olmalı? Mobil uyum, WebP optimizasyonu ve otomasyon stratejileriyle satışlarınızı artırın.\",\"content_tr\":\"<h3>E-Ticaret PDP Tasarımında Stratejik Yaklaşım</h3><p>E-ticaret başarısının merkezinde yer alan Ürün Detay Sayfaları (PDP), kullanıcının satın alma kararını verdiği en kritik temas noktasıdır. Senior E-Commerce Architect <strong>Samer Allaham</strong>'a göre, sadece estetik bir tema seçimi yeterli değildir; altyapının hız ve kullanıcı deneyimi (UX) ile birleşmesi gerekir.</p><p class=\\\"my-4 p-3 bg-neutral-900 border-l-2 border-[#ff6b6b] text-xs\\\"><strong>İlgili Rehber:</strong> <a href=\\\"/blog/core-web-vitals-lcp-cls-optimizasyonu-2888\\\" class=\\\"text-[#ff6b6b] hover:underline font-semibold\\\">Core Web Vitals LCP ve CLS Skorları: E-Ticarette 90 Üzerine Çıkma Rehberi</a></p><h3>Performans ve Mobil Optimizasyon</h3><p>Türkiye'deki e-ticaret trafiğinin %75'inden fazlasının mobil cihazlardan gelmesi, mobil öncelikli tasarımın zorunluluk olduğunu kanıtlıyor. Sayfa hızı ise doğrudan SEO başarısını etkiler. <strong>WebP</strong> formatına geçiş yaparak görselleri sıkıştırmak, bant genişliğinden %60'a varan tasarruf sağlar.</p><ul><li><strong>Gereksiz Yüklerden Kurtulun:</strong> Temanızdaki kullanılmayan JavaScript kütüphanelerini temizleyerek Lighthouse skorlarınızı optimize edin.</li><li><strong>Mobil Öncelikli Düzen:</strong> CTA (Satın Al) butonlarını parmakla kolayca ulaşılabilecek alanlara yerleştirin.</li></ul><h3>Güven ve Dönüşüm Oranları (CRO)</h3><p>Kullanıcı güvenini kazanmak için teknik optimizasyon kadar görsel ipuçları da önemlidir. Ödeme butonunun hemen altına yerleştirilen güven rozetleri, alışverişi tamamlama oranını ciddi oranda artırır. Ancak unutulmamalıdır ki; ödeme adımındaki her bir ekstra form alanı, dönüşüm oranlarını %10 ile %15 arasında düşürmektedir.</p><h3>Teknik Altyapı Karşılaştırması</h3><p>Samer Allaham'ın deneyimlerine göre, yerel ve küresel pazarlarda tercih edilecek platformlar değişiklik gösterir:</p><table><tr><th>Platform</th><th>Avantaj</th><th>Pazar Odaklılık</th></tr><tr><td>İKAS</td><td>Sunucu Hızı</td><td>Yerel Türkiye Pazarı</td></tr><tr><td>Shopify</td><td>Ekosistem</td><td>Küresel Pazarlar</td></tr></table><h3>Otomasyon Tavsiyeleri</h3><p>Ürün yönetimi ve sayfa güncellemelerini otomatize etmek, manuel hataları azaltır. <strong>One-Page Checkout</strong> (Tek sayfada ödeme) sistemine geçerek süreci kısaltmak, kullanıcıyı yormadan satışa dönüştürmenin en etkili yoludur. Unutmayın, basitlik her zaman karmaşıklıktan daha iyi performans gösterir.</p>\"}",
+    "after_value": "{\"title_tr\":\"Fatih Web Tasarım ve Dönüşüm Odaklı Dijital Çözümler\",\"seo_title_tr\":\"Fatih Web Tasarım: Satış Artıran Modern Tasarım Stratejileri\",\"seo_description_tr\":\"Fatih bölgesinde profesyonel web tasarım çözümleri mi arıyorsunuz? Dönüşüm odaklı, mobil uyumlu ve hızlı web siteleri için uzman desteği alın. Hemen keşfedin!\",\"content_tr\":\"<h3>E-Ticaret PDP Tasarımında Stratejik Yaklaşım</h3><p>E-ticaret başarısının merkezinde yer alan Ürün Detay Sayfaları (PDP), kullanıcının satın alma kararını verdiği en kritik temas noktasıdır. Senior E-Commerce Architect <strong>Samer Allaham</strong>'a göre, sadece estetik bir tema seçimi yeterli değildir; altyapının hız ve kullanıcı deneyimi (UX) ile birleşmesi gerekir.</p><p class=\\\"my-4 p-3 bg-neutral-900 border-l-2 border-[#ff6b6b] text-xs\\\"><strong>İlgili Rehber:</strong> <a href=\\\"/blog/core-web-vitals-lcp-cls-optimizasyonu-2888\\\" class=\\\"text-[#ff6b6b] hover:underline font-semibold\\\">Core Web Vitals LCP ve CLS Skorları: E-Ticarette 90 Üzerine Çıkma Rehberi</a></p><h3>Performans ve Mobil Optimizasyon</h3><p>Türkiye'deki e-ticaret trafiğinin %75'inden fazlasının mobil cihazlardan gelmesi, mobil öncelikli tasarımın zorunluluk olduğunu kanıtlıyor. Sayfa hızı ise doğrudan SEO başarısını etkiler. <strong>WebP</strong> formatına geçiş yaparak görselleri sıkıştırmak, bant genişliğinden %60'a varan tasarruf sağlar.</p><ul><li><strong>Gereksiz Yüklerden Kurtulun:</strong> Temanızdaki kullanılmayan JavaScript kütüphanelerini temizleyerek Lighthouse skorlarınızı optimize edin.</li><li><strong>Mobil Öncelikli Düzen:</strong> CTA (Satın Al) butonlarını parmakla kolayca ulaşılabilecek alanlara yerleştirin.</li></ul><h3>Güven ve Dönüşüm Oranları (CRO)</h3><p>Kullanıcı güvenini kazanmak için teknik optimizasyon kadar görsel ipuçları da önemlidir. Ödeme butonunun hemen altına yerleştirilen güven rozetleri, alışverişi tamamlama oranını ciddi oranda artırır. Ancak unutulmamalıdır ki; ödeme adımındaki her bir ekstra form alanı, dönüşüm oranlarını %10 ile %15 arasında düşürmektedir.</p><h3>Teknik Altyapı Karşılaştırması</h3><p>Samer Allaham'ın deneyimlerine göre, yerel ve küresel pazarlarda tercih edilecek platformlar değişiklik gösterir:</p><table><tr><th>Platform</th><th>Avantaj</th><th>Pazar Odaklılık</th></tr><tr><td>İKAS</td><td>Sunucu Hızı</td><td>Yerel Türkiye Pazarı</td></tr><tr><td>Shopify</td><td>Ekosistem</td><td>Küresel Pazarlar</td></tr></table><h3>Otomasyon Tavsiyeleri</h3><p>Ürün yönetimi ve sayfa güncellemelerini otomatize etmek, manuel hataları azaltır. <strong>One-Page Checkout</strong> (Tek sayfada ödeme) sistemine geçerek süreci kısaltmak, kullanıcıyı yormadan satışa dönüştürmenin en etkili yoludur. Unutmayın, basitlik her zaman karmaşıklıktan daha iyi performans gösterir.</p>\\n\\n<h3>Fatih İşletmeleri İçin Neden Profesyonel Web Tasarımı Gereklidir?</h3><p>Fatih, tarihi dokusuyla olduğu kadar dinamik ticari yapısıyla da dijitalleşmenin önemli olduğu bir bölgedir. Bir web sitesi, sadece dijital bir kartvizit değil, işletmenizin 7/24 çalışan en etkili satış temsilcisidir. Profesyonel bir web tasarımı; sitenizin mobil cihazlarda kusursuz çalışmasını sağlar, sayfa yüklenme sürelerini optimize ederek hemen çıkma oranlarını düşürür ve arama motorlarının sitenizi 'güvenilir' olarak sınıflandırmasına yardımcı olur. Özellikle yerel rekabetin yoğun olduğu Fatih piyasasında, SEO uyumlu bir web sitesine sahip olmak, sadece bir seçenek değil, ticari sürdürülebilirlik için bir zorunluluktur. Samer.life olarak, sadece estetik kaygılarla değil, satış odaklı ve kullanıcıyı aksiyona geçiren bir yaklaşımla markanızın dijital varlığını güçlendiriyoruz.</p>\\n\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (fatih web tasarım)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Fatih web tasarım hizmetleri marka değerini nasıl artırır?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Profesyonel bir tasarım, hedef kitlenize güven verirken markanızın dijital dünyadaki profesyonel kimliğini pekiştirir. Hızlı ve kullanıcı dostu arayüzler, ziyaretçilerin sitede kalma süresini artırarak markanızla etkileşimini güçlendirir.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web tasarım projemin Google arama sonuçlarında üst sıralarda çıkması mümkün mü?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Evet, doğru SEO altyapısı, optimize edilmiş kod yapısı ve kaliteli içerikle sitenizin görünürlüğünü artırmak mümkündür. Fatih bölgesine yönelik stratejik anahtar kelime çalışmalarıyla yerel aramalarda ön plana çıkabilirsiniz.</p>\\n          </div>\\n        \\n      </div>\\n    \"}",
+    "diff_summary": {
+      "target_query": "fatih web tasarım",
+      "added_subtopics": [
+        "Fatih Bölgesi Yerel SEO Stratejileri",
+        "Kurumsal Web Tasarımında Kullanıcı Deneyimi (UX)",
+        "Hızlı ve Mobil Uyumlu Arayüz Tasarımı",
+        "Web Tasarımda Teknik SEO ve Performans Optimizasyonu"
+      ],
+      "added_links": [
+        {
+          "target_url": "/eticaret-optimizasyon",
+          "anchor_text": "e-ticaret dönüşüm optimizasyonu",
+          "reason": "Hedef dönüşüm hizmet sayfasına yetki akışı sağlar."
+        },
+        {
+          "target_url": "/web-tasarim",
+          "anchor_text": "profesyonel web tasarım",
+          "reason": "Teknik altyapı hizmetiyle semantik bağ kurar."
+        }
+      ],
+      "metrics": {
+        "position": 1.3,
+        "impressions": 14,
+        "ctr": "1.4%",
+        "clicks": 0
+      }
+    },
+    "change_reason": "Otomatik SEO: \"fatih web tasarım\" fırsatı için başlık, meta ve içerik zenginleştirmesi canlıya uygulandı.",
+    "change_mode": "autonomous",
+    "status": "applied",
+    "applied_at": "2026-10-15T10:52:36.184Z",
+    "applied_by": "autonomous_cron"
+  },
+  {
+    "id": "44bf90d8-edff-4955-8956-fbbbff58ee20",
+    "page_url": "/",
+    "target_table": "site_pages",
+    "target_id": "page_home",
+    "field_changed": "seo_meta_and_headings",
+    "before_value": "{\"title_tr\":\"E-Ticaret Web Tasarım & Kurulum Uzmanı — Samer Allaham\",\"h1\":\"E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer\",\"meta_description\":\"Shopify & İKAS e-ticaret siteleri, özel yazılım, hız optimizasyonu ve yapay zeka entegrasyonu.\"}",
+    "after_value": "{\"title_tr\":\"Web Geliştirme Hizmetleri: Modern ve Hızlı Çözümler | Samer\",\"h1\":\"Profesyonel Web Geliştirme ve Dijital Dönüşüm Hizmetleri\",\"meta_description\":\"İşinizi büyüten profesyonel web geliştirme çözümleri. Shopify, İKAS, özel yazılım ve hız optimizasyonu ile dijitalde fark yaratın. Hemen teklif alın!\",\"recommendations\":{\"missing_subtopics\":[\"Modern Web Geliştirme Teknolojileri (Next.js, React)\",\"Kurumsal Web Geliştirme Süreçleri ve Metodolojiler\",\"Web Performansı ve Google Core Web Vitals Optimizasyonu\"],\"missing_entities\":[\"Frontend Frameworks\",\"Backend Architecture\",\"API Integrations\",\"Responsive Design Principles\",\"Technical SEO\"],\"proposed_faqs\":[{\"q\":\"Web geliştirme süreci ne kadar sürer?\",\"a\":\"Projenin kapsamına ve ihtiyaç duyulan özel fonksiyonlara bağlı olarak ortalama 4-8 hafta sürmektedir. Detaylı analiz sonrası net bir takvim sunuyoruz.\"},{\"q\":\"E-ticaret sitem için neden özel yazılım tercih etmeliyim?\",\"a\":\"Özel yazılımlar, iş süreçlerinize tam uyum sağlayarak yüksek performans, ölçeklenebilirlik ve rekabet avantajı sunar. Hazır paketlerin kısıtlamalarından kurtulmanızı sağlar.\"}],\"proposed_internal_links\":[{\"target_url\":\"/eticaret-optimizasyon\",\"anchor_text\":\"e-ticaret dönüşüm optimizasyonu\",\"reason\":\"Hedef dönüşüm hizmet sayfasına yetki akışı sağlar.\"},{\"target_url\":\"/web-tasarim\",\"anchor_text\":\"profesyonel web tasarım\",\"reason\":\"Teknik altyapı hizmetiyle semantik bağ kurar.\"}],\"added_html_snippet\":\"<h3>Web Geliştirmede Performansın Önemi</h3><p>Günümüz dijital dünyasında, kullanıcı deneyimi ve arama motoru görünürlüğü doğrudan web sitesi hızına bağlıdır. Profesyonel web geliştirme, sadece görsel tasarım değil, aynı zamanda temiz kod yapısı ve optimize edilmiş veritabanı sorguları demektir. Google'ın Core Web Vitals kriterlerini temel alarak geliştirdiğimiz altyapılar, sitenizin hem hızlı yüklenmesini sağlar hem de dönüşüm oranlarınızı artırır. Başarılı bir web projesi için yalnızca işlevsel bir arayüz yeterli değildir; SEO uyumlu teknik altyapı ve güvenlik önlemleri, projenizin sürdürülebilirliği için vazgeçilmezdir. İhtiyaçlarınıza özel, yüksek performanslı çözümlerle dijital varlığınızı güçlendirmek için modern geliştirme standartlarını takip ediyor ve projenizin ölçeklenebilirliğini garanti altına alıyoruz.</p>\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (web development)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Web geliştirme süreci ne kadar sürer?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Projenin kapsamına ve ihtiyaç duyulan özel fonksiyonlara bağlı olarak ortalama 4-8 hafta sürmektedir. Detaylı analiz sonrası net bir takvim sunuyoruz.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">E-ticaret sitem için neden özel yazılım tercih etmeliyim?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Özel yazılımlar, iş süreçlerinize tam uyum sağlayarak yüksek performans, ölçeklenebilirlik ve rekabet avantajı sunar. Hazır paketlerin kısıtlamalarından kurtulmanızı sağlar.</p>\\n          </div>\\n        \\n      </div>\\n    \"}}",
+    "diff_summary": {
+      "target_query": "web development",
+      "added_subtopics": [
+        "Modern Web Geliştirme Teknolojileri (Next.js, React)",
+        "Kurumsal Web Geliştirme Süreçleri ve Metodolojiler",
+        "Web Performansı ve Google Core Web Vitals Optimizasyonu"
+      ],
+      "added_links": [
+        {
+          "target_url": "/eticaret-optimizasyon",
+          "anchor_text": "e-ticaret dönüşüm optimizasyonu",
+          "reason": "Hedef dönüşüm hizmet sayfasına yetki akışı sağlar."
+        },
+        {
+          "target_url": "/web-tasarim",
+          "anchor_text": "profesyonel web tasarım",
+          "reason": "Teknik altyapı hizmetiyle semantik bağ kurar."
+        }
+      ],
+      "metrics": {
+        "position": 4.1,
+        "impressions": 92,
+        "ctr": "1.4%",
+        "clicks": 0
+      }
+    },
+    "change_reason": "Otomatik Sayfa Optimizasyonu: \"web development\" sorgusu için başlık ve meta önerileri canlıya uygulandı.",
+    "change_mode": "autonomous",
+    "status": "applied",
+    "applied_at": "2026-10-15T10:13:39.572Z",
+    "applied_by": "autonomous_cron"
+  },
+  {
+    "id": "439d3053-ef37-4c36-8e4c-d4647de626e4",
+    "page_url": "/",
+    "target_table": "site_pages",
+    "target_id": "page_home",
+    "field_changed": "seo_meta_and_headings",
+    "before_value": "{\"title_tr\":\"E-Ticaret Web Tasarım & Kurulum Uzmanı — Samer Allaham\",\"h1\":\"E-Ticaret Web Tasarım & Geliştirme Uzmanı | Samer\",\"meta_description\":\"Shopify & İKAS e-ticaret siteleri, özel yazılım, hız optimizasyonu ve yapay zeka entegrasyonu.\"}",
+    "after_value": "{\"title_tr\":\"Mobile App Development: Profesyonel Çözümler | Samer\",\"h1\":\"Mobile App Development ve Özel Yazılım Çözümleri\",\"meta_description\":\"Mobil uygulama geliştirme süreçlerinde uzman desteği alın. iOS ve Android için ölçeklenebilir, yüksek performanslı özel yazılım çözümleri. Hemen keşfedin!\",\"recommendations\":{\"missing_subtopics\":[\"Cross-Platform vs Native Uygulama Geliştirme\",\"Mobil Uygulama Güvenliği ve Performans Optimizasyonu\",\"UI/UX Tasarımının Kullanıcı Deneyimine Etkisi\"],\"missing_entities\":[\"Flutter\",\"React Native\",\"iOS ve Android\",\"API Entegrasyonu\"],\"proposed_faqs\":[{\"q\":\"Mobile app development süreci ne kadar sürer?\",\"a\":\"Projenin kapsamına, özelliklerine ve kullanılan teknolojilere bağlı olarak mobile app development süreci genellikle 3 ila 6 ay arasında değişmektedir. MVP (Minimum Viable Product) yaklaşımı ile süreci hızlandırmak mümkündür.\"},{\"q\":\"Native mi yoksa Cross-platform yazılım mı tercih edilmeli?\",\"a\":\"Bütçeniz, hedef kitleniz ve performans beklentileriniz bu kararı belirler. Cross-platform çözümler maliyeti düşürürken, Native uygulamalar donanıma tam erişim ve üstün performans sunar.\"}],\"proposed_internal_links\":[{\"target_url\":\"/eticaret-optimizasyon\",\"anchor_text\":\"e-ticaret dönüşüm optimizasyonu\",\"reason\":\"Hedef dönüşüm hizmet sayfasına yetki akışı sağlar.\"},{\"target_url\":\"/web-tasarim\",\"anchor_text\":\"profesyonel web tasarım\",\"reason\":\"Teknik altyapı hizmetiyle semantik bağ kurar.\"}],\"added_html_snippet\":\"<h3>Mobile App Development Sürecinde Doğru Teknolojiyi Seçmek</h3><p>Başarılı bir mobil uygulama projesinin temeli, doğru teknoloji yığınının (tech stack) seçilmesiyle atılır. Günümüzde işletmeler, pazara daha hızlı çıkmak ve geliştirme maliyetlerini optimize etmek amacıyla genellikle Flutter veya React Native gibi cross-platform teknolojilere yönelmektedir. Ancak yüksek performans gerektiren oyun veya yapay zeka tabanlı uygulamalarda Swift ve Kotlin gibi native diller vazgeçilmezdir. Samer Allaham olarak, işletmenizin hedeflerine ve bütçesine en uygun mimariyi belirleyerek, kullanıcı dostu ve ölçeklenebilir mobil çözümler tasarlıyoruz. Geliştirme sürecinde sadece kod yazmaya odaklanmıyor; App Store ve Google Play Store optimizasyonları (ASO), güvenlik protokolleri ve kusursuz bir UI/UX deneyimi ile uygulamanızın dijital dünyada sürdürülebilir bir başarı yakalamasını sağlıyoruz.</p>\\n\\n      <div class=\\\"mt-8 p-6 bg-slate-50 border border-slate-200 rounded-2xl\\\">\\n        <h3 class=\\\"text-xl font-bold text-slate-900 mb-4\\\">Sıkça Sorulan Sorular (mobile app development)</h3>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Mobile app development süreci ne kadar sürer?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Projenin kapsamına, özelliklerine ve kullanılan teknolojilere bağlı olarak mobile app development süreci genellikle 3 ila 6 ay arasında değişmektedir. MVP (Minimum Viable Product) yaklaşımı ile süreci hızlandırmak mümkündür.</p>\\n          </div>\\n        \\n          <div class=\\\"mb-4\\\">\\n            <h4 class=\\\"font-bold text-teal-800 text-sm mb-1\\\">Native mi yoksa Cross-platform yazılım mı tercih edilmeli?</h4>\\n            <p class=\\\"text-slate-700 text-sm\\\">Bütçeniz, hedef kitleniz ve performans beklentileriniz bu kararı belirler. Cross-platform çözümler maliyeti düşürürken, Native uygulamalar donanıma tam erişim ve üstün performans sunar.</p>\\n          </div>\\n        \\n      </div>\\n    \"}}",
+    "diff_summary": {
+      "target_query": "mobile app development",
+      "added_subtopics": [
+        "Cross-Platform vs Native Uygulama Geliştirme",
+        "Mobil Uygulama Güvenliği ve Performans Optimizasyonu",
+        "UI/UX Tasarımının Kullanıcı Deneyimine Etkisi"
+      ],
+      "added_links": [
+        {
+          "target_url": "/eticaret-optimizasyon",
+          "anchor_text": "e-ticaret dönüşüm optimizasyonu",
+          "reason": "Hedef dönüşüm hizmet sayfasına yetki akışı sağlar."
+        },
+        {
+          "target_url": "/web-tasarim",
+          "anchor_text": "profesyonel web tasarım",
+          "reason": "Teknik altyapı hizmetiyle semantik bağ kurar."
+        }
+      ],
+      "metrics": {
+        "position": 8,
+        "impressions": 2310,
+        "ctr": "1.4%",
+        "clicks": 0
+      }
+    },
+    "change_reason": "Otomatik Sayfa Optimizasyonu: \"mobile app development\" sorgusu için başlık ve meta önerileri canlıya uygulandı.",
+    "change_mode": "autonomous",
+    "status": "applied",
+    "applied_at": "2026-10-15T10:13:12.417Z",
+    "applied_by": "autonomous_cron"
+  }
+]

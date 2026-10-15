@@ -51,8 +51,21 @@ class AiTaskQueue {
     payload = {},
     estimatedTokens = 1500,
   }) {
+    const isUuid = (str) =>
+      typeof str === "string" &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str.trim());
+
+    const validArticleId = isUuid(articleId) ? articleId.trim() : null;
+    const validOpportunityId = isUuid(opportunityId) ? opportunityId.trim() : null;
+    const targetQuery = payload.target_query || payload.query || null;
+
     // 1. Mükerrer kontrolü (Duplicate check)
-    const existing = await this.findPendingDuplicate({ taskType, articleId, contentHash });
+    const existing = await this.findPendingDuplicate({
+      taskType,
+      articleId: validArticleId,
+      contentHash,
+      targetQuery,
+    });
     if (existing) {
       console.log(`[AiTaskQueue] Mükerrer görev engellendi (ID: ${existing.id})`);
       return existing;
@@ -63,8 +76,8 @@ class AiTaskQueue {
       task_type: taskType,
       priority,
       status: "pending",
-      article_id: articleId,
-      opportunity_id: opportunityId,
+      article_id: validArticleId,
+      opportunity_id: validOpportunityId,
       content_hash: contentHash,
       prompt_version: promptVersion,
       payload,
@@ -102,8 +115,8 @@ class AiTaskQueue {
   /**
    * Aynı içerik ve görev için zaten bekleyen bir iş var mı?
    */
-  async findPendingDuplicate({ taskType, articleId, contentHash }) {
-    if (!articleId && !contentHash) return null;
+  async findPendingDuplicate({ taskType, articleId, contentHash, targetQuery = null }) {
+    if (!articleId && !contentHash && !targetQuery) return null;
 
     if (this.supabase) {
       try {
@@ -116,8 +129,17 @@ class AiTaskQueue {
         if (articleId) query = query.eq("article_id", articleId);
         if (contentHash) query = query.eq("content_hash", contentHash);
 
-        const { data } = await query.limit(1).maybeSingle();
-        if (data) return data;
+        const { data } = await query.limit(10);
+        if (data && data.length > 0) {
+          if (targetQuery) {
+            const match = data.find(
+              (t) => (t.payload?.target_query || "").toLowerCase() === targetQuery.toLowerCase()
+            );
+            if (match) return match;
+          } else {
+            return data[0];
+          }
+        }
       } catch (err) {
         // Fallback
       }
@@ -127,7 +149,9 @@ class AiTaskQueue {
       this.memoryQueue.find(
         (t) =>
           t.task_type === taskType &&
-          (t.article_id === articleId || (contentHash && t.content_hash === contentHash)) &&
+          ((articleId && t.article_id === articleId) ||
+            (contentHash && t.content_hash === contentHash) ||
+            (targetQuery && (t.payload?.target_query || "").toLowerCase() === targetQuery.toLowerCase())) &&
           (t.status === "pending" || t.status === "processing")
       ) || null
     );
