@@ -32,7 +32,7 @@ import {
 import SeoDiffModal from '../../components/admin/SeoDiffModal';
 
 export default function SeoDashboard() {
-  const [activeTab, setActiveTab] = useState('genel-bakis');
+  const [activeTab, setActiveTab] = useState('otonom-rapor');
   const [dashboardData, setDashboardData] = useState(null);
   const [aiBudgetData, setAiBudgetData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -317,16 +317,9 @@ export default function SeoDashboard() {
 
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/60 text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-slate-300 font-medium">Assisted Mode</span>
-              <span className="text-slate-500 text-[10px]">(Onay Korumalı)</span>
+              <span className="text-slate-300 font-medium">Otonom Autopilot: Aktif</span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700/60 text-xs">
-              <Shield size={13} className="text-teal-400" />
-              <span className="text-slate-300 font-medium">%80 Safe Limit</span>
-            </div>
-
-            {/* Demo / Gerçek Veri Geçiş Butonu */}
             <button
               onClick={() => {
                 const nextMode = !isDemoMode;
@@ -353,42 +346,39 @@ export default function SeoDashboard() {
           </div>
         </div>
 
-        {/* ── SEKME MENÜSÜ (7 SEKME) ────────────────────────────────────── */}
+        {/* ── SEKME MENÜSÜ (KOLAY VE NET 5 ANA ALAN) ───────────────────── */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-1 overflow-x-auto no-scrollbar py-2">
+          <nav className="flex space-x-2 overflow-x-auto no-scrollbar py-2 border-t border-slate-800/40">
             {[
-              { id: 'genel-bakis', label: 'Genel Bakış', icon: Activity },
               {
                 id: 'otonom-rapor',
-                label: '📊 Günlük Otonom Rapor',
+                label: '📊 Günlük Otonom Rapor & Autopilot',
                 icon: Layers,
                 highlight: true,
               },
               {
                 id: 'firsatlar',
-                label: 'Anahtar Kelime Fırsatları',
+                label: '🎯 Büyüme Fırsatları',
                 icon: TrendingUp,
                 badge: dashboardData?.opportunities?.length,
               },
               {
-                id: 'kanibalizasyon',
-                label: 'Kanibalizasyon',
-                icon: AlertTriangle,
-                badge: dashboardData?.cannibalizations?.length,
-              },
-              { id: 'ic-linkler', label: 'İç Linkler', icon: Link2, badge: dashboardData?.internal_links?.length },
-              {
                 id: 'degisiklikler',
-                label: 'Değişiklik Günlüğü & Revert',
+                label: '📝 Değişiklikler & Geri Alma',
                 icon: GitPullRequest,
                 badge: dashboardData?.recent_changes?.length,
               },
-              { id: 'teknik-seo', label: 'Teknik SEO Denetimi', icon: Server },
+              {
+                id: 'kanibalizasyon',
+                label: '⚠️ Çakışan Sayfalar (Kanibalizasyon)',
+                icon: AlertTriangle,
+                badge: dashboardData?.cannibalizations?.length,
+              },
               {
                 id: 'ai-budget',
-                label: 'AI Bütçesi & Kullanım',
+                label: '🤖 AI Bütçe & Modeller',
                 icon: Cpu,
-                badge: queueStats.pending ? `${queueStats.pending} bekliyor` : null,
+                badge: queueStats.pending ? `${queueStats.pending} kuyrukta` : null,
               },
             ].map((tab) => {
               const Icon = tab.icon;
@@ -397,14 +387,12 @@ export default function SeoDashboard() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
                     isActive
                       ? tab.highlight
                         ? 'bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 shadow-md shadow-teal-500/20'
-                        : 'bg-teal-500/10 text-teal-400 border border-teal-500/30'
-                      : tab.highlight
-                      ? 'text-teal-400 hover:bg-slate-900 border border-teal-500/20'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
+                        : 'bg-teal-500/10 text-teal-300 border border-teal-500/40'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-900/80 border border-transparent'
                   }`}
                 >
                   <Icon size={14} />
@@ -414,7 +402,7 @@ export default function SeoDashboard() {
                       className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
                         isActive
                           ? tab.highlight
-                            ? 'bg-slate-950/20 text-slate-950'
+                            ? 'bg-slate-950/30 text-slate-950'
                             : 'bg-teal-500/20 text-teal-300'
                           : 'bg-slate-800 text-slate-400'
                       }`}
