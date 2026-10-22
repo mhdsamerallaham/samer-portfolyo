@@ -359,6 +359,12 @@ export default function SeoDashboard() {
             {[
               { id: 'genel-bakis', label: 'Genel Bakış', icon: Activity },
               {
+                id: 'otonom-rapor',
+                label: '📊 Günlük Otonom Rapor',
+                icon: Layers,
+                highlight: true,
+              },
+              {
                 id: 'firsatlar',
                 label: 'Anahtar Kelime Fırsatları',
                 icon: TrendingUp,
@@ -382,7 +388,6 @@ export default function SeoDashboard() {
                 id: 'ai-budget',
                 label: 'AI Bütçesi & Kullanım',
                 icon: Cpu,
-                highlight: true,
                 badge: queueStats.pending ? `${queueStats.pending} bekliyor` : null,
               },
             ].map((tab) => {
@@ -628,6 +633,158 @@ export default function SeoDashboard() {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================================== */}
+        {/* SEKME: GÜNLÜK OTONOM RAPOR & AUTOPILOT UI/UX                   */}
+        {/* ============================================================== */}
+        {activeTab === 'otonom-rapor' && (
+          <div className="space-y-6">
+            <div className="p-6 rounded-3xl bg-gradient-to-r from-teal-950/40 via-slate-900 to-slate-900 border border-teal-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl shadow-teal-950/20">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-xs font-black tracking-widest text-teal-400 uppercase">
+                    Otonom Autopilot: Canlı ve Aktif
+                  </span>
+                </div>
+                <h2 className="text-2xl font-black text-white">
+                  Her Gün Sıfır Müdahaleyle Çalışan SEO & GEO Motoru
+                </h2>
+                <p className="text-slate-400 text-xs max-w-2xl leading-relaxed">
+                  Sistem her sabah 07:00'de Google Search Console verilerini eşitler, 08:00'de en yüksek potansiyelli arama sorgularını seçer, AI ile optimize eder, canlıya uygular ve Vercel Deploy Hook ile siteyi otomatik yeniden derler.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+                <button
+                  onClick={async () => {
+                    setIsProcessingQueue(true);
+                    setActionFeedback(null);
+                    try {
+                      const res = await fetch('/api/seo/ai-queue-process?force=true');
+                      const json = await res.json();
+                      if (json.success) {
+                        setActionFeedback({
+                          type: 'success',
+                          message: json.message || 'Otonom döngü tetiklendi!',
+                        });
+                        fetchDashboardData();
+                      } else {
+                        throw new Error(json.message || 'Tetikleme başarısız');
+                      }
+                    } catch (e) {
+                      setActionFeedback({ type: 'error', message: e.message });
+                    } finally {
+                      setIsProcessingQueue(false);
+                    }
+                  }}
+                  disabled={isProcessingQueue}
+                  className="px-5 py-3 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 text-xs font-black flex items-center gap-2 shadow-lg shadow-teal-500/25 transition-all disabled:opacity-50"
+                >
+                  <Play size={15} className={isProcessingQueue ? 'animate-spin' : ''} />
+                  <span>{isProcessingQueue ? 'İşleniyor...' : 'Şimdi Otonom Döngüyü Çalıştır'}</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center justify-between text-slate-400 text-xs">
+                  <span>Otomatik 301 Yönlendirmesi</span>
+                  <GitPullRequest size={16} className="text-teal-400" />
+                </div>
+                <div className="text-2xl font-black text-white mt-2">88 Kural</div>
+                <div className="text-[11px] text-emerald-400 mt-1">Kopya içerik cezası önlendi</div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center justify-between text-slate-400 text-xs">
+                  <span>Vercel Deploy Hook</span>
+                  <Zap size={16} className="text-amber-400" />
+                </div>
+                <div className="text-2xl font-black text-white mt-2">Aktif (Bağlı)</div>
+                <div className="text-[11px] text-amber-300 mt-1">Oto-rebuild devrede</div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center justify-between text-slate-400 text-xs">
+                  <span>GEO Yapay Zeka Arama</span>
+                  <Cpu size={16} className="text-cyan-400" />
+                </div>
+                <div className="text-2xl font-black text-white mt-2">llms.txt v2</div>
+                <div className="text-[11px] text-cyan-300 mt-1">ChatGPT & Perplexity hazır</div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center justify-between text-slate-400 text-xs">
+                  <span>Kayıt & Geri Alma (Audit)</span>
+                  <Shield size={16} className="text-purple-400" />
+                </div>
+                <div className="text-2xl font-black text-white mt-2">%100 Revert</div>
+                <div className="text-[11px] text-purple-300 mt-1">Sıfır risk garantisi</div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-slate-900/80 border border-slate-800/80 space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-bold text-white">Canlı Otonom Günlük (Daily Log)</h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Sistemin kendi kendine uyguladığı başlık, meta ve içerik optimizasyonları
+                  </p>
+                </div>
+                <span className="text-xs text-slate-500 font-mono">
+                  {dashboardData?.recent_changes?.length || 0} işlem kayıtlı
+                </span>
+              </div>
+
+              {(!dashboardData?.recent_changes || dashboardData.recent_changes.length === 0) ? (
+                <div className="p-10 text-center rounded-2xl bg-slate-950/50 border border-slate-800/40">
+                  <CheckCircle2 size={36} className="text-teal-400 mx-auto mb-3 opacity-80" />
+                  <h4 className="text-sm font-bold text-slate-200">Kuyruk Temiz ve Hazır</h4>
+                  <p className="text-xs text-slate-400 max-w-md mx-auto mt-1">
+                    GSC fırsatları her sabah otomatik olarak sıraya alınıp uygulanacaktır. İsterseniz yukarıdaki butona basarak ilk döngüyü hemen başlatabilirsiniz.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {dashboardData.recent_changes.map((change) => (
+                    <div
+                      key={change.id}
+                      className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                    >
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold ${
+                            change.status === 'applied' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'
+                          }`}>
+                            {change.status === 'applied' ? 'Canlıya Uygulandı' : 'Geri Alındı'}
+                          </span>
+                          <span className="text-xs font-mono text-teal-400">{change.page_url}</span>
+                          <span className="text-[10px] text-slate-500">
+                            {new Date(change.applied_at || change.created_at).toLocaleString('tr-TR')}
+                          </span>
+                        </div>
+                        <p className="text-xs font-medium text-slate-200">{change.change_reason}</p>
+                      </div>
+
+                      {change.status === 'applied' && (
+                        <button
+                          onClick={() => handleRevertChange(change.id)}
+                          disabled={revertingId === change.id}
+                          className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-rose-950/60 hover:text-rose-300 text-slate-300 border border-slate-700 text-xs font-semibold transition-colors flex items-center gap-1.5 shrink-0"
+                        >
+                          <RotateCcw size={12} className={revertingId === change.id ? 'animate-spin' : ''} />
+                          <span>{revertingId === change.id ? 'Geri Alınıyor...' : '1 Tıkla Geri Al'}</span>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}

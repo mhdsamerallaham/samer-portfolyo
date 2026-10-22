@@ -9,14 +9,6 @@
     {
       "path": "/api/seo/ai-queue-process",
       "schedule": "0 8 * * *"
-    },
-    {
-      "path": "/api/blog/generate",
-      "schedule": "0 9 * * *"
-    },
-    {
-      "path": "/api/faq/generate",
-      "schedule": "0 10 * * *"
     }
   ],
   "redirects": [
@@ -49,12 +41,429 @@
       "source": "/faq/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-3029",
       "destination": "/faq/urun-detay-sayfasi-ux-ve-otomasyon-rehberi",
       "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-5619",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-3500",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dususurulur-7020",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-5359",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-4253",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-5074",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-6455",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-5913",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-4321",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-8713",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-3649",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-7097",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-5187",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-9261",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-3419",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-6617",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-3149",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-8122",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-2458",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dusurulur-4590",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-sepeti-terk-etme-orani-nasil-dususurulur-3672",
+      "destination": "/blog/sepete-ekleniyor-ama-satilmiyor-sorunun-kaynagi-ne",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eticaret-pdp-ux-tasarimi-otomasyonu-6976",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-6756",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-ux-tasarimi-ve-otomasyonu-3667",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eticaret-pdp-ux-tasarimi-otomasyonu-4666",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-pdp-ux-tasarimi-ve-otomasyonu-9500",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7934",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-3620",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-pdp-ux-tasarimi-otomasyonu-5261",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-2097",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-5513",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-2761",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-ux-tasarimi-ve-otomasyonu-3278",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-5064",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-9596",
+      "destination": "/blog/e-ticaret-urun-detay-sayfasi-pdp-ux-tasarimi-otomasyonu-7849",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-4405",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-5515",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-1972",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-7656",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-3860",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-6418",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-9151",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-9594",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-2024",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-9259",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-5189",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-5102",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-4976",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-9046",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-7289",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-7344",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-2677",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-8461",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-2845",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-rehberi-9970",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-7089",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/core-web-vitals-lcp-cls-optimizasyonu-2888",
+      "destination": "/blog/eticaret-90-plus-core-web-vitals-hiz-performans-ipuclari",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-seo-hiz-karsilastirmasi-3103",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-turkiye-eticaret-seo-hiz-karsilastirmasi-2852",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirma-5079",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-turkiye-e-ticaret-seo-hiz-karsilastirmasi-1539",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirma-9745",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirmasi-8988",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirmasi-4914",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirmasi-5247",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ikas-mi-shopify-mi-e-ticaret-karsilastirmasi-7690",
+      "destination": "/blog/shopify-mi-ikas-mi-turkiye-icin-en-dogru-secim",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-ve-donusum-etkisi-2844",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-donusum-etkisi-5749",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-ve-donusum-etkisi-6468",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-donusum-etkisi-5413",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-donusum-etkisi-4689",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-donusum-etkisi-9320",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-1252",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-ve-donusum-etkisi-1982",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-7292",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-5658",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/shopify-one-page-checkout-kurulum-rehberi-donusum-etkisi-1931",
+      "destination": "/blog/shopify-one-page-checkout-kurulum-rehberi-2977",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticarette-yapay-zeka-chatbot-entegrasyonu-satis-artisi-8028",
+      "destination": "/blog/e-ticaret-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5386",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticarette-yapay-zeka-chatbot-entegrasyonu-satis-artisi-8620",
+      "destination": "/blog/e-ticaret-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5386",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticarette-yapay-zeka-chatbot-entegrasyonu-satis-artisi-7738",
+      "destination": "/blog/e-ticaret-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5386",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticarette-yapay-zeka-chatbot-entegrasyonu-satis-artisi-6692",
+      "destination": "/blog/e-ticaret-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5386",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-ticarette-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5176",
+      "destination": "/blog/e-ticaret-yapay-zeka-chatbot-entegrasyonu-satis-artisi-5386",
+      "permanent": true
     }
   ],
   "routes": [
-    { "src": "/sitemap.xml", "dest": "/api/sitemap" },
-    { "src": "/api/seo/(.*)", "dest": "/api/seo?action=$1" },
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    {
+      "src": "/api/seo/(.*)",
+      "dest": "/api/seo?action=$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
   ]
 }

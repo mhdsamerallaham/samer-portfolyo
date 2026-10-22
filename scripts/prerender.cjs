@@ -2424,29 +2424,44 @@ async function main() {
     }
   }
 
+  // A translated variant is only indexable when it really has its own content.
+  // Untranslated variants are still rendered (so in-app links never 404) but they
+  // canonicalize to the Turkish original and are excluded from sitemap/hreflang.
+  const hasTranslation = (title, content, trTitle) =>
+    Boolean(title && content && String(title).trim() !== String(trTitle || '').trim());
+  const toDate = (v) => (v ? String(v).slice(0, 10) : undefined);
+
   if (dbPosts.length > 0) {
     dbPosts.forEach((post) => {
       const slug = post.slug;
       if (!slug) return;
+      const trCanonical = `https://www.samer.life/blog/${slug}`;
+      const lastmod = toDate(post.updated_at || post.published_at || post.created_at);
+      const enOk = hasTranslation(post.title_en, post.content_en, post.title_tr);
+      const arOk = hasTranslation(post.title_ar, post.content_ar, post.title_tr);
+
       allPages[`blog/${slug}`] = {
         title: post.seo_title_tr || post.title_tr || post.title || 'Blog | Samer Allaham',
         description: post.seo_description_tr || post.summary_tr || post.summary || '',
-        canonical: `https://www.samer.life/blog/${slug}`,
+        canonical: trCanonical,
         lang: 'tr',
+        lastmod,
         content: `<h1>${post.title_tr || post.title}</h1>${post.content_tr || post.content || ''}`
       };
       allPages[`en/blog/${slug}`] = {
         title: post.seo_title_en || post.title_en || post.title_tr || post.title || 'Blog | Samer Allaham',
         description: post.seo_description_en || post.summary_en || post.summary_tr || post.summary || '',
-        canonical: `https://www.samer.life/en/blog/${slug}`,
-        lang: 'en',
+        canonical: enOk ? `https://www.samer.life/en/blog/${slug}` : trCanonical,
+        lang: enOk ? 'en' : 'tr',
+        lastmod,
         content: `<h1>${post.title_en || post.title_tr || post.title}</h1>${post.content_en || post.content_tr || post.content || ''}`
       };
       allPages[`ar/blog/${slug}`] = {
         title: post.seo_title_ar || post.title_ar || post.title_tr || post.title || 'مدونة | سامر اللحام',
         description: post.seo_description_ar || post.summary_ar || post.summary_tr || post.summary || '',
-        canonical: `https://www.samer.life/ar/blog/${slug}`,
-        lang: 'ar',
+        canonical: arOk ? `https://www.samer.life/ar/blog/${slug}` : trCanonical,
+        lang: arOk ? 'ar' : 'tr',
+        lastmod,
         content: `<h1>${post.title_ar || post.title_tr || post.title}</h1>${post.content_ar || post.content_tr || post.content || ''}`
       };
     });
@@ -2502,6 +2517,11 @@ async function main() {
       const slug = faq.slug;
       if (!slug) return;
 
+      const faqTrCanonical = `https://www.samer.life/faq/${slug}`;
+      const faqLastmod = toDate(faq.updated_at || faq.published_at || faq.created_at);
+      const faqEnOk = hasTranslation(faq.question_en, faq.content_en || faq.short_answer_en, faq.question_tr);
+      const faqArOk = hasTranslation(faq.question_ar, faq.content_ar || faq.short_answer_ar, faq.question_tr);
+
       const qTr = faq.question_tr || faq.question || 'Sıkça Sorulan Soru';
       const aTr = faq.short_answer_tr || faq.short_answer || '';
       const cTr = faq.content_tr || faq.content || '';
@@ -2547,32 +2567,53 @@ async function main() {
       allPages[`faq/${slug}`] = {
         title: `${qTr} | Samer Allaham`,
         description: aTr || qTr,
-        canonical: `https://www.samer.life/faq/${slug}`,
+        canonical: faqTrCanonical,
         lang: 'tr',
-        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div><script type="application/ld+json">${buildFaqSchema(qTr, aTr, cTr, `https://www.samer.life/faq/${slug}`)}</script>`
+        lastmod: faqLastmod,
+        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div><script type="application/ld+json">${buildFaqSchema(qTr, aTr, cTr, faqTrCanonical)}</script>`
       };
-      allPages[`sss/${slug}`] = {
-        title: `${qTr} | Samer Allaham`,
-        description: aTr || qTr,
-        canonical: `https://www.samer.life/sss/${slug}`,
-        lang: 'tr',
-        content: `<h1>${qTr}</h1><p><strong>${aTr}</strong></p><div>${cTr}</div><script type="application/ld+json">${buildFaqSchema(qTr, aTr, cTr, `https://www.samer.life/sss/${slug}`)}</script>`
-      };
+      // NOTE: /sss/* permanently redirects to /faq/* (vercel.json), so no duplicate sss pages are rendered.
       allPages[`en/faq/${slug}`] = {
         title: `${qEn} | Samer Allaham`,
         description: aEn || qEn,
-        canonical: `https://www.samer.life/en/faq/${slug}`,
-        lang: 'en',
-        content: `<h1>${qEn}</h1><p><strong>${aEn}</strong></p><div>${cEn}</div><script type="application/ld+json">${buildFaqSchema(qEn, aEn, cEn, `https://www.samer.life/en/faq/${slug}`)}</script>`
+        canonical: faqEnOk ? `https://www.samer.life/en/faq/${slug}` : faqTrCanonical,
+        lang: faqEnOk ? 'en' : 'tr',
+        lastmod: faqLastmod,
+        content: `<h1>${qEn}</h1><p><strong>${aEn}</strong></p><div>${cEn}</div>${faqEnOk ? `<script type="application/ld+json">${buildFaqSchema(qEn, aEn, cEn, `https://www.samer.life/en/faq/${slug}`)}</script>` : ''}`
       };
       allPages[`ar/faq/${slug}`] = {
         title: `${qAr} | سامر اللحام`,
         description: aAr || qAr,
-        canonical: `https://www.samer.life/ar/faq/${slug}`,
-        lang: 'ar',
-        content: `<h1>${qAr}</h1><p><strong>${aAr}</strong></p><div>${cAr}</div><script type="application/ld+json">${buildFaqSchema(qAr, aAr, cAr, `https://www.samer.life/ar/faq/${slug}`)}</script>`
+        canonical: faqArOk ? `https://www.samer.life/ar/faq/${slug}` : faqTrCanonical,
+        lang: faqArOk ? 'ar' : 'tr',
+        lastmod: faqLastmod,
+        content: `<h1>${qAr}</h1><p><strong>${aAr}</strong></p><div>${cAr}</div>${faqArOk ? `<script type="application/ld+json">${buildFaqSchema(qAr, aAr, cAr, `https://www.samer.life/ar/faq/${slug}`)}</script>` : ''}`
       };
     });
+  }
+
+  // 3. Fetch autonomous page SEO overrides (e.g. Home Page, Service Pages)
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      const supabase = createClient(supabaseUrl, supabaseAnonKey);
+      const { data: overrides } = await supabase.from('page_seo_overrides').select('*');
+      if (overrides && overrides.length > 0) {
+        console.log(`✓ Loaded ${overrides.length} page SEO overrides from Supabase!`);
+        overrides.forEach((ov) => {
+          let routeKey = (ov.page_path || '').replace(/^\/+/, '').replace(/\/+$/, '');
+          if (allPages[routeKey]) {
+            if (ov.title_tr) allPages[routeKey].title = ov.title_tr;
+            if (ov.description_tr) allPages[routeKey].description = ov.description_tr;
+            if (ov.additional_faq_html) {
+              allPages[routeKey].content = `${allPages[routeKey].content || ''}\n${ov.additional_faq_html}`;
+            }
+            console.log(`  ↳ Applied override to: /${routeKey} ("${ov.title_tr}")`);
+          }
+        });
+      }
+    } catch (ovErr) {
+      // Non-fatal if table not yet migrated
+    }
   }
 
   console.log(`Starting prerendering for ${Object.keys(allPages).length} total routes...`);
@@ -2598,6 +2639,15 @@ async function main() {
   }
 
   const sitemapUrls = [];
+  const builtRoutes = [];
+
+  const normalizeUrl = (u) => String(u || '').replace(/\/+$/, '').toLowerCase();
+  // A URL is indexable if we render it and it canonicalizes to itself.
+  const isIndexableUrl = (url) => {
+    const key = url.replace(/^https:\/\/www\.samer\.life\/?/, '').replace(/\/+$/, '');
+    const page = allPages[key];
+    return Boolean(page) && normalizeUrl(page.canonical) === normalizeUrl(url);
+  };
 
   Object.entries(allPages).forEach(([route, data]) => {
     let pageHtml = template;
@@ -2709,22 +2759,37 @@ async function main() {
     const enUrl = `https://www.samer.life${enUrlSuffix}`;
     const arUrl = `https://www.samer.life${arUrlSuffix}`;
 
-    const hreflangTags = `
-  <link rel="alternate" hreflang="tr" href="${trUrl}" data-rh="true" />
-  <link rel="alternate" hreflang="en" href="${enUrl}" data-rh="true" />
-  <link rel="alternate" hreflang="ar" href="${arUrl}" data-rh="true" />
-  <link rel="alternate" hreflang="x-default" href="${trUrl}" data-rh="true" />`;
+    // Only reference alternates that exist AND are self-canonical (real, indexable translations).
+    const ownUrl = route === '' ? 'https://www.samer.life/' : `https://www.samer.life/${route}`;
+    const isSelfCanonical = normalizeUrl(data.canonical) === normalizeUrl(ownUrl);
+    const alternates = [
+      ['tr', trUrl],
+      ['en', enUrl],
+      ['ar', arUrl],
+    ].filter(([, url]) => isIndexableUrl(url));
+    const useHreflang = isSelfCanonical && alternates.length > 1;
+    const xDefault = alternates.find(([l]) => l === 'tr') || alternates[0];
 
-    sitemapUrls.push(`  <url>
-    <loc>https://www.samer.life${relativePath}</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <changefreq>${route.includes('blog/') ? 'monthly' : 'weekly'}</changefreq>
-    <priority>${route === '' ? '1.0' : (route.includes('blog/') ? '0.7' : '0.85')}</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="${trUrl}" />
-    <xhtml:link rel="alternate" hreflang="en" href="${enUrl}" />
-    <xhtml:link rel="alternate" hreflang="ar" href="${arUrl}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${trUrl}" />
+    const hreflangTags = useHreflang
+      ? '\n' + [...alternates, ['x-default', xDefault[1]]]
+          .map(([l, url]) => `  <link rel="alternate" hreflang="${l}" href="${url}" data-rh="true" />`)
+          .join('\n')
+      : '';
+
+    // Sitemap: only canonical, indexable URLs. Redirecting (/sss) and alias URLs are excluded.
+    const isRedirected = route === 'sss' || route.startsWith('sss/');
+    if (isSelfCanonical && !isRedirected) {
+      const altXml = useHreflang
+        ? '\n' + [...alternates, ['x-default', xDefault[1]]]
+            .map(([l, url]) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${url}" />`)
+            .join('\n')
+        : '';
+      sitemapUrls.push(`  <url>
+    <loc>${ownUrl}</loc>${data.lastmod ? `\n    <lastmod>${data.lastmod}</lastmod>` : ''}
+    <priority>${route === '' ? '1.0' : (route.includes('blog/') || route.includes('faq/') ? '0.6' : '0.85')}</priority>${altXml}
   </url>`);
+    }
+    builtRoutes.push({ route: relativePath, canonical: data.canonical, indexable: isSelfCanonical && !isRedirected, lastmod: data.lastmod || null });
 
     // Cleanly replace any static alternate hreflang tags in the template to prevent duplicates
     pageHtml = pageHtml.replace(/<link\s+rel="alternate"\s+hreflang="[^"]*"\s+href="[^"]*"\s*(?:data-rh="true")?\s*\/?>\s*/gi, '');
@@ -2743,7 +2808,7 @@ async function main() {
     }
 
     // Convert any <h1> tags in noscript to <h2> to guarantee strictly 1 <h1> per page for crawlers
-    const noscriptContent = data.content
+    const noscriptContent = (data.content || '')
       .replace(/<h1(\s+[^>]*)?>/gi, '<h2$1>')
       .replace(/<\/h1>/gi, '</h2>');
 
@@ -2776,7 +2841,20 @@ async function main() {
 ${sitemapUrls.join('\n')}
 </urlset>`;
   fs.writeFileSync(path.join(BUILD_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
-  console.log(`✓ Dynamically generated dist/sitemap.xml with ${sitemapUrls.length} localized URLs!`);
+  console.log(`✓ Dynamically generated dist/sitemap.xml with ${sitemapUrls.length} canonical URLs!`);
+
+  // Build manifest: lets the SEO autopilot know exactly which URLs exist in this deployment.
+  const manifest = {
+    built_at: new Date().toISOString(),
+    commit: process.env.VERCEL_GIT_COMMIT_SHA || null,
+    total_routes: builtRoutes.length,
+    indexable_routes: builtRoutes.filter((r) => r.indexable).length,
+    blog_posts: dbPosts.length,
+    faq_posts: dbFaqs.length,
+    routes: builtRoutes,
+  };
+  fs.writeFileSync(path.join(BUILD_DIR, 'build-manifest.json'), JSON.stringify(manifest), 'utf8');
+  console.log(`✓ Wrote dist/build-manifest.json (${manifest.indexable_routes} indexable / ${manifest.total_routes} total)`);
   console.log('Prerendering completed successfully!');
 }
 

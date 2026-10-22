@@ -304,13 +304,40 @@ module.exports = async (req, res) => {
       }
     }
 
+    // Trigger Vercel Deploy Hook if autonomous modifications were applied
+    let deployTriggered = false;
+    const appliedTasks = processedTasks.filter((t) => t.success && t.type === "autonomous_seo_optimization");
+    const deployHookUrl = process.env.VERCEL_DEPLOY_HOOK_URL;
+
+    if (appliedTasks.length > 0 && deployHookUrl) {
+      try {
+        console.log(`[QueueWorker] 🚀 Canlıya ${appliedTasks.length} optimizasyon uygulandı. Vercel Deploy Hook tetikleniyor...`);
+        const https = require("https");
+        await new Promise((resolve) => {
+          const hookReq = https.request(deployHookUrl, { method: "POST" }, (hookRes) => {
+            console.log(`[QueueWorker] Vercel Deploy Hook yanıt kodu: ${hookRes.statusCode}`);
+            deployTriggered = hookRes.statusCode >= 200 && hookRes.statusCode < 300;
+            resolve();
+          });
+          hookReq.on("error", (e) => {
+            console.warn("[QueueWorker] Deploy hook notice:", e.message);
+            resolve();
+          });
+          hookReq.end();
+        });
+      } catch (deployErr) {
+        console.warn("[QueueWorker] Deploy hook exception:", deployErr.message);
+      }
+    }
+
     return res.status(200).json({
       success: true,
       processedCount: processedTasks.length,
+      deployTriggered,
       tasks: processedTasks,
       message:
         processedTasks.length > 0
-          ? `Otonom döngü tamamlandı: ${processedTasks.length} görev işlendi ve uygulandı.`
+          ? `Otonom döngü tamamlandı: ${processedTasks.length} görev işlendi ve uygulandı.${deployTriggered ? " Canlı deploy tetiklendi." : ""}`
           : "Kuyrukta bekleyen görev bulunmuyor (Tüm fırsatlar güncel).",
       timestamp: new Date().toISOString(),
     });
@@ -321,3 +348,4 @@ module.exports = async (req, res) => {
     await cronLock.release("autoseo_queue_lock");
   }
 };
+

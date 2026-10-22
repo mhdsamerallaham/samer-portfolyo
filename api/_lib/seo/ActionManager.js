@@ -222,6 +222,22 @@ class ActionManager {
       } catch (e) {
         // Handled via local cache
       }
+      try {
+        // Upsert into page_seo_overrides so prerender serves it directly
+        const cleanPath = pageUrl === "/" ? "/" : pageUrl.replace(/\/+$/, "");
+        await this.supabase.from("page_seo_overrides").upsert({
+          page_path: cleanPath,
+          title_tr: pageAfter.title_tr,
+          h1_tr: pageAfter.h1,
+          description_tr: pageAfter.meta_description,
+          additional_faq_html: diff_data.diff_elements?.added_html_snippet || null,
+          target_query: diff_data.target_query,
+          updated_at: new Date().toISOString(),
+          applied_by,
+        }, { onConflict: "page_path" });
+      } catch (e) {
+        // Handled gracefully
+      }
     }
 
     return {

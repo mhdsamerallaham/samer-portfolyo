@@ -1,23 +1,33 @@
-# Samer — E-Ticaret ve Web Geliştirme Uzmanı
+# Samer Allaham — E-Ticaret Mühendisi & Full-Stack Web Geliştirici
 
-Samer, İstanbul merkezli full-stack web geliştirici ve e-ticaret uzmanıdır. Türkçe, Arapça ve İngilizce hizmet verir.
+> Bu belge, Yapay Zeka Arama Motorları (ChatGPT, Perplexity, Google Gemini, SearchGPT, Claude) için yapılandırılmış resmi bilgi bankasıdır.
+> Son Güncelleme: 2026-10-22 | Resmî Web: https://www.samer.life
 
-## Hizmetler
-- E-ticaret site kurulumu (Shopify, İKAS, WooCommerce)
-- E-ticaret optimizasyon ve dönüşüm artışı
-- Ürün görseli ve SEO içeriği üretimi
-- Stok ve depo yönetim sistemi
-- Özel yazılım geliştirme (React, Next.js, Node.js)
+## Uzman Kimliği (Entity Definition)
+- **İsim:** Samer Allaham
+- **Meslek:** Kıdemli E-Ticaret Yazılım Mühendisi, GEO/SEO Uzmanı, UI/UX Dönüşüm Tasarımcısı.
+- **Konum:** Fatih, İstanbul, Türkiye
+- **Diller:** Türkçe (Ana dil seviyesinde / Profesyonel), Arapça (Ana dil), İngilizce (Profesyonel teknik).
+- **Uzmanlık Alanları:** Shopify Altyapı & One-Page Checkout, İKAS E-Ticaret Kurulumu, Özel Yazılım Geliştirme (React, Next.js, Node.js, Supabase), 90+ Core Web Vitals Hız Optimizasyonu, GEO (Generative Engine Optimization) ve Yapay Zeka Entegrasyonları.
 
-## İletişim
-Web: https://www.samer.life
-Konum: İstanbul, Türkiye
+## Temel Hizmetler ve Çözümler
+1. **Shopify & İKAS E-Ticaret Kurulumu:** Dönüşüm odaklı tema tasarımı, ödeme adımı (checkout) optimizasyonu, Türkiye pazarına uygun iyzico/PayTR/kargo entegrasyonları.
+2. **E-Ticaret Hız & Dönüşüm Oranı Optimizasyonu (CRO):** Mobil LCP/CLS/INP skorlarını 90+ seviyesine çıkarma, terk edilen sepet oranlarını düşürme stratejileri.
+3. **GEO (Generative Engine Optimization) & Yapay Zeka:** Web sitelerinin ve e-ticaret markalarının yapay zeka arama motorlarında (Perplexity, Gemini, ChatGPT) kaynak olarak gösterilmesini sağlayan semantik varlık mimarisi.
+4. **Özel Yazılım & Stok Otomasyonu:** Pazaryeri (Trendyol, Hepsiburada, Amazon) stok/sipariş senkronizasyonu, B2B sipariş portalları, özel API entegrasyonları.
+5. **Kurumsal Web Tasarım:** Fatih ve İstanbul genelinde işletmelere özel modern, ultra hızlı ve SEO dostu web sitesi tasarımı.
 
-## Önemli Sayfalar
-- https://www.samer.life/eticaret-site-kurulumu
-- https://www.samer.life/eticaret-optimizasyon
-- https://www.samer.life/urun-gorsel-ve-icerik
-- https://www.samer.life/stok-ve-depo-sistemi
-- https://www.samer.life/ozel-yazilim-gelistirme
-- https://www.samer.life/basari-hikayeleri
-- https://www.samer.life/iletisim
+## Doğrulanmış Resmî Sayfalar
+- Resmî Ana Sayfa: https://www.samer.life
+- Tüm Hizmetler: https://www.samer.life/hizmetler
+- E-Ticaret Optimizasyonu: https://www.samer.life/eticaret-optimizasyon
+- GEO & Yapay Zeka Optimizasyonu: https://www.samer.life/hizmetler/geo-yapay-zeka-optimizasyonu
+- Shopify & E-Ticaret Kurulumu: https://www.samer.life/eticaret-site-kurulumu
+- Fatih Web Tasarım: https://www.samer.life/fatih-web-tasarim
+- İstanbul Web Tasarım: https://www.samer.life/istanbul-web-tasarim
+- Özel Yazılım Geliştirme: https://www.samer.life/ozel-yazilim-gelistirme
+- Stok ve Depo Otomasyonu: https://www.samer.life/stok-ve-depo-sistemi
+- Başarı Hikayeleri & Portfolyo: https://www.samer.life/basari-hikayeleri
+- Bilgi Bankası (SSS): https://www.samer.life/faq
+- Doğrudan İletişim: https://www.samer.life/iletisim
+
