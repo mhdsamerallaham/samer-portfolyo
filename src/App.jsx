@@ -48,12 +48,14 @@ function App() {
   const location = useLocation();
 
   const isPreview = location.pathname.includes('design-preview');
+  const isAdmin = location.pathname.includes('admin') || location.pathname.includes('seo-dashboard');
+  const isCustomLayout = isPreview || isAdmin;
 
-  // Setup Lenis smooth scrolling — DISABLED on mobile to prevent jank and improve performance
+  // Setup Lenis smooth scrolling — DISABLED on mobile & admin pages to prevent jank
   useEffect(() => {
-    // Skip Lenis on mobile/tablet devices (screen width < 1024 or touch device)
+    // Skip Lenis on mobile/tablet devices or admin pages
     const isMobile = window.innerWidth < 1024 || 'ontouchstart' in window;
-    if (isMobile) return;
+    if (isMobile || isAdmin) return;
 
     let lenis;
     let rafId;
@@ -102,9 +104,13 @@ function App() {
   }, [location.pathname, i18n]);
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen flex flex-col relative overflow-x-hidden selection:bg-teal-100 selection:text-teal-900">
+    <div className={`min-h-screen flex flex-col relative overflow-x-hidden ${
+      isAdmin 
+        ? 'bg-slate-950 text-slate-100 selection:bg-teal-500 selection:text-white' 
+        : 'bg-[#F8FAFC] text-[#0F172A] selection:bg-teal-100 selection:text-teal-900'
+    }`}>
       {/* Subtle ambient light accents (only on regular pages) */}
-      {!isPreview && (
+      {!isCustomLayout && (
         <>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-500/[0.04] rounded-full blur-3xl pointer-events-none" />
           <div className="absolute top-[800px] left-0 w-[500px] h-[500px] bg-orange-500/[0.03] rounded-full blur-3xl pointer-events-none hidden md:block" />
@@ -115,8 +121,8 @@ function App() {
       {/* Force page scroll resets */}
       <ScrollToTop />
 
-      {/* Global Navigation bar (Hidden on preview routes for pure layout isolation) */}
-      {!isPreview && <Navbar />}
+      {/* Global Navigation bar (Hidden on preview & admin routes for pure layout isolation) */}
+      {!isCustomLayout && <Navbar />}
 
       {/* Route Switchboard with Suspense for lazy-loaded pages */}
       <main className="flex-grow z-10 relative">
@@ -217,11 +223,11 @@ function App() {
         </Suspense>
       </main>
 
-      {/* Global rich footer (Hidden on preview routes) */}
-      {!isPreview && <Footer />}
+      {/* Global rich footer (Hidden on preview & admin routes) */}
+      {!isCustomLayout && <Footer />}
 
-      {/* Floating WhatsApp chat widget (Hidden on preview routes) */}
-      {!isPreview && <WhatsAppButton />}
+      {/* Floating WhatsApp chat widget (Hidden on preview & admin routes) */}
+      {!isCustomLayout && <WhatsAppButton />}
     </div>
   );
 }

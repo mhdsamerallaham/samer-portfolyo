@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import {
+  ArrowLeft,
   Search,
   Sparkles,
   RefreshCw,
@@ -343,6 +345,15 @@ export default function SeoDashboard() {
             >
               <RefreshCw size={15} className={loading || aiBudgetLoading ? 'animate-spin' : ''} />
             </button>
+
+            <Link
+              to="/"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors text-xs font-semibold"
+              title="Samer.life ana sitesine dön"
+            >
+              <ArrowLeft size={14} />
+              <span>Siteye Dön</span>
+            </Link>
           </div>
         </div>
 
